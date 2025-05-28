@@ -1,0 +1,843 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8A4428A6-68C3-423D-8476-BBC72A38A548}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>QuanLyNhanSu</RootNamespace>
+    <AssemblyName>QuanLyNhanSu</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Azure.Core, Version=1.38.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Azure.Core.1.38.0\lib\net472\Azure.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Identity, Version=1.11.4.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Azure.Identity.1.11.4\lib\netstandard2.0\Azure.Identity.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.Licensing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=f89b4760ba7dcb6b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.Licensing.6.0.8\lib\net472\Bunifu.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.8.0.0\lib\net472\Bunifu.UI.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.1.5.3, Version=1.5.3.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.1.5.3.2.0.0\lib\net452\Bunifu.UI.WinForms.1.5.3.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.WinForms, Version=0.9.6.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.WinForms.0.9.6\lib\net45\LiveCharts.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.Cryptography, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Cryptography.8.0.0\lib\net462\Microsoft.Bcl.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.SqlClient, Version=6.0.0.0, Culture=neutral, PublicKeyToken=23ec7fc2d6eaa4a5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.SqlClient.6.0.1\lib\net462\Microsoft.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Memory, Version=8.0.0.1, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Memory.8.0.1\lib\net462\Microsoft.Extensions.Caching.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=8.0.0.2, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.8.0.2\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=8.0.0.2, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.8.0.2\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=8.0.0.2, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.8.0.2\lib\net462\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.8.0.0\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Client, Version=4.61.3.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Client.4.61.3\lib\net462\Microsoft.Identity.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Client.Extensions.Msal, Version=4.61.3.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Client.Extensions.Msal.4.61.3\lib\netstandard2.0\Microsoft.Identity.Client.Extensions.Msal.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Abstractions, Version=7.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Abstractions.7.5.0\lib\net472\Microsoft.IdentityModel.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=7.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.7.5.0\lib\net472\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=7.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.7.5.0\lib\net472\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols, Version=7.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.7.5.0\lib\net472\Microsoft.IdentityModel.Protocols.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect, Version=7.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.OpenIdConnect.7.5.0\lib\net472\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=7.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.7.5.0\lib\net472\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ClientModel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ClientModel.1.0.0\lib\netstandard2.0\System.ClientModel.dll</HintPath>
+    </Reference>
+    <Reference Include="System.CodeDom, Version=9.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.CodeDom.9.0.2\lib\net462\System.CodeDom.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlClient, Version=4.6.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SqlClient.4.9.0\lib\net462\System.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=8.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.8.0.1\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=7.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.7.5.0\lib\net472\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.AccessControl.5.0.0\lib\net461\System.IO.FileSystem.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory.Data, Version=1.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.Data.1.0.2\lib\net461\System.Memory.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.5.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Pkcs, Version=8.0.0.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Pkcs.8.0.1\lib\net462\System.Security.Cryptography.Pkcs.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.ProtectedData, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.ProtectedData.4.7.0\lib\net461\System.Security.Cryptography.ProtectedData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.6.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=6.0.0.10, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.6.0.10\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DAO\DonnghiphepDAO.cs" />
+    <Compile Include="DAO\Function.cs" />
+    <Compile Include="DAO\KycongDAO.cs" />
+    <Compile Include="DAO\LoaicaDAO.cs" />
+    <Compile Include="DAO\LoaicongDAO.cs" />
+    <Compile Include="DAO\RoundedPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DTO\KycongDTO.cs" />
+    <Compile Include="DTO\LoaicaDTO.cs" />
+    <Compile Include="DAO\TaikhoanDAO.cs" />
+    <Compile Include="DAO\CheckinDAO.cs" />
+    <Compile Include="DAO\CheckoutDAO.cs" />
+    <Compile Include="DAO\KhenthuongkyluatDAO.cs" />
+    <Compile Include="DAO\HopdongDAO.cs" />
+    <Compile Include="DAO\KhoahocDAO.cs" />
+    <Compile Include="DAO\ThongkenhansuDAO.cs" />
+    <Compile Include="DAO\BaohiemDAO.cs" />
+    <Compile Include="DAO\TrinhdochuyenmonDAO.cs" />
+    <Compile Include="DAO\ThongkenghiphepDAO.cs" />
+    <Compile Include="DAO\ChucvuDAO.cs" />
+    <Compile Include="DAO\DataProvider.cs" />
+    <Compile Include="DAO\HosoungvienDAO.cs" />
+    <Compile Include="DAO\KetquaphongvanDAO.cs" />
+    <Compile Include="DAO\LichphongvanDAO.cs" />
+    <Compile Include="DAO\NguonungvienDAO.cs" />
+    <Compile Include="DAO\NhanvienDAO.cs" />
+    <Compile Include="DAO\DaotaoDAO.cs" />
+    <Compile Include="DAO\NguoidungDAO.cs" />
+    <Compile Include="DTO\DonnghiphepDTO.cs" />
+    <Compile Include="DTO\LoaicongDTO.cs" />
+    <Compile Include="DTO\TaikhoanDTO.cs" />
+    <Compile Include="DTO\CheckinDTO.cs" />
+    <Compile Include="DTO\CheckoutDTO.cs" />
+    <Compile Include="DTO\KhenthuongkyluatDTO.cs" />
+    <Compile Include="DTO\ThongkekhenthuongkyluatDTO.cs" />
+    <Compile Include="DTO\HopdongDTO.cs" />
+    <Compile Include="DTO\KhoahocDTO.cs" />
+    <Compile Include="DTO\ThongkenhansuchucvuDTO.cs" />
+    <Compile Include="DTO\ThongkenhansunamnuDTO.cs" />
+    <Compile Include="DTO\ThongkenhansuphongbanDTO.cs" />
+    <Compile Include="DTO\BaohiemDTO.cs" />
+    <Compile Include="DTO\TrinhdochuyenmonDTO.cs" />
+    <Compile Include="DTO\ThongkenghiphepDTO.cs" />
+    <Compile Include="DTO\ChucvuDTO.cs" />
+    <Compile Include="DTO\PhongbanDTO.cs" />
+    <Compile Include="DTO\HosoungvienDTO.cs" />
+    <Compile Include="DTO\KetquaphongvanDTO.cs" />
+    <Compile Include="DTO\LichphongvanDTO.cs" />
+    <Compile Include="DTO\NguonungvienDTO.cs" />
+    <Compile Include="DTO\NhanvienDTO.cs" />
+    <Compile Include="DTO\DaotaoDTO.cs" />
+    <Compile Include="DTO\NguoidungDTO.cs" />
+    <Compile Include="GUI\BunifuForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\BunifuForm1.Designer.cs">
+      <DependentUpon>BunifuForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fBangcong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fBangcong.Designer.cs">
+      <DependentUpon>fBangcong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fBangcongchitiet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fBangcongchitiet.Designer.cs">
+      <DependentUpon>fBangcongchitiet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fQuanlycalamviec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fQuanlycalamviec.Designer.cs">
+      <DependentUpon>fQuanlycalamviec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fQuanlycong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fQuanlycong.Designer.cs">
+      <DependentUpon>fQuanlycong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fQuanlydangkylichlamviec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fQuanlydangkylichlamviec.Designer.cs">
+      <DependentUpon>fQuanlydangkylichlamviec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fQuanlyduyetnghiphep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fQuanlyduyetnghiphep.Designer.cs">
+      <DependentUpon>fQuanlyduyetnghiphep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fQuanlykhenthuongkyluat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fQuanlykhenthuongkyluat.Designer.cs">
+      <DependentUpon>fQuanlykhenthuongkyluat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fQuanlykhoahoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fQuanlykhoahoc.Designer.cs">
+      <DependentUpon>fQuanlykhoahoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fQuanlytaikhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fQuanlytaikhoan.Designer.cs">
+      <DependentUpon>fQuanlytaikhoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fAdminDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fAdminDashboard.Designer.cs">
+      <DependentUpon>fAdminDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fQuanlynguonungvien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fQuanlynguonungvien.Designer.cs">
+      <DependentUpon>fQuanlynguonungvien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fQuanlyhosoungvien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fQuanlyhosoungvien.Designer.cs">
+      <DependentUpon>fQuanlyhosoungvien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fDoimatkhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fDoimatkhau.Designer.cs">
+      <DependentUpon>fDoimatkhau.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fDoica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fDoica.Designer.cs">
+      <DependentUpon>fDoica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fCheckIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fCheckIn.Designer.cs">
+      <DependentUpon>fCheckIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fCheckOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fCheckOut.Designer.cs">
+      <DependentUpon>fCheckOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fQuenmatkhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fQuenmatkhau.Designer.cs">
+      <DependentUpon>fQuenmatkhau.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fSuaCheckin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fSuaCheckin.Designer.cs">
+      <DependentUpon>fSuaCheckin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fSuaCheckout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fSuaCheckout.Designer.cs">
+      <DependentUpon>fSuaCheckout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fThongkekhenthuongkyluat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fThongkekhenthuongkyluat.Designer.cs">
+      <DependentUpon>fThongkekhenthuongkyluat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fQuanlyhopdong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fQuanlyhopdong.Designer.cs">
+      <DependentUpon>fQuanlyhopdong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fTaolichphongvan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fTaolichphongvan.Designer.cs">
+      <DependentUpon>fTaolichphongvan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fQuanlyketquaphongvan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fQuanlyketquaphongvan.Designer.cs">
+      <DependentUpon>fQuanlyketquaphongvan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fQuanlydangkynghiphep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fQuanlydangkynghiphep.Designer.cs">
+      <DependentUpon>fQuanlydangkynghiphep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fQuanlytrinhdochuyenmon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fQuanlytrinhdochuyenmon.Designer.cs">
+      <DependentUpon>fQuanlytrinhdochuyenmon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fDangnhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fDangnhap.Designer.cs">
+      <DependentUpon>fDangnhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fQuanlyphongban.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fQuanlyphongban.Designer.cs">
+      <DependentUpon>fQuanlyphongban.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fQuanlytiepnhannhanvien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fQuanlytiepnhannhanvien.Designer.cs">
+      <DependentUpon>fQuanlytiepnhannhanvien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fQuanlyluong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fQuanlyluong.Designer.cs">
+      <DependentUpon>fQuanlyluong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fThongkeluong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fThongkeluong.Designer.cs">
+      <DependentUpon>fThongkeluong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fThongketongquannhansu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fThongketongquannhansu.Designer.cs">
+      <DependentUpon>fThongketongquannhansu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fQuanlythuongvaphucloinhanvien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fQuanlythuongvaphucloinhanvien.Designer.cs">
+      <DependentUpon>fQuanlythuongvaphucloinhanvien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fQuanlylichphongvan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fQuanlylichphongvan.Designer.cs">
+      <DependentUpon>fQuanlylichphongvan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fQuanlybaohiem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fQuanlybaohiem.Designer.cs">
+      <DependentUpon>fQuanlybaohiem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fThongkenghiphep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fThongkenghiphep.Designer.cs">
+      <DependentUpon>fThongkenghiphep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fQuanlychucvu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fQuanlychucvu.Designer.cs">
+      <DependentUpon>fQuanlychucvu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fQuanlynhanvien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fQuanlynhanvien.Designer.cs">
+      <DependentUpon>fQuanlynhanvien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fQuanlydaotaonhanvien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fQuanlydaotaonhanvien.Designer.cs">
+      <DependentUpon>fQuanlydaotaonhanvien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fTurningOverEmployeeStatistics.cs" />
+    <Compile Include="GUI\fTurningOverEmployeeStatistics.Designer.cs">
+      <DependentUpon>fTurningOverEmployeeStatistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DAO\PhongbanDAO.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GUI\fQuanlynguoidung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fQuanlynguoidung.Designer.cs">
+      <DependentUpon>fQuanlynguoidung.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="GUI\BunifuForm1.resx">
+      <DependentUpon>BunifuForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fBangcong.resx">
+      <DependentUpon>fBangcong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fBangcongchitiet.resx">
+      <DependentUpon>fBangcongchitiet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fDoimatkhau.resx">
+      <DependentUpon>fDoimatkhau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fQuanlycalamviec.resx">
+      <DependentUpon>fQuanlycalamviec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fQuanlycong.resx">
+      <DependentUpon>fQuanlycong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fQuanlydangkylichlamviec.resx">
+      <DependentUpon>fQuanlydangkylichlamviec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fQuanlyduyetnghiphep.resx">
+      <DependentUpon>fQuanlyduyetnghiphep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fQuanlytaikhoan.resx">
+      <DependentUpon>fQuanlytaikhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fAdminDashboard.resx">
+      <DependentUpon>fAdminDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fQuanlynguonungvien.resx">
+      <DependentUpon>fQuanlynguonungvien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fQuanlyhosoungvien.resx">
+      <DependentUpon>fQuanlyhosoungvien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fCheckIn.resx">
+      <DependentUpon>fCheckIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fCheckOut.resx">
+      <DependentUpon>fCheckOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fQuanlykhenthuongkyluat.resx">
+      <DependentUpon>fQuanlykhenthuongkyluat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fQuenmatkhau.resx">
+      <DependentUpon>fQuenmatkhau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fSuaCheckin.resx">
+      <DependentUpon>fSuaCheckin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fSuaCheckout.resx">
+      <DependentUpon>fSuaCheckout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fThongkekhenthuongkyluat.resx">
+      <DependentUpon>fThongkekhenthuongkyluat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fQuanlyhopdong.resx">
+      <DependentUpon>fQuanlyhopdong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fQuanlykhoahoc.resx">
+      <DependentUpon>fQuanlykhoahoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fTaolichphongvan.resx">
+      <DependentUpon>fTaolichphongvan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fThongketongquannhansu.resx">
+      <DependentUpon>fThongketongquannhansu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fQuanlydangkynghiphep.resx">
+      <DependentUpon>fQuanlydangkynghiphep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fQuanlytrinhdochuyenmon.resx">
+      <DependentUpon>fQuanlytrinhdochuyenmon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fDangnhap.resx">
+      <DependentUpon>fDangnhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fQuanlyphongban.resx">
+      <DependentUpon>fQuanlyphongban.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fQuanlytiepnhannhanvien.resx">
+      <DependentUpon>fQuanlytiepnhannhanvien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fThongkenghiphep.resx">
+      <DependentUpon>fThongkenghiphep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fQuanlychucvu.resx">
+      <DependentUpon>fQuanlychucvu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fQuanlyketquaphongvan.resx">
+      <DependentUpon>fQuanlyketquaphongvan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fQuanlylichphongvan.resx">
+      <DependentUpon>fQuanlylichphongvan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fQuanlybaohiem.resx">
+      <DependentUpon>fQuanlybaohiem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fQuanlynhanvien.resx">
+      <DependentUpon>fQuanlynhanvien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fQuanlydaotaonhanvien.resx">
+      <DependentUpon>fQuanlydaotaonhanvien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cng_ty_c_phn_thng_mi_dch_v_taco_cover.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\z4283549052237_06fc6f629076ddffb60a6b072ae42c5d-750x468.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\avatar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\avatar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\z4283549052237_06fc6f629076ddffb60a6b072ae42c5d-750x468 %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\taco1-890x490.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\thiet-ke-logo-tra-sua-1.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\about_us_new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tocotoco-hanh-trinh-sang-lap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\about_us_new1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e5b0b8f6-trà-sữa-toco-toco-loại-nào-ngon-nhất.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logi2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\staff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\staff1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\office1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\title1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\contract2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\intermediate-level.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\intermediate-level1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\intermediate-level2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\intermediate-level21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\training1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Webp.net-resizeimage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Webp.net-resizeimage2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Webp.net-resizeimage3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Webp.net-resizeimage4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nguonuv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lichpv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kqpv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checkin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checkout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\duyet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\llv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calv1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\llv1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bangcong.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cong.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Webp.net-resizeimage1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baohiem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bangluong.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\thue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\LiveCharts.dll" />
+    <Content Include="bin\Debug\LiveCharts.pdb" />
+    <Content Include="bin\Debug\LiveCharts.WinForms.dll" />
+    <Content Include="bin\Debug\LiveCharts.WinForms.pdb" />
+    <Content Include="bin\Debug\LiveCharts.WinForms.xml" />
+    <Content Include="bin\Debug\LiveCharts.Wpf.dll" />
+    <Content Include="bin\Debug\LiveCharts.Wpf.pdb" />
+    <Content Include="bin\Debug\LiveCharts.Wpf.xml" />
+    <Content Include="bin\Debug\LiveCharts.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets'))" />
+  </Target>
+</Project>

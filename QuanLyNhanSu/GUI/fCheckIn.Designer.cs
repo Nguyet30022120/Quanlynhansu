@@ -1,0 +1,256 @@
+﻿namespace QuanLyNhanSu.GUI
+{
+	partial class fCheckIn
+	{
+		/// <summary>
+		/// Required designer variable.
+		/// </summary>
+		private System.ComponentModel.IContainer components = null;
+
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
+
+		#region Windows Form Designer generated code
+
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
+		private void InitializeComponent()
+		{
+			this.components = new System.ComponentModel.Container();
+			this.txb_manhanvien = new System.Windows.Forms.TextBox();
+			this.lb_manhanvien = new System.Windows.Forms.Label();
+			this.lb_tennhanvien = new System.Windows.Forms.Label();
+			this.lb_giocheckin = new System.Windows.Forms.Label();
+			this.timer1 = new System.Windows.Forms.Timer(this.components);
+			this.btn_checkin = new System.Windows.Forms.Button();
+			this.sqlDataAdapter1 = new Microsoft.Data.SqlClient.SqlDataAdapter();
+			this.dgv_checkin = new System.Windows.Forms.DataGridView();
+			this.btn_suacheckin = new System.Windows.Forms.Button();
+			this.btn_xoacheckin = new System.Windows.Forms.Button();
+			this.btn_dongcheckin = new System.Windows.Forms.Button();
+			this.btn_timnhanvien = new System.Windows.Forms.Button();
+			this.MaCheckIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.NgayCheckIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.GioCheckIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			((System.ComponentModel.ISupportInitialize)(this.dgv_checkin)).BeginInit();
+			this.SuspendLayout();
+			// 
+			// txb_manhanvien
+			// 
+			this.txb_manhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txb_manhanvien.Location = new System.Drawing.Point(140, 15);
+			this.txb_manhanvien.Name = "txb_manhanvien";
+			this.txb_manhanvien.Size = new System.Drawing.Size(252, 27);
+			this.txb_manhanvien.TabIndex = 0;
+			// 
+			// lb_manhanvien
+			// 
+			this.lb_manhanvien.AutoSize = true;
+			this.lb_manhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lb_manhanvien.Location = new System.Drawing.Point(31, 22);
+			this.lb_manhanvien.Name = "lb_manhanvien";
+			this.lb_manhanvien.Size = new System.Drawing.Size(103, 20);
+			this.lb_manhanvien.TabIndex = 1;
+			this.lb_manhanvien.Text = "Mã nhân viên";
+			// 
+			// lb_tennhanvien
+			// 
+			this.lb_tennhanvien.AutoSize = true;
+			this.lb_tennhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lb_tennhanvien.Location = new System.Drawing.Point(620, 22);
+			this.lb_tennhanvien.Name = "lb_tennhanvien";
+			this.lb_tennhanvien.Size = new System.Drawing.Size(110, 20);
+			this.lb_tennhanvien.TabIndex = 2;
+			this.lb_tennhanvien.Text = "Ten_nhan_vien";
+			// 
+			// lb_giocheckin
+			// 
+			this.lb_giocheckin.AutoSize = true;
+			this.lb_giocheckin.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lb_giocheckin.Location = new System.Drawing.Point(12, 213);
+			this.lb_giocheckin.Name = "lb_giocheckin";
+			this.lb_giocheckin.Size = new System.Drawing.Size(204, 46);
+			this.lb_giocheckin.TabIndex = 3;
+			this.lb_giocheckin.Text = "Giờ checkin";
+			// 
+			// timer1
+			// 
+			this.timer1.Enabled = true;
+			this.timer1.Interval = 1000;
+			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+			// 
+			// btn_checkin
+			// 
+			this.btn_checkin.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_checkin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_checkin.Location = new System.Drawing.Point(61, 341);
+			this.btn_checkin.Name = "btn_checkin";
+			this.btn_checkin.Size = new System.Drawing.Size(115, 40);
+			this.btn_checkin.TabIndex = 5;
+			this.btn_checkin.Text = "Check in";
+			this.btn_checkin.UseVisualStyleBackColor = false;
+			this.btn_checkin.Click += new System.EventHandler(this.btn_checkin_Click);
+			// 
+			// dgv_checkin
+			// 
+			this.dgv_checkin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgv_checkin.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaCheckIn,
+            this.MaNV,
+            this.TenNV,
+            this.NgayCheckIn,
+            this.GioCheckIn});
+			this.dgv_checkin.Location = new System.Drawing.Point(245, 65);
+			this.dgv_checkin.Name = "dgv_checkin";
+			this.dgv_checkin.RowHeadersWidth = 51;
+			this.dgv_checkin.RowTemplate.Height = 24;
+			this.dgv_checkin.Size = new System.Drawing.Size(725, 426);
+			this.dgv_checkin.TabIndex = 6;
+			// 
+			// btn_suacheckin
+			// 
+			this.btn_suacheckin.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_suacheckin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_suacheckin.Location = new System.Drawing.Point(61, 378);
+			this.btn_suacheckin.Name = "btn_suacheckin";
+			this.btn_suacheckin.Size = new System.Drawing.Size(115, 40);
+			this.btn_suacheckin.TabIndex = 7;
+			this.btn_suacheckin.Text = "Sửa";
+			this.btn_suacheckin.UseVisualStyleBackColor = false;
+			this.btn_suacheckin.Click += new System.EventHandler(this.btn_editcheckin_Click);
+			// 
+			// btn_xoacheckin
+			// 
+			this.btn_xoacheckin.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_xoacheckin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_xoacheckin.Location = new System.Drawing.Point(61, 414);
+			this.btn_xoacheckin.Name = "btn_xoacheckin";
+			this.btn_xoacheckin.Size = new System.Drawing.Size(115, 40);
+			this.btn_xoacheckin.TabIndex = 8;
+			this.btn_xoacheckin.Text = "Xóa";
+			this.btn_xoacheckin.UseVisualStyleBackColor = false;
+			this.btn_xoacheckin.Click += new System.EventHandler(this.btn_deletecheckin_Click);
+			// 
+			// btn_dongcheckin
+			// 
+			this.btn_dongcheckin.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_dongcheckin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_dongcheckin.Location = new System.Drawing.Point(61, 451);
+			this.btn_dongcheckin.Name = "btn_dongcheckin";
+			this.btn_dongcheckin.Size = new System.Drawing.Size(115, 40);
+			this.btn_dongcheckin.TabIndex = 9;
+			this.btn_dongcheckin.Text = "Đóng";
+			this.btn_dongcheckin.UseVisualStyleBackColor = false;
+			this.btn_dongcheckin.Click += new System.EventHandler(this.btn_closecheckin_Click);
+			// 
+			// btn_timnhanvien
+			// 
+			this.btn_timnhanvien.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_timnhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_timnhanvien.Location = new System.Drawing.Point(425, 15);
+			this.btn_timnhanvien.Name = "btn_timnhanvien";
+			this.btn_timnhanvien.Size = new System.Drawing.Size(115, 40);
+			this.btn_timnhanvien.TabIndex = 10;
+			this.btn_timnhanvien.Text = "Tìm kiếm";
+			this.btn_timnhanvien.UseVisualStyleBackColor = false;
+			this.btn_timnhanvien.Click += new System.EventHandler(this.btn_findnv_Click);
+			// 
+			// MaCheckIn
+			// 
+			this.MaCheckIn.DataPropertyName = "MaCheckIn";
+			this.MaCheckIn.HeaderText = "Mã checkin";
+			this.MaCheckIn.MinimumWidth = 6;
+			this.MaCheckIn.Name = "MaCheckIn";
+			this.MaCheckIn.Width = 125;
+			// 
+			// MaNV
+			// 
+			this.MaNV.DataPropertyName = "MaNV";
+			this.MaNV.HeaderText = "Mã nhân viên";
+			this.MaNV.MinimumWidth = 6;
+			this.MaNV.Name = "MaNV";
+			this.MaNV.Width = 125;
+			// 
+			// TenNV
+			// 
+			this.TenNV.DataPropertyName = "TenNV";
+			this.TenNV.HeaderText = "Tên nhân viên";
+			this.TenNV.MinimumWidth = 6;
+			this.TenNV.Name = "TenNV";
+			this.TenNV.Width = 125;
+			// 
+			// NgayCheckIn
+			// 
+			this.NgayCheckIn.DataPropertyName = "NgayCheckIn";
+			this.NgayCheckIn.HeaderText = "Ngày checkin";
+			this.NgayCheckIn.MinimumWidth = 6;
+			this.NgayCheckIn.Name = "NgayCheckIn";
+			this.NgayCheckIn.Width = 125;
+			// 
+			// GioCheckIn
+			// 
+			this.GioCheckIn.DataPropertyName = "GioCheckIn";
+			this.GioCheckIn.HeaderText = "Giờ checkin";
+			this.GioCheckIn.MinimumWidth = 6;
+			this.GioCheckIn.Name = "GioCheckIn";
+			this.GioCheckIn.Width = 125;
+			// 
+			// fCheckIn
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.Color.BlanchedAlmond;
+			this.ClientSize = new System.Drawing.Size(982, 503);
+			this.Controls.Add(this.btn_timnhanvien);
+			this.Controls.Add(this.btn_dongcheckin);
+			this.Controls.Add(this.btn_xoacheckin);
+			this.Controls.Add(this.btn_suacheckin);
+			this.Controls.Add(this.dgv_checkin);
+			this.Controls.Add(this.btn_checkin);
+			this.Controls.Add(this.lb_giocheckin);
+			this.Controls.Add(this.lb_tennhanvien);
+			this.Controls.Add(this.lb_manhanvien);
+			this.Controls.Add(this.txb_manhanvien);
+			this.Name = "fCheckIn";
+			this.Text = "Check in";
+			((System.ComponentModel.ISupportInitialize)(this.dgv_checkin)).EndInit();
+			this.ResumeLayout(false);
+			this.PerformLayout();
+
+		}
+
+		#endregion
+
+		private System.Windows.Forms.TextBox txb_manhanvien;
+		private System.Windows.Forms.Label lb_manhanvien;
+		private System.Windows.Forms.Label lb_tennhanvien;
+		private System.Windows.Forms.Label lb_giocheckin;
+		private System.Windows.Forms.Timer timer1;
+		private System.Windows.Forms.Button btn_checkin;
+		private Microsoft.Data.SqlClient.SqlDataAdapter sqlDataAdapter1;
+		private System.Windows.Forms.DataGridView dgv_checkin;
+		private System.Windows.Forms.Button btn_suacheckin;
+		private System.Windows.Forms.Button btn_xoacheckin;
+		private System.Windows.Forms.Button btn_dongcheckin;
+		private System.Windows.Forms.Button btn_timnhanvien;
+		private System.Windows.Forms.DataGridViewTextBoxColumn MaCheckIn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn MaNV;
+		private System.Windows.Forms.DataGridViewTextBoxColumn TenNV;
+		private System.Windows.Forms.DataGridViewTextBoxColumn NgayCheckIn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn GioCheckIn;
+	}
+}

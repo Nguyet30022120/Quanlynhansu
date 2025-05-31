@@ -10,7 +10,7 @@ namespace QuanLyNhanSu.DTO
 {
 	public class NguoidungDTO
 	{
-		public NguoidungDTO (string nameNV, string maNV, string chucVu, string phongBan, string maTK, string taiKhoan, string vaiTro, string moTaQUyenHan, DateTime ngaySinh, int gioiTinh, string diaChi, 
+		public NguoidungDTO (string nameNV, string maNV, string chucVu, string phongBan, string maTK, string taiKhoan, string vaiTro, string moTaQUyenHan, DateTime ngaySinh, int gioiTinh, string diaChi,
 			string cCCD, string soDienThoai)
 		{
 			this.NameNV = nameNV;
@@ -32,7 +32,7 @@ namespace QuanLyNhanSu.DTO
 		{
 			this.NameNV = row["HoTen"].ToString();
 			this.MaNV = row["Ma_NV"].ToString();
-			this.ChucVu = row["Ma_ChucVu"].ToString();
+			this.ChucVu = row["TenChucVu"].ToString();
 			this.PhongBan = row["TenPhong"].ToString();
 			this.MaTK = row["Ma_TK"].ToString();
 			this.TaiKhoan = row["TaiKhoan"].ToString();

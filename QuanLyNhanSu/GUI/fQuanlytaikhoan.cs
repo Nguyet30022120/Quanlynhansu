@@ -14,15 +14,15 @@ namespace QuanLyNhanSu
 {
 	public partial class fQuanlytaikhoan : Form
 	{
-		public fQuanlytaikhoan(string userName)
+		public fQuanlytaikhoan(string maTK)
 		{
 			InitializeComponent();
-			LoadDataUser(userName);
+			LoadDataUser(maTK);
 		}
 
-		void LoadDataUser(string userName)
+		void LoadDataUser(string maTK)
 		{
-			List<NguoidungDTO> data = NguoidungDAO.Instance.GetInforNVByUsername(userName);
+			List<NguoidungDTO> data = NguoidungDAO.Instance.GetInforNVByUsername(maTK);
 
 			if (data.Count > 0)
 			{

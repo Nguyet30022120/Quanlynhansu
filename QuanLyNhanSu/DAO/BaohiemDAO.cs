@@ -21,7 +21,7 @@ namespace QuanLyNhanSu.DAO
 		public List<BaohiemDTO> GetListInsurance(string manv)
 		{
 			List<BaohiemDTO> list = new List<BaohiemDTO>();
-			string query = $"SELECT nv.HoTen, bh.NgayBatDau, bh.NgayKetThuc, bh.Ma_BH, bh.LoaiBaoHiem, bh.MoTa FROM ThongTinBaoHiem bh JOIN [Nhan vien] nv ON bh.Ma_NV = nv.Ma_NV WHERE bh.Ma_NV = '{manv}';\r\n;";
+			string query = $"SELECT nv.HoTen, bh.NgayBatDau, bh.NgayKetThuc, bh.Ma_BH, bh.LoaiBaoHiem, bh.MoTa, bh.SoTienDong FROM ThongTinBaoHiem bh JOIN [Nhan vien] nv ON bh.Ma_NV = nv.Ma_NV WHERE bh.Ma_NV = '{manv}';\r\n;";
 			DataTable data = DataProvider.Instance.ExecuteQuery(query);
 			foreach (DataRow item in data.Rows)
 			{
@@ -30,15 +30,15 @@ namespace QuanLyNhanSu.DAO
 			}
 			return list;
 		}
-		public bool InsertInsurance(string maNV, string loaiBH, string moTa, DateTime ngayBD, DateTime ngayKT)
+		public bool InsertInsurance(string maNV, string loaiBH, string moTa, DateTime ngayBD, DateTime ngayKT, decimal tienBH)
 		{
-			string query = $"EXEC USP_InsertThongTinBaoHiem @Ma_NV = '{maNV}',@LoaiBaoHiem = N'{loaiBH}',@MoTa = N'{moTa}',@NgayBatDau = '{ngayBD}',@NgayKetThuc = '{ngayKT}';\r\n";
+			string query = $"EXEC USP_InsertThongTinBaoHiem @Ma_NV = '{maNV}',@LoaiBaoHiem = N'{loaiBH}',@MoTa = N'{moTa}',@NgayBatDau = '{ngayBD}',@NgayKetThuc = '{ngayKT}', @SoTienDong = '{tienBH}';\r\n";
 			int re = DataProvider.Instance.ExcuteNonQuery(query);
 			return re != 0;
 		}
-		public bool UpdateInsurance(string maBH, string loaiBH, string moTa, DateTime ngayBD, DateTime ngayKT, string maNV)
+		public bool UpdateInsurance(string maBH, string loaiBH, string moTa, DateTime ngayBD, DateTime ngayKT, string maNV, decimal tienBH)
 		{
-			string query = $"EXEC USP_UpdateThongTinBaoHiem @Ma_BH = '{maBH}', @Ma_NV = '{maNV}',@LoaiBaoHiem = N'{loaiBH}',@MoTa = N'{moTa}',@NgayBatDau = '{ngayBD}',@NgayKetThuc = '{ngayKT}';\r\n";
+			string query = $"EXEC USP_UpdateThongTinBaoHiem @Ma_BH = '{maBH}', @Ma_NV = '{maNV}',@LoaiBaoHiem = N'{loaiBH}',@MoTa = N'{moTa}',@NgayBatDau = '{ngayBD}',@NgayKetThuc = '{ngayKT}',@SoTienDong = '{tienBH}';\r\n";
 			int re = DataProvider.Instance.ExcuteNonQuery(query);
 			return re != 0;
 		}

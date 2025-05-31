@@ -29,12 +29,14 @@ namespace QuanLyNhanSu.GUI
 			dtp_ngaybd.DataBindings.Clear();
 			dtp_ngaykt.DataBindings.Clear();
 			txb_mota.DataBindings.Clear();
+			txb_tienbaohiem.DataBindings.Clear();
 
 			txb_tennhanvien.DataBindings.Add(new Binding("Text", dgv_baohiem.DataSource, "TenNV", true, DataSourceUpdateMode.Never));
 			cb_loaibh.DataBindings.Add(new Binding("Text", dgv_baohiem.DataSource, "LoaiBH", true, DataSourceUpdateMode.Never));
 			txb_mota.DataBindings.Add(new Binding("Text", dgv_baohiem.DataSource, "MoTa", true, DataSourceUpdateMode.Never));
 			dtp_ngaybd.DataBindings.Add(new Binding("Value", dgv_baohiem.DataSource, "NgayBD", true, DataSourceUpdateMode.Never));
 			dtp_ngaykt.DataBindings.Add(new Binding("Value", dgv_baohiem.DataSource, "NgayKT", true, DataSourceUpdateMode.Never));
+			txb_tienbaohiem.DataBindings.Add(new Binding("Text", dgv_baohiem.DataSource, "TienBH", true, DataSourceUpdateMode.Never));
 		}
 		void LoadInsurance(string manv)
 		{
@@ -56,8 +58,9 @@ namespace QuanLyNhanSu.GUI
 				string mota = txb_mota.Text;
 				DateTime ngaybd = dtp_ngaybd.Value;
 				DateTime ngaykt = dtp_ngaykt.Value;
+				decimal tienbh = txb_tienbaohiem.Text == "" ? 0 : Convert.ToDecimal(txb_tienbaohiem.Text);
 
-				if (BaohiemDAO.Instance.InsertInsurance(manv, loaibh,mota,ngaybd,ngaykt))
+				if (BaohiemDAO.Instance.InsertInsurance(manv, loaibh,mota,ngaybd,ngaykt,tienbh))
 				{
 					MessageBox.Show("Thêm bảo hiểm thành công");
 					LoadInsurance(manv);
@@ -87,8 +90,9 @@ namespace QuanLyNhanSu.GUI
 				string mota = txb_mota.Text;
 				DateTime ngaybd = dtp_ngaybd.Value;
 				DateTime ngaykt = dtp_ngaykt.Value;
+				decimal tienbh = txb_tienbaohiem.Text == "" ? 0 : Convert.ToDecimal(txb_tienbaohiem.Text);
 
-				if (BaohiemDAO.Instance.UpdateInsurance(mabh,loaibh,mota, ngaybd, ngaykt, manv))
+				if (BaohiemDAO.Instance.UpdateInsurance(mabh,loaibh,mota, ngaybd, ngaykt, manv, tienbh))
 				{
 					MessageBox.Show("Sửa bảo hiểm thành công.");
 				}

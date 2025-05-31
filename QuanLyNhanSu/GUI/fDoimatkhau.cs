@@ -27,7 +27,7 @@ namespace QuanLyNhanSu
 			if (data.Count > 0)
 			{
 				NguoidungDTO user = data[0];
-				txb_matk.Text = user.MaTK;
+				txb_tendangnhap.Text = user.TaiKhoan;
 			}
 			else
 			{
@@ -57,9 +57,9 @@ namespace QuanLyNhanSu
 				}
 
 		
-				string matk = txb_matk.Text; 
+				string username = txb_tendangnhap.Text; 
 
-				bool result = QuanLyNhanSu.DAO.TaikhoanDAO.Instance.DoiMatKhau(matk, currentPassword, newPassword);
+				bool result = QuanLyNhanSu.DAO.TaikhoanDAO.Instance.DoiMatKhau(username, currentPassword, newPassword);
 
 				if (result)
 				{

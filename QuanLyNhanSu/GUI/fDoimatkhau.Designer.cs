@@ -37,7 +37,7 @@
 			this.btn_doimatkhau = new System.Windows.Forms.Button();
 			this.btn_dong = new System.Windows.Forms.Button();
 			this.lb_matk = new System.Windows.Forms.Label();
-			this.txb_matk = new System.Windows.Forms.TextBox();
+			this.txb_tendangnhap = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
 			// txb_matkhaucu
@@ -98,9 +98,9 @@
 			// 
 			this.btn_doimatkhau.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_doimatkhau.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_doimatkhau.Location = new System.Drawing.Point(300, 341);
+			this.btn_doimatkhau.Location = new System.Drawing.Point(277, 352);
 			this.btn_doimatkhau.Name = "btn_doimatkhau";
-			this.btn_doimatkhau.Size = new System.Drawing.Size(115, 40);
+			this.btn_doimatkhau.Size = new System.Drawing.Size(132, 40);
 			this.btn_doimatkhau.TabIndex = 6;
 			this.btn_doimatkhau.Text = "Đổi mật khẩu";
 			this.btn_doimatkhau.UseVisualStyleBackColor = false;
@@ -110,7 +110,7 @@
 			// 
 			this.btn_dong.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_dong.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_dong.Location = new System.Drawing.Point(415, 341);
+			this.btn_dong.Location = new System.Drawing.Point(415, 352);
 			this.btn_dong.Name = "btn_dong";
 			this.btn_dong.Size = new System.Drawing.Size(115, 40);
 			this.btn_dong.TabIndex = 7;
@@ -124,17 +124,17 @@
 			this.lb_matk.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lb_matk.Location = new System.Drawing.Point(45, 75);
 			this.lb_matk.Name = "lb_matk";
-			this.lb_matk.Size = new System.Drawing.Size(100, 20);
+			this.lb_matk.Size = new System.Drawing.Size(112, 20);
 			this.lb_matk.TabIndex = 8;
-			this.lb_matk.Text = "Mã tài khoản";
+			this.lb_matk.Text = "Tên đăng nhập";
 			// 
-			// txb_matk
+			// txb_tendangnhap
 			// 
-			this.txb_matk.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_matk.Location = new System.Drawing.Point(245, 75);
-			this.txb_matk.Name = "txb_matk";
-			this.txb_matk.Size = new System.Drawing.Size(252, 27);
-			this.txb_matk.TabIndex = 9;
+			this.txb_tendangnhap.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txb_tendangnhap.Location = new System.Drawing.Point(245, 75);
+			this.txb_tendangnhap.Name = "txb_tendangnhap";
+			this.txb_tendangnhap.Size = new System.Drawing.Size(252, 27);
+			this.txb_tendangnhap.TabIndex = 9;
 			// 
 			// fDoimatkhau
 			// 
@@ -142,7 +142,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.BlanchedAlmond;
 			this.ClientSize = new System.Drawing.Size(582, 413);
-			this.Controls.Add(this.txb_matk);
+			this.Controls.Add(this.txb_tendangnhap);
 			this.Controls.Add(this.lb_matk);
 			this.Controls.Add(this.btn_dong);
 			this.Controls.Add(this.btn_doimatkhau);
@@ -170,6 +170,6 @@
 		private System.Windows.Forms.Button btn_doimatkhau;
 		private System.Windows.Forms.Button btn_dong;
 		private System.Windows.Forms.Label lb_matk;
-		private System.Windows.Forms.TextBox txb_matk;
+		private System.Windows.Forms.TextBox txb_tendangnhap;
 	}
 }

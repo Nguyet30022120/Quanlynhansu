@@ -39,7 +39,7 @@ namespace QuanLyNhanSu.DTO
 		private string vaiTro;
 
 		public string MaTK { get => maTK; set => maTK=value; }
-		//dấu => thay thế cho dấu {} 
+
 		public string TaiKhoan { get => taiKhoan; set => taiKhoan=value; }
 		public string MatKhau { get => matKhau; set => matKhau=value; }
 		public string MoTaQuyenHan { get => moTaQuyenHan; set => moTaQuyenHan=value; }

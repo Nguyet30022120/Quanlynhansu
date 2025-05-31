@@ -27,8 +27,8 @@ namespace QuanLyNhanSu.GUI
 			if (data.Count > 0)
 			{
 				CheckoutDTO checkout = data[0];
-				txb_manv.Text = checkout.MaNV;
-				txb_tennv.Text = checkout.TenNV;
+				txb_manhanvien.Text = checkout.MaNV;
+				txb_tennhanvien.Text = checkout.TenNV;
 				dtp_giocheckout.Value = DateTime.Today.Add(checkout.GioCheckOut);
 				dtp_ngaycheckout.Value = checkout.NgayCheckOut;
 			}
@@ -46,15 +46,15 @@ namespace QuanLyNhanSu.GUI
 		{
 			try
 			{
-				string manv = txb_manv.Text;
-				string tennv = txb_tennv.Text;
+				string manv = txb_manhanvien.Text;
+				string tennv = txb_tennhanvien.Text;
 				DateTime thoigiancheckout = dtp_giocheckout.Value;
 				DateTime ngaycheckout = dtp_ngaycheckout.Value;
 
 				if (CheckoutDAO.Instance.UpdateCheckOut(manv, thoigiancheckout, ngaycheckout))
 				{
 					MessageBox.Show("Sửa checkout thành công.");
-					LoadCheckOut(txb_manv.Text);
+					LoadCheckOut(txb_manhanvien.Text);
 				}
 				else
 				{
@@ -68,7 +68,7 @@ namespace QuanLyNhanSu.GUI
 			}
 			finally
 			{
-				LoadCheckOut(txb_manv.Text);
+				LoadCheckOut(txb_manhanvien.Text);
 			}
 		}
 

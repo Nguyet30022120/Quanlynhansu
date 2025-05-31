@@ -232,14 +232,9 @@
   <ItemGroup>
     <Compile Include="DAO\DonnghiphepDAO.cs" />
     <Compile Include="DAO\Function.cs" />
-    <Compile Include="DAO\KycongDAO.cs" />
-    <Compile Include="DAO\LoaicaDAO.cs" />
-    <Compile Include="DAO\LoaicongDAO.cs" />
     <Compile Include="DAO\RoundedPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="DTO\KycongDTO.cs" />
-    <Compile Include="DTO\LoaicaDTO.cs" />
     <Compile Include="DAO\TaikhoanDAO.cs" />
     <Compile Include="DAO\CheckinDAO.cs" />
     <Compile Include="DAO\CheckoutDAO.cs" />
@@ -260,7 +255,7 @@
     <Compile Include="DAO\DaotaoDAO.cs" />
     <Compile Include="DAO\NguoidungDAO.cs" />
     <Compile Include="DTO\DonnghiphepDTO.cs" />
-    <Compile Include="DTO\LoaicongDTO.cs" />
+    <Compile Include="DTO\NguoidungDTO1.cs" />
     <Compile Include="DTO\TaikhoanDTO.cs" />
     <Compile Include="DTO\CheckinDTO.cs" />
     <Compile Include="DTO\CheckoutDTO.cs" />
@@ -283,41 +278,17 @@
     <Compile Include="DTO\NhanvienDTO.cs" />
     <Compile Include="DTO\DaotaoDTO.cs" />
     <Compile Include="DTO\NguoidungDTO.cs" />
-    <Compile Include="GUI\BunifuForm1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\BunifuForm1.Designer.cs">
-      <DependentUpon>BunifuForm1.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\fBangcong.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\fBangcong.Designer.cs">
       <DependentUpon>fBangcong.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\fBangcongchitiet.cs">
+    <Compile Include="GUI\fDoimatkhaukhiquen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\fBangcongchitiet.Designer.cs">
-      <DependentUpon>fBangcongchitiet.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\fQuanlycalamviec.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\fQuanlycalamviec.Designer.cs">
-      <DependentUpon>fQuanlycalamviec.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\fQuanlycong.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\fQuanlycong.Designer.cs">
-      <DependentUpon>fQuanlycong.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\fQuanlydangkylichlamviec.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\fQuanlydangkylichlamviec.Designer.cs">
-      <DependentUpon>fQuanlydangkylichlamviec.cs</DependentUpon>
+    <Compile Include="GUI\fDoimatkhaukhiquen.Designer.cs">
+      <DependentUpon>fDoimatkhaukhiquen.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\fQuanlyduyetnghiphep.cs">
       <SubType>Form</SubType>
@@ -517,11 +488,13 @@
     <Compile Include="GUI\fQuanlydaotaonhanvien.Designer.cs">
       <DependentUpon>fQuanlydaotaonhanvien.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\fTurningOverEmployeeStatistics.cs" />
-    <Compile Include="GUI\fTurningOverEmployeeStatistics.Designer.cs">
-      <DependentUpon>fTurningOverEmployeeStatistics.cs</DependentUpon>
-    </Compile>
     <Compile Include="DAO\PhongbanDAO.cs" />
+    <Compile Include="GUI\fUserDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fUserDashboard.Designer.cs">
+      <DependentUpon>fUserDashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GUI\fQuanlynguoidung.cs">
@@ -530,29 +503,17 @@
     <Compile Include="GUI\fQuanlynguoidung.Designer.cs">
       <DependentUpon>fQuanlynguoidung.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="GUI\BunifuForm1.resx">
-      <DependentUpon>BunifuForm1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\fBangcong.resx">
-      <DependentUpon>fBangcong.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\fBangcongchitiet.resx">
-      <DependentUpon>fBangcongchitiet.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GUI\fDoimatkhau.resx">
       <DependentUpon>fDoimatkhau.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\fQuanlycalamviec.resx">
-      <DependentUpon>fQuanlycalamviec.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\fQuanlycong.resx">
-      <DependentUpon>fQuanlycong.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\fQuanlydangkylichlamviec.resx">
-      <DependentUpon>fQuanlydangkylichlamviec.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\fDoimatkhaukhiquen.resx">
+      <DependentUpon>fDoimatkhaukhiquen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\fQuanlyduyetnghiphep.resx">
       <DependentUpon>fQuanlyduyetnghiphep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fQuanlynguoidung.resx">
+      <DependentUpon>fQuanlynguoidung.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\fQuanlytaikhoan.resx">
       <DependentUpon>fQuanlytaikhoan.cs</DependentUpon>
@@ -634,6 +595,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\fQuanlydaotaonhanvien.resx">
       <DependentUpon>fQuanlydaotaonhanvien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fUserDashboard.resx">
+      <DependentUpon>fUserDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -9,7 +9,7 @@ namespace QuanLyNhanSu.DTO
 {
 	public class BaohiemDTO
 	{
-		public BaohiemDTO(string maBH, string tenNV, string loaiBH, string moTa, DateTime ngayBD, DateTime ngayKT)
+		public BaohiemDTO(string maBH, string tenNV, string loaiBH, string moTa, DateTime ngayBD, DateTime ngayKT, decimal tienBH)
 		{
 			this.MaBH = maBH;
 			this.TenNV = tenNV;
@@ -17,6 +17,8 @@ namespace QuanLyNhanSu.DTO
 			this.MoTa = moTa;
 			this.NgayBD = ngayBD;
 			this.NgayKT = ngayKT;
+			this.tienBH=tienBH;
+
 		}
 
 		public BaohiemDTO(DataRow row)
@@ -27,6 +29,7 @@ namespace QuanLyNhanSu.DTO
 			this.MoTa = row["MoTa"].ToString();
 			this.NgayBD = Convert.ToDateTime(row["NgayBatDau"]);
 			this.NgayKT = Convert.ToDateTime(row["NgayKetThuc"]);
+			this.tienBH = Convert.ToDecimal(row["SoTienDong"]);
 		}
 
 		string maBH;
@@ -41,11 +44,14 @@ namespace QuanLyNhanSu.DTO
 
 		DateTime ngayKT;
 
+		decimal tienBH;
+
 		public string MaBH { get => maBH; set => maBH=value; }
 		public string TenNV { get => tenNV; set => tenNV=value; }
 		public string LoaiBH { get => loaiBH; set => loaiBH=value; }
 		public string MoTa { get => moTa; set => moTa=value; }
 		public DateTime NgayBD { get => ngayBD; set => ngayBD=value; }
 		public DateTime NgayKT { get => ngayKT; set => ngayKT=value; }
+		public decimal TienBH { get => tienBH; set => tienBH=value; }
 	}
 }

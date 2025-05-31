@@ -3,13 +3,13 @@ using QuanLyNhanSu.GUI;
 using System;
 using System.Windows.Forms;
 using System.Drawing;
+using Azure.Identity;
 
 namespace QuanLyNhanSu
 {
-	public partial class Dashboard : Form
+	public partial class AdminDashboard : Form
 	{
 		private string userName;
-		private string matk; 
 
 		private Color originalQuanlynguoidungButtonColor; 
 		private Color originalDoimatkhauButtonColor;
@@ -49,9 +49,10 @@ namespace QuanLyNhanSu
 
 
 
-		public Dashboard(string userName)
+		public AdminDashboard(string userName)
 		{
 			InitializeComponent();
+			this.userName = userName;
 			LoadUserInfo(userName);
 			originalQuanlynguoidungButtonColor = btn_quanlynguoidung.BackColor;
 			originalDoimatkhauButtonColor = btn_doimatkhau.BackColor;
@@ -69,9 +70,6 @@ namespace QuanLyNhanSu
 			originalCheckoutButtonColor = btn_checkout.BackColor;
 			originalDangkynghiphepButtonColor = btn_dangkynghiphep.BackColor;
 			originalDuyetnghiphepButtonColor = btn_duyetnghiphep.BackColor;
-			originalThaydoigiolamviecButtonColor = btn_thaydoigiolamviec.BackColor;
-			originalCalamviecButtonColor = btn_quanlycalamviec.BackColor;
-			originalCongButtonColor = btn_quanlycong.BackColor;
 			originalBangcongButtonColor = btn_quanlybangcong.BackColor;
 
 			originalNguonungvienButtonColor = btn_quanlynguonungvien.BackColor;
@@ -112,7 +110,7 @@ namespace QuanLyNhanSu
 
 		private void btn_doimatkhau_Click(object sender, EventArgs e)
 		{
-			fDoimatkhau f = new fDoimatkhau(this.matk);
+			fDoimatkhau f = new fDoimatkhau(userName);
 			this.Hide();
 			f.ShowDialog();
 			this.Show();
@@ -120,7 +118,7 @@ namespace QuanLyNhanSu
 
 		private void btn_quanlytaikhoan_Click(object sender, EventArgs e)
 		{
-			fQuanlytaikhoan f = new fQuanlytaikhoan(this.userName);
+			fQuanlytaikhoan f = new fQuanlytaikhoan(userName);
 			this.Hide();
 			f.ShowDialog();
 			this.Show();
@@ -376,21 +374,9 @@ namespace QuanLyNhanSu
 			f.ShowDialog();
 			this.Show();
 		}
-		private void btn_quanlycalamviec_Click(object sender, EventArgs e)
-		{
-			fQuanlycalamviec f = new fQuanlycalamviec();
-			this.Hide();
-			f.ShowDialog();
-			this.Show();
-		}
 
-		private void btn_quanlycong_Click(object sender, EventArgs e)
-		{
-			fQuanlycong f = new fQuanlycong();
-			this.Hide();
-			f.ShowDialog();
-			this.Show();
-		}
+
+
 
 		private void btn_quanlybangcong_Click(object sender, EventArgs e)
 		{
@@ -434,33 +420,6 @@ namespace QuanLyNhanSu
 		private void btn_duyetnghiphep_MouseLeave(object sender, EventArgs e)
 		{
 			btn_duyetnghiphep.BackColor = originalDuyetnghiphepButtonColor;
-		}
-
-		private void btn_thaydoigiolamviec_MouseEnter(object sender, EventArgs e)
-		{
-			btn_thaydoigiolamviec.BackColor = System.Drawing.Color.LightBlue;
-		}
-		private void btn_thaydoigiolamviec_MouseLeave(object sender, EventArgs e)
-		{
-			btn_thaydoigiolamviec.BackColor = originalThaydoigiolamviecButtonColor;
-		}
-
-		private void btn_quanlycalamviec_MouseEnter(object sender, EventArgs e)
-		{
-			btn_quanlycalamviec.BackColor = System.Drawing.Color.LightBlue;
-		}
-		private void btn_quanlycalamviec_MouseLeave(object sender, EventArgs e)
-		{
-			btn_quanlycalamviec.BackColor = originalCalamviecButtonColor;
-		}
-
-		private void btn_quanlycong_MouseEnter(object sender, EventArgs e)
-		{
-			btn_quanlycong.BackColor = System.Drawing.Color.LightBlue;
-		}
-		private void btn_quanlycong_MouseLeave(object sender, EventArgs e)
-		{
-			btn_quanlycong.BackColor = originalCongButtonColor;
 		}
 
 		private void btn_quanlybangcong_MouseEnter(object sender, EventArgs e)
@@ -610,10 +569,12 @@ namespace QuanLyNhanSu
 		}
 
 
+
+
+
+
+
 		#endregion
-
-
-
 
 
 	}

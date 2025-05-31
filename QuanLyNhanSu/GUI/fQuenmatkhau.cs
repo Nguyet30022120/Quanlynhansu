@@ -11,21 +11,19 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Mail;
 using System.Windows.Forms;
+using static System.Net.WebRequestMethods;
+using QuanLyNhanSu.DAO;
 
 namespace QuanLyNhanSu.GUI
 {
 	public partial class fQuenmatkhau : Form
 	{
+		Random random = new Random();
+		int OTP;
 		public fQuenmatkhau()
 		{
 			InitializeComponent();
-			//lblMessage = new Label
-			//{
-			//	AutoSize = true,
-			//	Location = new Point(10, 100), // Adjust location as needed
-			//	ForeColor = Color.Red // Optional styling
-			//};
-			//this.Controls.Add(lblMessage);
+
 		}
 
 		private void btn_huy_Click(object sender, EventArgs e)
@@ -35,58 +33,64 @@ namespace QuanLyNhanSu.GUI
 
 		private void btn_laylaimatkhau_Click(object sender, EventArgs e)
 		{
-			string email = txb_email.Text.Trim();
-
-			//if (IsValidEmail(email))
-			//{
-			//	// Gửi mã xác nhận qua email (giả sử bạn có hàm gửi email ở đây)
-			SendPasswordResetEmail(email);
-			//	lblMessage.Text = "Mã xác nhận đã được gửi tới email của bạn!";
-			//}
-			//else
-			//{
-			//	lblMessage.Text = "Vui lòng nhập email hợp lệ!";
-			//}
-		}
-		private bool IsValidEmail(string email)
-		{
 			try
 			{
-				var addr = new System.Net.Mail.MailAddress(email);
-				return addr.Address == email;
+				string email = txb_email.Text.Trim();
+				if (!TaikhoanDAO.Instance.IsEmailExists(email))
+				{
+					MessageBox.Show("Email không tồn tại trong hệ thống.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+					return;
+				}
+
+				OTP = random.Next(100000, 1000000);
+
+				var fromAddress = new MailAddress("nguyenminhnguyet356@gmail.com"); // mail dùng để gửi mã otp
+				var toAddress = new MailAddress(txb_email.Text.ToString()); // mail dùng để nhận mã otp
+				const string frompass = "sivp tyyl aiup zxia"; // mã xác thực 2 lớp rồi nhận mã
+				string subject = "OTP code";
+				string body = OTP.ToString();
+
+				var smtp = new SmtpClient
+				{
+					Host = "smtp.gmail.com",
+					Port = 587,
+					EnableSsl = true,
+					DeliveryMethod = SmtpDeliveryMethod.Network,
+					UseDefaultCredentials = false,
+					Credentials = new NetworkCredential(fromAddress.Address, frompass),
+					Timeout = 200000
+				};
+
+				using (var message = new MailMessage(fromAddress, toAddress)
+				{
+					Subject = subject,
+					Body = body
+				})
+				{
+					smtp.Send(message);
+				}
+				MessageBox.Show("Mã xác nhận đã được gửi đến email của bạn. Vui lòng kiểm tra hộp thư đến.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 			}
-			catch
+			catch (Exception ex)
 			{
-				return false;
+				MessageBox.Show("Đã xảy ra lỗi khi gửi mã xác nhận: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 
-		// Hàm giả lập gửi mã xác nhận qua email
-		private void SendPasswordResetEmail(string email)
+		private void btn_xacnhan_Click(object sender, EventArgs e)
 		{
-			var fromAddress = new MailAddress("nguyenminhnguyet356@gmail.com", "Your Name");
-			var toAddress = new MailAddress(email);
-			const string fromPassword = "Nguyenminhnguyet30022120*";
-			const string subject = "Mã xác nhận quên mật khẩu";
-			const string body = "Đây là mã xác nhận của bạn: 123456";
-
-			var smtp = new SmtpClient
+			string email = txb_email.Text.Trim();
+			if (OTP.ToString().Equals(txb_OTP.Text))
 			{
-				Host = "smtp.gmail.com",
-				Port = 587,
-				EnableSsl = true,
-				DeliveryMethod = SmtpDeliveryMethod.Network,
-				UseDefaultCredentials = false,
-				Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
-			};
-
-			using (var message = new MailMessage(fromAddress, toAddress)
+				MessageBox.Show("Xác minh thành công");
+				fDoimatkhaukhiquen f = new fDoimatkhaukhiquen(email);
+				f.ShowDialog();
+				this.Close(); // Đóng form hiện tại sau khi xác minh thành công
+			}
+			else
 			{
-				Subject = subject,
-				Body = body
-			})
-			{
-				smtp.Send(message);
+				MessageBox.Show("OTP không chính xác");
 			}
 		}
 	}

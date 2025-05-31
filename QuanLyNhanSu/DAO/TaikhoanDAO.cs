@@ -62,13 +62,57 @@ namespace QuanLyNhanSu.DAO
 			return name;
 		
 		}
-		public bool DoiMatKhau(string maTK, string matKhauCu, string matKhauMoi)
+
+		public bool DoiMatKhau(string username, string matKhauCu, string matKhauMoi)
 		{
-			string query = $"EXEC USP_UpdateMatKhau @Ma_TK = '{maTK}', @MatKhauCu = '{matKhauCu}', @MatKhauMoi = '{matKhauMoi}';";
+			// Hash old password
+			byte[] temp1 = ASCIIEncoding.ASCII.GetBytes(matKhauCu);
+			byte[] hasData1 = new MD5CryptoServiceProvider().ComputeHash(temp1);
+			string hasPass1 = "";
+			foreach (byte item in hasData1)
+			{
+				hasPass1 += item;
+			}
+
+			// Hash new password
+			byte[] temp2 = ASCIIEncoding.ASCII.GetBytes(matKhauMoi);
+			byte[] hasData2 = new MD5CryptoServiceProvider().ComputeHash(temp2);
+			string hasPass2 = "";
+			foreach (byte item in hasData2)
+			{
+				hasPass2 += item;
+			}
+
+			string query = $"EXEC USP_UpdateMatKhau @TaiKhoan = '{username}', @MatKhauCu = '{hasPass1}', @MatKhauMoi = '{hasPass2}';";
 
 			int re = Convert.ToInt32(DataProvider.Instance.ExcuteScalar(query));
 
 			return re == 0;
+		}
+		public bool DoiMatKhauKhiQuen(string username, string email, string matKhauMoi)
+		{
+
+
+			// Hash new password
+			byte[] temp2 = ASCIIEncoding.ASCII.GetBytes(matKhauMoi);
+			byte[] hasData2 = new MD5CryptoServiceProvider().ComputeHash(temp2);
+			string hasPass2 = "";
+			foreach (byte item in hasData2)
+			{
+				hasPass2 += item;
+			}
+
+			string query = $"EXEC USP_ResetMatKhau @TaiKhoan = '{username}',   @Email = '{email}',@MatKhauMoi = '{hasPass2}';";
+
+			int re = Convert.ToInt32(DataProvider.Instance.ExcuteScalar(query));
+
+			return re == 0;
+		}
+		public bool IsEmailExists(string email)
+		{
+			string query = "SELECT COUNT(*) FROM [Nhan vien] WHERE Email = @Email";
+			int count = Convert.ToInt32(DataProvider.Instance.ExcuteScalar(query, new object[] { email }));
+			return count > 0;
 		}
 	}
 }

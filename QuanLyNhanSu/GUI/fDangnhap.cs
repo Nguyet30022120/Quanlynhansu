@@ -39,7 +39,7 @@ namespace QuanLyNhanSu
 
 				if(role == "Admin")
 				{
-					Dashboard f = new Dashboard(userName);
+					AdminDashboard f = new AdminDashboard(userName);
 					this.Hide();
 					f.ShowDialog();
 					this.Show();
@@ -47,7 +47,10 @@ namespace QuanLyNhanSu
 				}
 				if (role == "User")
 				{
-					MessageBox.Show("OK");
+					fUserDashboard f = new fUserDashboard(userName);
+					this.Hide();
+					f.ShowDialog();
+					this.Show();
 				}
 			}
 			else

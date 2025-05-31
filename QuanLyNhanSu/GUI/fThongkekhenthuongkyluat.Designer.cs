@@ -30,6 +30,7 @@
 		{
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.btn_thongkenam = new System.Windows.Forms.Button();
+			this.cb_nam = new System.Windows.Forms.ComboBox();
 			this.btn_thongkenhanvien = new System.Windows.Forms.Button();
 			this.txb_manv = new System.Windows.Forms.TextBox();
 			this.lb_manhanvien = new System.Windows.Forms.Label();
@@ -37,19 +38,20 @@
 			this.lb_nam = new System.Windows.Forms.Label();
 			this.lb_tennhanvien = new System.Windows.Forms.Label();
 			this.dgv_ktkltk = new System.Windows.Forms.DataGridView();
-			this.panel_chart = new System.Windows.Forms.Panel();
-			this.cb_nam = new System.Windows.Forms.ComboBox();
 			this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Nam = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.KhenThuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.KyLuat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.panel_chart = new System.Windows.Forms.Panel();
+			this.btn_dong = new System.Windows.Forms.Button();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_ktkltk)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// panel1
 			// 
+			this.panel1.Controls.Add(this.btn_dong);
 			this.panel1.Controls.Add(this.btn_thongkenam);
 			this.panel1.Controls.Add(this.cb_nam);
 			this.panel1.Controls.Add(this.btn_thongkenhanvien);
@@ -75,6 +77,26 @@
 			this.btn_thongkenam.UseVisualStyleBackColor = false;
 			this.btn_thongkenam.Click += new System.EventHandler(this.btn_thongkenam_Click);
 			// 
+			// cb_nam
+			// 
+			this.cb_nam.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.cb_nam.FormattingEnabled = true;
+			this.cb_nam.Items.AddRange(new object[] {
+            "2021",
+            "2022",
+            "2023",
+            "2024",
+            "2025",
+            "2026",
+            "2027",
+            "2028",
+            "2029",
+            "2030"});
+			this.cb_nam.Location = new System.Drawing.Point(149, 62);
+			this.cb_nam.Name = "cb_nam";
+			this.cb_nam.Size = new System.Drawing.Size(212, 28);
+			this.cb_nam.TabIndex = 8;
+			// 
 			// btn_thongkenhanvien
 			// 
 			this.btn_thongkenhanvien.BackColor = System.Drawing.Color.DarkOrange;
@@ -98,10 +120,10 @@
 			// lb_manhanvien
 			// 
 			this.lb_manhanvien.AutoSize = true;
-			this.lb_manhanvien.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lb_manhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lb_manhanvien.Location = new System.Drawing.Point(8, 20);
 			this.lb_manhanvien.Name = "lb_manhanvien";
-			this.lb_manhanvien.Size = new System.Drawing.Size(106, 21);
+			this.lb_manhanvien.Size = new System.Drawing.Size(103, 20);
 			this.lb_manhanvien.TabIndex = 4;
 			this.lb_manhanvien.Text = "Mã nhân viên";
 			// 
@@ -116,20 +138,20 @@
 			// lb_nam
 			// 
 			this.lb_nam.AutoSize = true;
-			this.lb_nam.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lb_nam.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lb_nam.Location = new System.Drawing.Point(8, 62);
 			this.lb_nam.Name = "lb_nam";
-			this.lb_nam.Size = new System.Drawing.Size(43, 21);
+			this.lb_nam.Size = new System.Drawing.Size(43, 20);
 			this.lb_nam.TabIndex = 1;
 			this.lb_nam.Text = "Năm";
 			// 
 			// lb_tennhanvien
 			// 
 			this.lb_tennhanvien.AutoSize = true;
-			this.lb_tennhanvien.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lb_tennhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lb_tennhanvien.Location = new System.Drawing.Point(507, 20);
 			this.lb_tennhanvien.Name = "lb_tennhanvien";
-			this.lb_tennhanvien.Size = new System.Drawing.Size(108, 21);
+			this.lb_tennhanvien.Size = new System.Drawing.Size(106, 20);
 			this.lb_tennhanvien.TabIndex = 0;
 			this.lb_tennhanvien.Text = "Tên nhân viên";
 			// 
@@ -150,35 +172,6 @@
 			this.dgv_ktkltk.Size = new System.Drawing.Size(970, 374);
 			this.dgv_ktkltk.TabIndex = 1;
 			// 
-			// panel_chart
-			// 
-			this.panel_chart.BackColor = System.Drawing.Color.BlanchedAlmond;
-			this.panel_chart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.panel_chart.Location = new System.Drawing.Point(518, 117);
-			this.panel_chart.Name = "panel_chart";
-			this.panel_chart.Size = new System.Drawing.Size(459, 374);
-			this.panel_chart.TabIndex = 9;
-			// 
-			// cb_nam
-			// 
-			this.cb_nam.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.cb_nam.FormattingEnabled = true;
-			this.cb_nam.Items.AddRange(new object[] {
-            "2021",
-            "2022",
-            "2023",
-            "2024",
-            "2025",
-            "2026",
-            "2027",
-            "2028",
-            "2029",
-            "2030"});
-			this.cb_nam.Location = new System.Drawing.Point(149, 62);
-			this.cb_nam.Name = "cb_nam";
-			this.cb_nam.Size = new System.Drawing.Size(212, 28);
-			this.cb_nam.TabIndex = 8;
-			// 
 			// MaNV
 			// 
 			this.MaNV.DataPropertyName = "MaNV";
@@ -193,6 +186,7 @@
 			this.TenNV.HeaderText = "Tên nhân viên";
 			this.TenNV.MinimumWidth = 6;
 			this.TenNV.Name = "TenNV";
+			this.TenNV.Width = 125;
 			// 
 			// Nam
 			// 
@@ -217,6 +211,27 @@
 			this.KyLuat.MinimumWidth = 6;
 			this.KyLuat.Name = "KyLuat";
 			this.KyLuat.Width = 50;
+			// 
+			// panel_chart
+			// 
+			this.panel_chart.BackColor = System.Drawing.Color.BlanchedAlmond;
+			this.panel_chart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.panel_chart.Location = new System.Drawing.Point(518, 117);
+			this.panel_chart.Name = "panel_chart";
+			this.panel_chart.Size = new System.Drawing.Size(459, 374);
+			this.panel_chart.TabIndex = 9;
+			// 
+			// btn_dong
+			// 
+			this.btn_dong.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_dong.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_dong.Location = new System.Drawing.Point(788, 55);
+			this.btn_dong.Name = "btn_dong";
+			this.btn_dong.Size = new System.Drawing.Size(115, 40);
+			this.btn_dong.TabIndex = 9;
+			this.btn_dong.Text = "Đóng";
+			this.btn_dong.UseVisualStyleBackColor = false;
+			this.btn_dong.Click += new System.EventHandler(this.btn_dong_Click);
 			// 
 			// fThongkekhenthuongkyluat
 			// 
@@ -254,5 +269,6 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn Nam;
 		private System.Windows.Forms.DataGridViewTextBoxColumn KhenThuong;
 		private System.Windows.Forms.DataGridViewTextBoxColumn KyLuat;
+		private System.Windows.Forms.Button btn_dong;
 	}
 }

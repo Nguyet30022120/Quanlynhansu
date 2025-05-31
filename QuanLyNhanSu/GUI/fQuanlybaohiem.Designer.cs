@@ -35,12 +35,6 @@
 			this.btn_xoabaohiem = new System.Windows.Forms.Button();
 			this.btn_dongbaohiem = new System.Windows.Forms.Button();
 			this.dgv_baohiem = new System.Windows.Forms.DataGridView();
-			this.Ma_BH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.LoaiBaoHiem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Mota = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.NgayBD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.NgayKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.lb_tennhanvien = new System.Windows.Forms.Label();
 			this.lb_loaibaohiem = new System.Windows.Forms.Label();
 			this.lb_mota = new System.Windows.Forms.Label();
@@ -52,6 +46,15 @@
 			this.lb_manhanvien = new System.Windows.Forms.Label();
 			this.btn_timmanhanvien = new System.Windows.Forms.Button();
 			this.cb_loaibh = new System.Windows.Forms.ComboBox();
+			this.Ma_BH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.LoaiBaoHiem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Mota = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.NgayBD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.NgayKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.TienBH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.lb_tienbaohiem = new System.Windows.Forms.Label();
+			this.txb_tienbaohiem = new System.Windows.Forms.TextBox();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_baohiem)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -130,61 +133,14 @@
             this.LoaiBaoHiem,
             this.Mota,
             this.NgayBD,
-            this.NgayKT});
+            this.NgayKT,
+            this.TienBH});
 			this.dgv_baohiem.Location = new System.Drawing.Point(12, 228);
 			this.dgv_baohiem.Name = "dgv_baohiem";
 			this.dgv_baohiem.RowHeadersWidth = 51;
 			this.dgv_baohiem.RowTemplate.Height = 24;
 			this.dgv_baohiem.Size = new System.Drawing.Size(958, 263);
 			this.dgv_baohiem.TabIndex = 7;
-			// 
-			// Ma_BH
-			// 
-			this.Ma_BH.DataPropertyName = "MaBH";
-			this.Ma_BH.HeaderText = "Mã bảo hiểm";
-			this.Ma_BH.MinimumWidth = 6;
-			this.Ma_BH.Name = "Ma_BH";
-			this.Ma_BH.Width = 125;
-			// 
-			// HoTen
-			// 
-			this.HoTen.DataPropertyName = "TenNV";
-			this.HoTen.HeaderText = "Tên nhân viên";
-			this.HoTen.MinimumWidth = 6;
-			this.HoTen.Name = "HoTen";
-			this.HoTen.Width = 125;
-			// 
-			// LoaiBaoHiem
-			// 
-			this.LoaiBaoHiem.DataPropertyName = "LoaiBH";
-			this.LoaiBaoHiem.HeaderText = "Loại bảo hiểm";
-			this.LoaiBaoHiem.MinimumWidth = 6;
-			this.LoaiBaoHiem.Name = "LoaiBaoHiem";
-			this.LoaiBaoHiem.Width = 125;
-			// 
-			// Mota
-			// 
-			this.Mota.DataPropertyName = "MoTa";
-			this.Mota.HeaderText = "Mô tả";
-			this.Mota.MinimumWidth = 6;
-			this.Mota.Name = "Mota";
-			this.Mota.Width = 125;
-			// 
-			// NgayBD
-			// 
-			this.NgayBD.DataPropertyName = "NgayBD";
-			this.NgayBD.HeaderText = "Ngày bắt đầu";
-			this.NgayBD.MinimumWidth = 6;
-			this.NgayBD.Name = "NgayBD";
-			this.NgayBD.Width = 125;
-			// 
-			// NgayKT
-			// 
-			this.NgayKT.DataPropertyName = "NgayKT";
-			this.NgayKT.HeaderText = "Ngày kết thúc";
-			this.NgayKT.MinimumWidth = 6;
-			this.NgayKT.Name = "NgayKT";
-			this.NgayKT.Width = 125;
 			// 
 			// lb_tennhanvien
 			// 
@@ -293,12 +249,88 @@
 			this.cb_loaibh.Size = new System.Drawing.Size(252, 28);
 			this.cb_loaibh.TabIndex = 20;
 			// 
+			// Ma_BH
+			// 
+			this.Ma_BH.DataPropertyName = "MaBH";
+			this.Ma_BH.HeaderText = "Mã bảo hiểm";
+			this.Ma_BH.MinimumWidth = 6;
+			this.Ma_BH.Name = "Ma_BH";
+			this.Ma_BH.Width = 125;
+			// 
+			// HoTen
+			// 
+			this.HoTen.DataPropertyName = "TenNV";
+			this.HoTen.HeaderText = "Tên nhân viên";
+			this.HoTen.MinimumWidth = 6;
+			this.HoTen.Name = "HoTen";
+			this.HoTen.Width = 125;
+			// 
+			// LoaiBaoHiem
+			// 
+			this.LoaiBaoHiem.DataPropertyName = "LoaiBH";
+			this.LoaiBaoHiem.HeaderText = "Loại bảo hiểm";
+			this.LoaiBaoHiem.MinimumWidth = 6;
+			this.LoaiBaoHiem.Name = "LoaiBaoHiem";
+			this.LoaiBaoHiem.Width = 125;
+			// 
+			// Mota
+			// 
+			this.Mota.DataPropertyName = "MoTa";
+			this.Mota.HeaderText = "Mô tả";
+			this.Mota.MinimumWidth = 6;
+			this.Mota.Name = "Mota";
+			this.Mota.Width = 125;
+			// 
+			// NgayBD
+			// 
+			this.NgayBD.DataPropertyName = "NgayBD";
+			this.NgayBD.HeaderText = "Ngày bắt đầu";
+			this.NgayBD.MinimumWidth = 6;
+			this.NgayBD.Name = "NgayBD";
+			this.NgayBD.Width = 125;
+			// 
+			// NgayKT
+			// 
+			this.NgayKT.DataPropertyName = "NgayKT";
+			this.NgayKT.HeaderText = "Ngày kết thúc";
+			this.NgayKT.MinimumWidth = 6;
+			this.NgayKT.Name = "NgayKT";
+			this.NgayKT.Width = 125;
+			// 
+			// TienBH
+			// 
+			this.TienBH.DataPropertyName = "TienBH";
+			this.TienBH.HeaderText = "Tiền bảo hiểm";
+			this.TienBH.MinimumWidth = 6;
+			this.TienBH.Name = "TienBH";
+			this.TienBH.Width = 125;
+			// 
+			// lb_tienbaohiem
+			// 
+			this.lb_tienbaohiem.AutoSize = true;
+			this.lb_tienbaohiem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lb_tienbaohiem.Location = new System.Drawing.Point(415, 60);
+			this.lb_tienbaohiem.Name = "lb_tienbaohiem";
+			this.lb_tienbaohiem.Size = new System.Drawing.Size(108, 20);
+			this.lb_tienbaohiem.TabIndex = 21;
+			this.lb_tienbaohiem.Text = "Tiền bảo hiểm";
+			// 
+			// txb_tienbaohiem
+			// 
+			this.txb_tienbaohiem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txb_tienbaohiem.Location = new System.Drawing.Point(556, 53);
+			this.txb_tienbaohiem.Name = "txb_tienbaohiem";
+			this.txb_tienbaohiem.Size = new System.Drawing.Size(252, 27);
+			this.txb_tienbaohiem.TabIndex = 22;
+			// 
 			// fQuanlybaohiem
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.BlanchedAlmond;
 			this.ClientSize = new System.Drawing.Size(982, 503);
+			this.Controls.Add(this.txb_tienbaohiem);
+			this.Controls.Add(this.lb_tienbaohiem);
 			this.Controls.Add(this.cb_loaibh);
 			this.Controls.Add(this.btn_timmanhanvien);
 			this.Controls.Add(this.lb_manhanvien);
@@ -342,15 +374,18 @@
 		private System.Windows.Forms.DateTimePicker dtp_ngaykt;
 		private System.Windows.Forms.Label lb_ngaybatdau;
 		private System.Windows.Forms.Label lb_ngayketthuc;
+		private System.Windows.Forms.TextBox txb_manhanvien;
+		private System.Windows.Forms.Label lb_manhanvien;
+		private System.Windows.Forms.Button btn_timmanhanvien;
+		private System.Windows.Forms.ComboBox cb_loaibh;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Ma_BH;
 		private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
 		private System.Windows.Forms.DataGridViewTextBoxColumn LoaiBaoHiem;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Mota;
 		private System.Windows.Forms.DataGridViewTextBoxColumn NgayBD;
 		private System.Windows.Forms.DataGridViewTextBoxColumn NgayKT;
-		private System.Windows.Forms.TextBox txb_manhanvien;
-		private System.Windows.Forms.Label lb_manhanvien;
-		private System.Windows.Forms.Button btn_timmanhanvien;
-		private System.Windows.Forms.ComboBox cb_loaibh;
+		private System.Windows.Forms.DataGridViewTextBoxColumn TienBH;
+		private System.Windows.Forms.Label lb_tienbaohiem;
+		private System.Windows.Forms.TextBox txb_tienbaohiem;
 	}
 }

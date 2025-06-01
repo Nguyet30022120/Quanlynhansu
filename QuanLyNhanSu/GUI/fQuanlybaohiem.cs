@@ -23,7 +23,7 @@ namespace QuanLyNhanSu.GUI
 
 		void BindingInsuranceData()
 		{
-			// Clear old bindings
+			
 			txb_tennhanvien.DataBindings.Clear();
 			cb_loaibh.DataBindings.Clear();
 			dtp_ngaybd.DataBindings.Clear();

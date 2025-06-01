@@ -17,10 +17,10 @@ namespace QuanLyNhanSu
 		BindingSource onleavingList = new BindingSource();
 		public fThongkenghiphep()
 		{
-			
+
 			InitializeComponent();
 			//BindingOnLeaveData();
-			lb_name.Text="Ten_nhan_vien";
+	
 
 
 		}
@@ -28,15 +28,15 @@ namespace QuanLyNhanSu
 		{
 			// Clear old bindings
 			//txb_tennv.DataBindings.Clear();
-			txb_manv.DataBindings.Clear();
-			dtp_ngaybd.DataBindings.Clear();
+			txb_manhanvien.DataBindings.Clear();
+			dtp_ngaybatdau.DataBindings.Clear();
 			dtp_ngaykt.DataBindings.Clear();
-			lb_name.DataBindings.Clear();
+			txb_tennhanvien.DataBindings.Clear();
 
-			lb_name.DataBindings.Add(new Binding("Text", dgv_nghipheptk.DataSource, "TenNV", true, DataSourceUpdateMode.Never));
-			//txb_tennv.DataBindings.Add(new Binding("Text", dgv_nghipheptk.DataSource, "TenNV", true, DataSourceUpdateMode.Never));
-			txb_manv.DataBindings.Add(new Binding("Text", dgv_nghipheptk.DataSource, "MaNV", true, DataSourceUpdateMode.Never));
-			dtp_ngaybd.DataBindings.Add(new Binding("Value", dgv_nghipheptk.DataSource, "NgayBD", true, DataSourceUpdateMode.Never));
+
+			txb_tennhanvien.DataBindings.Add(new Binding("Text", dgv_nghipheptk.DataSource, "TenNV", true, DataSourceUpdateMode.Never));
+			txb_manhanvien.DataBindings.Add(new Binding("Text", dgv_nghipheptk.DataSource, "MaNV", true, DataSourceUpdateMode.Never));
+			dtp_ngaybatdau.DataBindings.Add(new Binding("Value", dgv_nghipheptk.DataSource, "NgayBD", true, DataSourceUpdateMode.Never));
 			dtp_ngaykt.DataBindings.Add(new Binding("Value", dgv_nghipheptk.DataSource, "NgayKT", true, DataSourceUpdateMode.Never));
 		}
 
@@ -46,7 +46,7 @@ namespace QuanLyNhanSu
 			dgv_nghipheptk.DataSource = onleavingList;
 			BindingOnLeaveData();
 		}
-		void LoadOnLeaveStatisticByNgay(string manv,DateTime ngaybd, DateTime ngaykt)
+		void LoadOnLeaveStatisticByNgay(string manv, DateTime ngaybd, DateTime ngaykt)
 		{
 			onleavingList.DataSource = ThongkenghiphepDAO.Instance.GetOnLeavingByNgay(manv, ngaybd, ngaykt);
 			dgv_nghipheptk.DataSource = onleavingList;
@@ -57,8 +57,58 @@ namespace QuanLyNhanSu
 		{
 			try
 			{
-				LoadOnLeaveStatisticByMaNV(txb_manv.Text);
+				LoadOnLeaveStatisticByMaNV(txb_manhanvien.Text);
+				string maNV = txb_manhanvien.Text.Trim();
+				DataTable data = ThongkenghiphepDAO.Instance.GetNgayNghiTheoThang(maNV);
 
+				// Khởi tạo dữ liệu cho 12 tháng, mặc định là 0
+				int[] monthData = new int[12];
+				for (int i = 0; i < 12; i++)
+					monthData[i] = 0;
+
+				// Gán số ngày nghỉ cho từng tháng nếu có dữ liệu
+				foreach (DataRow row in data.Rows)
+				{
+					int thang = Convert.ToInt32(row["Thang"]);
+					int songay = Math.Max(0, Convert.ToInt32(row["SoNgayNghi"]));
+					if (thang >= 1 && thang <= 12)
+						monthData[thang - 1] = songay;
+				}
+
+				var chartValues = new LiveCharts.ChartValues<int>(monthData);
+
+				var columnSeries = new LiveCharts.Wpf.ColumnSeries
+				{
+					Title = "Số ngày nghỉ",
+					Values = chartValues,
+					DataLabels = true,
+					Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.BlanchedAlmond),
+					Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Black)
+				};
+
+				var cartesianChart = new LiveCharts.Wpf.CartesianChart
+				{
+					Series = new LiveCharts.SeriesCollection { columnSeries },
+					AxisX = new LiveCharts.Wpf.AxesCollection
+			{
+				new LiveCharts.Wpf.Axis
+				{
+					Title = "Tháng",
+					Labels = Enumerable.Range(1, 12).Select(i => i.ToString()).ToArray(),
+					Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Black)
+				}
+			},
+					AxisY = new LiveCharts.Wpf.AxesCollection
+			{
+				new LiveCharts.Wpf.Axis
+				{
+					Title = "Số ngày nghỉ",
+					MinValue = 0
+				}
+			}
+				};
+
+				elementHost1.Child = cartesianChart;
 			}
 			catch (Exception ex)
 			{
@@ -70,7 +120,7 @@ namespace QuanLyNhanSu
 		{
 			try
 			{
-				LoadOnLeaveStatisticByNgay(txb_manv.Text, dtp_ngaybd.Value, dtp_ngaykt.Value);
+				LoadOnLeaveStatisticByNgay(txb_manhanvien.Text, dtp_ngaybatdau.Value, dtp_ngaykt.Value);
 			}
 			catch (Exception ex)
 			{
@@ -78,76 +128,11 @@ namespace QuanLyNhanSu
 			}
 		}
 
-		private void fOnLeavingStatistics_Load(object sender, EventArgs e)
+		private void btn_dong_Click(object sender, EventArgs e)
 		{
-
-		}
-
-		private void fOnLeavingStatistics_Load_1(object sender, EventArgs e)
-		{
-
-		}
-		private void btn_load_Click(object sender, EventArgs e)
-		{
-			
-		}
-
-		private void btn_load_Click_1(object sender, EventArgs e)
-		{
-			try
-			{
-				string maNV = txb_manv.Text;
-				DataTable data = ThongkenghiphepDAO.Instance.GetNgayNghiTheoThang(maNV);
-
-				Dictionary<int, double> monthData = new Dictionary<int, double>();
-				for (int i = 1; i <= 12; i++)
-				{
-					monthData[i] = 0;
-				}
-
-				foreach (DataRow row in data.Rows)
-				{
-					int thang = Convert.ToInt32(row["Thang"]);
-					double songay = Convert.ToDouble(row["SoNgayNghi"]);
-					monthData[thang] = songay;
-				}
-
-				var chartValues = new LiveCharts.ChartValues<double>(monthData.Values);
-
-				var columnSeries = new LiveCharts.Wpf.ColumnSeries
-				{
-					Title = "Số ngày nghỉ",
-					Values = chartValues,
-					DataLabels = true
-				};
-
-				var cartesianChart = new LiveCharts.Wpf.CartesianChart
-				{
-					Series = new LiveCharts.SeriesCollection { columnSeries },
-					AxisX = new LiveCharts.Wpf.AxesCollection
-			{
-				new LiveCharts.Wpf.Axis
-				{
-					Title = "Tháng",
-					Labels = monthData.Keys.Select(k => k.ToString()).ToArray()
-				}
-			},
-					AxisY = new LiveCharts.Wpf.AxesCollection
-			{
-				new LiveCharts.Wpf.Axis
-				{
-					Title = "Số ngày nghỉ"
-				}
-			}
-				};
-
-				elementHost1.Child = cartesianChart; // Gắn biểu đồ vào ElementHost
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Lỗi hiển thị biểu đồ: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
+			this.Close();
 		}
 	}
-	}
+}
+
 

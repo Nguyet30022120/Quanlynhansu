@@ -232,6 +232,7 @@
   <ItemGroup>
     <Compile Include="DAO\DonnghiphepDAO.cs" />
     <Compile Include="DAO\Function.cs" />
+    <Compile Include="DAO\PhucapDAO.cs" />
     <Compile Include="DAO\RoundedPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -256,6 +257,7 @@
     <Compile Include="DAO\NguoidungDAO.cs" />
     <Compile Include="DTO\DonnghiphepDTO.cs" />
     <Compile Include="DTO\NguoidungDTO1.cs" />
+    <Compile Include="DTO\PhucapDTO.cs" />
     <Compile Include="DTO\TaikhoanDTO.cs" />
     <Compile Include="DTO\CheckinDTO.cs" />
     <Compile Include="DTO\CheckoutDTO.cs" />
@@ -307,6 +309,12 @@
     </Compile>
     <Compile Include="GUI\fQuanlykhoahoc.Designer.cs">
       <DependentUpon>fQuanlykhoahoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fQuanlyphucap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fQuanlyphucap.Designer.cs">
+      <DependentUpon>fQuanlyphucap.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\fQuanlytaikhoan.cs">
       <SubType>Form</SubType>
@@ -489,6 +497,12 @@
       <DependentUpon>fQuanlydaotaonhanvien.cs</DependentUpon>
     </Compile>
     <Compile Include="DAO\PhongbanDAO.cs" />
+    <Compile Include="GUI\fThongketuyendung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fThongketuyendung.Designer.cs">
+      <DependentUpon>fThongketuyendung.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\fUserDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -514,6 +528,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\fQuanlynguoidung.resx">
       <DependentUpon>fQuanlynguoidung.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fQuanlyphucap.resx">
+      <DependentUpon>fQuanlyphucap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\fQuanlytaikhoan.resx">
       <DependentUpon>fQuanlytaikhoan.cs</DependentUpon>
@@ -595,6 +612,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\fQuanlydaotaonhanvien.resx">
       <DependentUpon>fQuanlydaotaonhanvien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fThongketuyendung.resx">
+      <DependentUpon>fThongketuyendung.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\fUserDashboard.resx">
       <DependentUpon>fUserDashboard.cs</DependentUpon>

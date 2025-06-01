@@ -22,7 +22,7 @@ namespace QuanLyNhanSu.DAO
 		public List<ThongkenghiphepDTO> GetOnLeavingByMaNV(string manv)
 		{
 			List<ThongkenghiphepDTO> list = new List<ThongkenghiphepDTO>();
-			string query = $"SELECT nv.Ma_NV, nv.HoTen,  np.NgayBatDau, np.NgayKetThuc, np.LyDo, np.TrangThai FROM LichNghiPhep AS np JOIN [Nhan vien] AS nv ON np.Ma_NV = nv.Ma_NV WHere nv.Ma_NV ='{manv}'";
+			string query = $"SELECT nv.Ma_NV, nv.HoTen,  np.TuNgay as NgayBatDau, np.DenNgay as NgayKetThuc, np.LyDo, np.TrangThai FROM DonNghiPhep AS np JOIN [Nhan vien] AS nv ON np.Ma_NV = nv.Ma_NV WHere nv.Ma_NV ='{manv}'\r\n\r\n";
 			DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { });
 			foreach (DataRow item in data.Rows)
 			{
@@ -34,7 +34,7 @@ namespace QuanLyNhanSu.DAO
 		public List<ThongkenghiphepDTO> GetOnLeavingByNgay(string manv, DateTime ngaybd, DateTime ngaykt)
 		{
 			List<ThongkenghiphepDTO> list = new List<ThongkenghiphepDTO>();
-			string query = $"SELECT nv.Ma_NV, nv.HoTen, np.MaNghiPhep, np.NgayBatDau, np.NgayKetThuc, np.LyDo, np.TrangThai FROM LichNghiPhep AS np JOIN [Nhan vien] AS nv ON np.Ma_NV = nv.Ma_NV WHERE np.NgayBatDau >= '{ngaybd}' AND np.NgayKetThuc <= '{ngaykt}';";
+			string query = $"SELECT nv.Ma_NV, nv.HoTen, np.MaDonNghiPhep, np.TuNgay as NgayBatDau, np.DenNgay as NgayKetThuc, np.LyDo, np.TrangThai FROM DonNghiPhep AS np JOIN [Nhan vien] AS nv ON np.Ma_NV = nv.Ma_NV WHERE np.TuNgay >= '{ngaybd}' AND np.DenNgay <= '{ngaykt}'\r\n;";
 			DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { });
 			foreach (DataRow item in data.Rows)
 			{
@@ -45,22 +45,9 @@ namespace QuanLyNhanSu.DAO
 		}
 		public DataTable GetNgayNghiTheoThang(string maNV)
 		{
-			string query = $"SELECT MONTH(NgayBatDau) AS Thang, SUM(DATEDIFF(DAY, NgayBatDau, NgayKetThuc) + 1) AS SoNgayNghi FROM LichNghiPhep WHERE Ma_NV = '{maNV}' AND TrangThai = N'Đã duyệt' GROUP BY MONTH(NgayBatDau) ORDER BY Thang";
-
-			DataTable result = new DataTable();
-
-			//using (SqlConnection conn = new SqlConnection(DataProvider.Instance.ConnectionString))
-			//{
-			//	using (SqlCommand cmd = new SqlCommand(query, conn))
-			//	{
-			//		cmd.Parameters.AddWithValue("@MaNV", maNV);
-
-			//		SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-			//		adapter.Fill(result);
-			//	}
-			//}
-
-			return result;
+			string query = $"SELECT MONTH(TuNgay) AS Thang, SUM(DATEDIFF(DAY, TuNgay, DenNgay) + 1) AS SoNgayNghi FROM DonNghiPhep WHERE Ma_NV = '{maNV}' AND TrangThai = N'Đã duyệt' GROUP BY MONTH(TuNgay) ORDER BY Thang";
+			// Sử dụng ExecuteQuery để lấy dữ liệu thực tế
+			return DataProvider.Instance.ExecuteQuery(query);
 
 		}
 	}

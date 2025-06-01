@@ -78,7 +78,7 @@ namespace QuanLyNhanSu
 			originalKetquaButtonColor = btn_quanlyketquaphongvan.BackColor;
 
 			originalBangluongButtonColor = btn_quanlybangluong.BackColor;
-			originalThueColor = btn_quanlythue.BackColor;
+			originalThueColor = btn_quanlyphucap.BackColor;
 			originalBaohiemButtonColor = btn_quanlybaohiem.BackColor;
 			originalKhenthuongkyluatButtonColor = btn_qlkhenthuongkyluat.BackColor;
 
@@ -510,21 +510,7 @@ namespace QuanLyNhanSu
 			this.Show();
 		}
 
-		private void btn_quanlythuongvaphucloinhanvien_Click(object sender, EventArgs e)
-		{
-			fQuanlythuongvaphucloinhanvien f = new fQuanlythuongvaphucloinhanvien();
-			this.Hide();
-			f.ShowDialog();
-			this.Show();
-		}
 
-		private void btn_quanlythuevabaohiemxahoi_Click(object sender, EventArgs e)
-		{
-			fQuanlybaohiem f = new fQuanlybaohiem();
-			this.Hide();
-			f.ShowDialog();
-			this.Show();
-		}
 		private void btn_qlkhenthuongkyluat_Click(object sender, EventArgs e)
 		{
 			fQuanlykhenthuongkyluat f = new fQuanlykhenthuongkyluat();
@@ -543,11 +529,11 @@ namespace QuanLyNhanSu
 
 		private void btn_quanlythue_MouseEnter(object sender, EventArgs e)
 		{
-			btn_quanlythue.BackColor = System.Drawing.Color.LightBlue;
+			btn_quanlyphucap.BackColor = System.Drawing.Color.LightBlue;
 		}
 		private void btn_quanlythue_MouseLeave(object sender, EventArgs e)
 		{
-			btn_quanlythue.BackColor = originalThueColor;
+			btn_quanlyphucap.BackColor = originalThueColor;
 		}
 
 		private void btn_quanlybaohiem_MouseEnter(object sender, EventArgs e)
@@ -567,14 +553,36 @@ namespace QuanLyNhanSu
 		{
 			btn_qlkhenthuongkyluat.BackColor = originalKhenthuongkyluatButtonColor;
 		}
+		private void btn_quanlyphucap_Click(object sender, EventArgs e)
+		{
+			fQuanlyphucap f = new fQuanlyphucap();
+			this.Hide();
+			f.ShowDialog();
+			this.Show();
+		}
 
-
-
-
-
-
+		private void btn_quanlybaohiem_Click(object sender, EventArgs e)
+		{
+			fQuanlybaohiem f = new fQuanlybaohiem();
+			this.Hide();
+			f.ShowDialog();
+			this.Show();
+		}
 
 		#endregion
+
+		private void tc_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btn_thongketuyendung_Click(object sender, EventArgs e)
+		{
+			fThongketuyendung f = new fThongketuyendung();
+			this.Hide();
+			f.ShowDialog();
+			this.Show();
+		}
 
 
 	}

@@ -11,7 +11,7 @@ namespace QuanLyNhanSu.DAO
 	{
 		private static DataProvider instance;
 
-		private string connectionSTR = "Data Source=HAN-NGUYETNM9;Initial Catalog=QuanLyNhanSu;Integrated Security=True;TrustServerCertificate=True";
+		private string connectionSTR = "Data Source=.;Initial Catalog=QuanLyNhanSu;Integrated Security=True;TrustServerCertificate=True";
 
 		public static DataProvider Instance { get => instance == null ? instance = new DataProvider() : instance; private set => instance=value; }
 

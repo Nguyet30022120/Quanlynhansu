@@ -538,7 +538,7 @@ namespace QuanLyNhanSu.GUI
 		#region compensation
 		private void btn_quanlybangluong_Click(object sender, EventArgs e)
 		{
-			fQuanlyluong f = new fQuanlyluong();
+			fBangluong f = new fBangluong();
 			this.Hide();
 			f.ShowDialog();
 			this.Show();

@@ -239,6 +239,8 @@
     <Compile Include="DAO\TaikhoanDAO.cs" />
     <Compile Include="DAO\CheckinDAO.cs" />
     <Compile Include="DAO\CheckoutDAO.cs" />
+    <Compile Include="DAO\BangcongDAO.cs" />
+    <Compile Include="DAO\BangluongDAO.cs" />
     <Compile Include="DAO\KhenthuongkyluatDAO.cs" />
     <Compile Include="DAO\HopdongDAO.cs" />
     <Compile Include="DAO\KhoahocDAO.cs" />
@@ -261,6 +263,8 @@
     <Compile Include="DTO\TaikhoanDTO.cs" />
     <Compile Include="DTO\CheckinDTO.cs" />
     <Compile Include="DTO\CheckoutDTO.cs" />
+    <Compile Include="DTO\BangcongDTO.cs" />
+    <Compile Include="DTO\BangluongDTO.cs" />
     <Compile Include="DTO\KhenthuongkyluatDTO.cs" />
     <Compile Include="DTO\ThongkekhenthuongkyluatDTO.cs" />
     <Compile Include="DTO\HopdongDTO.cs" />
@@ -285,6 +289,12 @@
     </Compile>
     <Compile Include="GUI\fBangcong.Designer.cs">
       <DependentUpon>fBangcong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fBangluong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fBangluong.Designer.cs">
+      <DependentUpon>fBangluong.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\fDoimatkhaukhiquen.cs">
       <SubType>Form</SubType>
@@ -517,6 +527,12 @@
     <Compile Include="GUI\fQuanlynguoidung.Designer.cs">
       <DependentUpon>fQuanlynguoidung.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="GUI\fBangcong.resx">
+      <DependentUpon>fBangcong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fBangluong.resx">
+      <DependentUpon>fBangluong.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\fDoimatkhau.resx">
       <DependentUpon>fDoimatkhau.cs</DependentUpon>
     </EmbeddedResource>

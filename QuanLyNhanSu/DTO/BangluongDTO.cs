@@ -19,7 +19,7 @@ namespace QuanLyNhanSu.DTO
         public decimal Thuong { get; set; }
         
         // Tính toán
-        public decimal LuongCoBanTheoGio => LuongCoBan / 160; // 160 giờ/tháng tiêu chuẩn
+        public decimal LuongCoBanTheoGio => LuongCoBan ; 
         public decimal LuongTheoGio => (decimal)SoGioLam * LuongCoBanTheoGio * (decimal)HeSoNgay;
         public decimal TongKhauTru => BaoHiem + Thue + Phat;
         public decimal LuongThucLinh => LuongTheoGio + PhucCap - TongKhauTru + Thuong;

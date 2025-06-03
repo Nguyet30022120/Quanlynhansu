@@ -132,6 +132,15 @@ namespace QuanLyNhanSu.GUI
             colHeSo.Width = 70;
             dgv_bangluong.Columns.Add(colHeSo);
 
+            // Thêm cột phụ cấp
+            DataGridViewTextBoxColumn colPhucCap = new DataGridViewTextBoxColumn();
+            colPhucCap.Name = "PhucCap";
+            colPhucCap.HeaderText = "Phụ cấp";
+            colPhucCap.DataPropertyName = "PhucCapDisplay";
+            colPhucCap.Width = 100;
+            colPhucCap.DefaultCellStyle.ForeColor = Color.Green;
+            dgv_bangluong.Columns.Add(colPhucCap);
+
             DataGridViewTextBoxColumn colBaoHiem = new DataGridViewTextBoxColumn();
             colBaoHiem.Name = "BaoHiem";
             colBaoHiem.HeaderText = "Bảo hiểm";
@@ -274,12 +283,12 @@ namespace QuanLyNhanSu.GUI
             csv.AppendLine("");
 
             // Header columns
-            csv.AppendLine("Mã NV,Tên nhân viên,Giờ làm,Lương cơ bản,Hệ số,Bảo hiểm,Thuế,Phạt,Thưởng,Lương thực lĩnh");
+            csv.AppendLine("Mã NV,Tên nhân viên,Giờ làm,Lương cơ bản,Hệ số,Phụ cấp,Bảo hiểm,Thuế,Phạt,Thưởng,Lương thực lĩnh");
 
             // Data rows
             foreach (var luong in danhSachLuong)
             {
-                csv.AppendLine($"{luong.MaNV},{luong.TenNV},{luong.SoGioLam},{luong.LuongCoBan},{luong.HeSoNgay},{luong.BaoHiem},{luong.Thue},{luong.Phat},{luong.Thuong},{luong.LuongThucLinh}");
+                csv.AppendLine($"{luong.MaNV},{luong.TenNV},{luong.SoGioLam},{luong.LuongCoBan},{luong.HeSoNgay},{luong.PhucCap},{luong.BaoHiem},{luong.Thue},{luong.Phat},{luong.Thuong},{luong.LuongThucLinh}");
             }
 
             // Statistics

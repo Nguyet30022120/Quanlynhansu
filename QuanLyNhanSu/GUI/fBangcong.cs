@@ -49,7 +49,23 @@ namespace QuanLyNhanSu.GUI
 		{
 			try
 			{
-				// Tạo danh sách nhân viên đơn giản
+				// Lấy danh sách nhân viên từ DAO
+				DataTable dtNhanVien = BangcongDAO.Instance.GetDanhSachNhanVienCoChamCong();
+				
+				// Thêm option "Tất cả nhân viên"
+				DataRow allRow = dtNhanVien.NewRow();
+				allRow["Ma_NV"] = "";
+				allRow["HoTen"] = "-- Tất cả nhân viên --";
+				dtNhanVien.Rows.InsertAt(allRow, 0);
+
+				cb_nhanvien.DataSource = dtNhanVien;
+				cb_nhanvien.DisplayMember = "HoTen";
+				cb_nhanvien.ValueMember = "Ma_NV";
+				cb_nhanvien.SelectedIndex = 0;
+			}
+			catch (Exception ex)
+			{
+				// Fallback với dữ liệu test
 				DataTable dtNhanVien = new DataTable();
 				dtNhanVien.Columns.Add("Ma_NV");
 				dtNhanVien.Columns.Add("HoTen");
@@ -59,25 +75,17 @@ namespace QuanLyNhanSu.GUI
 				allRow["HoTen"] = "-- Tất cả nhân viên --";
 				dtNhanVien.Rows.Add(allRow);
 
-				// Thêm một vài nhân viên test
-				DataRow nv1 = dtNhanVien.NewRow();
-				nv1["Ma_NV"] = "NV001";
-				nv1["HoTen"] = "Nguyễn Văn A";
-				dtNhanVien.Rows.Add(nv1);
-
-				DataRow nv2 = dtNhanVien.NewRow();
-				nv2["Ma_NV"] = "NV002";
-				nv2["HoTen"] = "Trần Thị B";
-				dtNhanVien.Rows.Add(nv2);
+				// Thêm danh sách nhân viên test
+				dtNhanVien.Rows.Add("NV001", "Nguyễn Văn A");
+				dtNhanVien.Rows.Add("NV002", "Trần Thị B");
+				dtNhanVien.Rows.Add("NV003", "Lê Văn C");
+				dtNhanVien.Rows.Add("NV004", "Phạm Thị D");
+				dtNhanVien.Rows.Add("NV005", "Hoàng Văn E");
 
 				cb_nhanvien.DataSource = dtNhanVien;
 				cb_nhanvien.DisplayMember = "HoTen";
 				cb_nhanvien.ValueMember = "Ma_NV";
 				cb_nhanvien.SelectedIndex = 0;
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Lỗi khi tải danh sách nhân viên: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 
@@ -303,10 +311,9 @@ namespace QuanLyNhanSu.GUI
 
 				List<BangcongDTO> bangCongData = new List<BangcongDTO>();
 
-				// Test với dữ liệu giả
 				if (string.IsNullOrEmpty(maNV))
 				{
-					// Hiển thị tất cả nhân viên với dữ liệu giả
+					// Hiển thị tất cả nhân viên
 					bangCongData = BangcongDAO.Instance.GetBangCongTheoThang(thang, nam);
 				}
 				else
@@ -319,46 +326,100 @@ namespace QuanLyNhanSu.GUI
 				CalculateStatistics(bangCongData, maNV);
 				UpdateCalendarColors(); // Cập nhật màu calendar
 
-				MessageBox.Show($"✅ Tải thành công {bangCongData.Count} bản ghi chấm công!\n📅 Lịch đã được cập nhật với thông tin chi tiết\n📜 Sử dụng thanh cuộn để xem đầy đủ", 
-					"Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				// Thống kê chi tiết
+				var tongGioLam = bangCongData.Sum(x => x.SoGioLam);
+				var tongNgayLam = bangCongData.Count(x => x.SoGioLam > 0);
+				var nhanVienCount = bangCongData.Select(x => x.MaNV).Distinct().Count();
+
+				string thongBao = $"✅ TẢI THÀNH CÔNG BẢNG CHẤM CÔNG!\n\n";
+				thongBao += $"📅 Tháng {thang}/{nam}\n";
+				thongBao += $"👥 Số nhân viên: {nhanVienCount}\n";
+				thongBao += $"📝 Số bản ghi: {bangCongData.Count}\n";
+				thongBao += $"🕐 Tổng giờ làm: {tongGioLam:F1} giờ\n";
+				thongBao += $"📆 Tổng ngày làm: {tongNgayLam} ngày\n\n";
+				
+				if (bangCongData.Any())
+				{
+					var maxGio = bangCongData.Max(x => x.SoGioLam);
+					var minGio = bangCongData.Where(x => x.SoGioLam > 0).Min(x => x.SoGioLam);
+					thongBao += $"📊 THỐNG KÊ CHI TIẾT:\n";
+					thongBao += $"   • Giờ làm cao nhất: {maxGio:F1} giờ\n";
+					thongBao += $"   • Giờ làm thấp nhất: {minGio:F1} giờ\n";
+					thongBao += $"   • Giờ làm trung bình: {(tongGioLam/Math.Max(tongNgayLam,1)):F1} giờ/ngày\n\n";
+				}
+				
+				thongBao += $"💡 Mẹo: Click vào ngày trong lịch để xem chi tiết!";
+
+				MessageBox.Show(thongBao, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Lỗi khi tải dữ liệu bảng công: " + ex.Message + "\n\nStack trace: " + ex.StackTrace, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("⚠️ KHÔNG THỂ TẢI DỮ LIỆU THỰC\n\nChuyển sang chế độ DEMO với dữ liệu mẫu\n\nLý do: " + ex.Message, 
+					"Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				
 				// Hiển thị dữ liệu test với nhiều ngày khác nhau
 				var testData = new List<BangcongDTO>();
 				
 				int thang = (int)cb_thang.SelectedItem;
 				int nam = (int)cb_nam.SelectedItem;
+				string maNV = cb_nhanvien.SelectedValue?.ToString();
 
-				// Tạo dữ liệu test cho một số ngày trong tháng
-				for (int day = 1; day <= 15; day += 2) // Ngày lẻ có chấm công
+				// Tạo dữ liệu test với giờ làm việc thực tế khác nhau
+				var nhanVienList = new List<(string ma, string ten, double gioTrungBinh, TimeSpan gioVao, TimeSpan gioRa)>
 				{
-					if (day <= DateTime.DaysInMonth(nam, thang))
+					("NV001", "Nguyễn Văn A", 8.5, TimeSpan.Parse("08:00"), TimeSpan.Parse("16:30")),
+					("NV002", "Trần Thị B", 8.0, TimeSpan.Parse("08:00"), TimeSpan.Parse("16:00")),
+					("NV003", "Lê Văn C", 7.75, TimeSpan.Parse("08:15"), TimeSpan.Parse("16:00")),
+					("NV004", "Phạm Thị D", 8.25, TimeSpan.Parse("07:45"), TimeSpan.Parse("16:00")),
+					("NV005", "Hoàng Văn E", 9.5, TimeSpan.Parse("07:30"), TimeSpan.Parse("17:00"))
+				};
+
+				foreach (var nv in nhanVienList)
+				{
+					if (!string.IsNullOrEmpty(maNV) && nv.ma != maNV) continue;
+
+					// Tạo ngẫu nhiên số ngày làm việc cho mỗi nhân viên
+					Random rand = new Random(nv.ma.GetHashCode());
+					int soNgayLam = rand.Next(18, 23); // 18-22 ngày làm việc
+
+					for (int day = 1; day <= soNgayLam && day <= DateTime.DaysInMonth(nam, thang); day++)
 					{
 						DateTime ngay = new DateTime(nam, thang, day);
-						testData.Add(new BangcongDTO("NV001", "Nguyễn Văn A", ngay, TimeSpan.Parse("08:00"), TimeSpan.Parse("17:00"), 8.0));
-						testData.Add(new BangcongDTO("NV002", "Trần Thị B", ngay, TimeSpan.Parse("08:30"), TimeSpan.Parse("17:30"), 8.0));
-					}
-				}
+						if (ngay.DayOfWeek != DayOfWeek.Saturday && ngay.DayOfWeek != DayOfWeek.Sunday)
+						{
+							// Thêm biến đổi nhỏ vào giờ làm việc
+							double gioLamThucTe = nv.gioTrungBinh + (rand.NextDouble() - 0.5) * 1.0; // ±0.5 giờ
+							gioLamThucTe = Math.Max(6.0, Math.Min(12.0, gioLamThucTe)); // Giới hạn 6-12 giờ
 
-				// Thêm một số ngày cuối tháng có chấm công
-				for (int day = 20; day <= 25; day++)
-				{
-					if (day <= DateTime.DaysInMonth(nam, thang))
-					{
-						DateTime ngay = new DateTime(nam, thang, day);
-						testData.Add(new BangcongDTO("NV001", "Nguyễn Văn A", ngay, TimeSpan.Parse("08:15"), TimeSpan.Parse("17:15"), 8.0));
+							var gioVao = nv.gioVao.Add(TimeSpan.FromMinutes(rand.Next(-15, 30))); // ±15-30 phút
+							var gioRa = gioVao.Add(TimeSpan.FromHours(gioLamThucTe));
+
+							testData.Add(new BangcongDTO(nv.ma, nv.ten, ngay, gioVao, gioRa, gioLamThucTe));
+						}
 					}
 				}
 
 				currentBangCongData = testData;
-				CalculateStatistics(testData, null);
-				UpdateCalendarColors(); // Cập nhật màu calendar
+				CalculateStatistics(testData, maNV);
+				UpdateCalendarColors();
 				
-				MessageBox.Show("⚠️ Sử dụng dữ liệu demo\n📅 Lịch hiển thị dữ liệu mẫu\n📜 Có thể cuộn để xem toàn bộ tháng", 
-					"Dữ liệu demo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				var tongGioDemo = testData.Sum(x => x.SoGioLam);
+				var tongNgayDemo = testData.Count(x => x.SoGioLam > 0);
+				var nvCountDemo = testData.Select(x => x.MaNV).Distinct().Count();
+
+				string demoInfo = $"🎭 CHÍNH THỨC SỬ DỤNG DỮ LIỆU DEMO\n\n";
+				demoInfo += $"📅 Tháng {thang}/{nam}\n";
+				demoInfo += $"👥 Số nhân viên: {nvCountDemo}\n";
+				demoInfo += $"📝 Số bản ghi: {testData.Count}\n";
+				demoInfo += $"🕐 Tổng giờ làm: {tongGioDemo:F1} giờ\n";
+				demoInfo += $"📆 Tổng ngày làm: {tongNgayDemo} ngày\n\n";
+				demoInfo += $"💡 Dữ liệu này được tạo tự động với:\n";
+				demoInfo += $"   • Giờ làm việc thực tế từ 6-12 giờ/ngày\n";
+				demoInfo += $"   • Thời gian CheckIn/CheckOut biến đổi\n";
+				demoInfo += $"   • Số ngày làm việc ngẫu nhiên 18-22 ngày\n\n";
+				demoInfo += $"🎯 Click vào ngày trong lịch để xem chi tiết!";
+				
+				MessageBox.Show(demoInfo, "Dữ liệu Demo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 		}
 

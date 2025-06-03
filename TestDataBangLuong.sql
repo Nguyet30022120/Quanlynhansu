@@ -212,4 +212,93 @@ PRINT 'Có thể test hệ thống bằng cách:';
 PRINT '1. Mở form fBangluong';
 PRINT '2. Chọn tháng 5, năm 2025';
 PRINT '3. Click "Tính lương" để xem kết quả';
-PRINT '================================================'; 
+PRINT '================================================';
+
+-- =============================================
+-- Script: Kiểm tra dữ liệu CheckIn và tính số giờ làm việc
+-- Mô tả: Giải thích cách hệ thống tính số giờ làm từ bảng CheckIn
+-- =============================================
+
+USE [QuanLyNhanSu]
+GO
+
+PRINT '========== KIỂM TRA DỮ LIỆU CHECKIN =========='
+
+-- 1. Xem tất cả dữ liệu CheckIn tháng 5/2025
+PRINT '1. Dữ liệu CheckIn tháng 5/2025:'
+SELECT 
+    ci.Ma_NV,
+    nv.HoTen,
+    ci.NgayCheckIn,
+    ci.ThoiGianCheckIn,
+    ci.GioCheckIn,
+    DATENAME(WEEKDAY, ci.NgayCheckIn) as ThuTrongTuan
+FROM CheckIn ci
+LEFT JOIN [Nhan vien] nv ON ci.Ma_NV = nv.Ma_NV
+WHERE MONTH(ci.NgayCheckIn) = 5 AND YEAR(ci.NgayCheckIn) = 2025
+ORDER BY ci.Ma_NV, ci.NgayCheckIn
+
+PRINT ''
+PRINT '2. Tổng hợp số ngày làm việc theo nhân viên:'
+
+-- 2. Tính số ngày làm việc cho từng nhân viên
+SELECT 
+    ci.Ma_NV,
+    nv.HoTen,
+    COUNT(DISTINCT ci.NgayCheckIn) as SoNgayLamViec,
+    COUNT(DISTINCT ci.NgayCheckIn) * 8.0 as SoGioLam,
+    MIN(ci.NgayCheckIn) as NgayDauTien,
+    MAX(ci.NgayCheckIn) as NgayCuoiCung
+FROM CheckIn ci
+LEFT JOIN [Nhan vien] nv ON ci.Ma_NV = nv.Ma_NV
+WHERE MONTH(ci.NgayCheckIn) = 5 AND YEAR(ci.NgayCheckIn) = 2025
+GROUP BY ci.Ma_NV, nv.HoTen
+ORDER BY ci.Ma_NV
+
+PRINT ''
+PRINT '3. So sánh với dữ liệu CheckOut (tham khảo):'
+
+-- 3. So sánh CheckIn vs CheckOut
+SELECT 
+    ci.Ma_NV,
+    nv.HoTen,
+    ci.NgayCheckIn,
+    ci.GioCheckIn,
+    co.GioCheckOut,
+    CASE 
+        WHEN co.GioCheckOut IS NOT NULL 
+        THEN DATEDIFF(HOUR, ci.ThoiGianCheckIn, co.ThoiGianCheckOut)
+        ELSE 8 -- Mặc định 8 giờ nếu không có checkout
+    END as GioLamThucTe
+FROM CheckIn ci
+LEFT JOIN [Nhan vien] nv ON ci.Ma_NV = nv.Ma_NV
+LEFT JOIN CheckOut co ON ci.Ma_NV = co.Ma_NV AND ci.NgayCheckIn = co.NgayCheckOut
+WHERE MONTH(ci.NgayCheckIn) = 5 AND YEAR(ci.NgayCheckIn) = 2025
+ORDER BY ci.Ma_NV, ci.NgayCheckIn
+
+PRINT ''
+PRINT '4. Giải thích công thức tính lương:'
+PRINT 'SỐ GIỜ LÀM = COUNT(DISTINCT NgayCheckIn) × 8 giờ/ngày'
+PRINT ''
+PRINT 'VÍ DỤ:'
+PRINT '- NV001 check-in 22 ngày → 22 × 8 = 176 giờ'
+PRINT '- NV002 check-in 20 ngày → 20 × 8 = 160 giờ'
+PRINT ''
+PRINT 'LƯU Ý:'
+PRINT '- Dùng DISTINCT để tránh trùng lặp nếu check-in nhiều lần/ngày'
+PRINT '- Không tính giờ thực tế từ CheckIn-CheckOut'
+PRINT '- Cố định 8 giờ/ngày làm việc tiêu chuẩn'
+PRINT '- CheckOut chỉ để tham khảo, không ảnh hưởng tính lương'
+
+-- 5. Hiển thị query chính xác như trong BangluongDAO.cs
+PRINT ''
+PRINT '5. Query chính xác trong BangluongDAO.cs:'
+PRINT ''
+
+SELECT 
+    ci.Ma_NV,
+    COUNT(DISTINCT ci.NgayCheckIn) * 8.0 as SoGioLam
+FROM CheckIn ci
+WHERE MONTH(ci.NgayCheckIn) = 5 AND YEAR(ci.NgayCheckIn) = 2025
+GROUP BY ci.Ma_NV
+ORDER BY ci.Ma_NV 

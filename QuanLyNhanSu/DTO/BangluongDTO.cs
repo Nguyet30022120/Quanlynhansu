@@ -12,6 +12,7 @@ namespace QuanLyNhanSu.DTO
         public double SoGioLam { get; set; }
         public decimal LuongCoBan { get; set; }
         public double HeSoNgay { get; set; }
+        public decimal PhucCap { get; set; }
         public decimal BaoHiem { get; set; }
         public decimal Thue { get; set; }
         public decimal Phat { get; set; }
@@ -21,12 +22,13 @@ namespace QuanLyNhanSu.DTO
         public decimal LuongCoBanTheoGio => LuongCoBan / 160; // 160 giờ/tháng tiêu chuẩn
         public decimal LuongTheoGio => (decimal)SoGioLam * LuongCoBanTheoGio * (decimal)HeSoNgay;
         public decimal TongKhauTru => BaoHiem + Thue + Phat;
-        public decimal LuongThucLinh => LuongTheoGio - TongKhauTru + Thuong;
+        public decimal LuongThucLinh => LuongTheoGio + PhucCap - TongKhauTru + Thuong;
 
         // Display properties
         public string SoGioLamDisplay => SoGioLam.ToString("0.0") + " giờ";
         public string LuongCoBanDisplay => LuongCoBan.ToString("N0") + " VNĐ";
         public string HeSoNgayDisplay => HeSoNgay.ToString("0.00");
+        public string PhucCapDisplay => PhucCap.ToString("N0") + " VNĐ";
         public string BaoHiemDisplay => BaoHiem.ToString("N0") + " VNĐ";
         public string ThueDisplay => Thue.ToString("N0") + " VNĐ";
         public string PhatDisplay => Phat.ToString("N0") + " VNĐ";
@@ -40,7 +42,7 @@ namespace QuanLyNhanSu.DTO
         }
 
         public BangluongDTO(string maNV, string tenNV, int thang, int nam, double soGioLam, 
-                           decimal luongCoBan, double heSoNgay, decimal baoHiem, decimal thue, 
+                           decimal luongCoBan, double heSoNgay, decimal phucCap, decimal baoHiem, decimal thue, 
                            decimal phat, decimal thuong)
         {
             MaNV = maNV;
@@ -50,6 +52,7 @@ namespace QuanLyNhanSu.DTO
             SoGioLam = soGioLam;
             LuongCoBan = luongCoBan;
             HeSoNgay = heSoNgay;
+            PhucCap = phucCap;
             BaoHiem = baoHiem;
             Thue = thue;
             Phat = phat;
@@ -65,6 +68,7 @@ namespace QuanLyNhanSu.DTO
             SoGioLam = Convert.ToDouble(row["SoGioLam"]);
             LuongCoBan = Convert.ToDecimal(row["LuongCoBan"]);
             HeSoNgay = Convert.ToDouble(row["HeSoNgay"]);
+            PhucCap = row["PhucCap"] != DBNull.Value ? Convert.ToDecimal(row["PhucCap"]) : 0;
             BaoHiem = Convert.ToDecimal(row["BaoHiem"]);
             Thue = Convert.ToDecimal(row["Thue"]);
             Phat = Convert.ToDecimal(row["Phat"]);

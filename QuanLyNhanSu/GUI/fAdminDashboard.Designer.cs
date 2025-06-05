@@ -50,7 +50,6 @@
 			this.btn_thongketuyendung = new System.Windows.Forms.Button();
 			this.btn_baocaotongquannhansu = new System.Windows.Forms.Button();
 			this.btn_thongkeluotnghiphepcuanhanvien = new System.Windows.Forms.Button();
-			this.btn_baocaoluongthuong = new System.Windows.Forms.Button();
 			this.btn_thongkethongtinkhenthuongkyluat = new System.Windows.Forms.Button();
 			this.tp_quanlychamcongvathoigianlamviec = new System.Windows.Forms.TabPage();
 			this.btn_quanlybangcong = new System.Windows.Forms.Button();
@@ -326,7 +325,6 @@
 			this.tp_baocaothongke.Controls.Add(this.btn_thongketuyendung);
 			this.tp_baocaothongke.Controls.Add(this.btn_baocaotongquannhansu);
 			this.tp_baocaothongke.Controls.Add(this.btn_thongkeluotnghiphepcuanhanvien);
-			this.tp_baocaothongke.Controls.Add(this.btn_baocaoluongthuong);
 			this.tp_baocaothongke.Controls.Add(this.btn_thongkethongtinkhenthuongkyluat);
 			this.tp_baocaothongke.Location = new System.Drawing.Point(4, 29);
 			this.tp_baocaothongke.Name = "tp_baocaothongke";
@@ -379,21 +377,6 @@
 			this.btn_thongkeluotnghiphepcuanhanvien.Click += new System.EventHandler(this.btn_thongkeluotnghiphepcuanhanvien_Click);
 			this.btn_thongkeluotnghiphepcuanhanvien.MouseEnter += new System.EventHandler(this.btn_thongkenghiphep_MouseEnter);
 			this.btn_thongkeluotnghiphepcuanhanvien.MouseLeave += new System.EventHandler(this.btn_thongkenghiphep_MouseLeave);
-			// 
-			// btn_baocaoluongthuong
-			// 
-			this.btn_baocaoluongthuong.Font = new System.Drawing.Font("Consolas", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_baocaoluongthuong.Image = global::QuanLyNhanSu.Properties.Resources.Webp_net_resizeimage4;
-			this.btn_baocaoluongthuong.Location = new System.Drawing.Point(678, 264);
-			this.btn_baocaoluongthuong.Name = "btn_baocaoluongthuong";
-			this.btn_baocaoluongthuong.Size = new System.Drawing.Size(309, 242);
-			this.btn_baocaoluongthuong.TabIndex = 6;
-			this.btn_baocaoluongthuong.Text = "Báo cáo lương ";
-			this.btn_baocaoluongthuong.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-			this.btn_baocaoluongthuong.UseVisualStyleBackColor = true;
-			this.btn_baocaoluongthuong.Click += new System.EventHandler(this.btn_baocaochitraxuatphieuluong_Click);
-			this.btn_baocaoluongthuong.MouseEnter += new System.EventHandler(this.btn_thongkeluong_MouseEnter);
-			this.btn_baocaoluongthuong.MouseLeave += new System.EventHandler(this.btn_thongkeluong_MouseLeave);
 			// 
 			// btn_thongkethongtinkhenthuongkyluat
 			// 
@@ -726,7 +709,6 @@
 		private System.Windows.Forms.Button btn_thongketuyendung;
 		private System.Windows.Forms.Button btn_baocaotongquannhansu;
 		private System.Windows.Forms.Button btn_thongkeluotnghiphepcuanhanvien;
-		private System.Windows.Forms.Button btn_baocaoluongthuong;
 		private System.Windows.Forms.Button btn_thongkethongtinkhenthuongkyluat;
 	}
 }

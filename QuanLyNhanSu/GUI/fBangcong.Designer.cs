@@ -118,11 +118,11 @@ namespace QuanLyNhanSu.GUI
 			// cb_nhanvien
 			// 
 			this.cb_nhanvien.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cb_nhanvien.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.cb_nhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cb_nhanvien.FormattingEnabled = true;
 			this.cb_nhanvien.Location = new System.Drawing.Point(632, 29);
 			this.cb_nhanvien.Name = "cb_nhanvien";
-			this.cb_nhanvien.Size = new System.Drawing.Size(200, 31);
+			this.cb_nhanvien.Size = new System.Drawing.Size(200, 28);
 			this.cb_nhanvien.TabIndex = 6;
 			this.cb_nhanvien.SelectedIndexChanged += new System.EventHandler(this.cb_nhanvien_SelectedIndexChanged);
 			// 

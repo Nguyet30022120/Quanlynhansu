@@ -29,6 +29,7 @@ namespace QuanLyNhanSu.GUI
 		private void InitializeComponent()
 		{
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.btn_debug_test = new System.Windows.Forms.Button();
 			this.btn_close = new System.Windows.Forms.Button();
 			this.btn_xuatbaocao = new System.Windows.Forms.Button();
 			this.btn_xem = new System.Windows.Forms.Button();
@@ -66,6 +67,7 @@ namespace QuanLyNhanSu.GUI
 			// panel1
 			// 
 			this.panel1.BackColor = System.Drawing.Color.LightBlue;
+			this.panel1.Controls.Add(this.btn_debug_test);
 			this.panel1.Controls.Add(this.btn_close);
 			this.panel1.Controls.Add(this.btn_xuatbaocao);
 			this.panel1.Controls.Add(this.btn_xem);
@@ -82,6 +84,19 @@ namespace QuanLyNhanSu.GUI
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(1350, 150);
 			this.panel1.TabIndex = 0;
+			// 
+			// btn_debug_test
+			// 
+			this.btn_debug_test.BackColor = System.Drawing.Color.Orange;
+			this.btn_debug_test.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+			this.btn_debug_test.Location = new System.Drawing.Point(56, 40);
+			this.btn_debug_test.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+			this.btn_debug_test.Name = "btn_debug_test";
+			this.btn_debug_test.Size = new System.Drawing.Size(120, 44);
+			this.btn_debug_test.TabIndex = 10;
+			this.btn_debug_test.Text = "🔍 Test DB";
+			this.btn_debug_test.UseVisualStyleBackColor = false;
+			this.btn_debug_test.Click += new System.EventHandler(this.btn_test_debug_Click);
 			// 
 			// btn_close
 			// 
@@ -432,6 +447,7 @@ namespace QuanLyNhanSu.GUI
 		#endregion
 
 		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.Button btn_debug_test;
 		private System.Windows.Forms.Button btn_close;
 		private System.Windows.Forms.Button btn_xuatbaocao;
 		private System.Windows.Forms.Button btn_xem;

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,46 +48,19 @@ namespace QuanLyNhanSu.GUI
 
 		void LoadNhanVien()
 		{
-			try
-			{
-				// Lấy danh sách nhân viên từ DAO
-				DataTable dtNhanVien = BangcongDAO.Instance.GetDanhSachNhanVienCoChamCong();
-				
-				// Thêm option "Tất cả nhân viên"
-				DataRow allRow = dtNhanVien.NewRow();
-				allRow["Ma_NV"] = "";
-				allRow["HoTen"] = "-- Tất cả nhân viên --";
-				dtNhanVien.Rows.InsertAt(allRow, 0);
+			// Lấy danh sách nhân viên từ DAO
+			DataTable dtNhanVien = BangcongDAO.Instance.GetDanhSachNhanVienCoChamCong();
+			
+			// Thêm option "Tất cả nhân viên"
+			DataRow allRow = dtNhanVien.NewRow();
+			allRow["Ma_NV"] = "";
+			allRow["HoTen"] = "-- Tất cả nhân viên --";
+			dtNhanVien.Rows.InsertAt(allRow, 0);
 
-				cb_nhanvien.DataSource = dtNhanVien;
-				cb_nhanvien.DisplayMember = "HoTen";
-				cb_nhanvien.ValueMember = "Ma_NV";
-				cb_nhanvien.SelectedIndex = 0;
-			}
-			catch (Exception ex)
-			{
-				// Fallback với dữ liệu test
-				DataTable dtNhanVien = new DataTable();
-				dtNhanVien.Columns.Add("Ma_NV");
-				dtNhanVien.Columns.Add("HoTen");
-				
-				DataRow allRow = dtNhanVien.NewRow();
-				allRow["Ma_NV"] = "";
-				allRow["HoTen"] = "-- Tất cả nhân viên --";
-				dtNhanVien.Rows.Add(allRow);
-
-				// Thêm danh sách nhân viên test
-				dtNhanVien.Rows.Add("NV001", "Nguyễn Văn A");
-				dtNhanVien.Rows.Add("NV002", "Trần Thị B");
-				dtNhanVien.Rows.Add("NV003", "Lê Văn C");
-				dtNhanVien.Rows.Add("NV004", "Phạm Thị D");
-				dtNhanVien.Rows.Add("NV005", "Hoàng Văn E");
-
-				cb_nhanvien.DataSource = dtNhanVien;
-				cb_nhanvien.DisplayMember = "HoTen";
-				cb_nhanvien.ValueMember = "Ma_NV";
-				cb_nhanvien.SelectedIndex = 0;
-			}
+			cb_nhanvien.DataSource = dtNhanVien;
+			cb_nhanvien.DisplayMember = "HoTen";
+			cb_nhanvien.ValueMember = "Ma_NV";
+			cb_nhanvien.SelectedIndex = 0;
 		}
 
 		void CreateCalendarView()
@@ -303,124 +277,64 @@ namespace QuanLyNhanSu.GUI
 
 		void LoadBangCong()
 		{
-			try
+			int thang = (int)cb_thang.SelectedItem;
+			int nam = (int)cb_nam.SelectedItem;
+			string maNV = cb_nhanvien.SelectedValue?.ToString();
+
+			List<BangcongDTO> bangCongData = new List<BangcongDTO>();
+
+			if (string.IsNullOrEmpty(maNV))
 			{
-				int thang = (int)cb_thang.SelectedItem;
-				int nam = (int)cb_nam.SelectedItem;
-				string maNV = cb_nhanvien.SelectedValue?.ToString();
+				// Hiển thị tất cả nhân viên
+				bangCongData = BangcongDAO.Instance.GetBangCongTheoThang(thang, nam);
+			}
+			else
+			{
+				// Hiển thị một nhân viên cụ thể
+				bangCongData = BangcongDAO.Instance.GetBangCongNhanVienTheoThang(maNV, thang, nam);
+			}
 
-				List<BangcongDTO> bangCongData = new List<BangcongDTO>();
+			currentBangCongData = bangCongData;
+			CalculateStatistics(bangCongData, maNV);
+			UpdateCalendarColors(); // Cập nhật màu calendar
 
-				if (string.IsNullOrEmpty(maNV))
-				{
-					// Hiển thị tất cả nhân viên
-					bangCongData = BangcongDAO.Instance.GetBangCongTheoThang(thang, nam);
-				}
-				else
-				{
-					// Hiển thị một nhân viên cụ thể
-					bangCongData = BangcongDAO.Instance.GetBangCongNhanVienTheoThang(maNV, thang, nam);
-				}
+			// Thống kê chi tiết
+			var tongGioLam = bangCongData.Sum(x => x.SoGioLam);
+			var tongNgayLam = bangCongData.Count(x => x.SoGioLam > 0);
+			var nhanVienCount = bangCongData.Select(x => x.MaNV).Distinct().Count();
 
-				currentBangCongData = bangCongData;
-				CalculateStatistics(bangCongData, maNV);
-				UpdateCalendarColors(); // Cập nhật màu calendar
-
-				// Thống kê chi tiết
-				var tongGioLam = bangCongData.Sum(x => x.SoGioLam);
-				var tongNgayLam = bangCongData.Count(x => x.SoGioLam > 0);
-				var nhanVienCount = bangCongData.Select(x => x.MaNV).Distinct().Count();
-
-				string thongBao = $"✅ TẢI THÀNH CÔNG BẢNG CHẤM CÔNG!\n\n";
+			string thongBao = $"✅ TẢI THÀNH CÔNG BẢNG CHẤM CÔNG!\n\n";
+			thongBao += $"📅 Tháng {thang}/{nam}\n";
+			thongBao += $"👥 Số nhân viên: {nhanVienCount}\n";
+			thongBao += $"📝 Số bản ghi: {bangCongData.Count}\n";
+			thongBao += $"🕐 Tổng giờ làm: {tongGioLam:F1} giờ\n";
+			thongBao += $"📆 Tổng ngày làm: {tongNgayLam} ngày\n\n";
+			
+			if (bangCongData.Any())
+			{
+				var maxGio = bangCongData.Max(x => x.SoGioLam);
+				var minGio = bangCongData.Where(x => x.SoGioLam > 0).Min(x => x.SoGioLam);
+				thongBao += $"📊 THỐNG KÊ CHI TIẾT:\n";
+				thongBao += $"   • Giờ làm cao nhất: {maxGio:F1} giờ\n";
+				thongBao += $"   • Giờ làm thấp nhất: {minGio:F1} giờ\n";
+				thongBao += $"   • Giờ làm trung bình: {(tongGioLam/Math.Max(tongNgayLam,1)):F1} giờ/ngày\n\n";
+			}
+			else
+			{
+				thongBao = $"❌ KHÔNG TÌM THẤY DỮ LIỆU CHẤM CÔNG!\n\n";
 				thongBao += $"📅 Tháng {thang}/{nam}\n";
-				thongBao += $"👥 Số nhân viên: {nhanVienCount}\n";
-				thongBao += $"📝 Số bản ghi: {bangCongData.Count}\n";
-				thongBao += $"🕐 Tổng giờ làm: {tongGioLam:F1} giờ\n";
-				thongBao += $"📆 Tổng ngày làm: {tongNgayLam} ngày\n\n";
-				
-				if (bangCongData.Any())
-				{
-					var maxGio = bangCongData.Max(x => x.SoGioLam);
-					var minGio = bangCongData.Where(x => x.SoGioLam > 0).Min(x => x.SoGioLam);
-					thongBao += $"📊 THỐNG KÊ CHI TIẾT:\n";
-					thongBao += $"   • Giờ làm cao nhất: {maxGio:F1} giờ\n";
-					thongBao += $"   • Giờ làm thấp nhất: {minGio:F1} giờ\n";
-					thongBao += $"   • Giờ làm trung bình: {(tongGioLam/Math.Max(tongNgayLam,1)):F1} giờ/ngày\n\n";
-				}
-				
-				thongBao += $"💡 Mẹo: Click vào ngày trong lịch để xem chi tiết!";
-
-				MessageBox.Show(thongBao, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				thongBao += $"👤 Nhân viên: {(string.IsNullOrEmpty(maNV) ? "Tất cả" : maNV)}\n\n";
+				thongBao += $"💡 Vui lòng kiểm tra:\n";
+				thongBao += $"   • Dữ liệu CheckIn có tồn tại không\n";
+				thongBao += $"   • Tháng/năm có đúng không\n";
+				thongBao += $"   • Nhân viên có dữ liệu chấm công không\n\n";
+				thongBao += $"🔍 Sử dụng nút 'Test DB' để kiểm tra kết nối!";
 			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("⚠️ KHÔNG THỂ TẢI DỮ LIỆU THỰC\n\nChuyển sang chế độ DEMO với dữ liệu mẫu\n\nLý do: " + ex.Message, 
-					"Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				
-				// Hiển thị dữ liệu test với nhiều ngày khác nhau
-				var testData = new List<BangcongDTO>();
-				
-				int thang = (int)cb_thang.SelectedItem;
-				int nam = (int)cb_nam.SelectedItem;
-				string maNV = cb_nhanvien.SelectedValue?.ToString();
+			
+			thongBao += $"\n💡 Mẹo: Click vào ngày trong lịch để xem chi tiết!";
 
-				// Tạo dữ liệu test với giờ làm việc thực tế khác nhau
-				var nhanVienList = new List<(string ma, string ten, double gioTrungBinh, TimeSpan gioVao, TimeSpan gioRa)>
-				{
-					("NV001", "Nguyễn Văn A", 8.5, TimeSpan.Parse("08:00"), TimeSpan.Parse("16:30")),
-					("NV002", "Trần Thị B", 8.0, TimeSpan.Parse("08:00"), TimeSpan.Parse("16:00")),
-					("NV003", "Lê Văn C", 7.75, TimeSpan.Parse("08:15"), TimeSpan.Parse("16:00")),
-					("NV004", "Phạm Thị D", 8.25, TimeSpan.Parse("07:45"), TimeSpan.Parse("16:00")),
-					("NV005", "Hoàng Văn E", 9.5, TimeSpan.Parse("07:30"), TimeSpan.Parse("17:00"))
-				};
-
-				foreach (var nv in nhanVienList)
-				{
-					if (!string.IsNullOrEmpty(maNV) && nv.ma != maNV) continue;
-
-					// Tạo ngẫu nhiên số ngày làm việc cho mỗi nhân viên
-					Random rand = new Random(nv.ma.GetHashCode());
-					int soNgayLam = rand.Next(18, 23); // 18-22 ngày làm việc
-
-					for (int day = 1; day <= soNgayLam && day <= DateTime.DaysInMonth(nam, thang); day++)
-					{
-						DateTime ngay = new DateTime(nam, thang, day);
-						if (ngay.DayOfWeek != DayOfWeek.Saturday && ngay.DayOfWeek != DayOfWeek.Sunday)
-						{
-							// Thêm biến đổi nhỏ vào giờ làm việc
-							double gioLamThucTe = nv.gioTrungBinh + (rand.NextDouble() - 0.5) * 1.0; // ±0.5 giờ
-							gioLamThucTe = Math.Max(6.0, Math.Min(12.0, gioLamThucTe)); // Giới hạn 6-12 giờ
-
-							var gioVao = nv.gioVao.Add(TimeSpan.FromMinutes(rand.Next(-15, 30))); // ±15-30 phút
-							var gioRa = gioVao.Add(TimeSpan.FromHours(gioLamThucTe));
-
-							testData.Add(new BangcongDTO(nv.ma, nv.ten, ngay, gioVao, gioRa, gioLamThucTe));
-						}
-					}
-				}
-
-				currentBangCongData = testData;
-				CalculateStatistics(testData, maNV);
-				UpdateCalendarColors();
-				
-				var tongGioDemo = testData.Sum(x => x.SoGioLam);
-				var tongNgayDemo = testData.Count(x => x.SoGioLam > 0);
-				var nvCountDemo = testData.Select(x => x.MaNV).Distinct().Count();
-
-				string demoInfo = $"🎭 CHÍNH THỨC SỬ DỤNG DỮ LIỆU DEMO\n\n";
-				demoInfo += $"📅 Tháng {thang}/{nam}\n";
-				demoInfo += $"👥 Số nhân viên: {nvCountDemo}\n";
-				demoInfo += $"📝 Số bản ghi: {testData.Count}\n";
-				demoInfo += $"🕐 Tổng giờ làm: {tongGioDemo:F1} giờ\n";
-				demoInfo += $"📆 Tổng ngày làm: {tongNgayDemo} ngày\n\n";
-				demoInfo += $"💡 Dữ liệu này được tạo tự động với:\n";
-				demoInfo += $"   • Giờ làm việc thực tế từ 6-12 giờ/ngày\n";
-				demoInfo += $"   • Thời gian CheckIn/CheckOut biến đổi\n";
-				demoInfo += $"   • Số ngày làm việc ngẫu nhiên 18-22 ngày\n\n";
-				demoInfo += $"🎯 Click vào ngày trong lịch để xem chi tiết!";
-				
-				MessageBox.Show(demoInfo, "Dữ liệu Demo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
+			MessageBox.Show(thongBao, "Thông báo", MessageBoxButtons.OK, 
+				(bangCongData.Any() ? MessageBoxIcon.Information : MessageBoxIcon.Warning));
 		}
 
 		void CalculateStatistics(List<BangcongDTO> data, string maNV)
@@ -460,6 +374,58 @@ namespace QuanLyNhanSu.GUI
 		private void btn_xem_Click(object sender, EventArgs e)
 		{
 			LoadBangCong();
+		}
+
+		// Thêm nút debug test
+		private void btn_test_debug_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				DataTable testData = BangcongDAO.Instance.TestConnection();
+				
+				if (testData.Rows.Count > 0)
+				{
+					StringBuilder sb = new StringBuilder();
+					sb.AppendLine("🔍 TEST KẾT NỐI DATABASE");
+					sb.AppendLine("✅ Kết nối thành công!");
+					sb.AppendLine($"📊 Tìm thấy {testData.Rows.Count} bản ghi:");
+					sb.AppendLine(new string('-', 50));
+					
+					foreach (DataRow row in testData.Rows)
+					{
+						if (testData.Columns.Contains("Error"))
+						{
+							sb.AppendLine($"❌ {row["Error"]}");
+						}
+						else
+						{
+							sb.AppendLine($"🆔 Mã NV: {row["Ma_NV"]}");
+							sb.AppendLine($"👤 Tên: {row["HoTen"]}");
+							sb.AppendLine($"📅 Ngày: {row["NgayCheckIn"]}");
+							sb.AppendLine($"⏰ Giờ vào: {row["ThoiGianCheckIn"]}");
+							sb.AppendLine($"⏰ Giờ ra: {(row.IsNull("ThoiGianCheckOut") ? "Chưa checkout" : row["ThoiGianCheckOut"].ToString())}");
+							sb.AppendLine(new string('-', 30));
+						}
+					}
+					
+					MessageBox.Show(sb.ToString(), "🔍 Debug Test Results", 
+						MessageBoxButtons.OK, MessageBoxIcon.Information);
+				}
+				else
+				{
+					MessageBox.Show("❌ Không tìm thấy dữ liệu CheckIn/CheckOut cho tháng 5/2025.\n\n" +
+						"Vui lòng kiểm tra:\n" +
+						"1. Kết nối database\n" +
+						"2. Dữ liệu trong bảng CheckIn\n" +
+						"3. Tên cột trong database", 
+						"⚠️ Debug Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"💥 Lỗi khi test kết nối:\n{ex.Message}\n\nChi tiết: {ex.StackTrace}", 
+					"❌ Debug Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
 		}
 
 		private void btn_xuatbaocao_Click(object sender, EventArgs e)

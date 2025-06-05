@@ -31,14 +31,21 @@ namespace QuanLyNhanSu.DAO
                         {0} as Thang,
                         {1} as Nam,
                         ISNULL(bc.SoGioLam, 0) as SoGioLam,
-                        ISNULL(lcb.LuongCoSo, 5000000) as LuongCoBan,
+                        ISNULL(lcb.LuongCoSo, 50000) as LuongCoBan, -- Lương theo giờ
                         ISNULL(hsn.HeSo, 1.0) as HeSoNgay,
                         ISNULL(pc.TongPhucCap, 0) as PhucCap,
                         ISNULL(bh.TongBaoHiem, 0) as BaoHiem,
+                        -- Tính tổng thu nhập trước thuế
+                        (ISNULL(lcb.LuongCoSo, 50000) * ISNULL(bc.SoGioLam, 0) * ISNULL(hsn.HeSo, 1.0)) + 
+                        ISNULL(pc.TongPhucCap, 0) + ISNULL(kt.TienThuong, 0) - ISNULL(kl.TienPhat, 0) as TongThuNhap,
+                        -- Tính thuế dựa trên tổng thu nhập
                         CASE 
-                            WHEN ISNULL(lcb.LuongCoSo, 5000000) > 11000000 THEN ISNULL(lcb.LuongCoSo, 5000000) * 0.1
-                            WHEN ISNULL(lcb.LuongCoSo, 5000000) > 5000000 THEN ISNULL(lcb.LuongCoSo, 5000000) * 0.05
-                            ELSE 0
+                            WHEN (ISNULL(lcb.LuongCoSo, 50000) * ISNULL(bc.SoGioLam, 0) * ISNULL(hsn.HeSo, 1.0)) + 
+                                 ISNULL(pc.TongPhucCap, 0) + ISNULL(kt.TienThuong, 0) - ISNULL(kl.TienPhat, 0) > 11000000 
+                            THEN ((ISNULL(lcb.LuongCoSo, 50000) * ISNULL(bc.SoGioLam, 0) * ISNULL(hsn.HeSo, 1.0)) + 
+                                  ISNULL(pc.TongPhucCap, 0) + ISNULL(kt.TienThuong, 0) - ISNULL(kl.TienPhat, 0)) * 0.1
+                            ELSE ((ISNULL(lcb.LuongCoSo, 50000) * ISNULL(bc.SoGioLam, 0) * ISNULL(hsn.HeSo, 1.0)) + 
+                                  ISNULL(pc.TongPhucCap, 0) + ISNULL(kt.TienThuong, 0) - ISNULL(kl.TienPhat, 0)) * 0.05
                         END as Thue,
                         ISNULL(kl.TienPhat, 0) as Phat,
                         ISNULL(kt.TienThuong, 0) as Thuong
@@ -130,14 +137,21 @@ namespace QuanLyNhanSu.DAO
                         {1} as Thang,
                         {2} as Nam,
                         ISNULL(bc.SoGioLam, 0) as SoGioLam,
-                        ISNULL(lcb.LuongCoSo, 5000000) as LuongCoBan,
+                        ISNULL(lcb.LuongCoSo, 50000) as LuongCoBan, -- Lương theo giờ
                         ISNULL(hsn.HeSo, 1.0) as HeSoNgay,
                         ISNULL(pc.TongPhucCap, 0) as PhucCap,
                         ISNULL(bh.TongBaoHiem, 0) as BaoHiem,
+                        -- Tính tổng thu nhập trước thuế
+                        (ISNULL(lcb.LuongCoSo, 50000) * ISNULL(bc.SoGioLam, 0) * ISNULL(hsn.HeSo, 1.0)) + 
+                        ISNULL(pc.TongPhucCap, 0) + ISNULL(kt.TienThuong, 0) - ISNULL(kl.TienPhat, 0) as TongThuNhap,
+                        -- Tính thuế dựa trên tổng thu nhập
                         CASE 
-                            WHEN ISNULL(lcb.LuongCoSo, 5000000) > 11000000 THEN ISNULL(lcb.LuongCoSo, 5000000) * 0.1
-                            WHEN ISNULL(lcb.LuongCoSo, 5000000) > 5000000 THEN ISNULL(lcb.LuongCoSo, 5000000) * 0.05
-                            ELSE 0
+                            WHEN (ISNULL(lcb.LuongCoSo, 50000) * ISNULL(bc.SoGioLam, 0) * ISNULL(hsn.HeSo, 1.0)) + 
+                                 ISNULL(pc.TongPhucCap, 0) + ISNULL(kt.TienThuong, 0) - ISNULL(kl.TienPhat, 0) > 11000000 
+                            THEN ((ISNULL(lcb.LuongCoSo, 50000) * ISNULL(bc.SoGioLam, 0) * ISNULL(hsn.HeSo, 1.0)) + 
+                                  ISNULL(pc.TongPhucCap, 0) + ISNULL(kt.TienThuong, 0) - ISNULL(kl.TienPhat, 0)) * 0.1
+                            ELSE ((ISNULL(lcb.LuongCoSo, 50000) * ISNULL(bc.SoGioLam, 0) * ISNULL(hsn.HeSo, 1.0)) + 
+                                  ISNULL(pc.TongPhucCap, 0) + ISNULL(kt.TienThuong, 0) - ISNULL(kl.TienPhat, 0)) * 0.05
                         END as Thue,
                         ISNULL(kl.TienPhat, 0) as Phat,
                         ISNULL(kt.TienThuong, 0) as Thuong
@@ -308,20 +322,25 @@ namespace QuanLyNhanSu.DAO
         {
             List<BangluongDTO> testData = new List<BangluongDTO>();
 
-            // NV001 - Làm đủ giờ, có thưởng và phụ cấp
-            testData.Add(new BangluongDTO("NV001", "Nguyễn Văn A", thang, nam, 176.0, 8000000, 1.2, 1000000, 800000, 400000, 0, 500000));
+            // NV001 - Làm đủ giờ, có thưởng và phụ cấp - Lương cao (thuế 10%)
+            // Tổng thu nhập = 70000*176*1.2 + 1000000 + 500000 = 16,232,000 > 11,000,000 → thuế 10%
+            testData.Add(new BangluongDTO("NV001", "Nguyễn Văn A", thang, nam, 176.0, 70000, 1.2, 1000000, 800000, 1623200, 0, 500000));
 
-            // NV002 - Làm ít giờ hơn, có phụ cấp
-            testData.Add(new BangluongDTO("NV002", "Trần Thị B", thang, nam, 160.0, 7000000, 1.0, 800000, 700000, 350000, 0, 300000));
+            // NV002 - Làm ít giờ hơn, có phụ cấp - Lương trung bình (thuế 10%)
+            // Tổng thu nhập = 60000*160*1.0 + 800000 + 300000 = 10,700,000 < 11,000,000 → thuế 5%
+            testData.Add(new BangluongDTO("NV002", "Trần Thị B", thang, nam, 160.0, 60000, 1.0, 800000, 700000, 535000, 0, 300000));
 
-            // NV003 - Có phạt, ít phụ cấp
-            testData.Add(new BangluongDTO("NV003", "Lê Văn C", thang, nam, 144.0, 6000000, 1.0, 500000, 600000, 300000, 100000, 0));
+            // NV003 - Có phạt, ít phụ cấp - Lương thấp (thuế 5%)
+            // Tổng thu nhập = 50000*144*1.0 + 500000 + 0 - 100000 = 7,600,000 < 11,000,000 → thuế 5%
+            testData.Add(new BangluongDTO("NV003", "Lê Văn C", thang, nam, 144.0, 50000, 1.0, 500000, 600000, 380000, 100000, 0));
 
-            // NV004 - Nhân viên mới, lương thấp, không có phụ cấp
-            testData.Add(new BangluongDTO("NV004", "Phạm Thị D", thang, nam, 168.0, 5000000, 1.0, 0, 500000, 250000, 0, 200000));
+            // NV004 - Nhân viên mới, lương thấp - (thuế 5%)
+            // Tổng thu nhập = 45000*168*1.0 + 0 + 200000 = 7,760,000 < 11,000,000 → thuế 5%
+            testData.Add(new BangluongDTO("NV004", "Phạm Thị D", thang, nam, 168.0, 45000, 1.0, 0, 500000, 388000, 0, 200000));
 
-            // NV005 - Nhân viên cao cấp, phụ cấp cao
-            testData.Add(new BangluongDTO("NV005", "Hoàng Văn E", thang, nam, 180.0, 12000000, 1.5, 2000000, 1200000, 600000, 0, 1000000));
+            // NV005 - Nhân viên cao cấp, phụ cấp cao - Lương rất cao (thuế 10%)
+            // Tổng thu nhập = 100000*180*1.5 + 2000000 + 1000000 = 30,000,000 > 11,000,000 → thuế 10%
+            testData.Add(new BangluongDTO("NV005", "Hoàng Văn E", thang, nam, 180.0, 100000, 1.5, 2000000, 1200000, 3000000, 0, 1000000));
 
             return testData;
         }

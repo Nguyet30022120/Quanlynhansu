@@ -20,8 +20,6 @@ namespace QuanLyNhanSu
 
 			InitializeComponent();
 			//BindingOnLeaveData();
-	
-
 
 		}
 		void BindingOnLeaveData()
@@ -191,6 +189,11 @@ namespace QuanLyNhanSu
 			{
 				MessageBox.Show("Lỗi khi xuất báo cáo: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
+		}
+
+		private void fThongkenghiphep_Load(object sender, EventArgs e)
+		{
+
 		}
 	}
 }

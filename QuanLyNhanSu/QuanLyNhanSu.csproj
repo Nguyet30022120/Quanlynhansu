@@ -246,6 +246,7 @@
     <Compile Include="DAO\KhoahocDAO.cs" />
     <Compile Include="DAO\ThongkenhansuDAO.cs" />
     <Compile Include="DAO\BaohiemDAO.cs" />
+    <Compile Include="DAO\ThongketuyendungDAO.cs" />
     <Compile Include="DAO\TrinhdochuyenmonDAO.cs" />
     <Compile Include="DAO\ThongkenghiphepDAO.cs" />
     <Compile Include="DAO\ChucvuDAO.cs" />
@@ -273,6 +274,7 @@
     <Compile Include="DTO\ThongkenhansunamnuDTO.cs" />
     <Compile Include="DTO\ThongkenhansuphongbanDTO.cs" />
     <Compile Include="DTO\BaohiemDTO.cs" />
+    <Compile Include="DTO\ThongketuyendungDTO.cs" />
     <Compile Include="DTO\TrinhdochuyenmonDTO.cs" />
     <Compile Include="DTO\ThongkenghiphepDTO.cs" />
     <Compile Include="DTO\ChucvuDTO.cs" />

@@ -40,16 +40,16 @@
 			this.lb_ngayketthuc = new System.Windows.Forms.Label();
 			this.dtp_ngaykt = new System.Windows.Forms.DateTimePicker();
 			this.dgv_nghipheptk = new System.Windows.Forms.DataGridView();
-			this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
-			this.cartesianChart1 = new LiveCharts.Wpf.CartesianChart();
-			this.txb_tennhanvien = new System.Windows.Forms.TextBox();
-			this.btn_dong = new System.Windows.Forms.Button();
 			this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.NgayBD = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.NgayKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.LyDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
+			this.cartesianChart1 = new LiveCharts.Wpf.CartesianChart();
+			this.txb_tennhanvien = new System.Windows.Forms.TextBox();
+			this.btn_dong = new System.Windows.Forms.Button();
 			this.btn_xuatbaocao = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_nghipheptk)).BeginInit();
 			this.SuspendLayout();
@@ -173,42 +173,13 @@
 			this.dgv_nghipheptk.Size = new System.Drawing.Size(960, 416);
 			this.dgv_nghipheptk.TabIndex = 12;
 			// 
-			// elementHost1
-			// 
-			this.elementHost1.BackColor = System.Drawing.Color.Tan;
-			this.elementHost1.Location = new System.Drawing.Point(14, 434);
-			this.elementHost1.Name = "elementHost1";
-			this.elementHost1.Size = new System.Drawing.Size(1456, 336);
-			this.elementHost1.TabIndex = 0;
-			this.elementHost1.Text = "elementHost1";
-			this.elementHost1.Child = this.cartesianChart1;
-			// 
-			// txb_tennhanvien
-			// 
-			this.txb_tennhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_tennhanvien.Location = new System.Drawing.Point(140, 80);
-			this.txb_tennhanvien.Name = "txb_tennhanvien";
-			this.txb_tennhanvien.Size = new System.Drawing.Size(252, 27);
-			this.txb_tennhanvien.TabIndex = 16;
-			// 
-			// btn_dong
-			// 
-			this.btn_dong.BackColor = System.Drawing.Color.DarkOrange;
-			this.btn_dong.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_dong.Location = new System.Drawing.Point(339, 263);
-			this.btn_dong.Name = "btn_dong";
-			this.btn_dong.Size = new System.Drawing.Size(115, 40);
-			this.btn_dong.TabIndex = 17;
-			this.btn_dong.Text = "Đóng";
-			this.btn_dong.UseVisualStyleBackColor = false;
-			this.btn_dong.Click += new System.EventHandler(this.btn_dong_Click);
-			// 
 			// MaNV
 			// 
 			this.MaNV.DataPropertyName = "MaNV";
 			this.MaNV.HeaderText = "Mã nhân viên";
 			this.MaNV.MinimumWidth = 6;
 			this.MaNV.Name = "MaNV";
+			this.MaNV.Width = 125;
 			// 
 			// TenNV
 			// 
@@ -250,6 +221,36 @@
 			this.TrangThai.Name = "TrangThai";
 			this.TrangThai.Width = 125;
 			// 
+			// elementHost1
+			// 
+			this.elementHost1.BackColor = System.Drawing.Color.Tan;
+			this.elementHost1.Location = new System.Drawing.Point(14, 434);
+			this.elementHost1.Name = "elementHost1";
+			this.elementHost1.Size = new System.Drawing.Size(1456, 336);
+			this.elementHost1.TabIndex = 0;
+			this.elementHost1.Text = "elementHost1";
+			this.elementHost1.Child = this.cartesianChart1;
+			// 
+			// txb_tennhanvien
+			// 
+			this.txb_tennhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txb_tennhanvien.Location = new System.Drawing.Point(140, 80);
+			this.txb_tennhanvien.Name = "txb_tennhanvien";
+			this.txb_tennhanvien.Size = new System.Drawing.Size(252, 27);
+			this.txb_tennhanvien.TabIndex = 16;
+			// 
+			// btn_dong
+			// 
+			this.btn_dong.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_dong.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_dong.Location = new System.Drawing.Point(339, 263);
+			this.btn_dong.Name = "btn_dong";
+			this.btn_dong.Size = new System.Drawing.Size(115, 40);
+			this.btn_dong.TabIndex = 17;
+			this.btn_dong.Text = "Đóng";
+			this.btn_dong.UseVisualStyleBackColor = false;
+			this.btn_dong.Click += new System.EventHandler(this.btn_dong_Click);
+			// 
 			// btn_xuatbaocao
 			// 
 			this.btn_xuatbaocao.BackColor = System.Drawing.Color.DarkOrange;
@@ -284,6 +285,7 @@
 			this.Controls.Add(this.btn_thongkenhanvien);
 			this.Name = "fThongkenghiphep";
 			this.Text = "Thống kê lượt nghỉ phép";
+			this.Load += new System.EventHandler(this.fThongkenghiphep_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dgv_nghipheptk)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();

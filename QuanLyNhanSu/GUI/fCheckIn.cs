@@ -24,7 +24,7 @@ namespace QuanLyNhanSu.GUI
 
 
 			timer1.Start();
-			lb_tennhanvien.Text="Ten_nhan_vien";
+			//lb_tennhanvien.Text="Ten_nhan_vien";
 			var col = dgv_checkin.Columns["GioCheckIn"];
 			if (col != null)
 				col.DefaultCellStyle.Format = "HH:mm:ss";
@@ -38,12 +38,23 @@ namespace QuanLyNhanSu.GUI
 		{
 			
 
-			lb_tennhanvien.DataBindings.Clear();
-			lb_tennhanvien.DataBindings.Add(new Binding("Text", dgv_checkin.DataSource, "TenNV", true, DataSourceUpdateMode.Never));
+			txb_tennv.DataBindings.Clear();
+			txb_tennv.DataBindings.Add(new Binding("Text", dgv_checkin.DataSource, "TenNV", true, DataSourceUpdateMode.Never));
 		}
 		void LoadCheckIn(string manv)
 		{
 			checkinList.DataSource = CheckinDAO.Instance.GetCheckInByMaNV(manv);
+		}
+		private void dgv_checkin_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+		{
+			if (dgv_checkin.Columns[e.ColumnIndex].Name == "GioCheckIn")
+			{
+				if (e.Value is TimeSpan ts)
+				{
+					e.Value = ts.ToString(@"hh\:mm\:ss");
+					e.FormattingApplied = true;
+				}
+			}
 		}
 
 
@@ -132,5 +143,6 @@ namespace QuanLyNhanSu.GUI
 				LoadCheckIn(txb_manhanvien.Text);
 			}
 		}
+
 	}
 }

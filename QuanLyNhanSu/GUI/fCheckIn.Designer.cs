@@ -29,6 +29,8 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.txb_manhanvien = new System.Windows.Forms.TextBox();
 			this.lb_manhanvien = new System.Windows.Forms.Label();
 			this.lb_tennhanvien = new System.Windows.Forms.Label();
@@ -41,6 +43,7 @@
 			this.btn_xoacheckin = new System.Windows.Forms.Button();
 			this.btn_dongcheckin = new System.Windows.Forms.Button();
 			this.btn_timnhanvien = new System.Windows.Forms.Button();
+			this.txb_tennv = new System.Windows.Forms.TextBox();
 			this.MaCheckIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,11 +74,11 @@
 			// 
 			this.lb_tennhanvien.AutoSize = true;
 			this.lb_tennhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_tennhanvien.Location = new System.Drawing.Point(620, 22);
+			this.lb_tennhanvien.Location = new System.Drawing.Point(586, 22);
 			this.lb_tennhanvien.Name = "lb_tennhanvien";
-			this.lb_tennhanvien.Size = new System.Drawing.Size(110, 20);
+			this.lb_tennhanvien.Size = new System.Drawing.Size(106, 20);
 			this.lb_tennhanvien.TabIndex = 2;
-			this.lb_tennhanvien.Text = "Ten_nhan_vien";
+			this.lb_tennhanvien.Text = "Tên nhân viên";
 			// 
 			// lb_giocheckin
 			// 
@@ -83,7 +86,7 @@
 			this.lb_giocheckin.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lb_giocheckin.Location = new System.Drawing.Point(12, 213);
 			this.lb_giocheckin.Name = "lb_giocheckin";
-			this.lb_giocheckin.Size = new System.Drawing.Size(204, 46);
+			this.lb_giocheckin.Size = new System.Drawing.Size(199, 45);
 			this.lb_giocheckin.TabIndex = 3;
 			this.lb_giocheckin.Text = "Giờ checkin";
 			// 
@@ -107,6 +110,17 @@
 			// 
 			// dgv_checkin
 			// 
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.Tan;
+			this.dgv_checkin.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			this.dgv_checkin.BackgroundColor = System.Drawing.Color.White;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgv_checkin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.dgv_checkin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgv_checkin.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaCheckIn,
@@ -169,13 +183,21 @@
 			this.btn_timnhanvien.UseVisualStyleBackColor = false;
 			this.btn_timnhanvien.Click += new System.EventHandler(this.btn_findnv_Click);
 			// 
+			// txb_tennv
+			// 
+			this.txb_tennv.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txb_tennv.Location = new System.Drawing.Point(718, 15);
+			this.txb_tennv.Name = "txb_tennv";
+			this.txb_tennv.Size = new System.Drawing.Size(252, 27);
+			this.txb_tennv.TabIndex = 11;
+			// 
 			// MaCheckIn
 			// 
 			this.MaCheckIn.DataPropertyName = "MaCheckIn";
 			this.MaCheckIn.HeaderText = "Mã checkin";
 			this.MaCheckIn.MinimumWidth = 6;
 			this.MaCheckIn.Name = "MaCheckIn";
-			this.MaCheckIn.Width = 125;
+			this.MaCheckIn.Width = 75;
 			// 
 			// MaNV
 			// 
@@ -183,7 +205,7 @@
 			this.MaNV.HeaderText = "Mã nhân viên";
 			this.MaNV.MinimumWidth = 6;
 			this.MaNV.Name = "MaNV";
-			this.MaNV.Width = 125;
+			this.MaNV.Width = 75;
 			// 
 			// TenNV
 			// 
@@ -215,6 +237,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.BlanchedAlmond;
 			this.ClientSize = new System.Drawing.Size(982, 503);
+			this.Controls.Add(this.txb_tennv);
 			this.Controls.Add(this.btn_timnhanvien);
 			this.Controls.Add(this.btn_dongcheckin);
 			this.Controls.Add(this.btn_xoacheckin);
@@ -230,6 +253,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.dgv_checkin)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
+			dgv_checkin.CellFormatting += dgv_checkin_CellFormatting;
+
 
 		}
 
@@ -247,6 +272,7 @@
 		private System.Windows.Forms.Button btn_xoacheckin;
 		private System.Windows.Forms.Button btn_dongcheckin;
 		private System.Windows.Forms.Button btn_timnhanvien;
+		private System.Windows.Forms.TextBox txb_tennv;
 		private System.Windows.Forms.DataGridViewTextBoxColumn MaCheckIn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn MaNV;
 		private System.Windows.Forms.DataGridViewTextBoxColumn TenNV;

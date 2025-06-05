@@ -103,7 +103,7 @@
 			this.btn_quanlynguoidung.Name = "btn_quanlynguoidung";
 			this.btn_quanlynguoidung.Size = new System.Drawing.Size(200, 40);
 			this.btn_quanlynguoidung.TabIndex = 6;
-			this.btn_quanlynguoidung.Text = "Quản lý tài khoản";
+			this.btn_quanlynguoidung.Text = "Quản lý người dùng";
 			this.btn_quanlynguoidung.UseVisualStyleBackColor = false;
 			this.btn_quanlynguoidung.Click += new System.EventHandler(this.btn_quanlynguoidung_Click);
 			this.btn_quanlynguoidung.MouseEnter += new System.EventHandler(this.btn_quanlynguoidung_MouseEnter);
@@ -313,7 +313,7 @@
 			this.btn_quanlyphongban.Name = "btn_quanlyphongban";
 			this.btn_quanlyphongban.Size = new System.Drawing.Size(325, 250);
 			this.btn_quanlyphongban.TabIndex = 5;
-			this.btn_quanlyphongban.Text = "Phòng ban";
+			this.btn_quanlyphongban.Text = "Cửa hàng";
 			this.btn_quanlyphongban.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
 			this.btn_quanlyphongban.UseVisualStyleBackColor = false;
 			this.btn_quanlyphongban.Click += new System.EventHandler(this.btn_quanlyphongban_Click);
@@ -353,7 +353,7 @@
 			this.btn_baocaotongquannhansu.BackColor = System.Drawing.Color.Tan;
 			this.btn_baocaotongquannhansu.Font = new System.Drawing.Font("Consolas", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btn_baocaotongquannhansu.Image = global::QuanLyNhanSu.Properties.Resources.Webp_net_resizeimage2;
-			this.btn_baocaotongquannhansu.Location = new System.Drawing.Point(6, 6);
+			this.btn_baocaotongquannhansu.Location = new System.Drawing.Point(10, 9);
 			this.btn_baocaotongquannhansu.Name = "btn_baocaotongquannhansu";
 			this.btn_baocaotongquannhansu.Size = new System.Drawing.Size(347, 500);
 			this.btn_baocaotongquannhansu.TabIndex = 8;
@@ -428,6 +428,7 @@
 			// 
 			// btn_quanlybangcong
 			// 
+			this.btn_quanlybangcong.BackColor = System.Drawing.Color.Tan;
 			this.btn_quanlybangcong.Font = new System.Drawing.Font("Consolas", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btn_quanlybangcong.Image = global::QuanLyNhanSu.Properties.Resources.bangcong;
 			this.btn_quanlybangcong.Location = new System.Drawing.Point(6, 6);
@@ -436,7 +437,7 @@
 			this.btn_quanlybangcong.TabIndex = 8;
 			this.btn_quanlybangcong.Text = "Quản lý bảng công";
 			this.btn_quanlybangcong.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-			this.btn_quanlybangcong.UseVisualStyleBackColor = true;
+			this.btn_quanlybangcong.UseVisualStyleBackColor = false;
 			this.btn_quanlybangcong.Click += new System.EventHandler(this.btn_quanlybangcong_Click);
 			this.btn_quanlybangcong.MouseEnter += new System.EventHandler(this.btn_quanlybangcong_MouseEnter);
 			this.btn_quanlybangcong.MouseLeave += new System.EventHandler(this.btn_quanlybangcong_MouseLeave);
@@ -615,7 +616,7 @@
 			// 
 			// btn_quanlyphucap
 			// 
-			this.btn_quanlyphucap.BackColor = System.Drawing.Color.White;
+			this.btn_quanlyphucap.BackColor = System.Drawing.Color.Tan;
 			this.btn_quanlyphucap.Font = new System.Drawing.Font("Consolas", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btn_quanlyphucap.Image = global::QuanLyNhanSu.Properties.Resources.thue;
 			this.btn_quanlyphucap.Location = new System.Drawing.Point(496, 6);
@@ -631,7 +632,7 @@
 			// 
 			// btn_quanlybangluong
 			// 
-			this.btn_quanlybangluong.BackColor = System.Drawing.Color.White;
+			this.btn_quanlybangluong.BackColor = System.Drawing.Color.Tan;
 			this.btn_quanlybangluong.Font = new System.Drawing.Font("Consolas", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btn_quanlybangluong.Image = global::QuanLyNhanSu.Properties.Resources.bangluong;
 			this.btn_quanlybangluong.Location = new System.Drawing.Point(742, 6);
@@ -705,10 +706,6 @@
 		private System.Windows.Forms.Button btn_quanlythongtinnhanvien;
 		private System.Windows.Forms.Button btn_quanlyphongban;
 		private System.Windows.Forms.TabPage tp_baocaothongke;
-		private System.Windows.Forms.Button btn_baocaotongquannhansu;
-		private System.Windows.Forms.Button btn_thongkeluotnghiphepcuanhanvien;
-		private System.Windows.Forms.Button btn_baocaoluongthuong;
-		private System.Windows.Forms.Button btn_thongkethongtinkhenthuongkyluat;
 		private System.Windows.Forms.TabPage tp_quanlychamcongvathoigianlamviec;
 		private System.Windows.Forms.Button btn_quanlybangcong;
 		private System.Windows.Forms.Button btn_duyetnghiphep;
@@ -727,5 +724,9 @@
 		private System.Windows.Forms.Button btn_quanlynguoidung;
 		private System.Windows.Forms.Button btn_quanlyphucap;
 		private System.Windows.Forms.Button btn_thongketuyendung;
+		private System.Windows.Forms.Button btn_baocaotongquannhansu;
+		private System.Windows.Forms.Button btn_thongkeluotnghiphepcuanhanvien;
+		private System.Windows.Forms.Button btn_baocaoluongthuong;
+		private System.Windows.Forms.Button btn_thongkethongtinkhenthuongkyluat;
 	}
 }

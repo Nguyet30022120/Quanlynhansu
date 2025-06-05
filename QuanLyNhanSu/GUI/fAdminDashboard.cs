@@ -367,17 +367,6 @@ namespace QuanLyNhanSu
 			this.Show();
 		}
 
-		private void btn_thaydoigiolamviec_Click(object sender, EventArgs e)
-		{
-			fDoica f = new fDoica();
-			this.Hide();
-			f.ShowDialog();
-			this.Show();
-		}
-
-
-
-
 		private void btn_quanlybangcong_Click(object sender, EventArgs e)
 		{
 			fBangcong f = new fBangcong();

@@ -28,6 +28,8 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.pn_chucvu = new System.Windows.Forms.Panel();
 			this.btn_timkiemchucvu = new System.Windows.Forms.Button();
 			this.btn_dongchucvu = new System.Windows.Forms.Button();
@@ -62,14 +64,14 @@
 			this.pn_chucvu.Controls.Add(this.lb_tenchucvu);
 			this.pn_chucvu.Location = new System.Drawing.Point(9, 9);
 			this.pn_chucvu.Name = "pn_chucvu";
-			this.pn_chucvu.Size = new System.Drawing.Size(971, 179);
+			this.pn_chucvu.Size = new System.Drawing.Size(1469, 179);
 			this.pn_chucvu.TabIndex = 0;
 			// 
 			// btn_timkiemchucvu
 			// 
 			this.btn_timkiemchucvu.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_timkiemchucvu.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_timkiemchucvu.Location = new System.Drawing.Point(676, 10);
+			this.btn_timkiemchucvu.Location = new System.Drawing.Point(1201, 13);
 			this.btn_timkiemchucvu.Name = "btn_timkiemchucvu";
 			this.btn_timkiemchucvu.Size = new System.Drawing.Size(115, 40);
 			this.btn_timkiemchucvu.TabIndex = 10;
@@ -81,7 +83,7 @@
 			// 
 			this.btn_dongchucvu.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_dongchucvu.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_dongchucvu.Location = new System.Drawing.Point(827, 130);
+			this.btn_dongchucvu.Location = new System.Drawing.Point(1346, 130);
 			this.btn_dongchucvu.Name = "btn_dongchucvu";
 			this.btn_dongchucvu.Size = new System.Drawing.Size(115, 40);
 			this.btn_dongchucvu.TabIndex = 9;
@@ -94,14 +96,14 @@
 			this.txb_findcv.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txb_findcv.Location = new System.Drawing.Point(12, 20);
 			this.txb_findcv.Name = "txb_findcv";
-			this.txb_findcv.Size = new System.Drawing.Size(649, 27);
+			this.txb_findcv.Size = new System.Drawing.Size(1160, 27);
 			this.txb_findcv.TabIndex = 10;
 			// 
 			// btn_xoachucvu
 			// 
 			this.btn_xoachucvu.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_xoachucvu.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_xoachucvu.Location = new System.Drawing.Point(827, 90);
+			this.btn_xoachucvu.Location = new System.Drawing.Point(1346, 89);
 			this.btn_xoachucvu.Name = "btn_xoachucvu";
 			this.btn_xoachucvu.Size = new System.Drawing.Size(115, 40);
 			this.btn_xoachucvu.TabIndex = 8;
@@ -113,7 +115,7 @@
 			// 
 			this.btn_suachucvu.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_suachucvu.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_suachucvu.Location = new System.Drawing.Point(827, 50);
+			this.btn_suachucvu.Location = new System.Drawing.Point(1346, 49);
 			this.btn_suachucvu.Name = "btn_suachucvu";
 			this.btn_suachucvu.Size = new System.Drawing.Size(115, 40);
 			this.btn_suachucvu.TabIndex = 7;
@@ -125,7 +127,7 @@
 			// 
 			this.btn_themchucvu.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_themchucvu.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_themchucvu.Location = new System.Drawing.Point(827, 10);
+			this.btn_themchucvu.Location = new System.Drawing.Point(1346, 10);
 			this.btn_themchucvu.Name = "btn_themchucvu";
 			this.btn_themchucvu.Size = new System.Drawing.Size(115, 40);
 			this.btn_themchucvu.TabIndex = 6;
@@ -138,7 +140,7 @@
 			this.txb_motacv.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txb_motacv.Location = new System.Drawing.Point(131, 130);
 			this.txb_motacv.Name = "txb_motacv";
-			this.txb_motacv.Size = new System.Drawing.Size(530, 27);
+			this.txb_motacv.Size = new System.Drawing.Size(1185, 27);
 			this.txb_motacv.TabIndex = 5;
 			// 
 			// txb_tencv
@@ -152,27 +154,37 @@
 			// lb_motachucvu
 			// 
 			this.lb_motachucvu.AutoSize = true;
-			this.lb_motachucvu.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lb_motachucvu.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lb_motachucvu.Location = new System.Drawing.Point(8, 130);
 			this.lb_motachucvu.Name = "lb_motachucvu";
-			this.lb_motachucvu.Size = new System.Drawing.Size(111, 21);
+			this.lb_motachucvu.Size = new System.Drawing.Size(108, 20);
 			this.lb_motachucvu.TabIndex = 2;
 			this.lb_motachucvu.Text = "Mô tả chức vụ";
 			// 
 			// lb_tenchucvu
 			// 
 			this.lb_tenchucvu.AutoSize = true;
-			this.lb_tenchucvu.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lb_tenchucvu.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lb_tenchucvu.Location = new System.Drawing.Point(8, 81);
 			this.lb_tenchucvu.Name = "lb_tenchucvu";
-			this.lb_tenchucvu.Size = new System.Drawing.Size(94, 21);
+			this.lb_tenchucvu.Size = new System.Drawing.Size(92, 20);
 			this.lb_tenchucvu.TabIndex = 0;
 			this.lb_tenchucvu.Text = "Tên chức vụ";
 			this.lb_tenchucvu.Click += new System.EventHandler(this.Label1_Click);
 			// 
 			// dgv_chucvu
 			// 
-			this.dgv_chucvu.BackgroundColor = System.Drawing.Color.BlanchedAlmond;
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.Tan;
+			this.dgv_chucvu.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			this.dgv_chucvu.BackgroundColor = System.Drawing.Color.White;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgv_chucvu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.dgv_chucvu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgv_chucvu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaCV,
@@ -182,13 +194,13 @@
 			this.dgv_chucvu.Name = "dgv_chucvu";
 			this.dgv_chucvu.RowHeadersWidth = 51;
 			this.dgv_chucvu.RowTemplate.Height = 24;
-			this.dgv_chucvu.Size = new System.Drawing.Size(971, 297);
+			this.dgv_chucvu.Size = new System.Drawing.Size(1469, 578);
 			this.dgv_chucvu.TabIndex = 1;
 			// 
 			// MaCV
 			// 
 			this.MaCV.DataPropertyName = "MaChucVu";
-			this.MaCV.HeaderText = "Mã Chức Vụ";
+			this.MaCV.HeaderText = "Mã chức vụ";
 			this.MaCV.MinimumWidth = 6;
 			this.MaCV.Name = "MaCV";
 			this.MaCV.Width = 125;
@@ -196,7 +208,7 @@
 			// TenCV
 			// 
 			this.TenCV.DataPropertyName = "TenChucVu";
-			this.TenCV.HeaderText = "Tên Chức Vụ";
+			this.TenCV.HeaderText = "Tên chức vụ";
 			this.TenCV.MinimumWidth = 6;
 			this.TenCV.Name = "TenCV";
 			this.TenCV.Width = 125;
@@ -204,7 +216,7 @@
 			// MoTa
 			// 
 			this.MoTa.DataPropertyName = "MoTaChucVu";
-			this.MoTa.HeaderText = "Mô Tả";
+			this.MoTa.HeaderText = "Mô tả";
 			this.MoTa.MinimumWidth = 6;
 			this.MoTa.Name = "MoTa";
 			this.MoTa.Width = 400;
@@ -214,7 +226,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.BlanchedAlmond;
-			this.ClientSize = new System.Drawing.Size(982, 503);
+			this.ClientSize = new System.Drawing.Size(1482, 778);
 			this.Controls.Add(this.dgv_chucvu);
 			this.Controls.Add(this.pn_chucvu);
 			this.Name = "fQuanlychucvu";

@@ -31,8 +31,8 @@ namespace QuanLyNhanSu.GUI
 		}
 		void LoadTenNV()
 		{
-			lb_tennhanvien.DataBindings.Clear();
-			lb_tennhanvien.DataBindings.Add(new Binding("Text", dgv_checkout.DataSource, "TenNV", true, DataSourceUpdateMode.Never));
+			txb_tennhanvien.DataBindings.Clear();
+			txb_tennhanvien.DataBindings.Add(new Binding("Text", dgv_checkout.DataSource, "TenNV", true, DataSourceUpdateMode.Never));
 		}
 		void LoadCheckOut(string manv)
 		{

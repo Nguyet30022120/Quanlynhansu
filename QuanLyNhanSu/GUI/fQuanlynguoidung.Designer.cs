@@ -28,6 +28,8 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.btn_suanguoidung = new System.Windows.Forms.Button();
 			this.btn_xoanguoidung = new System.Windows.Forms.Button();
 			this.btn_dongnguoidung = new System.Windows.Forms.Button();
@@ -42,6 +44,14 @@
 			this.la_motaquyenhan = new System.Windows.Forms.Label();
 			this.cb_vaitro = new System.Windows.Forms.ComboBox();
 			this.txb_motaquyenhan = new System.Windows.Forms.TextBox();
+			this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ChucVu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.PhongBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.MaTK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.TaiKhoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.VaiTro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.MoTaQuyenHan = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_nguoidung)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -49,7 +59,7 @@
 			// 
 			this.btn_suanguoidung.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_suanguoidung.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_suanguoidung.Location = new System.Drawing.Point(827, 20);
+			this.btn_suanguoidung.Location = new System.Drawing.Point(1353, 20);
 			this.btn_suanguoidung.Name = "btn_suanguoidung";
 			this.btn_suanguoidung.Size = new System.Drawing.Size(115, 40);
 			this.btn_suanguoidung.TabIndex = 1;
@@ -61,7 +71,7 @@
 			// 
 			this.btn_xoanguoidung.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_xoanguoidung.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_xoanguoidung.Location = new System.Drawing.Point(827, 63);
+			this.btn_xoanguoidung.Location = new System.Drawing.Point(1353, 66);
 			this.btn_xoanguoidung.Name = "btn_xoanguoidung";
 			this.btn_xoanguoidung.Size = new System.Drawing.Size(115, 40);
 			this.btn_xoanguoidung.TabIndex = 2;
@@ -73,7 +83,7 @@
 			// 
 			this.btn_dongnguoidung.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_dongnguoidung.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_dongnguoidung.Location = new System.Drawing.Point(827, 107);
+			this.btn_dongnguoidung.Location = new System.Drawing.Point(1353, 113);
 			this.btn_dongnguoidung.Name = "btn_dongnguoidung";
 			this.btn_dongnguoidung.Size = new System.Drawing.Size(115, 40);
 			this.btn_dongnguoidung.TabIndex = 3;
@@ -83,12 +93,34 @@
 			// 
 			// dgv_nguoidung
 			// 
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.Tan;
+			dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+			this.dgv_nguoidung.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			this.dgv_nguoidung.BackgroundColor = System.Drawing.Color.White;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.Color.Tan;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Tan;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgv_nguoidung.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.dgv_nguoidung.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgv_nguoidung.Location = new System.Drawing.Point(4, 176);
+			this.dgv_nguoidung.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TenNV,
+            this.MaNV,
+            this.ChucVu,
+            this.PhongBan,
+            this.MaTK,
+            this.TaiKhoan,
+            this.VaiTro,
+            this.MoTaQuyenHan});
+			this.dgv_nguoidung.Location = new System.Drawing.Point(12, 176);
 			this.dgv_nguoidung.Name = "dgv_nguoidung";
 			this.dgv_nguoidung.RowHeadersWidth = 51;
 			this.dgv_nguoidung.RowTemplate.Height = 24;
-			this.dgv_nguoidung.Size = new System.Drawing.Size(975, 324);
+			this.dgv_nguoidung.Size = new System.Drawing.Size(1458, 590);
 			this.dgv_nguoidung.TabIndex = 4;
 			// 
 			// lb_hoten
@@ -189,12 +221,76 @@
 			this.txb_motaquyenhan.Size = new System.Drawing.Size(252, 77);
 			this.txb_motaquyenhan.TabIndex = 14;
 			// 
+			// TenNV
+			// 
+			this.TenNV.DataPropertyName = "TenNV";
+			this.TenNV.HeaderText = "Tên nhân viên";
+			this.TenNV.MinimumWidth = 6;
+			this.TenNV.Name = "TenNV";
+			this.TenNV.Width = 125;
+			// 
+			// MaNV
+			// 
+			this.MaNV.DataPropertyName = "MaNV";
+			this.MaNV.HeaderText = "Mã nhân viên";
+			this.MaNV.MinimumWidth = 6;
+			this.MaNV.Name = "MaNV";
+			this.MaNV.Width = 125;
+			// 
+			// ChucVu
+			// 
+			this.ChucVu.DataPropertyName = "ChucVu";
+			this.ChucVu.HeaderText = "Chức vụ";
+			this.ChucVu.MinimumWidth = 6;
+			this.ChucVu.Name = "ChucVu";
+			this.ChucVu.Width = 125;
+			// 
+			// PhongBan
+			// 
+			this.PhongBan.DataPropertyName = "PhongBan";
+			this.PhongBan.HeaderText = "Cửa hàng";
+			this.PhongBan.MinimumWidth = 6;
+			this.PhongBan.Name = "PhongBan";
+			this.PhongBan.Width = 125;
+			// 
+			// MaTK
+			// 
+			this.MaTK.DataPropertyName = "MaTK";
+			this.MaTK.HeaderText = "Mã tài khoản";
+			this.MaTK.MinimumWidth = 6;
+			this.MaTK.Name = "MaTK";
+			this.MaTK.Width = 125;
+			// 
+			// TaiKhoan
+			// 
+			this.TaiKhoan.DataPropertyName = "TaiKhoan";
+			this.TaiKhoan.HeaderText = "Tên tài khoản";
+			this.TaiKhoan.MinimumWidth = 6;
+			this.TaiKhoan.Name = "TaiKhoan";
+			this.TaiKhoan.Width = 125;
+			// 
+			// VaiTro
+			// 
+			this.VaiTro.DataPropertyName = "VaiTro";
+			this.VaiTro.HeaderText = "Vai trò";
+			this.VaiTro.MinimumWidth = 6;
+			this.VaiTro.Name = "VaiTro";
+			this.VaiTro.Width = 125;
+			// 
+			// MoTaQuyenHan
+			// 
+			this.MoTaQuyenHan.DataPropertyName = "MoTaQuyenHan";
+			this.MoTaQuyenHan.HeaderText = "Mô tả";
+			this.MoTaQuyenHan.MinimumWidth = 6;
+			this.MoTaQuyenHan.Name = "MoTaQuyenHan";
+			this.MoTaQuyenHan.Width = 175;
+			// 
 			// fQuanlynguoidung
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.BlanchedAlmond;
-			this.ClientSize = new System.Drawing.Size(982, 503);
+			this.ClientSize = new System.Drawing.Size(1480, 778);
 			this.Controls.Add(this.txb_motaquyenhan);
 			this.Controls.Add(this.cb_vaitro);
 			this.Controls.Add(this.la_motaquyenhan);
@@ -232,5 +328,13 @@
 		private System.Windows.Forms.Label la_motaquyenhan;
 		private System.Windows.Forms.ComboBox cb_vaitro;
 		private System.Windows.Forms.TextBox txb_motaquyenhan;
+		private System.Windows.Forms.DataGridViewTextBoxColumn TenNV;
+		private System.Windows.Forms.DataGridViewTextBoxColumn MaNV;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ChucVu;
+		private System.Windows.Forms.DataGridViewTextBoxColumn PhongBan;
+		private System.Windows.Forms.DataGridViewTextBoxColumn MaTK;
+		private System.Windows.Forms.DataGridViewTextBoxColumn TaiKhoan;
+		private System.Windows.Forms.DataGridViewTextBoxColumn VaiTro;
+		private System.Windows.Forms.DataGridViewTextBoxColumn MoTaQuyenHan;
 	}
 }

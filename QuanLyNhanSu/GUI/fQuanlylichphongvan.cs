@@ -19,7 +19,7 @@ namespace QuanLyNhanSu.GUI
 		public fQuanlylichphongvan()
 		{
 			InitializeComponent();
-			dgv_lichpv.DataSource = scheduleList;
+			dgv_lichphongvan.DataSource = scheduleList;
 			BindingscheduleData();
 			LoadSchedule();
 			LoadCbTrangThai();
@@ -34,13 +34,13 @@ namespace QuanLyNhanSu.GUI
 		void BindingscheduleData()
 		{
 			//txb_mapv.DataBindings.Add(new Binding("Text", dgv_lichpv.DataSource, "MaPV", true, DataSourceUpdateMode.Never));
-			txb_tenungvien.DataBindings.Add(new Binding("Text", dgv_lichpv.DataSource, "TenUV", true, DataSourceUpdateMode.Never));
-			dtp_ngayphongvan.DataBindings.Add(new Binding("Value", dgv_lichpv.DataSource, "NgayPV", true, DataSourceUpdateMode.Never));
-			dtp_giophongvan.DataBindings.Add(new Binding("Value", dgv_lichpv.DataSource, "ThoiGianPV", true, DataSourceUpdateMode.Never));
-			cb_diadiem.DataBindings.Add(new Binding("Text", dgv_lichpv.DataSource, "DiaDiem", true, DataSourceUpdateMode.Never));
-			cb_trangthai.DataBindings.Add(new Binding("Text", dgv_lichpv.DataSource, "TrangThai", true, DataSourceUpdateMode.Never));
-			txb_nguoiphongvan.DataBindings.Add(new Binding("Text", dgv_lichpv.DataSource, "NguoiPV", true, DataSourceUpdateMode.Never));
-			txb_mahoso.DataBindings.Add(new Binding("Text", dgv_lichpv.DataSource, "MaHS", true, DataSourceUpdateMode.Never));
+			txb_tenungvien.DataBindings.Add(new Binding("Text", dgv_lichphongvan.DataSource, "TenUV", true, DataSourceUpdateMode.Never));
+			dtp_ngayphongvan.DataBindings.Add(new Binding("Value", dgv_lichphongvan.DataSource, "NgayPV", true, DataSourceUpdateMode.Never));
+			dtp_giophongvan.DataBindings.Add(new Binding("Value", dgv_lichphongvan.DataSource, "ThoiGianPV", true, DataSourceUpdateMode.Never));
+			cb_diadiem.DataBindings.Add(new Binding("Text", dgv_lichphongvan.DataSource, "DiaDiem", true, DataSourceUpdateMode.Never));
+			cb_trangthai.DataBindings.Add(new Binding("Text", dgv_lichphongvan.DataSource, "TrangThai", true, DataSourceUpdateMode.Never));
+			txb_nguoiphongvan.DataBindings.Add(new Binding("Text", dgv_lichphongvan.DataSource, "NguoiPV", true, DataSourceUpdateMode.Never));
+			txb_mahoso.DataBindings.Add(new Binding("Text", dgv_lichphongvan.DataSource, "MaHS", true, DataSourceUpdateMode.Never));
 		}
 		private void LoadStaffNames()
 		{
@@ -105,7 +105,7 @@ namespace QuanLyNhanSu.GUI
 
 				try
 				{
-					string mapv = dgv_lichpv.CurrentRow.Cells["MaPV"].Value.ToString();
+					string mapv = dgv_lichphongvan.CurrentRow.Cells["MaPV"].Value.ToString();
 					string nguoipv = txb_nguoiphongvan.Text;
 					DateTime ngaypv = dtp_ngayphongvan.Value;
 					DateTime thoigianpv = dtp_giophongvan.Value;
@@ -140,7 +140,7 @@ namespace QuanLyNhanSu.GUI
 
 				try
 				{
-					string mapv = dgv_lichpv.CurrentRow.Cells["MaPV"].Value.ToString();
+					string mapv = dgv_lichphongvan.CurrentRow.Cells["MaPV"].Value.ToString();
 
 					if (LichphongvanDAO.Instance.DeleteSchedule(mapv))
 					{

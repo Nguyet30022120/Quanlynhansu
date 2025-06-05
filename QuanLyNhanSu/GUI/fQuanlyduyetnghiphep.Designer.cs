@@ -28,14 +28,9 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.dgv_duyetdonnghiphep = new System.Windows.Forms.DataGridView();
-			this.btn_duyet = new System.Windows.Forms.Button();
-			this.btn_tuchoi = new System.Windows.Forms.Button();
-			this.btn_dong = new System.Windows.Forms.Button();
-			this.txb_madonnghiphep = new System.Windows.Forms.TextBox();
-			this.lb_madonnghiphep = new System.Windows.Forms.Label();
-			this.btn_timkiemdonnghiphep = new System.Windows.Forms.Button();
-			this.txb_timkiemdonnghiphep = new System.Windows.Forms.TextBox();
 			this.MaDonNghiPhep = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,12 +42,30 @@
 			this.NgayKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.SoNgay = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.NgayTao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.btn_duyet = new System.Windows.Forms.Button();
+			this.btn_tuchoi = new System.Windows.Forms.Button();
+			this.btn_dong = new System.Windows.Forms.Button();
+			this.txb_madonnghiphep = new System.Windows.Forms.TextBox();
+			this.lb_madonnghiphep = new System.Windows.Forms.Label();
+			this.btn_timkiemdonnghiphep = new System.Windows.Forms.Button();
+			this.txb_timkiemdonnghiphep = new System.Windows.Forms.TextBox();
 			this.lb_goiy = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_duyetdonnghiphep)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// dgv_duyetdonnghiphep
 			// 
+			dataGridViewCellStyle3.BackColor = System.Drawing.Color.Tan;
+			this.dgv_duyetdonnghiphep.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+			this.dgv_duyetdonnghiphep.BackgroundColor = System.Drawing.Color.White;
+			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgv_duyetdonnghiphep.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
 			this.dgv_duyetdonnghiphep.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgv_duyetdonnghiphep.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaDonNghiPhep,
@@ -70,82 +83,8 @@
 			this.dgv_duyetdonnghiphep.Name = "dgv_duyetdonnghiphep";
 			this.dgv_duyetdonnghiphep.RowHeadersWidth = 51;
 			this.dgv_duyetdonnghiphep.RowTemplate.Height = 24;
-			this.dgv_duyetdonnghiphep.Size = new System.Drawing.Size(973, 409);
+			this.dgv_duyetdonnghiphep.Size = new System.Drawing.Size(1470, 682);
 			this.dgv_duyetdonnghiphep.TabIndex = 0;
-			// 
-			// btn_duyet
-			// 
-			this.btn_duyet.BackColor = System.Drawing.Color.DarkOrange;
-			this.btn_duyet.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_duyet.Location = new System.Drawing.Point(570, 20);
-			this.btn_duyet.Name = "btn_duyet";
-			this.btn_duyet.Size = new System.Drawing.Size(115, 40);
-			this.btn_duyet.TabIndex = 1;
-			this.btn_duyet.Text = "Duyệt";
-			this.btn_duyet.UseVisualStyleBackColor = false;
-			this.btn_duyet.Click += new System.EventHandler(this.btn_duyet_Click);
-			// 
-			// btn_tuchoi
-			// 
-			this.btn_tuchoi.BackColor = System.Drawing.Color.DarkOrange;
-			this.btn_tuchoi.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_tuchoi.Location = new System.Drawing.Point(680, 20);
-			this.btn_tuchoi.Name = "btn_tuchoi";
-			this.btn_tuchoi.Size = new System.Drawing.Size(115, 40);
-			this.btn_tuchoi.TabIndex = 2;
-			this.btn_tuchoi.Text = "Từ chối";
-			this.btn_tuchoi.UseVisualStyleBackColor = false;
-			this.btn_tuchoi.Click += new System.EventHandler(this.btn_tuchoi_Click);
-			// 
-			// btn_dong
-			// 
-			this.btn_dong.BackColor = System.Drawing.Color.DarkOrange;
-			this.btn_dong.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_dong.Location = new System.Drawing.Point(790, 20);
-			this.btn_dong.Name = "btn_dong";
-			this.btn_dong.Size = new System.Drawing.Size(115, 40);
-			this.btn_dong.TabIndex = 3;
-			this.btn_dong.Text = "Đóng";
-			this.btn_dong.UseVisualStyleBackColor = false;
-			this.btn_dong.Click += new System.EventHandler(this.btn_dong_Click);
-			// 
-			// txb_madonnghiphep
-			// 
-			this.txb_madonnghiphep.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_madonnghiphep.Location = new System.Drawing.Point(74, 59);
-			this.txb_madonnghiphep.Name = "txb_madonnghiphep";
-			this.txb_madonnghiphep.Size = new System.Drawing.Size(188, 27);
-			this.txb_madonnghiphep.TabIndex = 4;
-			// 
-			// lb_madonnghiphep
-			// 
-			this.lb_madonnghiphep.AutoSize = true;
-			this.lb_madonnghiphep.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_madonnghiphep.Location = new System.Drawing.Point(6, 62);
-			this.lb_madonnghiphep.Name = "lb_madonnghiphep";
-			this.lb_madonnghiphep.Size = new System.Drawing.Size(62, 20);
-			this.lb_madonnghiphep.TabIndex = 5;
-			this.lb_madonnghiphep.Text = "Mã đơn";
-			// 
-			// btn_timkiemdonnghiphep
-			// 
-			this.btn_timkiemdonnghiphep.BackColor = System.Drawing.Color.DarkOrange;
-			this.btn_timkiemdonnghiphep.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_timkiemdonnghiphep.Location = new System.Drawing.Point(291, 20);
-			this.btn_timkiemdonnghiphep.Name = "btn_timkiemdonnghiphep";
-			this.btn_timkiemdonnghiphep.Size = new System.Drawing.Size(115, 40);
-			this.btn_timkiemdonnghiphep.TabIndex = 6;
-			this.btn_timkiemdonnghiphep.Text = "Tìm kiếm";
-			this.btn_timkiemdonnghiphep.UseVisualStyleBackColor = false;
-			this.btn_timkiemdonnghiphep.Click += new System.EventHandler(this.btn_timkiemdonnghiphep_Click);
-			// 
-			// txb_timkiemdonnghiphep
-			// 
-			this.txb_timkiemdonnghiphep.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_timkiemdonnghiphep.Location = new System.Drawing.Point(10, 20);
-			this.txb_timkiemdonnghiphep.Name = "txb_timkiemdonnghiphep";
-			this.txb_timkiemdonnghiphep.Size = new System.Drawing.Size(252, 27);
-			this.txb_timkiemdonnghiphep.TabIndex = 7;
 			// 
 			// MaDonNghiPhep
 			// 
@@ -235,11 +174,85 @@
 			this.NgayTao.Name = "NgayTao";
 			this.NgayTao.Width = 125;
 			// 
+			// btn_duyet
+			// 
+			this.btn_duyet.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_duyet.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_duyet.Location = new System.Drawing.Point(1135, 20);
+			this.btn_duyet.Name = "btn_duyet";
+			this.btn_duyet.Size = new System.Drawing.Size(115, 40);
+			this.btn_duyet.TabIndex = 1;
+			this.btn_duyet.Text = "Duyệt";
+			this.btn_duyet.UseVisualStyleBackColor = false;
+			this.btn_duyet.Click += new System.EventHandler(this.btn_duyet_Click);
+			// 
+			// btn_tuchoi
+			// 
+			this.btn_tuchoi.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_tuchoi.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_tuchoi.Location = new System.Drawing.Point(1245, 20);
+			this.btn_tuchoi.Name = "btn_tuchoi";
+			this.btn_tuchoi.Size = new System.Drawing.Size(115, 40);
+			this.btn_tuchoi.TabIndex = 2;
+			this.btn_tuchoi.Text = "Từ chối";
+			this.btn_tuchoi.UseVisualStyleBackColor = false;
+			this.btn_tuchoi.Click += new System.EventHandler(this.btn_tuchoi_Click);
+			// 
+			// btn_dong
+			// 
+			this.btn_dong.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_dong.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_dong.Location = new System.Drawing.Point(1355, 20);
+			this.btn_dong.Name = "btn_dong";
+			this.btn_dong.Size = new System.Drawing.Size(115, 40);
+			this.btn_dong.TabIndex = 3;
+			this.btn_dong.Text = "Đóng";
+			this.btn_dong.UseVisualStyleBackColor = false;
+			this.btn_dong.Click += new System.EventHandler(this.btn_dong_Click);
+			// 
+			// txb_madonnghiphep
+			// 
+			this.txb_madonnghiphep.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txb_madonnghiphep.Location = new System.Drawing.Point(74, 59);
+			this.txb_madonnghiphep.Name = "txb_madonnghiphep";
+			this.txb_madonnghiphep.Size = new System.Drawing.Size(572, 27);
+			this.txb_madonnghiphep.TabIndex = 4;
+			// 
+			// lb_madonnghiphep
+			// 
+			this.lb_madonnghiphep.AutoSize = true;
+			this.lb_madonnghiphep.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lb_madonnghiphep.Location = new System.Drawing.Point(6, 62);
+			this.lb_madonnghiphep.Name = "lb_madonnghiphep";
+			this.lb_madonnghiphep.Size = new System.Drawing.Size(62, 20);
+			this.lb_madonnghiphep.TabIndex = 5;
+			this.lb_madonnghiphep.Text = "Mã đơn";
+			// 
+			// btn_timkiemdonnghiphep
+			// 
+			this.btn_timkiemdonnghiphep.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_timkiemdonnghiphep.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_timkiemdonnghiphep.Location = new System.Drawing.Point(652, 13);
+			this.btn_timkiemdonnghiphep.Name = "btn_timkiemdonnghiphep";
+			this.btn_timkiemdonnghiphep.Size = new System.Drawing.Size(115, 40);
+			this.btn_timkiemdonnghiphep.TabIndex = 6;
+			this.btn_timkiemdonnghiphep.Text = "Tìm kiếm";
+			this.btn_timkiemdonnghiphep.UseVisualStyleBackColor = false;
+			this.btn_timkiemdonnghiphep.Click += new System.EventHandler(this.btn_timkiemdonnghiphep_Click);
+			// 
+			// txb_timkiemdonnghiphep
+			// 
+			this.txb_timkiemdonnghiphep.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txb_timkiemdonnghiphep.Location = new System.Drawing.Point(10, 20);
+			this.txb_timkiemdonnghiphep.Name = "txb_timkiemdonnghiphep";
+			this.txb_timkiemdonnghiphep.Size = new System.Drawing.Size(636, 27);
+			this.txb_timkiemdonnghiphep.TabIndex = 7;
+			// 
 			// lb_goiy
 			// 
 			this.lb_goiy.AutoSize = true;
 			this.lb_goiy.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_goiy.Location = new System.Drawing.Point(300, 69);
+			this.lb_goiy.Location = new System.Drawing.Point(784, 30);
 			this.lb_goiy.Name = "lb_goiy";
 			this.lb_goiy.Size = new System.Drawing.Size(307, 17);
 			this.lb_goiy.TabIndex = 46;
@@ -250,7 +263,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.BlanchedAlmond;
-			this.ClientSize = new System.Drawing.Size(982, 503);
+			this.ClientSize = new System.Drawing.Size(1482, 778);
 			this.Controls.Add(this.lb_goiy);
 			this.Controls.Add(this.txb_timkiemdonnghiphep);
 			this.Controls.Add(this.btn_timkiemdonnghiphep);

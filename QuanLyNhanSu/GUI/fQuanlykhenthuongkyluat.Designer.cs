@@ -28,6 +28,8 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.lb_manhanvien = new System.Windows.Forms.Label();
 			this.lb_thoigian = new System.Windows.Forms.Label();
 			this.lb_khenthuongkyluat = new System.Windows.Forms.Label();
@@ -67,7 +69,7 @@
 			// 
 			this.lb_thoigian.AutoSize = true;
 			this.lb_thoigian.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_thoigian.Location = new System.Drawing.Point(425, 60);
+			this.lb_thoigian.Location = new System.Drawing.Point(643, 58);
 			this.lb_thoigian.Name = "lb_thoigian";
 			this.lb_thoigian.Size = new System.Drawing.Size(74, 20);
 			this.lb_thoigian.TabIndex = 1;
@@ -77,7 +79,7 @@
 			// 
 			this.lb_khenthuongkyluat.AutoSize = true;
 			this.lb_khenthuongkyluat.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_khenthuongkyluat.Location = new System.Drawing.Point(425, 100);
+			this.lb_khenthuongkyluat.Location = new System.Drawing.Point(643, 100);
 			this.lb_khenthuongkyluat.Name = "lb_khenthuongkyluat";
 			this.lb_khenthuongkyluat.Size = new System.Drawing.Size(157, 20);
 			this.lb_khenthuongkyluat.TabIndex = 2;
@@ -132,7 +134,7 @@
 			// 
 			this.cb_hinhthuc.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cb_hinhthuc.FormattingEnabled = true;
-			this.cb_hinhthuc.Location = new System.Drawing.Point(594, 100);
+			this.cb_hinhthuc.Location = new System.Drawing.Point(856, 100);
 			this.cb_hinhthuc.Name = "cb_hinhthuc";
 			this.cb_hinhthuc.Size = new System.Drawing.Size(227, 28);
 			this.cb_hinhthuc.TabIndex = 8;
@@ -142,13 +144,24 @@
 			this.dtp_thoigian.CalendarFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.dtp_thoigian.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.dtp_thoigian.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.dtp_thoigian.Location = new System.Drawing.Point(594, 55);
+			this.dtp_thoigian.Location = new System.Drawing.Point(856, 58);
 			this.dtp_thoigian.Name = "dtp_thoigian";
 			this.dtp_thoigian.Size = new System.Drawing.Size(227, 27);
 			this.dtp_thoigian.TabIndex = 9;
 			// 
 			// dgv_ktkl
 			// 
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.Tan;
+			this.dgv_ktkl.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			this.dgv_ktkl.BackgroundColor = System.Drawing.Color.White;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgv_ktkl.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.dgv_ktkl.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgv_ktkl.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaKTKL,
@@ -161,7 +174,7 @@
 			this.dgv_ktkl.Name = "dgv_ktkl";
 			this.dgv_ktkl.RowHeadersWidth = 51;
 			this.dgv_ktkl.RowTemplate.Height = 24;
-			this.dgv_ktkl.Size = new System.Drawing.Size(973, 315);
+			this.dgv_ktkl.Size = new System.Drawing.Size(1474, 598);
 			this.dgv_ktkl.TabIndex = 10;
 			// 
 			// btn_timnhanvien
@@ -180,7 +193,7 @@
 			// 
 			this.btn_themkhenthuongkyluat.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_themkhenthuongkyluat.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_themkhenthuongkyluat.Location = new System.Drawing.Point(827, 10);
+			this.btn_themkhenthuongkyluat.Location = new System.Drawing.Point(1362, 8);
 			this.btn_themkhenthuongkyluat.Name = "btn_themkhenthuongkyluat";
 			this.btn_themkhenthuongkyluat.Size = new System.Drawing.Size(115, 40);
 			this.btn_themkhenthuongkyluat.TabIndex = 12;
@@ -192,7 +205,7 @@
 			// 
 			this.btn_suakhenthuongkyluat.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_suakhenthuongkyluat.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_suakhenthuongkyluat.Location = new System.Drawing.Point(827, 50);
+			this.btn_suakhenthuongkyluat.Location = new System.Drawing.Point(1362, 48);
 			this.btn_suakhenthuongkyluat.Name = "btn_suakhenthuongkyluat";
 			this.btn_suakhenthuongkyluat.Size = new System.Drawing.Size(115, 40);
 			this.btn_suakhenthuongkyluat.TabIndex = 13;
@@ -204,7 +217,7 @@
 			// 
 			this.btn_xoakhenthuongkyluat.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_xoakhenthuongkyluat.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_xoakhenthuongkyluat.Location = new System.Drawing.Point(827, 90);
+			this.btn_xoakhenthuongkyluat.Location = new System.Drawing.Point(1362, 88);
 			this.btn_xoakhenthuongkyluat.Name = "btn_xoakhenthuongkyluat";
 			this.btn_xoakhenthuongkyluat.Size = new System.Drawing.Size(115, 40);
 			this.btn_xoakhenthuongkyluat.TabIndex = 14;
@@ -216,7 +229,7 @@
 			// 
 			this.btn_dongkhenthuongkyluat.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_dongkhenthuongkyluat.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_dongkhenthuongkyluat.Location = new System.Drawing.Point(827, 130);
+			this.btn_dongkhenthuongkyluat.Location = new System.Drawing.Point(1362, 128);
 			this.btn_dongkhenthuongkyluat.Name = "btn_dongkhenthuongkyluat";
 			this.btn_dongkhenthuongkyluat.Size = new System.Drawing.Size(115, 40);
 			this.btn_dongkhenthuongkyluat.TabIndex = 15;
@@ -254,7 +267,7 @@
 			this.NoiDung.HeaderText = "Nội dung";
 			this.NoiDung.MinimumWidth = 6;
 			this.NoiDung.Name = "NoiDung";
-			this.NoiDung.Width = 125;
+			this.NoiDung.Width = 250;
 			// 
 			// HinhThuc
 			// 
@@ -277,7 +290,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.BlanchedAlmond;
-			this.ClientSize = new System.Drawing.Size(982, 503);
+			this.ClientSize = new System.Drawing.Size(1482, 778);
 			this.Controls.Add(this.btn_dongkhenthuongkyluat);
 			this.Controls.Add(this.btn_xoakhenthuongkyluat);
 			this.Controls.Add(this.btn_suakhenthuongkyluat);
@@ -295,6 +308,7 @@
 			this.Controls.Add(this.lb_thoigian);
 			this.Controls.Add(this.lb_manhanvien);
 			this.Name = "fQuanlykhenthuongkyluat";
+			this.ShowInTaskbar = false;
 			this.Text = "Quản lý khen thưởng và kỷ luật";
 			((System.ComponentModel.ISupportInitialize)(this.dgv_ktkl)).EndInit();
 			this.ResumeLayout(false);

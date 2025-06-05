@@ -84,7 +84,6 @@ namespace QuanLyNhanSu
 
 			originalBaocaotongquannhansuButtonColor = btn_baocaotongquannhansu.BackColor;
 			originalThongkenghiphepButtonColor = btn_thongkeluotnghiphepcuanhanvien.BackColor;
-			originalThongkeluongButtonColor = btn_baocaoluongthuong.BackColor;
 			originalThongkekhenthuongkyluatButtonColor = btn_thongkethongtinkhenthuongkyluat.BackColor;
 		}
 
@@ -313,14 +312,6 @@ namespace QuanLyNhanSu
 			btn_thongkeluotnghiphepcuanhanvien.BackColor = originalThongkenghiphepButtonColor;
 		}
 
-		private void btn_thongkeluong_MouseEnter(object sender, EventArgs e)
-		{
-			btn_baocaoluongthuong.BackColor = System.Drawing.Color.LightBlue;
-		}
-		private void btn_thongkeluong_MouseLeave(object sender, EventArgs e)
-		{
-			btn_baocaoluongthuong.BackColor = originalThongkeluongButtonColor;
-		}
 
 		private void btn_thongkekhenthuongkyluat_MouseEnter(object sender, EventArgs e)
 		{
@@ -366,17 +357,6 @@ namespace QuanLyNhanSu
 			f.ShowDialog();
 			this.Show();
 		}
-
-		private void btn_thaydoigiolamviec_Click(object sender, EventArgs e)
-		{
-			fDoica f = new fDoica();
-			this.Hide();
-			f.ShowDialog();
-			this.Show();
-		}
-
-
-
 
 		private void btn_quanlybangcong_Click(object sender, EventArgs e)
 		{

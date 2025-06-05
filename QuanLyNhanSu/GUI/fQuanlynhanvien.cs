@@ -74,8 +74,8 @@ namespace QuanLyNhanSu
 		{
 			//txb_manv.DataBindings.Add(new Binding("Text", dgv_nhanvien.DataSource, "MaNV", true, DataSourceUpdateMode.Never));
 			txb_hoten.DataBindings.Add(new Binding("Text", dgv_nhanvien.DataSource, "HoTen", true, DataSourceUpdateMode.Never));
-			cb_chucvu.DataBindings.Add(new Binding("SelectedValue", dgv_nhanvien.DataSource, "MaChucVu", true, DataSourceUpdateMode.Never));
-			cb_phongban.DataBindings.Add(new Binding("SelectedValue", dgv_nhanvien.DataSource, "MaPB", true, DataSourceUpdateMode.Never));
+			cb_chucvu.DataBindings.Add(new Binding("Text", dgv_nhanvien.DataSource, "ChucVu", true, DataSourceUpdateMode.Never));
+			cb_phongban.DataBindings.Add(new Binding("Text", dgv_nhanvien.DataSource, "PhongBan", true, DataSourceUpdateMode.Never));
 			txb_taikhoan.DataBindings.Add(new Binding("Text", dgv_nhanvien.DataSource, "TaiKhoan", true, DataSourceUpdateMode.Never));
 			txb_CCCD.DataBindings.Add(new Binding("Text", dgv_nhanvien.DataSource, "CCCD", true, DataSourceUpdateMode.Never));
 			txb_dienthoai.DataBindings.Add(new Binding("Text", dgv_nhanvien.DataSource, "DienThoai", true, DataSourceUpdateMode.Never));

@@ -22,20 +22,19 @@ namespace QuanLyNhanSu.DTO
         public decimal LuongCoBanTheoGio => LuongCoBan ; 
         public decimal LuongTheoGio => (decimal)SoGioLam * LuongCoBanTheoGio * (decimal)HeSoNgay;
         public decimal TongKhauTru => BaoHiem + Thue + Phat;
-        public decimal LuongThucLinh => LuongTheoGio + PhucCap - TongKhauTru + Thuong;
-
-        // Display properties
-        public string SoGioLamDisplay => SoGioLam.ToString("0.0") + " giờ";
-        public string LuongCoBanDisplay => LuongCoBan.ToString("N0") + " VNĐ";
+		public decimal LuongThucLinh => (LuongCoBan * (decimal)HeSoNgay) + PhucCap + Thuong - (BaoHiem + Thue + Phat);
+		// Display properties
+		public string SoGioLamDisplay => SoGioLam.ToString("0.0");
+        public string LuongCoBanDisplay => LuongCoBan.ToString("N0");
         public string HeSoNgayDisplay => HeSoNgay.ToString("0.00");
-        public string PhucCapDisplay => PhucCap.ToString("N0") + " VNĐ";
-        public string BaoHiemDisplay => BaoHiem.ToString("N0") + " VNĐ";
-        public string ThueDisplay => Thue.ToString("N0") + " VNĐ";
-        public string PhatDisplay => Phat.ToString("N0") + " VNĐ";
-        public string ThuongDisplay => Thuong.ToString("N0") + " VNĐ";
-        public string LuongTheoGioDisplay => LuongTheoGio.ToString("N0") + " VNĐ";
-        public string TongKhauTruDisplay => TongKhauTru.ToString("N0") + " VNĐ";
-        public string LuongThucLinhDisplay => LuongThucLinh.ToString("N0") + " VNĐ";
+        public string PhucCapDisplay => PhucCap.ToString("N0");
+        public string BaoHiemDisplay => BaoHiem.ToString("N0");
+        public string ThueDisplay => Thue.ToString("N0");
+        public string PhatDisplay => Phat.ToString("N0");
+        public string ThuongDisplay => Thuong.ToString("N0");
+        public string LuongTheoGioDisplay => LuongTheoGio.ToString("N0");
+        public string TongKhauTruDisplay => TongKhauTru.ToString("N0");
+        public string LuongThucLinhDisplay => LuongThucLinh.ToString("N0");
 
         public BangluongDTO()
         {

@@ -78,9 +78,9 @@ namespace QuanLyNhanSu.GUI
 			string[] daysOfWeek = { "Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy" };
 			
 			// Kích thước cố định cho các ô to hơn
-			int buttonWidth = 180;  // Tăng kích thước từ ~150 lên 180
-			int buttonHeight = 120; // Tăng kích thước từ ~80 lên 120
-			int padding = 15;       // Tăng khoảng cách
+			int buttonWidth = 200;  // Tăng kích thước từ ~150 lên 180
+			int buttonHeight = 100; // Tăng kích thước từ ~80 lên 120
+			int padding = 10;       // Tăng khoảng cách
 			int startX = 20;
 			int startY = 20;
 
@@ -92,8 +92,8 @@ namespace QuanLyNhanSu.GUI
 				lblDay.Size = new Size(buttonWidth, 40);
 				lblDay.Location = new Point(startX + i * (buttonWidth + padding), startY);
 				lblDay.TextAlign = ContentAlignment.MiddleCenter;
-				lblDay.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Bold);
-				lblDay.BackColor = Color.DarkBlue;
+				lblDay.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+				lblDay.BackColor = Color.DarkOrange;
 				lblDay.ForeColor = Color.White;
 				lblDay.BorderStyle = BorderStyle.FixedSingle;
 				panel_days.Controls.Add(lblDay);
@@ -119,7 +119,7 @@ namespace QuanLyNhanSu.GUI
 				btnDay.Size = new Size(buttonWidth, buttonHeight);
 				btnDay.Location = new Point(startX + currentCol * (buttonWidth + padding), 
 										   startY + 45 + (currentRow - 1) * (buttonHeight + padding));
-				btnDay.Font = new Font("Microsoft Sans Serif", 16, FontStyle.Bold);
+				btnDay.Font = new Font("Segoe UI", 16, FontStyle.Bold);
 				btnDay.FlatStyle = FlatStyle.Flat;
 				btnDay.FlatAppearance.BorderSize = 3;
 				btnDay.FlatAppearance.BorderColor = Color.DarkGray;
@@ -215,7 +215,7 @@ namespace QuanLyNhanSu.GUI
 						var dayData = attendanceByDay[day];
 						
 						// Màu xanh lá cây - có chấm công
-						btn.BackColor = Color.LimeGreen;
+						btn.BackColor = Color.LightGreen;
 						btn.ForeColor = Color.White;
 						
 						// Tạo text hiển thị thông tin chi tiết
@@ -251,21 +251,21 @@ namespace QuanLyNhanSu.GUI
 						}
 						
 						btn.Text = btnText.ToString().Trim();
-						btn.Font = new Font("Microsoft Sans Serif", 10, FontStyle.Regular);
+						btn.Font = new Font("Segoe UI", 10, FontStyle.Regular);
 						btn.TextAlign = ContentAlignment.TopLeft;
 					}
 					else
 					{
 						// Màu đỏ - không có chấm công
-						btn.BackColor = Color.LightCoral;
+						btn.BackColor = Color.OrangeRed;
 						btn.ForeColor = Color.White;
 						btn.Text = $"📅 {day}\n\n❌ Chưa\nchấm công";
-						btn.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Bold);
+						btn.Font = new Font("Segoe UI", 12, FontStyle.Bold);
 						btn.TextAlign = ContentAlignment.MiddleCenter;
 					}
 					
 					// Thêm hiệu ứng hover
-					btn.FlatAppearance.MouseOverBackColor = btn.BackColor == Color.LimeGreen ? 
+					btn.FlatAppearance.MouseOverBackColor = btn.BackColor == Color.LightGreen ? 
 						Color.Green : Color.Crimson;
 				}
 			}
@@ -505,5 +505,6 @@ namespace QuanLyNhanSu.GUI
 				LoadBangCong();
 			}
 		}
-    }
+
+	}
 }

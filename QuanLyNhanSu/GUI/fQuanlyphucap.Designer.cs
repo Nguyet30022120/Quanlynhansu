@@ -28,6 +28,8 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.lb_tienphucap = new System.Windows.Forms.Label();
 			this.cb_loaipc = new System.Windows.Forms.ComboBox();
 			this.btn_timmanhanvien = new System.Windows.Forms.Button();
@@ -36,16 +38,16 @@
 			this.lb_loaiphucap = new System.Windows.Forms.Label();
 			this.lb_tennhanvien = new System.Windows.Forms.Label();
 			this.dgv_phucap = new System.Windows.Forms.DataGridView();
+			this.MaPhuCap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.LoaiPhuCap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.TienPC = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.btn_dongphucap = new System.Windows.Forms.Button();
 			this.btn_xoaphucap = new System.Windows.Forms.Button();
 			this.btn_suaphucap = new System.Windows.Forms.Button();
 			this.btn_themphucap = new System.Windows.Forms.Button();
 			this.txb_tennhanvien = new System.Windows.Forms.TextBox();
 			this.txb_tienpc = new System.Windows.Forms.TextBox();
-			this.MaPhuCap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.LoaiPhuCap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.TienPC = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_phucap)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -53,7 +55,7 @@
 			// 
 			this.lb_tienphucap.AutoSize = true;
 			this.lb_tienphucap.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_tienphucap.Location = new System.Drawing.Point(416, 109);
+			this.lb_tienphucap.Location = new System.Drawing.Point(706, 64);
 			this.lb_tienphucap.Name = "lb_tienphucap";
 			this.lb_tienphucap.Size = new System.Drawing.Size(98, 20);
 			this.lb_tienphucap.TabIndex = 41;
@@ -63,7 +65,7 @@
 			// 
 			this.cb_loaipc.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cb_loaipc.FormattingEnabled = true;
-			this.cb_loaipc.Location = new System.Drawing.Point(138, 106);
+			this.cb_loaipc.Location = new System.Drawing.Point(924, 13);
 			this.cb_loaipc.Name = "cb_loaipc";
 			this.cb_loaipc.Size = new System.Drawing.Size(252, 28);
 			this.cb_loaipc.TabIndex = 40;
@@ -72,7 +74,7 @@
 			// 
 			this.btn_timmanhanvien.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_timmanhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_timmanhanvien.Location = new System.Drawing.Point(420, 16);
+			this.btn_timmanhanvien.Location = new System.Drawing.Point(516, 6);
 			this.btn_timmanhanvien.Name = "btn_timmanhanvien";
 			this.btn_timmanhanvien.Size = new System.Drawing.Size(115, 40);
 			this.btn_timmanhanvien.TabIndex = 39;
@@ -93,7 +95,7 @@
 			// txb_manhanvien
 			// 
 			this.txb_manhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_manhanvien.Location = new System.Drawing.Point(140, 16);
+			this.txb_manhanvien.Location = new System.Drawing.Point(209, 13);
 			this.txb_manhanvien.Name = "txb_manhanvien";
 			this.txb_manhanvien.Size = new System.Drawing.Size(252, 27);
 			this.txb_manhanvien.TabIndex = 37;
@@ -102,7 +104,7 @@
 			// 
 			this.lb_loaiphucap.AutoSize = true;
 			this.lb_loaiphucap.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_loaiphucap.Location = new System.Drawing.Point(30, 106);
+			this.lb_loaiphucap.Location = new System.Drawing.Point(707, 19);
 			this.lb_loaiphucap.Name = "lb_loaiphucap";
 			this.lb_loaiphucap.Size = new System.Drawing.Size(97, 20);
 			this.lb_loaiphucap.TabIndex = 31;
@@ -120,6 +122,17 @@
 			// 
 			// dgv_phucap
 			// 
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.Tan;
+			this.dgv_phucap.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			this.dgv_phucap.BackgroundColor = System.Drawing.Color.White;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgv_phucap.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.dgv_phucap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgv_phucap.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaPhuCap,
@@ -130,73 +143,8 @@
 			this.dgv_phucap.Name = "dgv_phucap";
 			this.dgv_phucap.RowHeadersWidth = 51;
 			this.dgv_phucap.RowTemplate.Height = 24;
-			this.dgv_phucap.Size = new System.Drawing.Size(958, 315);
+			this.dgv_phucap.Size = new System.Drawing.Size(1461, 589);
 			this.dgv_phucap.TabIndex = 29;
-			// 
-			// btn_dongphucap
-			// 
-			this.btn_dongphucap.BackColor = System.Drawing.Color.DarkOrange;
-			this.btn_dongphucap.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_dongphucap.Location = new System.Drawing.Point(827, 131);
-			this.btn_dongphucap.Name = "btn_dongphucap";
-			this.btn_dongphucap.Size = new System.Drawing.Size(115, 40);
-			this.btn_dongphucap.TabIndex = 28;
-			this.btn_dongphucap.Text = "Đóng";
-			this.btn_dongphucap.UseVisualStyleBackColor = false;
-			this.btn_dongphucap.Click += new System.EventHandler(this.btn_dongphucap_Click);
-			// 
-			// btn_xoaphucap
-			// 
-			this.btn_xoaphucap.BackColor = System.Drawing.Color.DarkOrange;
-			this.btn_xoaphucap.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_xoaphucap.Location = new System.Drawing.Point(827, 91);
-			this.btn_xoaphucap.Name = "btn_xoaphucap";
-			this.btn_xoaphucap.Size = new System.Drawing.Size(115, 40);
-			this.btn_xoaphucap.TabIndex = 27;
-			this.btn_xoaphucap.Text = "Xóa";
-			this.btn_xoaphucap.UseVisualStyleBackColor = false;
-			this.btn_xoaphucap.Click += new System.EventHandler(this.btn_xoaphucap_Click);
-			// 
-			// btn_suaphucap
-			// 
-			this.btn_suaphucap.BackColor = System.Drawing.Color.DarkOrange;
-			this.btn_suaphucap.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_suaphucap.Location = new System.Drawing.Point(827, 51);
-			this.btn_suaphucap.Name = "btn_suaphucap";
-			this.btn_suaphucap.Size = new System.Drawing.Size(115, 40);
-			this.btn_suaphucap.TabIndex = 26;
-			this.btn_suaphucap.Text = "Sửa ";
-			this.btn_suaphucap.UseVisualStyleBackColor = false;
-			this.btn_suaphucap.Click += new System.EventHandler(this.btn_suaphucap_Click);
-			// 
-			// btn_themphucap
-			// 
-			this.btn_themphucap.BackColor = System.Drawing.Color.DarkOrange;
-			this.btn_themphucap.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_themphucap.Location = new System.Drawing.Point(827, 11);
-			this.btn_themphucap.Name = "btn_themphucap";
-			this.btn_themphucap.Size = new System.Drawing.Size(115, 40);
-			this.btn_themphucap.TabIndex = 25;
-			this.btn_themphucap.Text = "Thêm";
-			this.btn_themphucap.UseVisualStyleBackColor = false;
-			this.btn_themphucap.Click += new System.EventHandler(this.btn_themphucap_Click);
-			// 
-			// txb_tennhanvien
-			// 
-			this.txb_tennhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_tennhanvien.Location = new System.Drawing.Point(140, 61);
-			this.txb_tennhanvien.Name = "txb_tennhanvien";
-			this.txb_tennhanvien.ReadOnly = true;
-			this.txb_tennhanvien.Size = new System.Drawing.Size(252, 27);
-			this.txb_tennhanvien.TabIndex = 23;
-			// 
-			// txb_tienpc
-			// 
-			this.txb_tienpc.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_tienpc.Location = new System.Drawing.Point(550, 106);
-			this.txb_tienpc.Name = "txb_tienpc";
-			this.txb_tienpc.Size = new System.Drawing.Size(252, 27);
-			this.txb_tienpc.TabIndex = 42;
 			// 
 			// MaPhuCap
 			// 
@@ -230,12 +178,77 @@
 			this.TienPC.Name = "TienPC";
 			this.TienPC.Width = 125;
 			// 
+			// btn_dongphucap
+			// 
+			this.btn_dongphucap.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_dongphucap.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_dongphucap.Location = new System.Drawing.Point(1355, 129);
+			this.btn_dongphucap.Name = "btn_dongphucap";
+			this.btn_dongphucap.Size = new System.Drawing.Size(115, 40);
+			this.btn_dongphucap.TabIndex = 28;
+			this.btn_dongphucap.Text = "Đóng";
+			this.btn_dongphucap.UseVisualStyleBackColor = false;
+			this.btn_dongphucap.Click += new System.EventHandler(this.btn_dongphucap_Click);
+			// 
+			// btn_xoaphucap
+			// 
+			this.btn_xoaphucap.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_xoaphucap.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_xoaphucap.Location = new System.Drawing.Point(1355, 89);
+			this.btn_xoaphucap.Name = "btn_xoaphucap";
+			this.btn_xoaphucap.Size = new System.Drawing.Size(115, 40);
+			this.btn_xoaphucap.TabIndex = 27;
+			this.btn_xoaphucap.Text = "Xóa";
+			this.btn_xoaphucap.UseVisualStyleBackColor = false;
+			this.btn_xoaphucap.Click += new System.EventHandler(this.btn_xoaphucap_Click);
+			// 
+			// btn_suaphucap
+			// 
+			this.btn_suaphucap.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_suaphucap.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_suaphucap.Location = new System.Drawing.Point(1355, 49);
+			this.btn_suaphucap.Name = "btn_suaphucap";
+			this.btn_suaphucap.Size = new System.Drawing.Size(115, 40);
+			this.btn_suaphucap.TabIndex = 26;
+			this.btn_suaphucap.Text = "Sửa ";
+			this.btn_suaphucap.UseVisualStyleBackColor = false;
+			this.btn_suaphucap.Click += new System.EventHandler(this.btn_suaphucap_Click);
+			// 
+			// btn_themphucap
+			// 
+			this.btn_themphucap.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_themphucap.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_themphucap.Location = new System.Drawing.Point(1355, 9);
+			this.btn_themphucap.Name = "btn_themphucap";
+			this.btn_themphucap.Size = new System.Drawing.Size(115, 40);
+			this.btn_themphucap.TabIndex = 25;
+			this.btn_themphucap.Text = "Thêm";
+			this.btn_themphucap.UseVisualStyleBackColor = false;
+			this.btn_themphucap.Click += new System.EventHandler(this.btn_themphucap_Click);
+			// 
+			// txb_tennhanvien
+			// 
+			this.txb_tennhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txb_tennhanvien.Location = new System.Drawing.Point(209, 58);
+			this.txb_tennhanvien.Name = "txb_tennhanvien";
+			this.txb_tennhanvien.ReadOnly = true;
+			this.txb_tennhanvien.Size = new System.Drawing.Size(252, 27);
+			this.txb_tennhanvien.TabIndex = 23;
+			// 
+			// txb_tienpc
+			// 
+			this.txb_tienpc.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txb_tienpc.Location = new System.Drawing.Point(924, 62);
+			this.txb_tienpc.Name = "txb_tienpc";
+			this.txb_tienpc.Size = new System.Drawing.Size(252, 27);
+			this.txb_tienpc.TabIndex = 42;
+			// 
 			// fQuanlyphucap
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.BlanchedAlmond;
-			this.ClientSize = new System.Drawing.Size(982, 503);
+			this.ClientSize = new System.Drawing.Size(1482, 778);
 			this.Controls.Add(this.txb_tienpc);
 			this.Controls.Add(this.lb_tienphucap);
 			this.Controls.Add(this.cb_loaipc);

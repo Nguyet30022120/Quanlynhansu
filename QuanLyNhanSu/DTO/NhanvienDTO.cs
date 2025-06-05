@@ -10,7 +10,7 @@ namespace QuanLyNhanSu.DTO
 
 	public class NhanvienDTO
 	{
-		public NhanvienDTO(string maNV,string maChucVu, string maPB, string hoTen, string chucVu, string phongBan, string taiKhoan, string cCCD, string dienThoai, string tDHV, string diaChi, int gioiTinh, DateTime? ngaySinh, string trinhDo, string maTrinhDo, string email)
+		public NhanvienDTO(string maNV,/*string maChucVu, string maPB*/string hoTen, string chucVu, string phongBan, string taiKhoan, string cCCD, string dienThoai, string tDHV, string diaChi, int gioiTinh, DateTime? ngaySinh, string trinhDo, string maTrinhDo, string email)
 		{
 			this.MaNV = maNV;
 			this.HoTen = hoTen;
@@ -22,8 +22,8 @@ namespace QuanLyNhanSu.DTO
 			this.DiaChi = diaChi;
 			this.GioiTinh = gioiTinh;
 			this.NgaySinh = ngaySinh;
-			this.MaPB = maPB;
-			this.MaChucVu = maChucVu;
+			//this.MaPB = maPB;
+			//this.MaChucVu = maChucVu;
 			//this.TrinhDo = trinhDo;
 			//this.MaTrinhDo = maTrinhDo;
 			this.Email = email;
@@ -41,13 +41,13 @@ namespace QuanLyNhanSu.DTO
 			this.DiaChi = row["DiaChi"].ToString();
 			this.GioiTinh = Convert.ToInt32(row["GioiTinh"]);
 			this.NgaySinh = row["NgaySinh"] != DBNull.Value ? (DateTime?)row["NgaySinh"] : null;
-			this.MaPB = row["MaPB"].ToString();
-			this.MaChucVu = row["MaChucVu"].ToString();
+			//this.MaPB = row["MaPB"].ToString();
+			//this.MaChucVu = row["MaChucVu"].ToString();
 			//this.TrinhDo = row["TrinhDo"].ToString();
 			//this.MaTrinhDo = row["MaTrinhDo"].ToString();
 			this.Email = row["Email"].ToString();
 		}
-		private string maChucVu;
+		//private string maChucVu;
 
 		private string maNV;
 
@@ -63,7 +63,7 @@ namespace QuanLyNhanSu.DTO
 
 		private string dienThoai;
 
-		private string maPB;
+		//private string maPB;
 
 		private string diaChi;
 
@@ -87,8 +87,8 @@ namespace QuanLyNhanSu.DTO
 		public string DiaChi { get => diaChi; set => diaChi=value; }
 		public int GioiTinh { get => gioiTinh; set => gioiTinh=value; }
 		public DateTime? NgaySinh { get => ngaySinh; set => ngaySinh=value; }
-		public string MaPB { get => maPB; set => maPB=value; }
-		public string MaChucVu { get => maChucVu; set => maChucVu=value; }
+		//public string MaPB { get => maPB; set => maPB=value; }
+		//public string MaChucVu { get => maChucVu; set => maChucVu=value; }
 		//public string TrinhDo { get => trinhDo; set => trinhDo=value; }
 		//public string MaTrinhDo { get => maTrinhDo; set => maTrinhDo=value; }
 		public string Email { get => email; set => email=value; }

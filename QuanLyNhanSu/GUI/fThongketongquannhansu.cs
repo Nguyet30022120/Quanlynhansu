@@ -2,6 +2,7 @@
 using LiveCharts.Wpf;
 using QuanLyNhanSu.DAO;
 using System;
+using System.Text;
 using System.Windows.Forms;
 using System.Windows.Forms.Integration;
 
@@ -134,10 +135,10 @@ namespace QuanLyNhanSu.GUI
 
 				foreach (DataGridViewRow row in dgv_nvtheopb.Rows)
 				{
-					if (row.Cells["PhongBan"].Value != null && row.Cells["SoLuong"].Value != null)
+					if (row.Cells["PhongBan"].Value != null && row.Cells["SoLuong2"].Value != null)
 					{
 						string tenPB = row.Cells["PhongBan"].Value.ToString();
-						int soLuong = Convert.ToInt32(row.Cells["SoLuong"].Value);
+						int soLuong = Convert.ToInt32(row.Cells["SoLuong2"].Value);
 
 						series.Add(new PieSeries
 						{
@@ -177,10 +178,10 @@ namespace QuanLyNhanSu.GUI
 
 				foreach (DataGridViewRow row in dgv_nvtheocv.Rows)
 				{
-					if (row.Cells["ChucVu"].Value != null && row.Cells["SoLuong"].Value != null)
+					if (row.Cells["ChucVu"].Value != null && row.Cells["SoLuong3"].Value != null)
 					{
 						string tenCV = row.Cells["ChucVu"].Value.ToString();
-						int soLuong = Convert.ToInt32(row.Cells["SoLuong"].Value);
+						int soLuong = Convert.ToInt32(row.Cells["SoLuong3"].Value);
 
 						series.Add(new PieSeries
 						{
@@ -212,7 +213,102 @@ namespace QuanLyNhanSu.GUI
 				MessageBox.Show("Lỗi hiển thị biểu đồ phòng ban: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
+		private void ExportToCSV(string filePath)
+		{
+			try
+			{
+				StringBuilder csvContent = new StringBuilder();
 
+				// Export dgv_namnu
+				csvContent.AppendLine("=== Thống kê Nam/Nữ ===");
+				foreach (DataGridViewColumn column in dgv_namnu.Columns)
+				{
+					csvContent.Append(column.HeaderText + ",");
+				}
+				csvContent.AppendLine();
+				foreach (DataGridViewRow row in dgv_namnu.Rows)
+				{
+					if (!row.IsNewRow)
+					{
+						foreach (DataGridViewCell cell in row.Cells)
+						{
+							csvContent.Append((cell.Value ?? "").ToString() + ",");
+						}
+						csvContent.AppendLine();
+					}
+				}
+				csvContent.AppendLine();
 
+				// Export dgv_nvtheopb
+				csvContent.AppendLine("=== Thống kê theo Cửa hàng ===");
+				foreach (DataGridViewColumn column in dgv_nvtheopb.Columns)
+				{
+					csvContent.Append(column.HeaderText + ",");
+				}
+				csvContent.AppendLine();
+				foreach (DataGridViewRow row in dgv_nvtheopb.Rows)
+				{
+					if (!row.IsNewRow)
+					{
+						foreach (DataGridViewCell cell in row.Cells)
+						{
+							csvContent.Append((cell.Value ?? "").ToString() + ",");
+						}
+						csvContent.AppendLine();
+					}
+				}
+				csvContent.AppendLine();
+
+				// Export dgv_nvtheocv
+				csvContent.AppendLine("=== Thống kê theo Chức Vụ ===");
+				foreach (DataGridViewColumn column in dgv_nvtheocv.Columns)
+				{
+					csvContent.Append(column.HeaderText + ",");
+				}
+				csvContent.AppendLine();
+				foreach (DataGridViewRow row in dgv_nvtheocv.Rows)
+				{
+					if (!row.IsNewRow)
+					{
+						foreach (DataGridViewCell cell in row.Cells)
+						{
+							csvContent.Append((cell.Value ?? "").ToString() + ",");
+						}
+						csvContent.AppendLine();
+					}
+				}
+
+				System.IO.File.WriteAllText(filePath, csvContent.ToString());
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Lỗi khi xuất CSV: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+		private void btn_close_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
+
+		private void btn_xuatbaocao_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				// Xuất báo cáo (có thể dùng Excel hoặc PDF)
+				SaveFileDialog saveDialog = new SaveFileDialog();
+				saveDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+				saveDialog.FileName = $"BaoCaoTongQuanNhanSu.csv";
+
+				if (saveDialog.ShowDialog() == DialogResult.OK)
+				{
+					ExportToCSV(saveDialog.FileName);
+					MessageBox.Show("✅ Xuất báo cáo thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Lỗi khi xuất báo cáo: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
 	}
 }

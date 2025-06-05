@@ -82,7 +82,7 @@ namespace QuanLyNhanSu
 					Title = "Số ngày nghỉ",
 					Values = chartValues,
 					DataLabels = true,
-					Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.BlanchedAlmond),
+					Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.OrangeRed),
 					Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Black)
 				};
 
@@ -115,6 +115,45 @@ namespace QuanLyNhanSu
 				MessageBox.Show("Lỗi hiển thị biểu đồ: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
+		private void ExportToCSV(string filePath)
+		{
+			try
+			{
+				// Create a StringBuilder to store CSV content
+				StringBuilder csvContent = new StringBuilder();
+
+				// Add header row
+				foreach (DataGridViewColumn column in dgv_nghipheptk.Columns)
+				{
+					csvContent.Append(column.HeaderText + ",");
+				}
+				csvContent.AppendLine();
+
+				// Add data rows
+				foreach (DataGridViewRow row in dgv_nghipheptk.Rows)
+				{
+					foreach (DataGridViewCell cell in row.Cells)
+					{
+						if (cell.Value != null)
+						{
+							csvContent.Append(cell.Value.ToString() + ",");
+						}
+						else
+						{
+							csvContent.Append(",");
+						}
+					}
+					csvContent.AppendLine();
+				}
+
+				// Write to file
+				System.IO.File.WriteAllText(filePath, csvContent.ToString());
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Lỗi khi xuất CSV: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
 
 		private void btn_thongketheongay_Click(object sender, EventArgs e)
 		{
@@ -131,6 +170,27 @@ namespace QuanLyNhanSu
 		private void btn_dong_Click(object sender, EventArgs e)
 		{
 			this.Close();
+		}
+
+		private void btn_xuatbaocao_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				// Xuất báo cáo (có thể dùng Excel hoặc PDF)
+				SaveFileDialog saveDialog = new SaveFileDialog();
+				saveDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+				saveDialog.FileName = $"BaoCaoNghiPhep_{txb_tennhanvien.Text}.csv";
+
+				if (saveDialog.ShowDialog() == DialogResult.OK)
+				{
+					ExportToCSV(saveDialog.FileName);
+					MessageBox.Show("✅ Xuất báo cáo thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Lỗi khi xuất báo cáo: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
 		}
 	}
 }

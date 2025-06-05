@@ -28,6 +28,8 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.txb_diachi = new System.Windows.Forms.TextBox();
 			this.txb_dienthoai = new System.Windows.Forms.TextBox();
 			this.txb_CCCD = new System.Windows.Forms.TextBox();
@@ -46,16 +48,6 @@
 			this.lb_chucvu = new System.Windows.Forms.Label();
 			this.pn_thongtinnhanvien = new System.Windows.Forms.Panel();
 			this.dgv_nhanvien = new System.Windows.Forms.DataGridView();
-			this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ChucVu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.PhongBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.TaiKhoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.CCCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Diachi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.GioiTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.NgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.btn_timkiemnhanvien = new System.Windows.Forms.Button();
 			this.txb_email = new System.Windows.Forms.TextBox();
 			this.txb_findnv = new System.Windows.Forms.TextBox();
@@ -66,6 +58,17 @@
 			this.btn_xoanhanvien = new System.Windows.Forms.Button();
 			this.btn_suanhanvien = new System.Windows.Forms.Button();
 			this.btn_themnhanvien = new System.Windows.Forms.Button();
+			this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ChucVu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.PhongBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.TaiKhoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.CCCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Diachi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.GioiTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.NgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.pn_thongtinnhanvien.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_nhanvien)).BeginInit();
 			this.SuspendLayout();
@@ -73,7 +76,7 @@
 			// txb_diachi
 			// 
 			this.txb_diachi.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_diachi.Location = new System.Drawing.Point(545, 135);
+			this.txb_diachi.Location = new System.Drawing.Point(990, 56);
 			this.txb_diachi.Name = "txb_diachi";
 			this.txb_diachi.Size = new System.Drawing.Size(252, 27);
 			this.txb_diachi.TabIndex = 1;
@@ -81,7 +84,7 @@
 			// txb_dienthoai
 			// 
 			this.txb_dienthoai.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_dienthoai.Location = new System.Drawing.Point(545, 45);
+			this.txb_dienthoai.Location = new System.Drawing.Point(560, 95);
 			this.txb_dienthoai.Name = "txb_dienthoai";
 			this.txb_dienthoai.Size = new System.Drawing.Size(252, 27);
 			this.txb_dienthoai.TabIndex = 4;
@@ -89,7 +92,7 @@
 			// txb_CCCD
 			// 
 			this.txb_CCCD.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_CCCD.Location = new System.Drawing.Point(545, 15);
+			this.txb_CCCD.Location = new System.Drawing.Point(560, 55);
 			this.txb_CCCD.Name = "txb_CCCD";
 			this.txb_CCCD.Size = new System.Drawing.Size(252, 27);
 			this.txb_CCCD.TabIndex = 5;
@@ -99,14 +102,13 @@
 			this.txb_hoten.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txb_hoten.Location = new System.Drawing.Point(140, 15);
 			this.txb_hoten.Name = "txb_hoten";
-			this.txb_hoten.ReadOnly = true;
 			this.txb_hoten.Size = new System.Drawing.Size(252, 27);
 			this.txb_hoten.TabIndex = 6;
 			// 
 			// txb_taikhoan
 			// 
 			this.txb_taikhoan.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_taikhoan.Location = new System.Drawing.Point(140, 75);
+			this.txb_taikhoan.Location = new System.Drawing.Point(140, 95);
 			this.txb_taikhoan.Name = "txb_taikhoan";
 			this.txb_taikhoan.ReadOnly = true;
 			this.txb_taikhoan.Size = new System.Drawing.Size(252, 27);
@@ -116,7 +118,7 @@
 			// 
 			this.cb_gioitinh.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cb_gioitinh.FormattingEnabled = true;
-			this.cb_gioitinh.Location = new System.Drawing.Point(140, 105);
+			this.cb_gioitinh.Location = new System.Drawing.Point(140, 135);
 			this.cb_gioitinh.Name = "cb_gioitinh";
 			this.cb_gioitinh.Size = new System.Drawing.Size(252, 28);
 			this.cb_gioitinh.TabIndex = 12;
@@ -124,7 +126,8 @@
 			// dtp_ngaysinh
 			// 
 			this.dtp_ngaysinh.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.dtp_ngaysinh.Location = new System.Drawing.Point(140, 135);
+			this.dtp_ngaysinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.dtp_ngaysinh.Location = new System.Drawing.Point(560, 15);
 			this.dtp_ngaysinh.Name = "dtp_ngaysinh";
 			this.dtp_ngaysinh.Size = new System.Drawing.Size(252, 27);
 			this.dtp_ngaysinh.TabIndex = 13;
@@ -134,7 +137,7 @@
 			this.lb_ngaysinh.AutoSize = true;
 			this.lb_ngaysinh.BackColor = System.Drawing.Color.Transparent;
 			this.lb_ngaysinh.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_ngaysinh.Location = new System.Drawing.Point(30, 135);
+			this.lb_ngaysinh.Location = new System.Drawing.Point(450, 15);
 			this.lb_ngaysinh.Name = "lb_ngaysinh";
 			this.lb_ngaysinh.Size = new System.Drawing.Size(79, 20);
 			this.lb_ngaysinh.TabIndex = 15;
@@ -145,7 +148,7 @@
 			this.lb_diachi.AutoSize = true;
 			this.lb_diachi.BackColor = System.Drawing.Color.Transparent;
 			this.lb_diachi.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_diachi.Location = new System.Drawing.Point(425, 135);
+			this.lb_diachi.Location = new System.Drawing.Point(880, 55);
 			this.lb_diachi.Name = "lb_diachi";
 			this.lb_diachi.Size = new System.Drawing.Size(58, 20);
 			this.lb_diachi.TabIndex = 16;
@@ -156,18 +159,18 @@
 			this.lb_phongban.AutoSize = true;
 			this.lb_phongban.BackColor = System.Drawing.Color.Transparent;
 			this.lb_phongban.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_phongban.Location = new System.Drawing.Point(425, 105);
+			this.lb_phongban.Location = new System.Drawing.Point(880, 15);
 			this.lb_phongban.Name = "lb_phongban";
-			this.lb_phongban.Size = new System.Drawing.Size(84, 20);
+			this.lb_phongban.Size = new System.Drawing.Size(75, 20);
 			this.lb_phongban.TabIndex = 17;
-			this.lb_phongban.Text = "Phòng ban";
+			this.lb_phongban.Text = "Cửa hàng";
 			// 
 			// lb_dienthoai
 			// 
 			this.lb_dienthoai.AutoSize = true;
 			this.lb_dienthoai.BackColor = System.Drawing.Color.Transparent;
 			this.lb_dienthoai.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_dienthoai.Location = new System.Drawing.Point(425, 45);
+			this.lb_dienthoai.Location = new System.Drawing.Point(450, 95);
 			this.lb_dienthoai.Name = "lb_dienthoai";
 			this.lb_dienthoai.Size = new System.Drawing.Size(100, 20);
 			this.lb_dienthoai.TabIndex = 18;
@@ -189,7 +192,7 @@
 			this.lb_gioitinh.AutoSize = true;
 			this.lb_gioitinh.BackColor = System.Drawing.Color.Transparent;
 			this.lb_gioitinh.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_gioitinh.Location = new System.Drawing.Point(30, 105);
+			this.lb_gioitinh.Location = new System.Drawing.Point(30, 135);
 			this.lb_gioitinh.Name = "lb_gioitinh";
 			this.lb_gioitinh.Size = new System.Drawing.Size(69, 20);
 			this.lb_gioitinh.TabIndex = 23;
@@ -200,7 +203,7 @@
 			this.lb_CCCD.AutoSize = true;
 			this.lb_CCCD.BackColor = System.Drawing.Color.Transparent;
 			this.lb_CCCD.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_CCCD.Location = new System.Drawing.Point(425, 15);
+			this.lb_CCCD.Location = new System.Drawing.Point(450, 55);
 			this.lb_CCCD.Name = "lb_CCCD";
 			this.lb_CCCD.Size = new System.Drawing.Size(47, 20);
 			this.lb_CCCD.TabIndex = 25;
@@ -211,7 +214,7 @@
 			this.lb_taikhoan.AutoSize = true;
 			this.lb_taikhoan.BackColor = System.Drawing.Color.Transparent;
 			this.lb_taikhoan.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_taikhoan.Location = new System.Drawing.Point(30, 75);
+			this.lb_taikhoan.Location = new System.Drawing.Point(30, 95);
 			this.lb_taikhoan.Name = "lb_taikhoan";
 			this.lb_taikhoan.Size = new System.Drawing.Size(76, 20);
 			this.lb_taikhoan.TabIndex = 26;
@@ -222,7 +225,7 @@
 			this.lb_chucvu.AutoSize = true;
 			this.lb_chucvu.BackColor = System.Drawing.Color.Transparent;
 			this.lb_chucvu.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_chucvu.Location = new System.Drawing.Point(30, 45);
+			this.lb_chucvu.Location = new System.Drawing.Point(30, 55);
 			this.lb_chucvu.Name = "lb_chucvu";
 			this.lb_chucvu.Size = new System.Drawing.Size(69, 20);
 			this.lb_chucvu.TabIndex = 27;
@@ -260,12 +263,22 @@
 			this.pn_thongtinnhanvien.Controls.Add(this.dtp_ngaysinh);
 			this.pn_thongtinnhanvien.Location = new System.Drawing.Point(12, 12);
 			this.pn_thongtinnhanvien.Name = "pn_thongtinnhanvien";
-			this.pn_thongtinnhanvien.Size = new System.Drawing.Size(958, 479);
+			this.pn_thongtinnhanvien.Size = new System.Drawing.Size(1470, 764);
 			this.pn_thongtinnhanvien.TabIndex = 28;
 			// 
 			// dgv_nhanvien
 			// 
-			this.dgv_nhanvien.BackgroundColor = System.Drawing.Color.BlanchedAlmond;
+			dataGridViewCellStyle3.BackColor = System.Drawing.Color.Tan;
+			this.dgv_nhanvien.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+			this.dgv_nhanvien.BackgroundColor = System.Drawing.Color.White;
+			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgv_nhanvien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
 			this.dgv_nhanvien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgv_nhanvien.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaNV,
@@ -277,18 +290,137 @@
             this.DienThoai,
             this.Diachi,
             this.GioiTinh,
-            this.NgaySinh});
-			this.dgv_nhanvien.Location = new System.Drawing.Point(0, 212);
+            this.NgaySinh,
+            this.Email});
+			this.dgv_nhanvien.Location = new System.Drawing.Point(3, 216);
 			this.dgv_nhanvien.Name = "dgv_nhanvien";
 			this.dgv_nhanvien.RowHeadersWidth = 51;
 			this.dgv_nhanvien.RowTemplate.Height = 24;
-			this.dgv_nhanvien.Size = new System.Drawing.Size(958, 267);
+			this.dgv_nhanvien.Size = new System.Drawing.Size(1464, 545);
 			this.dgv_nhanvien.TabIndex = 0;
+			// 
+			// btn_timkiemnhanvien
+			// 
+			this.btn_timkiemnhanvien.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_timkiemnhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_timkiemnhanvien.Location = new System.Drawing.Point(1343, 167);
+			this.btn_timkiemnhanvien.Name = "btn_timkiemnhanvien";
+			this.btn_timkiemnhanvien.Size = new System.Drawing.Size(115, 40);
+			this.btn_timkiemnhanvien.TabIndex = 32;
+			this.btn_timkiemnhanvien.Text = "Tìm kiếm";
+			this.btn_timkiemnhanvien.UseVisualStyleBackColor = false;
+			this.btn_timkiemnhanvien.Click += new System.EventHandler(this.btn_findnv_Click);
+			// 
+			// txb_email
+			// 
+			this.txb_email.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txb_email.Location = new System.Drawing.Point(560, 136);
+			this.txb_email.Name = "txb_email";
+			this.txb_email.Size = new System.Drawing.Size(252, 27);
+			this.txb_email.TabIndex = 37;
+			// 
+			// txb_findnv
+			// 
+			this.txb_findnv.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txb_findnv.Location = new System.Drawing.Point(27, 180);
+			this.txb_findnv.Name = "txb_findnv";
+			this.txb_findnv.Size = new System.Drawing.Size(1296, 27);
+			this.txb_findnv.TabIndex = 32;
+			// 
+			// lb_email
+			// 
+			this.lb_email.AutoSize = true;
+			this.lb_email.BackColor = System.Drawing.Color.Transparent;
+			this.lb_email.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lb_email.Location = new System.Drawing.Point(450, 135);
+			this.lb_email.Name = "lb_email";
+			this.lb_email.Size = new System.Drawing.Size(47, 20);
+			this.lb_email.TabIndex = 36;
+			this.lb_email.Text = "Email";
+			// 
+			// cb_chucvu
+			// 
+			this.cb_chucvu.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.cb_chucvu.FormattingEnabled = true;
+			this.cb_chucvu.Items.AddRange(new object[] {
+            "Nhân viên Parttime",
+            "Nhân viên Fulltime",
+            "Cửa hàng trưởng",
+            "Quản lý"});
+			this.cb_chucvu.Location = new System.Drawing.Point(140, 55);
+			this.cb_chucvu.Name = "cb_chucvu";
+			this.cb_chucvu.Size = new System.Drawing.Size(252, 28);
+			this.cb_chucvu.TabIndex = 33;
+			// 
+			// cb_phongban
+			// 
+			this.cb_phongban.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.cb_phongban.FormattingEnabled = true;
+			this.cb_phongban.Items.AddRange(new object[] {
+            "Cửa hàng số 1",
+            "Cửa hàng số 2",
+            "Cửa hàng số 3",
+            "Cửa hàng số 4",
+            "Cửa hàng số 5",
+            "Cửa hàng số 6",
+            "Cửa hàng số 7"});
+			this.cb_phongban.Location = new System.Drawing.Point(990, 15);
+			this.cb_phongban.Name = "cb_phongban";
+			this.cb_phongban.Size = new System.Drawing.Size(252, 28);
+			this.cb_phongban.TabIndex = 32;
+			// 
+			// btn_dongnhanvien
+			// 
+			this.btn_dongnhanvien.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_dongnhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_dongnhanvien.Location = new System.Drawing.Point(1343, 125);
+			this.btn_dongnhanvien.Name = "btn_dongnhanvien";
+			this.btn_dongnhanvien.Size = new System.Drawing.Size(115, 40);
+			this.btn_dongnhanvien.TabIndex = 31;
+			this.btn_dongnhanvien.Text = "Đóng";
+			this.btn_dongnhanvien.UseVisualStyleBackColor = false;
+			this.btn_dongnhanvien.Click += new System.EventHandler(this.btn_closenv_Click);
+			// 
+			// btn_xoanhanvien
+			// 
+			this.btn_xoanhanvien.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_xoanhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_xoanhanvien.Location = new System.Drawing.Point(1343, 85);
+			this.btn_xoanhanvien.Name = "btn_xoanhanvien";
+			this.btn_xoanhanvien.Size = new System.Drawing.Size(115, 40);
+			this.btn_xoanhanvien.TabIndex = 30;
+			this.btn_xoanhanvien.Text = "Xóa";
+			this.btn_xoanhanvien.UseVisualStyleBackColor = false;
+			this.btn_xoanhanvien.Click += new System.EventHandler(this.btn_deletenv_Click);
+			// 
+			// btn_suanhanvien
+			// 
+			this.btn_suanhanvien.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_suanhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_suanhanvien.Location = new System.Drawing.Point(1343, 45);
+			this.btn_suanhanvien.Name = "btn_suanhanvien";
+			this.btn_suanhanvien.Size = new System.Drawing.Size(115, 40);
+			this.btn_suanhanvien.TabIndex = 29;
+			this.btn_suanhanvien.Text = "Sửa";
+			this.btn_suanhanvien.UseVisualStyleBackColor = false;
+			this.btn_suanhanvien.Click += new System.EventHandler(this.btn_editnv_Click);
+			// 
+			// btn_themnhanvien
+			// 
+			this.btn_themnhanvien.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_themnhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_themnhanvien.Location = new System.Drawing.Point(1343, 8);
+			this.btn_themnhanvien.Name = "btn_themnhanvien";
+			this.btn_themnhanvien.Size = new System.Drawing.Size(115, 40);
+			this.btn_themnhanvien.TabIndex = 28;
+			this.btn_themnhanvien.Text = "Thêm";
+			this.btn_themnhanvien.UseVisualStyleBackColor = false;
+			this.btn_themnhanvien.Click += new System.EventHandler(this.btn_addnv_Click);
 			// 
 			// MaNV
 			// 
 			this.MaNV.DataPropertyName = "MaNV";
-			this.MaNV.HeaderText = "Mã NV";
+			this.MaNV.HeaderText = "Mã nhân viên";
 			this.MaNV.MinimumWidth = 6;
 			this.MaNV.Name = "MaNV";
 			this.MaNV.Width = 75;
@@ -296,7 +428,7 @@
 			// HoTen
 			// 
 			this.HoTen.DataPropertyName = "HoTen";
-			this.HoTen.HeaderText = "Họ Tên ";
+			this.HoTen.HeaderText = "Họ tên ";
 			this.HoTen.MinimumWidth = 6;
 			this.HoTen.Name = "HoTen";
 			this.HoTen.Width = 125;
@@ -312,7 +444,7 @@
 			// PhongBan
 			// 
 			this.PhongBan.DataPropertyName = "PhongBan";
-			this.PhongBan.HeaderText = "Phòng Ban";
+			this.PhongBan.HeaderText = "Cửa hàng";
 			this.PhongBan.MinimumWidth = 6;
 			this.PhongBan.Name = "PhongBan";
 			this.PhongBan.Width = 125;
@@ -320,7 +452,7 @@
 			// TaiKhoan
 			// 
 			this.TaiKhoan.DataPropertyName = "TaiKhoan";
-			this.TaiKhoan.HeaderText = "Tài Khoản";
+			this.TaiKhoan.HeaderText = "Tài khoản";
 			this.TaiKhoan.MinimumWidth = 6;
 			this.TaiKhoan.Name = "TaiKhoan";
 			this.TaiKhoan.Width = 125;
@@ -360,119 +492,22 @@
 			// NgaySinh
 			// 
 			this.NgaySinh.DataPropertyName = "NgaySinh";
-			this.NgaySinh.HeaderText = "Ngày Sinh";
+			this.NgaySinh.HeaderText = "Ngày sinh";
 			this.NgaySinh.MinimumWidth = 6;
 			this.NgaySinh.Name = "NgaySinh";
 			this.NgaySinh.Width = 125;
 			// 
-			// btn_timkiemnhanvien
+			// Email
 			// 
-			this.btn_timkiemnhanvien.BackColor = System.Drawing.Color.DarkOrange;
-			this.btn_timkiemnhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_timkiemnhanvien.Location = new System.Drawing.Point(827, 170);
-			this.btn_timkiemnhanvien.Name = "btn_timkiemnhanvien";
-			this.btn_timkiemnhanvien.Size = new System.Drawing.Size(115, 40);
-			this.btn_timkiemnhanvien.TabIndex = 32;
-			this.btn_timkiemnhanvien.Text = "Tìm kiếm";
-			this.btn_timkiemnhanvien.UseVisualStyleBackColor = false;
-			this.btn_timkiemnhanvien.Click += new System.EventHandler(this.btn_findnv_Click);
-			// 
-			// txb_email
-			// 
-			this.txb_email.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_email.Location = new System.Drawing.Point(545, 75);
-			this.txb_email.Name = "txb_email";
-			this.txb_email.Size = new System.Drawing.Size(252, 27);
-			this.txb_email.TabIndex = 37;
-			// 
-			// txb_findnv
-			// 
-			this.txb_findnv.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_findnv.Location = new System.Drawing.Point(27, 180);
-			this.txb_findnv.Name = "txb_findnv";
-			this.txb_findnv.Size = new System.Drawing.Size(770, 27);
-			this.txb_findnv.TabIndex = 32;
-			// 
-			// lb_email
-			// 
-			this.lb_email.AutoSize = true;
-			this.lb_email.BackColor = System.Drawing.Color.Transparent;
-			this.lb_email.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_email.Location = new System.Drawing.Point(425, 75);
-			this.lb_email.Name = "lb_email";
-			this.lb_email.Size = new System.Drawing.Size(47, 20);
-			this.lb_email.TabIndex = 36;
-			this.lb_email.Text = "Email";
-			// 
-			// cb_chucvu
-			// 
-			this.cb_chucvu.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.cb_chucvu.FormattingEnabled = true;
-			this.cb_chucvu.Location = new System.Drawing.Point(140, 45);
-			this.cb_chucvu.Name = "cb_chucvu";
-			this.cb_chucvu.Size = new System.Drawing.Size(252, 28);
-			this.cb_chucvu.TabIndex = 33;
-			// 
-			// cb_phongban
-			// 
-			this.cb_phongban.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.cb_phongban.FormattingEnabled = true;
-			this.cb_phongban.Location = new System.Drawing.Point(545, 105);
-			this.cb_phongban.Name = "cb_phongban";
-			this.cb_phongban.Size = new System.Drawing.Size(252, 28);
-			this.cb_phongban.TabIndex = 32;
-			// 
-			// btn_dongnhanvien
-			// 
-			this.btn_dongnhanvien.BackColor = System.Drawing.Color.DarkOrange;
-			this.btn_dongnhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_dongnhanvien.Location = new System.Drawing.Point(827, 130);
-			this.btn_dongnhanvien.Name = "btn_dongnhanvien";
-			this.btn_dongnhanvien.Size = new System.Drawing.Size(115, 40);
-			this.btn_dongnhanvien.TabIndex = 31;
-			this.btn_dongnhanvien.Text = "Đóng";
-			this.btn_dongnhanvien.UseVisualStyleBackColor = false;
-			this.btn_dongnhanvien.Click += new System.EventHandler(this.btn_closenv_Click);
-			// 
-			// btn_xoanhanvien
-			// 
-			this.btn_xoanhanvien.BackColor = System.Drawing.Color.DarkOrange;
-			this.btn_xoanhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_xoanhanvien.Location = new System.Drawing.Point(827, 90);
-			this.btn_xoanhanvien.Name = "btn_xoanhanvien";
-			this.btn_xoanhanvien.Size = new System.Drawing.Size(115, 40);
-			this.btn_xoanhanvien.TabIndex = 30;
-			this.btn_xoanhanvien.Text = "Xóa";
-			this.btn_xoanhanvien.UseVisualStyleBackColor = false;
-			this.btn_xoanhanvien.Click += new System.EventHandler(this.btn_deletenv_Click);
-			// 
-			// btn_suanhanvien
-			// 
-			this.btn_suanhanvien.BackColor = System.Drawing.Color.DarkOrange;
-			this.btn_suanhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_suanhanvien.Location = new System.Drawing.Point(827, 50);
-			this.btn_suanhanvien.Name = "btn_suanhanvien";
-			this.btn_suanhanvien.Size = new System.Drawing.Size(115, 40);
-			this.btn_suanhanvien.TabIndex = 29;
-			this.btn_suanhanvien.Text = "Sửa";
-			this.btn_suanhanvien.UseVisualStyleBackColor = false;
-			this.btn_suanhanvien.Click += new System.EventHandler(this.btn_editnv_Click);
-			// 
-			// btn_themnhanvien
-			// 
-			this.btn_themnhanvien.BackColor = System.Drawing.Color.DarkOrange;
-			this.btn_themnhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_themnhanvien.Location = new System.Drawing.Point(827, 10);
-			this.btn_themnhanvien.Name = "btn_themnhanvien";
-			this.btn_themnhanvien.Size = new System.Drawing.Size(115, 40);
-			this.btn_themnhanvien.TabIndex = 28;
-			this.btn_themnhanvien.Text = "Thêm";
-			this.btn_themnhanvien.UseVisualStyleBackColor = false;
-			this.btn_themnhanvien.Click += new System.EventHandler(this.btn_addnv_Click);
+			this.Email.DataPropertyName = "Email";
+			this.Email.HeaderText = "Email";
+			this.Email.MinimumWidth = 6;
+			this.Email.Name = "Email";
+			this.Email.Width = 200;
 			// 
 			// fQuanlynhanvien
 			// 
-			this.ClientSize = new System.Drawing.Size(982, 503);
+			this.ClientSize = new System.Drawing.Size(1482, 778);
 			this.Controls.Add(this.pn_thongtinnhanvien);
 			this.Name = "fQuanlynhanvien";
 			this.Text = "Quản lý thông tin nhân viên";
@@ -522,5 +557,6 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn Diachi;
 		private System.Windows.Forms.DataGridViewTextBoxColumn GioiTinh;
 		private System.Windows.Forms.DataGridViewTextBoxColumn NgaySinh;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Email;
 	}
 }

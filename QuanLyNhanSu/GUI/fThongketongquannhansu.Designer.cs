@@ -28,189 +28,300 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.panel_tongnv = new System.Windows.Forms.Panel();
+			this.lb_slcv2 = new System.Windows.Forms.Label();
+			this.lb_slpb2 = new System.Windows.Forms.Label();
+			this.lb_slcv1 = new System.Windows.Forms.Label();
 			this.lb_slnv2 = new System.Windows.Forms.Label();
+			this.lb_slpb1 = new System.Windows.Forms.Label();
 			this.lb_slnv1 = new System.Windows.Forms.Label();
 			this.panel_namnu = new System.Windows.Forms.Panel();
 			this.panel_nvtheopb = new System.Windows.Forms.Panel();
 			this.panel_nvtheocv = new System.Windows.Forms.Panel();
 			this.dgv_namnu = new System.Windows.Forms.DataGridView();
+			this.GioiTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dgv_nvtheopb = new System.Windows.Forms.DataGridView();
+			this.PhongBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.SoLuong2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dgv_nvtheocv = new System.Windows.Forms.DataGridView();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.lb_slpb2 = new System.Windows.Forms.Label();
-			this.lb_slpb1 = new System.Windows.Forms.Label();
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.lb_slcv2 = new System.Windows.Forms.Label();
-			this.lb_slcv1 = new System.Windows.Forms.Label();
+			this.btn_close = new System.Windows.Forms.Button();
+			this.btn_xuatbaocao = new System.Windows.Forms.Button();
+			this.ChucVu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.SoLuong3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.panel_tongnv.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_namnu)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_nvtheopb)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_nvtheocv)).BeginInit();
-			this.panel1.SuspendLayout();
-			this.panel2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// panel_tongnv
 			// 
+			this.panel_tongnv.BackColor = System.Drawing.Color.Tan;
+			this.panel_tongnv.Controls.Add(this.lb_slcv2);
+			this.panel_tongnv.Controls.Add(this.lb_slpb2);
+			this.panel_tongnv.Controls.Add(this.lb_slcv1);
 			this.panel_tongnv.Controls.Add(this.lb_slnv2);
+			this.panel_tongnv.Controls.Add(this.lb_slpb1);
 			this.panel_tongnv.Controls.Add(this.lb_slnv1);
-			this.panel_tongnv.Location = new System.Drawing.Point(22, 13);
+			this.panel_tongnv.Location = new System.Drawing.Point(12, 5);
 			this.panel_tongnv.Name = "panel_tongnv";
-			this.panel_tongnv.Size = new System.Drawing.Size(346, 136);
+			this.panel_tongnv.Size = new System.Drawing.Size(1458, 141);
 			this.panel_tongnv.TabIndex = 0;
+			// 
+			// lb_slcv2
+			// 
+			this.lb_slcv2.AutoSize = true;
+			this.lb_slcv2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lb_slcv2.Location = new System.Drawing.Point(1245, 81);
+			this.lb_slcv2.Name = "lb_slcv2";
+			this.lb_slcv2.Size = new System.Drawing.Size(74, 28);
+			this.lb_slcv2.TabIndex = 1;
+			this.lb_slcv2.Text = "lb_slcv";
+			// 
+			// lb_slpb2
+			// 
+			this.lb_slpb2.AutoSize = true;
+			this.lb_slpb2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lb_slpb2.Location = new System.Drawing.Point(703, 81);
+			this.lb_slpb2.Name = "lb_slpb2";
+			this.lb_slpb2.Size = new System.Drawing.Size(77, 28);
+			this.lb_slpb2.TabIndex = 1;
+			this.lb_slpb2.Text = "lb_slpb";
+			// 
+			// lb_slcv1
+			// 
+			this.lb_slcv1.AutoSize = true;
+			this.lb_slcv1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lb_slcv1.Location = new System.Drawing.Point(1180, 21);
+			this.lb_slcv1.Name = "lb_slcv1";
+			this.lb_slcv1.Size = new System.Drawing.Size(200, 31);
+			this.lb_slcv1.TabIndex = 0;
+			this.lb_slcv1.Text = "Số lượng chức vụ";
 			// 
 			// lb_slnv2
 			// 
 			this.lb_slnv2.AutoSize = true;
-			this.lb_slnv2.Location = new System.Drawing.Point(135, 79);
+			this.lb_slnv2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lb_slnv2.Location = new System.Drawing.Point(169, 81);
 			this.lb_slnv2.Name = "lb_slnv2";
-			this.lb_slnv2.Size = new System.Drawing.Size(49, 16);
+			this.lb_slnv2.Size = new System.Drawing.Size(76, 28);
 			this.lb_slnv2.TabIndex = 1;
 			this.lb_slnv2.Text = "lb_slnv";
+			// 
+			// lb_slpb1
+			// 
+			this.lb_slpb1.AutoSize = true;
+			this.lb_slpb1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lb_slpb1.Location = new System.Drawing.Point(625, 21);
+			this.lb_slpb1.Name = "lb_slpb1";
+			this.lb_slpb1.Size = new System.Drawing.Size(215, 31);
+			this.lb_slpb1.TabIndex = 0;
+			this.lb_slpb1.Text = "Số lượng cửa hàng";
 			// 
 			// lb_slnv1
 			// 
 			this.lb_slnv1.AutoSize = true;
-			this.lb_slnv1.Font = new System.Drawing.Font("MS Reference Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_slnv1.Location = new System.Drawing.Point(17, 10);
+			this.lb_slnv1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lb_slnv1.Location = new System.Drawing.Point(106, 21);
 			this.lb_slnv1.Name = "lb_slnv1";
-			this.lb_slnv1.Size = new System.Drawing.Size(257, 28);
+			this.lb_slnv1.Size = new System.Drawing.Size(222, 31);
 			this.lb_slnv1.TabIndex = 0;
 			this.lb_slnv1.Text = "Số lượng nhân viên";
 			// 
 			// panel_namnu
 			// 
-			this.panel_namnu.Location = new System.Drawing.Point(22, 359);
+			this.panel_namnu.Location = new System.Drawing.Point(18, 308);
 			this.panel_namnu.Name = "panel_namnu";
-			this.panel_namnu.Size = new System.Drawing.Size(494, 416);
+			this.panel_namnu.Size = new System.Drawing.Size(480, 415);
 			this.panel_namnu.TabIndex = 1;
 			// 
 			// panel_nvtheopb
 			// 
-			this.panel_nvtheopb.Location = new System.Drawing.Point(564, 359);
+			this.panel_nvtheopb.Location = new System.Drawing.Point(504, 308);
 			this.panel_nvtheopb.Name = "panel_nvtheopb";
-			this.panel_nvtheopb.Size = new System.Drawing.Size(499, 416);
+			this.panel_nvtheopb.Size = new System.Drawing.Size(480, 415);
 			this.panel_nvtheopb.TabIndex = 2;
 			// 
 			// panel_nvtheocv
 			// 
-			this.panel_nvtheocv.Location = new System.Drawing.Point(1108, 359);
+			this.panel_nvtheocv.Location = new System.Drawing.Point(990, 308);
 			this.panel_nvtheocv.Name = "panel_nvtheocv";
-			this.panel_nvtheocv.Size = new System.Drawing.Size(494, 416);
+			this.panel_nvtheocv.Size = new System.Drawing.Size(480, 416);
 			this.panel_nvtheocv.TabIndex = 3;
 			// 
 			// dgv_namnu
 			// 
+			dataGridViewCellStyle7.BackColor = System.Drawing.Color.Tan;
+			this.dgv_namnu.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+			this.dgv_namnu.BackgroundColor = System.Drawing.Color.White;
+			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgv_namnu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
 			this.dgv_namnu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgv_namnu.Location = new System.Drawing.Point(22, 186);
+			this.dgv_namnu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.GioiTinh,
+            this.SoLuong});
+			this.dgv_namnu.Location = new System.Drawing.Point(15, 152);
 			this.dgv_namnu.Name = "dgv_namnu";
 			this.dgv_namnu.RowHeadersWidth = 51;
 			this.dgv_namnu.RowTemplate.Height = 24;
-			this.dgv_namnu.Size = new System.Drawing.Size(494, 150);
+			this.dgv_namnu.Size = new System.Drawing.Size(480, 150);
 			this.dgv_namnu.TabIndex = 7;
+			// 
+			// GioiTinh
+			// 
+			this.GioiTinh.DataPropertyName = "GioiTinh";
+			this.GioiTinh.HeaderText = "Giới tính";
+			this.GioiTinh.MinimumWidth = 6;
+			this.GioiTinh.Name = "GioiTinh";
+			this.GioiTinh.Width = 125;
+			// 
+			// SoLuong
+			// 
+			this.SoLuong.DataPropertyName = "SoLuong";
+			this.SoLuong.HeaderText = "Số lượng";
+			this.SoLuong.MinimumWidth = 6;
+			this.SoLuong.Name = "SoLuong";
+			this.SoLuong.Width = 125;
 			// 
 			// dgv_nvtheopb
 			// 
+			dataGridViewCellStyle9.BackColor = System.Drawing.Color.Tan;
+			this.dgv_nvtheopb.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+			this.dgv_nvtheopb.BackgroundColor = System.Drawing.Color.White;
+			dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgv_nvtheopb.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
 			this.dgv_nvtheopb.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgv_nvtheopb.Location = new System.Drawing.Point(564, 186);
+			this.dgv_nvtheopb.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PhongBan,
+            this.SoLuong2});
+			this.dgv_nvtheopb.Location = new System.Drawing.Point(504, 152);
 			this.dgv_nvtheopb.Name = "dgv_nvtheopb";
 			this.dgv_nvtheopb.RowHeadersWidth = 51;
 			this.dgv_nvtheopb.RowTemplate.Height = 24;
-			this.dgv_nvtheopb.Size = new System.Drawing.Size(494, 150);
+			this.dgv_nvtheopb.Size = new System.Drawing.Size(480, 150);
 			this.dgv_nvtheopb.TabIndex = 8;
+			// 
+			// PhongBan
+			// 
+			this.PhongBan.DataPropertyName = "PhongBan";
+			this.PhongBan.HeaderText = "Cửa hàng";
+			this.PhongBan.MinimumWidth = 6;
+			this.PhongBan.Name = "PhongBan";
+			this.PhongBan.Width = 125;
+			// 
+			// SoLuong2
+			// 
+			this.SoLuong2.DataPropertyName = "SoLuong";
+			this.SoLuong2.HeaderText = "Số lượng";
+			this.SoLuong2.MinimumWidth = 6;
+			this.SoLuong2.Name = "SoLuong2";
+			this.SoLuong2.Width = 125;
 			// 
 			// dgv_nvtheocv
 			// 
+			dataGridViewCellStyle11.BackColor = System.Drawing.Color.Tan;
+			this.dgv_nvtheocv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+			this.dgv_nvtheocv.BackgroundColor = System.Drawing.Color.White;
+			dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgv_nvtheocv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
 			this.dgv_nvtheocv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgv_nvtheocv.Location = new System.Drawing.Point(1108, 186);
+			this.dgv_nvtheocv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ChucVu,
+            this.SoLuong3});
+			this.dgv_nvtheocv.Location = new System.Drawing.Point(990, 152);
 			this.dgv_nvtheocv.Name = "dgv_nvtheocv";
 			this.dgv_nvtheocv.RowHeadersWidth = 51;
 			this.dgv_nvtheocv.RowTemplate.Height = 24;
-			this.dgv_nvtheocv.Size = new System.Drawing.Size(494, 150);
+			this.dgv_nvtheocv.Size = new System.Drawing.Size(480, 150);
 			this.dgv_nvtheocv.TabIndex = 9;
 			// 
-			// panel1
+			// btn_close
 			// 
-			this.panel1.Controls.Add(this.lb_slpb2);
-			this.panel1.Controls.Add(this.lb_slpb1);
-			this.panel1.Location = new System.Drawing.Point(569, 12);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(351, 136);
-			this.panel1.TabIndex = 2;
+			this.btn_close.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_close.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_close.Location = new System.Drawing.Point(1355, 730);
+			this.btn_close.Name = "btn_close";
+			this.btn_close.Size = new System.Drawing.Size(115, 40);
+			this.btn_close.TabIndex = 11;
+			this.btn_close.Text = "Đóng";
+			this.btn_close.UseVisualStyleBackColor = false;
+			this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
 			// 
-			// lb_slpb2
+			// btn_xuatbaocao
 			// 
-			this.lb_slpb2.AutoSize = true;
-			this.lb_slpb2.Location = new System.Drawing.Point(135, 79);
-			this.lb_slpb2.Name = "lb_slpb2";
-			this.lb_slpb2.Size = new System.Drawing.Size(51, 16);
-			this.lb_slpb2.TabIndex = 1;
-			this.lb_slpb2.Text = "lb_slpb";
+			this.btn_xuatbaocao.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_xuatbaocao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_xuatbaocao.Location = new System.Drawing.Point(1114, 730);
+			this.btn_xuatbaocao.Name = "btn_xuatbaocao";
+			this.btn_xuatbaocao.Size = new System.Drawing.Size(137, 40);
+			this.btn_xuatbaocao.TabIndex = 10;
+			this.btn_xuatbaocao.Text = "Xuất báo cáo";
+			this.btn_xuatbaocao.UseVisualStyleBackColor = false;
+			this.btn_xuatbaocao.Click += new System.EventHandler(this.btn_xuatbaocao_Click);
 			// 
-			// lb_slpb1
+			// ChucVu
 			// 
-			this.lb_slpb1.AutoSize = true;
-			this.lb_slpb1.Font = new System.Drawing.Font("MS Reference Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_slpb1.Location = new System.Drawing.Point(17, 10);
-			this.lb_slpb1.Name = "lb_slpb1";
-			this.lb_slpb1.Size = new System.Drawing.Size(264, 28);
-			this.lb_slpb1.TabIndex = 0;
-			this.lb_slpb1.Text = "Số lượng phòng ban";
+			this.ChucVu.DataPropertyName = "ChucVu";
+			this.ChucVu.HeaderText = "Chức vụ";
+			this.ChucVu.MinimumWidth = 6;
+			this.ChucVu.Name = "ChucVu";
+			this.ChucVu.Width = 125;
 			// 
-			// panel2
+			// SoLuong3
 			// 
-			this.panel2.Controls.Add(this.lb_slcv2);
-			this.panel2.Controls.Add(this.lb_slcv1);
-			this.panel2.Location = new System.Drawing.Point(1108, 12);
-			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(351, 136);
-			this.panel2.TabIndex = 3;
+			this.SoLuong3.DataPropertyName = "SoLuong";
+			this.SoLuong3.HeaderText = "Số lượng";
+			this.SoLuong3.MinimumWidth = 6;
+			this.SoLuong3.Name = "SoLuong3";
+			this.SoLuong3.Width = 125;
 			// 
-			// lb_slcv2
-			// 
-			this.lb_slcv2.AutoSize = true;
-			this.lb_slcv2.Location = new System.Drawing.Point(135, 79);
-			this.lb_slcv2.Name = "lb_slcv2";
-			this.lb_slcv2.Size = new System.Drawing.Size(49, 16);
-			this.lb_slcv2.TabIndex = 1;
-			this.lb_slcv2.Text = "lb_slcv";
-			// 
-			// lb_slcv1
-			// 
-			this.lb_slcv1.AutoSize = true;
-			this.lb_slcv1.Font = new System.Drawing.Font("MS Reference Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_slcv1.Location = new System.Drawing.Point(17, 10);
-			this.lb_slcv1.Name = "lb_slcv1";
-			this.lb_slcv1.Size = new System.Drawing.Size(231, 28);
-			this.lb_slcv1.TabIndex = 0;
-			this.lb_slcv1.Text = "Số lượng chức vụ";
-			// 
-			// fHROverviewStatistics
+			// fThongketongquannhansu
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1693, 799);
-			this.Controls.Add(this.panel2);
-			this.Controls.Add(this.panel1);
+			this.BackColor = System.Drawing.Color.BlanchedAlmond;
+			this.ClientSize = new System.Drawing.Size(1482, 778);
+			this.Controls.Add(this.btn_close);
 			this.Controls.Add(this.dgv_nvtheocv);
+			this.Controls.Add(this.btn_xuatbaocao);
 			this.Controls.Add(this.dgv_nvtheopb);
 			this.Controls.Add(this.dgv_namnu);
 			this.Controls.Add(this.panel_nvtheocv);
 			this.Controls.Add(this.panel_nvtheopb);
 			this.Controls.Add(this.panel_namnu);
 			this.Controls.Add(this.panel_tongnv);
-			this.Name = "fHROverviewStatistics";
+			this.Name = "fThongketongquannhansu";
 			this.Text = "fPerformanceStatistics";
 			this.panel_tongnv.ResumeLayout(false);
 			this.panel_tongnv.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_namnu)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_nvtheopb)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_nvtheocv)).EndInit();
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
-			this.panel2.ResumeLayout(false);
-			this.panel2.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -226,11 +337,17 @@
 		private System.Windows.Forms.DataGridView dgv_namnu;
 		private System.Windows.Forms.DataGridView dgv_nvtheopb;
 		private System.Windows.Forms.DataGridView dgv_nvtheocv;
-		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.Label lb_slpb2;
 		private System.Windows.Forms.Label lb_slpb1;
-		private System.Windows.Forms.Panel panel2;
 		private System.Windows.Forms.Label lb_slcv2;
 		private System.Windows.Forms.Label lb_slcv1;
+		private System.Windows.Forms.Button btn_close;
+		private System.Windows.Forms.Button btn_xuatbaocao;
+		private System.Windows.Forms.DataGridViewTextBoxColumn GioiTinh;
+		private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong;
+		private System.Windows.Forms.DataGridViewTextBoxColumn PhongBan;
+		private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong2;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ChucVu;
+		private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong3;
 	}
 }

@@ -138,7 +138,7 @@ namespace QuanLyNhanSu.GUI
             colPhucCap.HeaderText = "Phụ cấp";
             colPhucCap.DataPropertyName = "PhucCapDisplay";
             colPhucCap.Width = 100;
-            colPhucCap.DefaultCellStyle.ForeColor = Color.Green;
+            colPhucCap.DefaultCellStyle.ForeColor = Color.Black;
             dgv_bangluong.Columns.Add(colPhucCap);
 
             DataGridViewTextBoxColumn colBaoHiem = new DataGridViewTextBoxColumn();
@@ -174,13 +174,13 @@ namespace QuanLyNhanSu.GUI
             colLuongThucLinh.HeaderText = "Lương thực lĩnh";
             colLuongThucLinh.DataPropertyName = "LuongThucLinhDisplay";
             colLuongThucLinh.Width = 130;
-            colLuongThucLinh.DefaultCellStyle.ForeColor = Color.Blue;
+            colLuongThucLinh.DefaultCellStyle.ForeColor = Color.Black;
             colLuongThucLinh.DefaultCellStyle.Font = new Font(dgv_bangluong.Font, FontStyle.Bold);
             dgv_bangluong.Columns.Add(colLuongThucLinh);
 
             // Cấu hình giao diện
-            dgv_bangluong.AlternatingRowsDefaultCellStyle.BackColor = Color.LightBlue;
-            dgv_bangluong.ColumnHeadersDefaultCellStyle.BackColor = Color.Navy;
+            dgv_bangluong.AlternatingRowsDefaultCellStyle.BackColor = Color.Tan;
+            dgv_bangluong.ColumnHeadersDefaultCellStyle.BackColor = Color.Tan;
             dgv_bangluong.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dgv_bangluong.ColumnHeadersDefaultCellStyle.Font = new Font(dgv_bangluong.Font, FontStyle.Bold);
         }

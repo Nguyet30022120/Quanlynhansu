@@ -28,6 +28,8 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.txb_tenungvien = new System.Windows.Forms.TextBox();
 			this.txb_danhgia = new System.Windows.Forms.TextBox();
 			this.dtp_ngaydanhgia = new System.Windows.Forms.DateTimePicker();
@@ -61,7 +63,7 @@
 			// txb_tenungvien
 			// 
 			this.txb_tenungvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_tenungvien.Location = new System.Drawing.Point(165, 45);
+			this.txb_tenungvien.Location = new System.Drawing.Point(165, 68);
 			this.txb_tenungvien.Name = "txb_tenungvien";
 			this.txb_tenungvien.Size = new System.Drawing.Size(252, 27);
 			this.txb_tenungvien.TabIndex = 1;
@@ -69,7 +71,7 @@
 			// txb_danhgia
 			// 
 			this.txb_danhgia.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_danhgia.Location = new System.Drawing.Point(545, 13);
+			this.txb_danhgia.Location = new System.Drawing.Point(545, 15);
 			this.txb_danhgia.Multiline = true;
 			this.txb_danhgia.Name = "txb_danhgia";
 			this.txb_danhgia.Size = new System.Drawing.Size(252, 54);
@@ -79,7 +81,7 @@
 			// 
 			this.dtp_ngaydanhgia.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.dtp_ngaydanhgia.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.dtp_ngaydanhgia.Location = new System.Drawing.Point(165, 75);
+			this.dtp_ngaydanhgia.Location = new System.Drawing.Point(165, 121);
 			this.dtp_ngaydanhgia.Name = "dtp_ngaydanhgia";
 			this.dtp_ngaydanhgia.Size = new System.Drawing.Size(252, 27);
 			this.dtp_ngaydanhgia.TabIndex = 3;
@@ -88,7 +90,7 @@
 			// 
 			this.cb_ketluan.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cb_ketluan.FormattingEnabled = true;
-			this.cb_ketluan.Location = new System.Drawing.Point(545, 75);
+			this.cb_ketluan.Location = new System.Drawing.Point(545, 120);
 			this.cb_ketluan.Name = "cb_ketluan";
 			this.cb_ketluan.Size = new System.Drawing.Size(252, 28);
 			this.cb_ketluan.TabIndex = 4;
@@ -97,7 +99,7 @@
 			// 
 			this.btn_themketqua.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_themketqua.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_themketqua.Location = new System.Drawing.Point(827, 10);
+			this.btn_themketqua.Location = new System.Drawing.Point(1350, 8);
 			this.btn_themketqua.Name = "btn_themketqua";
 			this.btn_themketqua.RightToLeft = System.Windows.Forms.RightToLeft.No;
 			this.btn_themketqua.Size = new System.Drawing.Size(115, 40);
@@ -110,7 +112,7 @@
 			// 
 			this.btn_suaketqua.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_suaketqua.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_suaketqua.Location = new System.Drawing.Point(827, 50);
+			this.btn_suaketqua.Location = new System.Drawing.Point(1350, 48);
 			this.btn_suaketqua.Name = "btn_suaketqua";
 			this.btn_suaketqua.Size = new System.Drawing.Size(115, 40);
 			this.btn_suaketqua.TabIndex = 6;
@@ -122,7 +124,7 @@
 			// 
 			this.btn_xoaketqua.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_xoaketqua.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_xoaketqua.Location = new System.Drawing.Point(827, 90);
+			this.btn_xoaketqua.Location = new System.Drawing.Point(1350, 88);
 			this.btn_xoaketqua.Name = "btn_xoaketqua";
 			this.btn_xoaketqua.Size = new System.Drawing.Size(115, 40);
 			this.btn_xoaketqua.TabIndex = 7;
@@ -134,7 +136,7 @@
 			// 
 			this.btn_dongketqua.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_dongketqua.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_dongketqua.Location = new System.Drawing.Point(827, 130);
+			this.btn_dongketqua.Location = new System.Drawing.Point(1350, 128);
 			this.btn_dongketqua.Name = "btn_dongketqua";
 			this.btn_dongketqua.Size = new System.Drawing.Size(115, 40);
 			this.btn_dongketqua.TabIndex = 8;
@@ -146,7 +148,7 @@
 			// 
 			this.btn_tiepnhan.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_tiepnhan.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_tiepnhan.Location = new System.Drawing.Point(545, 130);
+			this.btn_tiepnhan.Location = new System.Drawing.Point(1164, 131);
 			this.btn_tiepnhan.Name = "btn_tiepnhan";
 			this.btn_tiepnhan.Size = new System.Drawing.Size(115, 40);
 			this.btn_tiepnhan.TabIndex = 9;
@@ -156,6 +158,17 @@
 			// 
 			// dgv_ketqua
 			// 
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.Tan;
+			this.dgv_ketqua.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			this.dgv_ketqua.BackgroundColor = System.Drawing.Color.White;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgv_ketqua.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.dgv_ketqua.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgv_ketqua.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaKQ,
@@ -168,14 +181,14 @@
 			this.dgv_ketqua.Name = "dgv_ketqua";
 			this.dgv_ketqua.RowHeadersWidth = 51;
 			this.dgv_ketqua.RowTemplate.Height = 24;
-			this.dgv_ketqua.Size = new System.Drawing.Size(973, 262);
+			this.dgv_ketqua.Size = new System.Drawing.Size(1470, 546);
 			this.dgv_ketqua.TabIndex = 10;
 			// 
 			// lb_tenungvien
 			// 
 			this.lb_tenungvien.AutoSize = true;
 			this.lb_tenungvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_tenungvien.Location = new System.Drawing.Point(31, 45);
+			this.lb_tenungvien.Location = new System.Drawing.Point(30, 75);
 			this.lb_tenungvien.Name = "lb_tenungvien";
 			this.lb_tenungvien.Size = new System.Drawing.Size(99, 20);
 			this.lb_tenungvien.TabIndex = 12;
@@ -195,7 +208,7 @@
 			// 
 			this.lb_ketluan.AutoSize = true;
 			this.lb_ketluan.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_ketluan.Location = new System.Drawing.Point(468, 75);
+			this.lb_ketluan.Location = new System.Drawing.Point(468, 123);
 			this.lb_ketluan.Name = "lb_ketluan";
 			this.lb_ketluan.Size = new System.Drawing.Size(67, 20);
 			this.lb_ketluan.TabIndex = 14;
@@ -205,7 +218,7 @@
 			// 
 			this.lb_ngaydanhgia.AutoSize = true;
 			this.lb_ngaydanhgia.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_ngaydanhgia.Location = new System.Drawing.Point(30, 75);
+			this.lb_ngaydanhgia.Location = new System.Drawing.Point(30, 128);
 			this.lb_ngaydanhgia.Name = "lb_ngaydanhgia";
 			this.lb_ngaydanhgia.Size = new System.Drawing.Size(110, 20);
 			this.lb_ngaydanhgia.TabIndex = 15;
@@ -216,14 +229,14 @@
 			this.txb_timketqua.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txb_timketqua.Location = new System.Drawing.Point(30, 177);
 			this.txb_timketqua.Name = "txb_timketqua";
-			this.txb_timketqua.Size = new System.Drawing.Size(780, 27);
+			this.txb_timketqua.Size = new System.Drawing.Size(1300, 27);
 			this.txb_timketqua.TabIndex = 16;
 			// 
 			// btn_timketqua
 			// 
 			this.btn_timketqua.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_timketqua.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_timketqua.Location = new System.Drawing.Point(827, 170);
+			this.btn_timketqua.Location = new System.Drawing.Point(1350, 168);
 			this.btn_timketqua.Name = "btn_timketqua";
 			this.btn_timketqua.Size = new System.Drawing.Size(115, 40);
 			this.btn_timketqua.TabIndex = 17;
@@ -271,7 +284,7 @@
 			this.panel1.Controls.Add(this.dtp_ngaydanhgia);
 			this.panel1.Location = new System.Drawing.Point(5, 4);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(973, 219);
+			this.panel1.Size = new System.Drawing.Size(1470, 219);
 			this.panel1.TabIndex = 20;
 			// 
 			// lb_goiy
@@ -306,7 +319,7 @@
 			this.TenUV.HeaderText = "Tên ứng viên";
 			this.TenUV.MinimumWidth = 6;
 			this.TenUV.Name = "TenUV";
-			this.TenUV.Width = 125;
+			this.TenUV.Width = 200;
 			// 
 			// DanhGia
 			// 
@@ -314,7 +327,7 @@
 			this.DanhGia.HeaderText = "Đánh giá";
 			this.DanhGia.MinimumWidth = 6;
 			this.DanhGia.Name = "DanhGia";
-			this.DanhGia.Width = 125;
+			this.DanhGia.Width = 200;
 			// 
 			// KetLuan
 			// 
@@ -330,14 +343,14 @@
 			this.NgayDanhGia.HeaderText = "Ngày đánh giá";
 			this.NgayDanhGia.MinimumWidth = 6;
 			this.NgayDanhGia.Name = "NgayDanhGia";
-			this.NgayDanhGia.Width = 125;
+			this.NgayDanhGia.Width = 150;
 			// 
 			// fQuanlyketquaphongvan
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.BlanchedAlmond;
-			this.ClientSize = new System.Drawing.Size(982, 503);
+			this.ClientSize = new System.Drawing.Size(1482, 778);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.dgv_ketqua);
 			this.Name = "fQuanlyketquaphongvan";

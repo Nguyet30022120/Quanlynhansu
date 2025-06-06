@@ -36,12 +36,12 @@ namespace QuanLyNhanSu.DAO
 					CASE 
 						WHEN co.ThoiGianCheckOut IS NOT NULL 
 						THEN CAST(co.ThoiGianCheckOut AS TIME)
-						ELSE CAST(ci.ThoiGianCheckIn AS TIME)
+						ELSE NULL  -- Không đặt giờ mặc định nếu chưa checkout
 					END as GioCheckOut,
 					CASE 
 						WHEN co.ThoiGianCheckOut IS NOT NULL AND ci.ThoiGianCheckIn IS NOT NULL
 						THEN DATEDIFF(MINUTE, ci.ThoiGianCheckIn, co.ThoiGianCheckOut) / 60.0
-						ELSE 8.0  -- Mặc định 8 giờ nếu không có checkout
+						ELSE 0.0  -- Không tính giờ nếu chưa checkout hoàn chỉnh
 					END AS SoGioLam
 				FROM [Nhan vien] nv
 				INNER JOIN CheckIn ci ON nv.Ma_NV = ci.Ma_NV 
@@ -79,12 +79,12 @@ namespace QuanLyNhanSu.DAO
 					CASE 
 						WHEN co.ThoiGianCheckOut IS NOT NULL 
 						THEN CAST(co.ThoiGianCheckOut AS TIME)
-						ELSE CAST(ci.ThoiGianCheckIn AS TIME)
+						ELSE NULL  -- Không đặt giờ mặc định nếu chưa checkout
 					END as GioCheckOut,
 					CASE 
 						WHEN co.ThoiGianCheckOut IS NOT NULL AND ci.ThoiGianCheckIn IS NOT NULL
 						THEN DATEDIFF(MINUTE, ci.ThoiGianCheckIn, co.ThoiGianCheckOut) / 60.0
-						ELSE 8.0  -- Mặc định 8 giờ nếu không có checkout
+						ELSE 0.0  -- Không tính giờ nếu chưa checkout hoàn chỉnh
 					END AS SoGioLam
 				FROM [Nhan vien] nv
 				INNER JOIN CheckIn ci ON nv.Ma_NV = ci.Ma_NV 
@@ -114,7 +114,7 @@ namespace QuanLyNhanSu.DAO
 						CASE 
 							WHEN co.ThoiGianCheckOut IS NOT NULL AND ci.ThoiGianCheckIn IS NOT NULL
 							THEN DATEDIFF(MINUTE, ci.ThoiGianCheckIn, co.ThoiGianCheckOut) / 60.0
-							ELSE 8.0  -- Mặc định 8 giờ nếu không có checkout
+							ELSE 0.0  -- Không tính giờ nếu chưa checkout hoàn chỉnh
 						END
 					) as TongGioLam
 				FROM CheckIn ci
@@ -178,26 +178,74 @@ namespace QuanLyNhanSu.DAO
 		{
 			try
 			{
-				string query = @"
-					SELECT TOP 5
+				// Sử dụng tháng/năm hiện tại thay vì hardcode
+				int currentMonth = DateTime.Now.Month;
+				int currentYear = DateTime.Now.Year;
+				
+				string query = string.Format(@"
+					SELECT TOP 10
 						ci.MaCheckIn, ci.Ma_NV, ci.NgayCheckIn, ci.ThoiGianCheckIn, ci.GioCheckIn,
 						co.MaCheckOut, co.ThoiGianCheckOut, co.GioCheckOut,
-						nv.HoTen
+						nv.HoTen,
+						CASE 
+							WHEN co.ThoiGianCheckOut IS NOT NULL AND ci.ThoiGianCheckIn IS NOT NULL
+							THEN DATEDIFF(MINUTE, ci.ThoiGianCheckIn, co.ThoiGianCheckOut) / 60.0
+							ELSE 0.0  -- Không tính giờ nếu chưa checkout
+						END AS SoGioLamTinhToan
 					FROM CheckIn ci
 					LEFT JOIN CheckOut co ON ci.Ma_NV = co.Ma_NV 
 						AND CAST(ci.NgayCheckIn AS DATE) = CAST(co.NgayCheckOut AS DATE)
 					LEFT JOIN [Nhan vien] nv ON ci.Ma_NV = nv.Ma_NV
-					WHERE MONTH(ci.NgayCheckIn) = 5 AND YEAR(ci.NgayCheckIn) = 2025
-					ORDER BY ci.NgayCheckIn";
+					WHERE MONTH(ci.NgayCheckIn) = {0} AND YEAR(ci.NgayCheckIn) = {1}
+					ORDER BY ci.NgayCheckIn DESC", currentMonth, currentYear);
 
 				return DataProvider.Instance.ExecuteQuery(query);
 			}
 			catch (Exception ex)
 			{
-				// Tạo bảng lỗi với thông tin debug
+				// Tạo bảng lỗi với thông tin debug chi tiết hơn
 				DataTable dt = new DataTable();
 				dt.Columns.Add("Error", typeof(string));
-				dt.Rows.Add("Connection Error: " + ex.Message);
+				dt.Columns.Add("Details", typeof(string));
+				dt.Rows.Add("Connection Error: " + ex.Message, ex.StackTrace);
+				return dt;
+			}
+		}
+
+		/// <summary>
+		/// Lấy thống kê tổng quan về nhân viên và dữ liệu chấm công
+		/// </summary>
+		public DataTable GetThongKeNhanh()
+		{
+			try
+			{
+				string query = @"
+					SELECT 
+						'Tổng nhân viên' as ThongKe,
+						COUNT(DISTINCT nv.Ma_NV) as GiaTri
+					FROM [Nhan vien] nv
+					UNION ALL
+					SELECT 
+						'Nhân viên có chấm công hôm nay' as ThongKe,
+						COUNT(DISTINCT ci.Ma_NV) as GiaTri
+					FROM CheckIn ci
+					WHERE CAST(ci.NgayCheckIn AS DATE) = CAST(GETDATE() AS DATE)
+					UNION ALL
+					SELECT 
+						'Tổng bản ghi CheckIn tháng này' as ThongKe,
+						COUNT(*) as GiaTri
+					FROM CheckIn ci
+					WHERE MONTH(ci.NgayCheckIn) = MONTH(GETDATE()) 
+						AND YEAR(ci.NgayCheckIn) = YEAR(GETDATE())";
+
+				return DataProvider.Instance.ExecuteQuery(query);
+			}
+			catch
+			{
+				// Trả về bảng rỗng nếu có lỗi
+				DataTable dt = new DataTable();
+				dt.Columns.Add("ThongKe", typeof(string));
+				dt.Columns.Add("GiaTri", typeof(int));
 				return dt;
 			}
 		}

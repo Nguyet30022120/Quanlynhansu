@@ -312,12 +312,24 @@ namespace QuanLyNhanSu.GUI
 			
 			if (bangCongData.Any())
 			{
-				var maxGio = bangCongData.Max(x => x.SoGioLam);
-				var minGio = bangCongData.Where(x => x.SoGioLam > 0).Min(x => x.SoGioLam);
-				thongBao += $"📊 THỐNG KÊ CHI TIẾT:\n";
-				thongBao += $"   • Giờ làm cao nhất: {maxGio:F1} giờ\n";
-				thongBao += $"   • Giờ làm thấp nhất: {minGio:F1} giờ\n";
-				thongBao += $"   • Giờ làm trung bình: {(tongGioLam/Math.Max(tongNgayLam,1)):F1} giờ/ngày\n\n";
+				// Kiểm tra xem có dữ liệu SoGioLam > 0 trước khi tính min/max
+				var validWorkHours = bangCongData.Where(x => x.SoGioLam > 0).ToList();
+				
+				if (validWorkHours.Any())
+				{
+					var maxGio = validWorkHours.Max(x => x.SoGioLam);
+					var minGio = validWorkHours.Min(x => x.SoGioLam);
+					thongBao += $"📊 THỐNG KÊ CHI TIẾT:\n";
+					thongBao += $"   • Giờ làm cao nhất: {maxGio:F1} giờ\n";
+					thongBao += $"   • Giờ làm thấp nhất: {minGio:F1} giờ\n";
+					thongBao += $"   • Giờ làm trung bình: {(tongGioLam/Math.Max(tongNgayLam,1)):F1} giờ/ngày\n\n";
+				}
+				else
+				{
+					thongBao += $"📊 THỐNG KÊ CHI TIẾT:\n";
+					thongBao += $"   • Chưa có dữ liệu giờ làm việc hợp lệ\n";
+					thongBao += $"   • Tất cả bản ghi có SoGioLam = 0\n\n";
+				}
 			}
 			else
 			{

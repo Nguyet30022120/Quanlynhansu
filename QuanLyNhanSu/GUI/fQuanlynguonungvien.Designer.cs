@@ -28,8 +28,8 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.lb_nguonungvien = new System.Windows.Forms.Label();
 			this.lb_soluonghoso = new System.Windows.Forms.Label();
 			this.txb_soluonghs = new System.Windows.Forms.TextBox();
@@ -46,6 +46,7 @@
 			this.panel_chart = new System.Windows.Forms.Panel();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.panel2 = new System.Windows.Forms.Panel();
+			this.lb_goiy = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_nguonuv)).BeginInit();
 			this.panel2.SuspendLayout();
 			this.SuspendLayout();
@@ -89,17 +90,17 @@
 			// 
 			// dgv_nguonuv
 			// 
-			dataGridViewCellStyle1.BackColor = System.Drawing.Color.Tan;
-			this.dgv_nguonuv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle3.BackColor = System.Drawing.Color.Tan;
+			this.dgv_nguonuv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
 			this.dgv_nguonuv.BackgroundColor = System.Drawing.Color.White;
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgv_nguonuv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgv_nguonuv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
 			this.dgv_nguonuv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgv_nguonuv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TenNguon,
@@ -213,6 +214,7 @@
 			// 
 			// panel2
 			// 
+			this.panel2.Controls.Add(this.lb_goiy);
 			this.panel2.Controls.Add(this.btn_timnguonungvien);
 			this.panel2.Controls.Add(this.btn_dongnguonungvien);
 			this.panel2.Controls.Add(this.btn_themnguonungvien);
@@ -224,6 +226,16 @@
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(1476, 179);
 			this.panel2.TabIndex = 15;
+			// 
+			// lb_goiy
+			// 
+			this.lb_goiy.AutoSize = true;
+			this.lb_goiy.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lb_goiy.Location = new System.Drawing.Point(9, 140);
+			this.lb_goiy.Name = "lb_goiy";
+			this.lb_goiy.Size = new System.Drawing.Size(158, 17);
+			this.lb_goiy.TabIndex = 45;
+			this.lb_goiy.Text = "(Tìm kiếm nguồn ứng viên)";
 			// 
 			// fQuanlynguonungvien
 			// 
@@ -266,5 +278,6 @@
 		private System.Windows.Forms.Panel panel2;
 		private System.Windows.Forms.DataGridViewTextBoxColumn TenNguon;
 		private System.Windows.Forms.DataGridViewTextBoxColumn SoLuongHoSo;
+		private System.Windows.Forms.Label lb_goiy;
 	}
 }

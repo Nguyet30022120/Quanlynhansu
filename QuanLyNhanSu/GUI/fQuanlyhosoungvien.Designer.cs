@@ -56,8 +56,11 @@
 			this.cb_gioitinh = new System.Windows.Forms.ComboBox();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.lb_goiy = new System.Windows.Forms.Label();
+			this.lb_trangthai = new System.Windows.Forms.Label();
+			this.txb_trangthai = new System.Windows.Forms.TextBox();
 			this.Ma_HS = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.NgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ChiTietCV = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -113,7 +116,7 @@
 			// 
 			this.lb_chitietcv.AutoSize = true;
 			this.lb_chitietcv.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_chitietcv.Location = new System.Drawing.Point(487, 135);
+			this.lb_chitietcv.Location = new System.Drawing.Point(460, 139);
 			this.lb_chitietcv.Name = "lb_chitietcv";
 			this.lb_chitietcv.Size = new System.Drawing.Size(82, 20);
 			this.lb_chitietcv.TabIndex = 6;
@@ -123,7 +126,7 @@
 			// 
 			this.lb_nguonungvien.AutoSize = true;
 			this.lb_nguonungvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_nguonungvien.Location = new System.Drawing.Point(487, 55);
+			this.lb_nguonungvien.Location = new System.Drawing.Point(460, 59);
 			this.lb_nguonungvien.Name = "lb_nguonungvien";
 			this.lb_nguonungvien.Size = new System.Drawing.Size(122, 20);
 			this.lb_nguonungvien.TabIndex = 7;
@@ -146,6 +149,7 @@
 			this.dgv_hoso.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Ma_HS,
             this.HoTen,
+            this.TrangThai,
             this.NgaySinh,
             this.DienThoai,
             this.ChiTietCV,
@@ -212,7 +216,7 @@
 			// 
 			this.btn_tiepnhan.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_tiepnhan.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_tiepnhan.Location = new System.Drawing.Point(1035, 125);
+			this.btn_tiepnhan.Location = new System.Drawing.Point(1205, 128);
 			this.btn_tiepnhan.Name = "btn_tiepnhan";
 			this.btn_tiepnhan.Size = new System.Drawing.Size(115, 40);
 			this.btn_tiepnhan.TabIndex = 14;
@@ -236,7 +240,7 @@
 			// 
 			this.lb_chucvu.AutoSize = true;
 			this.lb_chucvu.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_chucvu.Location = new System.Drawing.Point(487, 95);
+			this.lb_chucvu.Location = new System.Drawing.Point(460, 99);
 			this.lb_chucvu.Name = "lb_chucvu";
 			this.lb_chucvu.Size = new System.Drawing.Size(141, 20);
 			this.lb_chucvu.TabIndex = 16;
@@ -263,7 +267,7 @@
 			// txb_chitietcv
 			// 
 			this.txb_chitietcv.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_chitietcv.Location = new System.Drawing.Point(670, 132);
+			this.txb_chitietcv.Location = new System.Drawing.Point(643, 136);
 			this.txb_chitietcv.Name = "txb_chitietcv";
 			this.txb_chitietcv.Size = new System.Drawing.Size(252, 27);
 			this.txb_chitietcv.TabIndex = 21;
@@ -272,7 +276,7 @@
 			// 
 			this.cb_nguonungvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cb_nguonungvien.FormattingEnabled = true;
-			this.cb_nguonungvien.Location = new System.Drawing.Point(670, 55);
+			this.cb_nguonungvien.Location = new System.Drawing.Point(643, 59);
 			this.cb_nguonungvien.Name = "cb_nguonungvien";
 			this.cb_nguonungvien.Size = new System.Drawing.Size(252, 28);
 			this.cb_nguonungvien.TabIndex = 22;
@@ -281,7 +285,7 @@
 			// 
 			this.cb_chucvu.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cb_chucvu.FormattingEnabled = true;
-			this.cb_chucvu.Location = new System.Drawing.Point(670, 95);
+			this.cb_chucvu.Location = new System.Drawing.Point(643, 99);
 			this.cb_chucvu.Name = "cb_chucvu";
 			this.cb_chucvu.Size = new System.Drawing.Size(252, 28);
 			this.cb_chucvu.TabIndex = 23;
@@ -308,7 +312,7 @@
 			// 
 			this.lb_email.AutoSize = true;
 			this.lb_email.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_email.Location = new System.Drawing.Point(487, 15);
+			this.lb_email.Location = new System.Drawing.Point(460, 19);
 			this.lb_email.Name = "lb_email";
 			this.lb_email.Size = new System.Drawing.Size(47, 20);
 			this.lb_email.TabIndex = 26;
@@ -317,7 +321,7 @@
 			// txb_email
 			// 
 			this.txb_email.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_email.Location = new System.Drawing.Point(670, 15);
+			this.txb_email.Location = new System.Drawing.Point(643, 19);
 			this.txb_email.Name = "txb_email";
 			this.txb_email.Size = new System.Drawing.Size(252, 27);
 			this.txb_email.TabIndex = 27;
@@ -333,6 +337,8 @@
 			// 
 			// panel1
 			// 
+			this.panel1.Controls.Add(this.txb_trangthai);
+			this.panel1.Controls.Add(this.lb_trangthai);
 			this.panel1.Controls.Add(this.lb_goiy);
 			this.panel1.Controls.Add(this.btn_tiepnhan);
 			this.panel1.Controls.Add(this.txb_email);
@@ -372,6 +378,25 @@
 			this.lb_goiy.TabIndex = 45;
 			this.lb_goiy.Text = "(Tìm kiếm theo mã hồ sơ, tên ứng viên)";
 			// 
+			// lb_trangthai
+			// 
+			this.lb_trangthai.AutoSize = true;
+			this.lb_trangthai.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lb_trangthai.Location = new System.Drawing.Point(947, 19);
+			this.lb_trangthai.Name = "lb_trangthai";
+			this.lb_trangthai.Size = new System.Drawing.Size(80, 20);
+			this.lb_trangthai.TabIndex = 46;
+			this.lb_trangthai.Text = "Trạng thái";
+			// 
+			// txb_trangthai
+			// 
+			this.txb_trangthai.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txb_trangthai.Location = new System.Drawing.Point(1068, 16);
+			this.txb_trangthai.Name = "txb_trangthai";
+			this.txb_trangthai.ReadOnly = true;
+			this.txb_trangthai.Size = new System.Drawing.Size(252, 27);
+			this.txb_trangthai.TabIndex = 47;
+			// 
 			// Ma_HS
 			// 
 			this.Ma_HS.DataPropertyName = "MaHS";
@@ -387,7 +412,15 @@
 			this.HoTen.HeaderText = "Tên ứng viên";
 			this.HoTen.MinimumWidth = 6;
 			this.HoTen.Name = "HoTen";
-			this.HoTen.Width = 200;
+			this.HoTen.Width = 125;
+			// 
+			// TrangThai
+			// 
+			this.TrangThai.DataPropertyName = "TrangThai";
+			this.TrangThai.HeaderText = "Trạng thái";
+			this.TrangThai.MinimumWidth = 6;
+			this.TrangThai.Name = "TrangThai";
+			this.TrangThai.Width = 125;
 			// 
 			// NgaySinh
 			// 
@@ -493,8 +526,11 @@
 		private System.Windows.Forms.ComboBox cb_gioitinh;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.Label lb_goiy;
+		private System.Windows.Forms.TextBox txb_trangthai;
+		private System.Windows.Forms.Label lb_trangthai;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Ma_HS;
 		private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
+		private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
 		private System.Windows.Forms.DataGridViewTextBoxColumn NgaySinh;
 		private System.Windows.Forms.DataGridViewTextBoxColumn DienThoai;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ChiTietCV;

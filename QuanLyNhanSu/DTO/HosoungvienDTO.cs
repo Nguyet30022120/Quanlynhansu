@@ -9,7 +9,7 @@ namespace QuanLyNhanSu.DTO
 {
 	public class HosoungvienDTO
 	{
-		public HosoungvienDTO(string maHS, string hoTen, DateTime ngaySinh, int gioiTinh, string dienThoai, string chiTietCV, string nguonUV, string chucVu, string email)
+		public HosoungvienDTO(string maHS, string hoTen, DateTime ngaySinh, int gioiTinh, string dienThoai, string chiTietCV, string nguonUV, string chucVu, string email, string trangThai)
 		{
 			this.MaHS = maHS;
 			this.HoTen = hoTen;
@@ -20,6 +20,7 @@ namespace QuanLyNhanSu.DTO
 			this.NguonUV = nguonUV;
 			this.ChucVu = chucVu;
 			this.Email = email;
+			this.TrangThai = trangThai;
 		}
 
 		public HosoungvienDTO(DataRow row)
@@ -33,6 +34,7 @@ namespace QuanLyNhanSu.DTO
 			this.NguonUV = row["NguonUngVien"].ToString();
 			this.ChucVu = row["ChucVu"].ToString();
 			this.Email = row["Email"].ToString();
+			this.TrangThai = row["TrangThai"].ToString();
 		}
 
 
@@ -54,6 +56,8 @@ namespace QuanLyNhanSu.DTO
 
 		private string email;
 
+		private string trangThai;
+
 		public string MaHS { get => maHS; set => maHS=value; }
 		public string HoTen { get => hoTen; set => hoTen=value; }
 		public DateTime NgaySinh { get => ngaySinh; set => ngaySinh=value; }
@@ -63,5 +67,6 @@ namespace QuanLyNhanSu.DTO
 		public string ChucVu { get => chucVu; set => chucVu=value; }
 		public string Email { get => email; set => email=value; }
 		public int GioiTinh { get => gioiTinh; set => gioiTinh=value; }
+		public string TrangThai { get => trangThai; set => trangThai=value; }
 	}
 }

@@ -27,7 +27,7 @@ namespace QuanLyNhanSu.DTO
 
 		public ThongketuyendungDTO(DataRow row)
 		{
-			this.KetQua = row["KetQua"].ToString();
+			this.KetQua = row["KetLuan"].ToString();
 			this.SoLuong = Convert.ToInt32(row["SoLuong"]);
 			this.Nam = Convert.ToInt32(row["Nam"]);
 			this.Thang = Convert.ToInt32(row["Thang"]);

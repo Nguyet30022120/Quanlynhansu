@@ -223,7 +223,7 @@
 			// 
 			// elementHost1
 			// 
-			this.elementHost1.BackColor = System.Drawing.Color.Tan;
+			this.elementHost1.BackColor = System.Drawing.Color.SeaShell;
 			this.elementHost1.Location = new System.Drawing.Point(14, 434);
 			this.elementHost1.Name = "elementHost1";
 			this.elementHost1.Size = new System.Drawing.Size(1456, 336);

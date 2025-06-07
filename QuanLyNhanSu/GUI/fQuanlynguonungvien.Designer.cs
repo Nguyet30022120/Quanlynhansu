@@ -35,6 +35,8 @@
 			this.txb_soluonghs = new System.Windows.Forms.TextBox();
 			this.cb_nguonungvien = new System.Windows.Forms.ComboBox();
 			this.dgv_nguonuv = new System.Windows.Forms.DataGridView();
+			this.TenNguon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.SoLuongHoSo = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.btn_themnguonungvien = new System.Windows.Forms.Button();
 			this.btn_xoanguonungvien = new System.Windows.Forms.Button();
 			this.txb_timnguonungvien = new System.Windows.Forms.TextBox();
@@ -44,8 +46,6 @@
 			this.panel_chart = new System.Windows.Forms.Panel();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.panel2 = new System.Windows.Forms.Panel();
-			this.TenNguon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.SoLuongHoSo = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_nguonuv)).BeginInit();
 			this.panel2.SuspendLayout();
 			this.SuspendLayout();
@@ -110,6 +110,22 @@
 			this.dgv_nguonuv.RowTemplate.Height = 24;
 			this.dgv_nguonuv.Size = new System.Drawing.Size(1476, 593);
 			this.dgv_nguonuv.TabIndex = 5;
+			// 
+			// TenNguon
+			// 
+			this.TenNguon.DataPropertyName = "TenNguon";
+			this.TenNguon.HeaderText = "Nguồn ứng viên";
+			this.TenNguon.MinimumWidth = 6;
+			this.TenNguon.Name = "TenNguon";
+			this.TenNguon.Width = 200;
+			// 
+			// SoLuongHoSo
+			// 
+			this.SoLuongHoSo.DataPropertyName = "SoLuongHoSo";
+			this.SoLuongHoSo.HeaderText = "Số lượng hồ sơ";
+			this.SoLuongHoSo.MinimumWidth = 6;
+			this.SoLuongHoSo.Name = "SoLuongHoSo";
+			this.SoLuongHoSo.Width = 200;
 			// 
 			// btn_themnguonungvien
 			// 
@@ -181,6 +197,7 @@
 			// 
 			// panel_chart
 			// 
+			this.panel_chart.BackColor = System.Drawing.Color.SeaShell;
 			this.panel_chart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.panel_chart.Location = new System.Drawing.Point(793, 173);
 			this.panel_chart.Name = "panel_chart";
@@ -207,22 +224,6 @@
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(1476, 179);
 			this.panel2.TabIndex = 15;
-			// 
-			// TenNguon
-			// 
-			this.TenNguon.DataPropertyName = "TenNguon";
-			this.TenNguon.HeaderText = "Nguồn ứng viên";
-			this.TenNguon.MinimumWidth = 6;
-			this.TenNguon.Name = "TenNguon";
-			this.TenNguon.Width = 200;
-			// 
-			// SoLuongHoSo
-			// 
-			this.SoLuongHoSo.DataPropertyName = "SoLuongHoSo";
-			this.SoLuongHoSo.HeaderText = "Số lượng hồ sơ";
-			this.SoLuongHoSo.MinimumWidth = 6;
-			this.SoLuongHoSo.Name = "SoLuongHoSo";
-			this.SoLuongHoSo.Width = 200;
 			// 
 			// fQuanlynguonungvien
 			// 

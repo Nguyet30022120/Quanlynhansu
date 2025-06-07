@@ -32,7 +32,7 @@ namespace QuanLyNhanSu.GUI
 		{
 			List<string> diaDiem = new List<string>()
 			{
-				"Được tuyển", "Không đạt", "Cần đào tạo thêm"
+				"Được tuyển", "Không được tuyển"
 			};
 			cb_ketluan.DataSource = diaDiem;
 		}

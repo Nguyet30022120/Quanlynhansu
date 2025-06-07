@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.Integration;
 using QuanLyNhanSu.DAO;
+using QuanLyNhanSu.DTO;
 
 namespace QuanLyNhanSu.GUI
 {
@@ -24,12 +25,14 @@ namespace QuanLyNhanSu.GUI
 		}
 		void LoadInitialData()
 		{
-			// Load ComboBox tháng (1-12)
+			// Load ComboBox tháng (Tất cả các tháng + 1-12)
+			cb_thang.Items.Add("--Tất cả các tháng--"); // Giá trị đầu tiên, tương ứng với 0
 			for (int i = 1; i <= 12; i++)
 			{
 				cb_thang.Items.Add(i);
 			}
-			cb_thang.SelectedItem = DateTime.Now.Month;
+			// Nếu muốn mặc định là tháng hiện tại, cần +1 vì "Tất cả các tháng" ở vị trí 0
+			cb_thang.SelectedIndex = DateTime.Now.Month;
 
 			// Load ComboBox năm (từ 2020 đến năm hiện tại + 2)
 			int currentYear = DateTime.Now.Year;
@@ -86,50 +89,52 @@ namespace QuanLyNhanSu.GUI
 		}
 		private void LoadChartTuyenDung(DataTable dt)
 		{
-			// Mảng lưu số lượng cho từng tháng (1-12)
+
 			int[] duocTuyen = new int[12];
 			int[] khongDuocTuyen = new int[12];
 
-			// Duyệt dữ liệu và phân loại
-			foreach (DataRow row in dt.Rows)
+			for (int i = 1; i <= 12; i++)
 			{
-				int thang = Convert.ToInt32(row["Thang"]);
-				int soLuong = Convert.ToInt32(row["SoLuong"]);
-				string ketLuan = row["KetLuan"].ToString();
+				var rowsDuocTuyen = dt.Select($"Thang = {i} AND KetLuan = 'Được tuyển'");
+				var rowsKhongDuocTuyen = dt.Select($"Thang = {i} AND KetLuan = 'Không được tuyển'");
 
-				if (ketLuan == "Được tuyển")
-					duocTuyen[thang - 1] = soLuong;
-				else
-					khongDuocTuyen[thang - 1] = soLuong;
+				duocTuyen[i - 1] = rowsDuocTuyen.Length > 0 ? Convert.ToInt32(rowsDuocTuyen[0]["SoLuong"]) : 0;
+				khongDuocTuyen[i - 1] = rowsKhongDuocTuyen.Length > 0 ? Convert.ToInt32(rowsKhongDuocTuyen[0]["SoLuong"]) : 0;
 			}
 
-			// Tạo Series cho biểu đồ cột nhóm
 			var series = new SeriesCollection
 	{
 		new ColumnSeries
 		{
 			Title = "Được tuyển",
-			Values = new ChartValues<int>(duocTuyen)
+			Values = new ChartValues<int>(duocTuyen),
+			DataLabels = true,
+			LabelPoint = point => point.Y > 0 ? point.Y.ToString() : "", // ẩn số 0
+            Foreground = System.Windows.Media.Brushes.Black,
+			FontWeight = System.Windows.FontWeights.Bold
 		},
 		new ColumnSeries
 		{
 			Title = "Không được tuyển",
-			Values = new ChartValues<int>(khongDuocTuyen)
+			Values = new ChartValues<int>(khongDuocTuyen),
+			DataLabels = true,
+			LabelPoint = point => point.Y > 0 ? point.Y.ToString() : "",
+			Foreground = System.Windows.Media.Brushes.Black,
+			FontWeight = System.Windows.FontWeights.Bold
 		}
 	};
 
-			// Nhãn trục X là các tháng
-			string[] labels = Enumerable.Range(1, 12).Select(i => $"Tháng {i}").ToArray();
+			// Hiển thị nhãn "Tháng 1", "Tháng 2", ...
+			string[] labels = Enumerable.Range(1, 12).Select(j => $"Tháng {j}").ToArray();
 
 			var cartesianChart = new CartesianChart
 			{
 				Series = series,
-				AxisX = { new Axis { Title = "Tháng", Labels = labels } },
+				AxisX = { new Axis { Labels = labels, Title = "" } },
 				AxisY = { new Axis { Title = "Số lượng" } },
 				LegendLocation = LegendLocation.Top
 			};
 
-			// Hiển thị lên panel_chart (panel_chart là Panel bạn đặt trên form)
 			ElementHost host = new ElementHost
 			{
 				Dock = DockStyle.Fill,
@@ -138,9 +143,51 @@ namespace QuanLyNhanSu.GUI
 			panel_chart.Controls.Clear();
 			panel_chart.Controls.Add(host);
 		}
+		private DataTable ConvertListToDataTable(List<ThongketuyendungDTO> list)
+		{
+			DataTable dataTable = new DataTable();
 
+			// Define columns based on ThongketuyendungDTO properties
+			dataTable.Columns.Add("Thang", typeof(int));
+			dataTable.Columns.Add("SoLuong", typeof(int));
+			dataTable.Columns.Add("KetLuan", typeof(string)); // Đúng tên cột dùng cho DataTable
+
+			// Populate rows
+			foreach (var item in list)
+			{
+				DataRow row = dataTable.NewRow();
+				row["Thang"] = item.Thang;
+				row["SoLuong"] = item.SoLuong;
+				row["KetLuan"] = item.KetQua; // Gán vào cột "KetLuan"
+				dataTable.Rows.Add(row);
+			}
+
+			return dataTable;
+		}
 		private void btn_thongkenhanvien_Click(object sender, EventArgs e)
 		{
+
+			try
+			{
+				int nam = Convert.ToInt32(cb_nam.SelectedItem);
+				int thang = 0;
+				// Nếu chọn "--Tất cả các tháng--" thì thang = 0, còn lại lấy giá trị số tháng
+				if (cb_thang.SelectedIndex > 0)
+				{
+					thang = Convert.ToInt32(cb_thang.SelectedItem);
+				}
+
+				List<ThongketuyendungDTO> dataList = ThongketuyendungDAO.Instance.GetTyLeTuyenDung(nam, thang);
+				DataTable dataTable = ConvertListToDataTable(dataList);
+				LoadChartTuyenDung(dataTable);
+				// Hiển thị lên DataGridView
+				tuyendungList.DataSource = dataList;
+				dgv_tuyendungtk.DataSource = tuyendungList;
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Lỗi hiển thị biểu đồ: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
 
 		}
 
@@ -167,7 +214,7 @@ namespace QuanLyNhanSu.GUI
 
 		private void btn_dong_Click(object sender, EventArgs e)
 		{
-
+			this.Close();
 		}
 	}
 }

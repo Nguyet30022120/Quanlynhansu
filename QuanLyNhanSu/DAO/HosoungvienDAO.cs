@@ -6,6 +6,7 @@ using System.Linq;
 using System.Management.Instrumentation;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace QuanLyNhanSu.DAO
 {
@@ -22,7 +23,8 @@ namespace QuanLyNhanSu.DAO
 		{
 			List<HosoungvienDTO> list = new List<HosoungvienDTO>();
 
-			string query = "SELECT HS.Ma_HS, HS.HoTen, HS.NgaySinh, HS.GioiTinh, HS.SoDienThoai, HS.ChiTietCV, HS.Email, NU.TenNguon AS NguonUngVien, CV.TenChucVu AS ChucVu FROM HoSoUngVien AS HS LEFT JOIN [Chuc vu] AS CV ON HS.Ma_ChucVu = CV.Ma_ChucVu LEFT JOIN NguonUngVien AS NU ON HS.Ma_Nguon = NU.Ma_Nguon;\r\n";
+			string query = string.Format("SELECT HS.Ma_HS, HS.HoTen, HS.NgaySinh, HS.GioiTinh, HS.SoDienThoai, HS.ChiTietCV, HS.Email, NU.TenNguon AS NguonUngVien, CV.TenChucVu AS ChucVu, CASE WHEN EXISTS (SELECT 1 FROM [Nhan vien] NV WHERE NV.Email = HS.Email) THEN N'Đã tiếp nhận' WHEN EXISTS (SELECT 1 FROM KetQuaPhongVan KQ JOIN LichPhongVan LPV ON KQ.Ma_PV = LPV.Ma_PV WHERE LPV.Ma_HS = HS.Ma_HS) THEN N'Đã có kết quả' WHEN EXISTS (SELECT 1 FROM LichPhongVan LPV WHERE LPV.Ma_HS = HS.Ma_HS) THEN N'Đã có lịch phỏng vấn' ELSE N'Chưa tiếp nhận' END AS TrangThai FROM HoSoUngVien AS HS LEFT JOIN [Chuc vu] AS CV ON HS.Ma_ChucVu = CV.Ma_ChucVu LEFT JOIN NguonUngVien AS NU ON HS.Ma_Nguon = NU.Ma_Nguon;\r\n");
+
 			DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
 			foreach (DataRow item in data.Rows)
@@ -62,7 +64,7 @@ namespace QuanLyNhanSu.DAO
 		{
 			List<HosoungvienDTO> list = new List<HosoungvienDTO>();
 
-			string query = string.Format("SELECT HS.Ma_HS, HS.HoTen, HS.NgaySinh, HS.GioiTinh, HS.SoDienThoai, HS.ChiTietCV, HS.Email, NU.TenNguon AS NguonUngVien, CV.TenChucVu AS ChucVu FROM HoSoUngVien AS HS LEFT JOIN [Chuc vu] AS CV ON HS.Ma_ChucVu = CV.Ma_ChucVu LEFT JOIN NguonUngVien AS NU ON HS.Ma_Nguon = NU.Ma_Nguon WHERE HS.Ma_HS LIKE N'%{0}%' OR HS.HoTen LIKE N'%{1}%'", value, value);
+			string query = string.Format("SELECT HS.Ma_HS, HS.HoTen, HS.NgaySinh, HS.GioiTinh, HS.SoDienThoai, HS.ChiTietCV, HS.Email, NU.TenNguon AS NguonUngVien, CV.TenChucVu AS ChucVu, CASE WHEN EXISTS (SELECT 1 FROM [Nhan vien] NV WHERE NV.Email = HS.Email) THEN N'Đã tiếp nhận' WHEN EXISTS (SELECT 1 FROM KetQuaPhongVan KQ JOIN LichPhongVan LPV ON KQ.Ma_PV = LPV.Ma_PV WHERE LPV.Ma_HS = HS.Ma_HS) THEN N'Đã có kết quả' WHEN EXISTS (SELECT 1 FROM LichPhongVan LPV WHERE LPV.Ma_HS = HS.Ma_HS) THEN N'Đã có lịch phỏng vấn' ELSE N'Chưa tiếp nhận' END AS TrangThai FROM HoSoUngVien AS HS LEFT JOIN [Chuc vu] AS CV ON HS.Ma_ChucVu = CV.Ma_ChucVu LEFT JOIN NguonUngVien AS NU ON HS.Ma_Nguon = NU.Ma_Nguon WHERE HS.Ma_HS LIKE N'%{0}%' OR HS.HoTen LIKE N'%{1}%'", value, value);
 
 			Console.WriteLine(query);
 
@@ -93,5 +95,7 @@ namespace QuanLyNhanSu.DAO
 
 			return list;
 		}
+
+
 	}
-	}
+}

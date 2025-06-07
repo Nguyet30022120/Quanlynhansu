@@ -71,6 +71,7 @@ namespace QuanLyNhanSu.GUI
 			txb_email.DataBindings.Add(new Binding("Text", dgv_hoso.DataSource, "Email", true, DataSourceUpdateMode.Never));
 			txb_chitietcv.DataBindings.Add(new Binding("Text", dgv_hoso.DataSource, "ChiTietCV", true, DataSourceUpdateMode.Never));
 			cb_nguonungvien.DataBindings.Add(new Binding("Text",dgv_hoso.DataSource,"NguonUV", true, DataSourceUpdateMode.Never));
+			txb_trangthai.DataBindings.Add(new Binding("Text", dgv_hoso.DataSource, "TrangThai", true, DataSourceUpdateMode.Never));
 		}
 
 		void LoadProfile()
@@ -190,6 +191,15 @@ namespace QuanLyNhanSu.GUI
 
 		private void btn_tiepnhan_Click(object sender, EventArgs e)
 		{
+			string mahs = dgv_hoso.CurrentRow.Cells["Ma_HS"].Value.ToString();
+
+			// Kiểm tra nếu ứng viên đã được tiếp nhận (đã có lịch phỏng vấn)
+			if (LichphongvanDAO.Instance.IsProfileAccepted(mahs))
+			{
+				MessageBox.Show("Ứng viên này đã được tiếp nhận trước đó!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				return;
+			}
+
 			DialogResult result = MessageBox.Show("Bạn có muốn tạo lịch phỏng vấn cho ứng viên này luôn không?",
 										"Xác nhận",
 										MessageBoxButtons.YesNoCancel,
@@ -198,27 +208,8 @@ namespace QuanLyNhanSu.GUI
 			if (result == DialogResult.Yes)
 			{
 				string tenuv = txb_hoten.Text;
-				string mahs = dgv_hoso.CurrentRow.Cells["Ma_HS"].Value.ToString();
-				fTaolichphongvan schedule = new fTaolichphongvan(tenuv,mahs);
+				fTaolichphongvan schedule = new fTaolichphongvan(tenuv, mahs);
 				schedule.ShowDialog();
-			}
-			else if (result == DialogResult.No)
-			{
-				//string tenuv = txb_hoten.Text;
-				//string nguoipv = null;
-				//DateTime ngaypv = DateTime.MinValue; // Default non-null value
-				//DateTime thoigianpv = DateTime.MinValue; // Default non-null value
-				//string diadiem = null;
-
-				//if (ScheduleDAO.Instance.InsertSchedule(tenuv, nguoipv, ngaypv, thoigianpv, diadiem))
-				//{
-				//	MessageBox.Show("Tiếp nhận ứng viên thành công");
-				//	LoadSchedule();
-				//}
-				//else
-				//{
-				//	MessageBox.Show("Tiếp nhận ứng viên thất bại");
-				//}
 			}
 		}
 	}

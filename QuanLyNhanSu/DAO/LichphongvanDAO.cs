@@ -75,6 +75,17 @@ namespace QuanLyNhanSu.DAO
 			}
 			return list;
 		}
+		public bool IsProfileAccepted(string mahs)
+		{
+			string query = "SELECT COUNT(*) FROM LichPhongVan WHERE Ma_HS = @mahs";
+			object result = DataProvider.Instance.ExcuteScalar(query, new object[] { mahs });
+			int count = 0;
+			if (result != null && int.TryParse(result.ToString(), out int temp))
+			{
+				count = temp;
+			}
+			return count > 0;
+		}
 	}
 }
 

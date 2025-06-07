@@ -31,6 +31,8 @@
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.btn_xuatbaocao = new System.Windows.Forms.Button();
+			this.cb_nhanvien = new System.Windows.Forms.ComboBox();
 			this.btn_dong = new System.Windows.Forms.Button();
 			this.cb_nam = new System.Windows.Forms.ComboBox();
 			this.btn_thongkenhanvien = new System.Windows.Forms.Button();
@@ -38,14 +40,12 @@
 			this.lb_manhanvien = new System.Windows.Forms.Label();
 			this.lb_nam = new System.Windows.Forms.Label();
 			this.dgv_ktkltk = new System.Windows.Forms.DataGridView();
-			this.panel_chart = new System.Windows.Forms.Panel();
-			this.cb_nhanvien = new System.Windows.Forms.ComboBox();
-			this.btn_xuatbaocao = new System.Windows.Forms.Button();
 			this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Nam = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.KhenThuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.KyLuat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.panel_chart = new System.Windows.Forms.Panel();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_ktkltk)).BeginInit();
 			this.SuspendLayout();
@@ -64,6 +64,38 @@
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(1470, 107);
 			this.panel1.TabIndex = 0;
+			// 
+			// btn_xuatbaocao
+			// 
+			this.btn_xuatbaocao.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_xuatbaocao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_xuatbaocao.Location = new System.Drawing.Point(1080, 21);
+			this.btn_xuatbaocao.Name = "btn_xuatbaocao";
+			this.btn_xuatbaocao.Size = new System.Drawing.Size(137, 40);
+			this.btn_xuatbaocao.TabIndex = 12;
+			this.btn_xuatbaocao.Text = "Xuất báo cáo";
+			this.btn_xuatbaocao.UseVisualStyleBackColor = false;
+			this.btn_xuatbaocao.Click += new System.EventHandler(this.btn_xuatbaocao_Click);
+			// 
+			// cb_nhanvien
+			// 
+			this.cb_nhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.cb_nhanvien.FormattingEnabled = true;
+			this.cb_nhanvien.Items.AddRange(new object[] {
+            "2021",
+            "2022",
+            "2023",
+            "2024",
+            "2025",
+            "2026",
+            "2027",
+            "2028",
+            "2029",
+            "2030"});
+			this.cb_nhanvien.Location = new System.Drawing.Point(525, 35);
+			this.cb_nhanvien.Name = "cb_nhanvien";
+			this.cb_nhanvien.Size = new System.Drawing.Size(212, 28);
+			this.cb_nhanvien.TabIndex = 11;
 			// 
 			// btn_dong
 			// 
@@ -165,47 +197,6 @@
 			this.dgv_ktkltk.Size = new System.Drawing.Size(737, 657);
 			this.dgv_ktkltk.TabIndex = 1;
 			// 
-			// panel_chart
-			// 
-			this.panel_chart.BackColor = System.Drawing.Color.BlanchedAlmond;
-			this.panel_chart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.panel_chart.Location = new System.Drawing.Point(747, 117);
-			this.panel_chart.Name = "panel_chart";
-			this.panel_chart.Size = new System.Drawing.Size(730, 657);
-			this.panel_chart.TabIndex = 9;
-			// 
-			// cb_nhanvien
-			// 
-			this.cb_nhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.cb_nhanvien.FormattingEnabled = true;
-			this.cb_nhanvien.Items.AddRange(new object[] {
-            "2021",
-            "2022",
-            "2023",
-            "2024",
-            "2025",
-            "2026",
-            "2027",
-            "2028",
-            "2029",
-            "2030"});
-			this.cb_nhanvien.Location = new System.Drawing.Point(525, 35);
-			this.cb_nhanvien.Name = "cb_nhanvien";
-			this.cb_nhanvien.Size = new System.Drawing.Size(212, 28);
-			this.cb_nhanvien.TabIndex = 11;
-			// 
-			// btn_xuatbaocao
-			// 
-			this.btn_xuatbaocao.BackColor = System.Drawing.Color.DarkOrange;
-			this.btn_xuatbaocao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_xuatbaocao.Location = new System.Drawing.Point(1080, 21);
-			this.btn_xuatbaocao.Name = "btn_xuatbaocao";
-			this.btn_xuatbaocao.Size = new System.Drawing.Size(137, 40);
-			this.btn_xuatbaocao.TabIndex = 12;
-			this.btn_xuatbaocao.Text = "Xuất báo cáo";
-			this.btn_xuatbaocao.UseVisualStyleBackColor = false;
-			this.btn_xuatbaocao.Click += new System.EventHandler(this.btn_xuatbaocao_Click);
-			// 
 			// MaNV
 			// 
 			this.MaNV.DataPropertyName = "MaNV";
@@ -236,6 +227,7 @@
 			this.KhenThuong.HeaderText = "Khen thưởng";
 			this.KhenThuong.MinimumWidth = 6;
 			this.KhenThuong.Name = "KhenThuong";
+			this.KhenThuong.Width = 125;
 			// 
 			// KyLuat
 			// 
@@ -243,6 +235,16 @@
 			this.KyLuat.HeaderText = "Kỷ luật";
 			this.KyLuat.MinimumWidth = 6;
 			this.KyLuat.Name = "KyLuat";
+			this.KyLuat.Width = 125;
+			// 
+			// panel_chart
+			// 
+			this.panel_chart.BackColor = System.Drawing.Color.SeaShell;
+			this.panel_chart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.panel_chart.Location = new System.Drawing.Point(747, 117);
+			this.panel_chart.Name = "panel_chart";
+			this.panel_chart.Size = new System.Drawing.Size(730, 657);
+			this.panel_chart.TabIndex = 9;
 			// 
 			// fThongkekhenthuongkyluat
 			// 

@@ -18,11 +18,17 @@ namespace QuanLyNhanSu.DTO
         public decimal Phat { get; set; }
         public decimal Thuong { get; set; }
         
+        // Lưu trữ giá trị lương thực lĩnh từ database (nếu có)
+        private decimal? _luongThucLinhFromDB;
+        
         // Tính toán
-        public decimal LuongCoBanTheoGio => LuongCoBan ; 
+        public decimal LuongCoBanTheoGio => LuongCoBan; 
         public decimal LuongTheoGio => (decimal)SoGioLam * LuongCoBanTheoGio * (decimal)HeSoNgay;
         public decimal TongKhauTru => BaoHiem + Thue + Phat;
-		public decimal LuongThucLinh => (LuongCoBan * (decimal)HeSoNgay) + PhucCap + Thuong - (BaoHiem + Thue + Phat);
+        // Công thức mới: Lương thực nhận = Σ(Lương mỗi giờ × Số giờ làm × Hệ số) + Thưởng + Phụ cấp - Phạt - Bảo hiểm - Thuế
+        // Ưu tiên sử dụng giá trị từ database, nếu không có thì tính toán
+        public decimal LuongThucLinh => _luongThucLinhFromDB ?? 
+            ((LuongCoBan * (decimal)SoGioLam * (decimal)HeSoNgay) + Thuong + PhucCap - Phat - BaoHiem - Thue);
 		// Display properties
 		public string SoGioLamDisplay => SoGioLam.ToString("0.0");
         public string LuongCoBanDisplay => LuongCoBan.ToString("N0");
@@ -72,6 +78,12 @@ namespace QuanLyNhanSu.DTO
             Thue = Convert.ToDecimal(row["Thue"]);
             Phat = Convert.ToDecimal(row["Phat"]);
             Thuong = Convert.ToDecimal(row["Thuong"]);
+            
+            // Lấy giá trị LuongThucNhan từ database (nếu có)
+            if (row.Table.Columns.Contains("LuongThucNhan") && row["LuongThucNhan"] != DBNull.Value)
+            {
+                _luongThucLinhFromDB = Convert.ToDecimal(row["LuongThucNhan"]);
+            }
         }
     }
 } 

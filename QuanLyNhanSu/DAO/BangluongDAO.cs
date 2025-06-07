@@ -48,7 +48,18 @@ namespace QuanLyNhanSu.DAO
                                   ISNULL(pc.TongPhucCap, 0) + ISNULL(kt.TienThuong, 0) - ISNULL(kl.TienPhat, 0)) * 0.05
                         END as Thue,
                         ISNULL(kl.TienPhat, 0) as Phat,
-                        ISNULL(kt.TienThuong, 0) as Thuong
+                        ISNULL(kt.TienThuong, 0) as Thuong,
+                        -- Tính lương thực nhận theo công thức mới: (Lương mỗi giờ × Số giờ làm × Hệ số) + Thưởng + Phụ cấp - Phạt - Bảo hiểm - Thuế
+                        (ISNULL(lcb.LuongCoSo, 50000) * ISNULL(bc.SoGioLam, 0) * ISNULL(hsn.HeSo, 1.0)) + 
+                        ISNULL(kt.TienThuong, 0) + ISNULL(pc.TongPhucCap, 0) - ISNULL(kl.TienPhat, 0) - ISNULL(bh.TongBaoHiem, 0) -
+                        CASE 
+                            WHEN (ISNULL(lcb.LuongCoSo, 50000) * ISNULL(bc.SoGioLam, 0) * ISNULL(hsn.HeSo, 1.0)) + 
+                                 ISNULL(pc.TongPhucCap, 0) + ISNULL(kt.TienThuong, 0) - ISNULL(kl.TienPhat, 0) > 11000000 
+                            THEN ((ISNULL(lcb.LuongCoSo, 50000) * ISNULL(bc.SoGioLam, 0) * ISNULL(hsn.HeSo, 1.0)) + 
+                                  ISNULL(pc.TongPhucCap, 0) + ISNULL(kt.TienThuong, 0) - ISNULL(kl.TienPhat, 0)) * 0.1
+                            ELSE ((ISNULL(lcb.LuongCoSo, 50000) * ISNULL(bc.SoGioLam, 0) * ISNULL(hsn.HeSo, 1.0)) + 
+                                  ISNULL(pc.TongPhucCap, 0) + ISNULL(kt.TienThuong, 0) - ISNULL(kl.TienPhat, 0)) * 0.05
+                        END as LuongThucNhan
                     FROM [Nhan vien] nv
                     LEFT JOIN [Luong co ban] lcb ON nv.Ma_Luong = lcb.Ma_Luong
                     LEFT JOIN (
@@ -116,8 +127,9 @@ namespace QuanLyNhanSu.DAO
             }
             catch (Exception ex)
             {
-                // Log error và tạo dữ liệu test
-                danhSachLuong = TaoDuLieuLuongTest(thang, nam);
+                // Log error và trả về danh sách rỗng thay vì dữ liệu test
+                System.Diagnostics.Debug.WriteLine($"Lỗi khi tính lương theo tháng: {ex.Message}");
+                return new List<BangluongDTO>();
             }
 
             return danhSachLuong;
@@ -154,7 +166,18 @@ namespace QuanLyNhanSu.DAO
                                   ISNULL(pc.TongPhucCap, 0) + ISNULL(kt.TienThuong, 0) - ISNULL(kl.TienPhat, 0)) * 0.05
                         END as Thue,
                         ISNULL(kl.TienPhat, 0) as Phat,
-                        ISNULL(kt.TienThuong, 0) as Thuong
+                        ISNULL(kt.TienThuong, 0) as Thuong,
+                        -- Tính lương thực nhận theo công thức mới: (Lương mỗi giờ × Số giờ làm × Hệ số) + Thưởng + Phụ cấp - Phạt - Bảo hiểm - Thuế
+                        (ISNULL(lcb.LuongCoSo, 50000) * ISNULL(bc.SoGioLam, 0) * ISNULL(hsn.HeSo, 1.0)) + 
+                        ISNULL(kt.TienThuong, 0) + ISNULL(pc.TongPhucCap, 0) - ISNULL(kl.TienPhat, 0) - ISNULL(bh.TongBaoHiem, 0) -
+                        CASE 
+                            WHEN (ISNULL(lcb.LuongCoSo, 50000) * ISNULL(bc.SoGioLam, 0) * ISNULL(hsn.HeSo, 1.0)) + 
+                                 ISNULL(pc.TongPhucCap, 0) + ISNULL(kt.TienThuong, 0) - ISNULL(kl.TienPhat, 0) > 11000000 
+                            THEN ((ISNULL(lcb.LuongCoSo, 50000) * ISNULL(bc.SoGioLam, 0) * ISNULL(hsn.HeSo, 1.0)) + 
+                                  ISNULL(pc.TongPhucCap, 0) + ISNULL(kt.TienThuong, 0) - ISNULL(kl.TienPhat, 0)) * 0.1
+                            ELSE ((ISNULL(lcb.LuongCoSo, 50000) * ISNULL(bc.SoGioLam, 0) * ISNULL(hsn.HeSo, 1.0)) + 
+                                  ISNULL(pc.TongPhucCap, 0) + ISNULL(kt.TienThuong, 0) - ISNULL(kl.TienPhat, 0)) * 0.05
+                        END as LuongThucNhan
                     FROM [Nhan vien] nv
                     LEFT JOIN [Luong co ban] lcb ON nv.Ma_Luong = lcb.Ma_Luong
                     LEFT JOIN (
@@ -222,9 +245,9 @@ namespace QuanLyNhanSu.DAO
             }
             catch (Exception ex)
             {
-                // Return test data for specific employee
-                var testData = TaoDuLieuLuongTest(thang, nam);
-                return testData.FirstOrDefault(x => x.MaNV == maNV) ?? testData.FirstOrDefault();
+                // Log error và trả về null thay vì dữ liệu test
+                System.Diagnostics.Debug.WriteLine($"Lỗi khi tính lương nhân viên {maNV}: {ex.Message}");
+                return null;
             }
 
             return null;
@@ -313,36 +336,6 @@ namespace QuanLyNhanSu.DAO
                 dt.Columns.Add("LuongThapNhat", typeof(decimal));
                 return dt;
             }
-        }
-
-        /// <summary>
-        /// Tạo dữ liệu test cho demo
-        /// </summary>
-        private List<BangluongDTO> TaoDuLieuLuongTest(int thang, int nam)
-        {
-            List<BangluongDTO> testData = new List<BangluongDTO>();
-
-            // NV001 - Làm đủ giờ, có thưởng và phụ cấp - Lương cao (thuế 10%)
-            // Tổng thu nhập = 70000*176*1.2 + 1000000 + 500000 = 16,232,000 > 11,000,000 → thuế 10%
-            testData.Add(new BangluongDTO("NV001", "Nguyễn Văn A", thang, nam, 176.0, 70000, 1.2, 1000000, 800000, 1623200, 0, 500000));
-
-            // NV002 - Làm ít giờ hơn, có phụ cấp - Lương trung bình (thuế 10%)
-            // Tổng thu nhập = 60000*160*1.0 + 800000 + 300000 = 10,700,000 < 11,000,000 → thuế 5%
-            testData.Add(new BangluongDTO("NV002", "Trần Thị B", thang, nam, 160.0, 60000, 1.0, 800000, 700000, 535000, 0, 300000));
-
-            // NV003 - Có phạt, ít phụ cấp - Lương thấp (thuế 5%)
-            // Tổng thu nhập = 50000*144*1.0 + 500000 + 0 - 100000 = 7,600,000 < 11,000,000 → thuế 5%
-            testData.Add(new BangluongDTO("NV003", "Lê Văn C", thang, nam, 144.0, 50000, 1.0, 500000, 600000, 380000, 100000, 0));
-
-            // NV004 - Nhân viên mới, lương thấp - (thuế 5%)
-            // Tổng thu nhập = 45000*168*1.0 + 0 + 200000 = 7,760,000 < 11,000,000 → thuế 5%
-            testData.Add(new BangluongDTO("NV004", "Phạm Thị D", thang, nam, 168.0, 45000, 1.0, 0, 500000, 388000, 0, 200000));
-
-            // NV005 - Nhân viên cao cấp, phụ cấp cao - Lương rất cao (thuế 10%)
-            // Tổng thu nhập = 100000*180*1.5 + 2000000 + 1000000 = 30,000,000 > 11,000,000 → thuế 10%
-            testData.Add(new BangluongDTO("NV005", "Hoàng Văn E", thang, nam, 180.0, 100000, 1.5, 2000000, 1200000, 3000000, 0, 1000000));
-
-            return testData;
         }
     }
 } 

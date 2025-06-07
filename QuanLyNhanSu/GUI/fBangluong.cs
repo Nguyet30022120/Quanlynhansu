@@ -77,17 +77,17 @@ namespace QuanLyNhanSu.GUI
             }
             catch (Exception ex)
             {
-                // Nếu không load được từ DB, tạo dữ liệu test
+                // Log lỗi và để combobox chỉ có option "Tất cả nhân viên"
+                System.Diagnostics.Debug.WriteLine($"Lỗi khi load danh sách nhân viên: {ex.Message}");
                 cb_nhanvien.Items.Clear();
                 cb_nhanvien.Items.Add(new { Text = "-- Tất cả nhân viên --", Value = "" });
-                cb_nhanvien.Items.Add(new { Text = "NV001 - Nguyễn Văn A", Value = "NV001" });
-                cb_nhanvien.Items.Add(new { Text = "NV002 - Trần Thị B", Value = "NV002" });
-                cb_nhanvien.Items.Add(new { Text = "NV003 - Lê Văn C", Value = "NV003" });
-                cb_nhanvien.Items.Add(new { Text = "NV004 - Phạm Thị D", Value = "NV004" });
-                cb_nhanvien.Items.Add(new { Text = "NV005 - Hoàng Văn E", Value = "NV005" });
                 cb_nhanvien.DisplayMember = "Text";
                 cb_nhanvien.ValueMember = "Value";
                 cb_nhanvien.SelectedIndex = 0;
+                
+                // Hiển thị thông báo cho người dùng
+                MessageBox.Show("Không thể tải danh sách nhân viên từ database. Vui lòng kiểm tra kết nối database.", 
+                               "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -124,13 +124,6 @@ namespace QuanLyNhanSu.GUI
             colLuongCB.DataPropertyName = "LuongCoBanDisplay";
             colLuongCB.Width = 120;
             dgv_bangluong.Columns.Add(colLuongCB);
-
-            DataGridViewTextBoxColumn colHeSo = new DataGridViewTextBoxColumn();
-            colHeSo.Name = "HeSoNgay";
-            colHeSo.HeaderText = "Hệ số";
-            colHeSo.DataPropertyName = "HeSoNgayDisplay";
-            colHeSo.Width = 70;
-            dgv_bangluong.Columns.Add(colHeSo);
 
             // Thêm cột phụ cấp
             DataGridViewTextBoxColumn colPhucCap = new DataGridViewTextBoxColumn();
@@ -209,6 +202,16 @@ namespace QuanLyNhanSu.GUI
 
                 dgv_bangluong.DataSource = danhSachLuong;
                 UpdateStatistics();
+                
+                // Hiển thị thông báo nếu không có dữ liệu
+                if (danhSachLuong == null || danhSachLuong.Count == 0)
+                {
+                    MessageBox.Show("Không có dữ liệu lương cho thời gian đã chọn. Vui lòng kiểm tra:\n" +
+                                   "- Dữ liệu nhân viên\n" +
+                                   "- Dữ liệu chấm công\n" +
+                                   "- Cấu hình lương cơ bản", 
+                                   "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (Exception ex)
             {
@@ -283,12 +286,12 @@ namespace QuanLyNhanSu.GUI
             csv.AppendLine("");
 
             // Header columns
-            csv.AppendLine("Mã NV,Tên nhân viên,Giờ làm,Lương cơ bản,Hệ số,Phụ cấp,Bảo hiểm,Thuế,Phạt,Thưởng,Lương thực lĩnh");
+            csv.AppendLine("Mã NV,Tên nhân viên,Giờ làm,Lương cơ bản,Phụ cấp,Bảo hiểm,Thuế,Phạt,Thưởng,Lương thực lĩnh");
 
             // Data rows
             foreach (var luong in danhSachLuong)
             {
-                csv.AppendLine($"{luong.MaNV},{luong.TenNV},{luong.SoGioLam},{luong.LuongCoBan},{luong.HeSoNgay},{luong.PhucCap},{luong.BaoHiem},{luong.Thue},{luong.Phat},{luong.Thuong},{luong.LuongThucLinh}");
+                csv.AppendLine($"{luong.MaNV},{luong.TenNV},{luong.SoGioLam},{luong.LuongCoBan},{luong.PhucCap},{luong.BaoHiem},{luong.Thue},{luong.Phat},{luong.Thuong},{luong.LuongThucLinh}");
             }
 
             // Statistics

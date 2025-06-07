@@ -20,7 +20,17 @@ namespace QuanLyNhanSu.DAO
 		public List<ThongketuyendungDTO> GetTyLeTuyenDung(int nam, int thang)
 		{
 			List<ThongketuyendungDTO> list = new List<ThongketuyendungDTO>();
-			string query = $"SELECT KetLuan, COUNT(*) AS SoLuong, YEAR(NgayDanhGia) AS Nam, MONTH(NgayDanhGia) AS Thang FROM KetQuaPhongVan WHERE YEAR(NgayDanhGia) = '{nam}' AND MONTH(NgayDanhGia) = '{thang} GROUP BY KetLuan, YEAR(NgayDanhGia), MONTH(NgayDanhGia) ORDER BY KetLuan;\r\n";
+			string query;
+			if (thang > 0)
+			{
+				// Lấy theo tháng cụ thể
+				query = $"SELECT KetLuan, COUNT(*) AS SoLuong, YEAR(NgayDanhGia) AS Nam, MONTH(NgayDanhGia) AS Thang FROM KetQuaPhongVan WHERE YEAR(NgayDanhGia) = '{nam}' AND MONTH(NgayDanhGia) = '{thang}' GROUP BY KetLuan, YEAR(NgayDanhGia), MONTH(NgayDanhGia) ORDER BY KetLuan;";
+			}
+			else
+			{
+				// Lấy tất cả các tháng trong năm
+				query = $"SELECT KetLuan, COUNT(*) AS SoLuong, YEAR(NgayDanhGia) AS Nam, MONTH(NgayDanhGia) AS Thang FROM KetQuaPhongVan WHERE YEAR(NgayDanhGia) = '{nam}' GROUP BY KetLuan, YEAR(NgayDanhGia), MONTH(NgayDanhGia) ORDER BY Thang, KetLuan;";
+			}
 			DataTable data = DataProvider.Instance.ExecuteQuery(query);
 			foreach (DataRow item in data.Rows)
 			{

@@ -80,8 +80,10 @@ namespace QuanLyNhanSu
 					Title = "Số ngày nghỉ",
 					Values = chartValues,
 					DataLabels = true,
-					Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.OrangeRed),
-					Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Black)
+					LabelPoint = point => point.Y > 0 ? point.Y.ToString() : "", // Chỉ hiển thị số > 0
+					Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Red),
+					Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Black),
+					FontWeight = System.Windows.FontWeights.Bold
 				};
 
 				var cartesianChart = new LiveCharts.Wpf.CartesianChart
@@ -92,7 +94,7 @@ namespace QuanLyNhanSu
 				new LiveCharts.Wpf.Axis
 				{
 					Title = "Tháng",
-					Labels = Enumerable.Range(1, 12).Select(i => i.ToString()).ToArray(),
+					Labels = Enumerable.Range(1, 12).Select(i => $"Tháng {i}").ToArray(),
 					Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Black)
 				}
 			},

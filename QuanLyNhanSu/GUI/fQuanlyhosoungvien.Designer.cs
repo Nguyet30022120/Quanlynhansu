@@ -37,6 +37,16 @@
 			this.lb_chitietcv = new System.Windows.Forms.Label();
 			this.lb_nguonungvien = new System.Windows.Forms.Label();
 			this.dgv_hoso = new System.Windows.Forms.DataGridView();
+			this.Ma_HS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.GioiTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.NgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ChiTietCV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.NguonUV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ChucVu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.btn_themhoso = new System.Windows.Forms.Button();
 			this.btn_suahoso = new System.Windows.Forms.Button();
 			this.btn_xoahoso = new System.Windows.Forms.Button();
@@ -53,21 +63,11 @@
 			this.lb_email = new System.Windows.Forms.Label();
 			this.txb_email = new System.Windows.Forms.TextBox();
 			this.cb_gioitinh = new System.Windows.Forms.ComboBox();
-			this.panel1 = new System.Windows.Forms.Panel();
+			this.pn_hosoungvien = new System.Windows.Forms.Panel();
 			this.txb_hoten = new System.Windows.Forms.TextBox();
 			this.lb_goiy = new System.Windows.Forms.Label();
-			this.Ma_HS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.GioiTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.NgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ChiTietCV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.NguonUV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ChucVu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_hoso)).BeginInit();
-			this.panel1.SuspendLayout();
+			this.pn_hosoungvien.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// lb_hoten
@@ -161,6 +161,89 @@
 			this.dgv_hoso.RowTemplate.Height = 24;
 			this.dgv_hoso.Size = new System.Drawing.Size(1475, 534);
 			this.dgv_hoso.TabIndex = 8;
+			// 
+			// Ma_HS
+			// 
+			this.Ma_HS.DataPropertyName = "MaHS";
+			this.Ma_HS.FillWeight = 125F;
+			this.Ma_HS.HeaderText = "Mã hồ sơ";
+			this.Ma_HS.MinimumWidth = 6;
+			this.Ma_HS.Name = "Ma_HS";
+			this.Ma_HS.Width = 75;
+			// 
+			// HoTen
+			// 
+			this.HoTen.DataPropertyName = "HoTen";
+			this.HoTen.HeaderText = "Tên ứng viên";
+			this.HoTen.MinimumWidth = 6;
+			this.HoTen.Name = "HoTen";
+			this.HoTen.Width = 125;
+			// 
+			// TrangThai
+			// 
+			this.TrangThai.DataPropertyName = "TrangThai";
+			this.TrangThai.HeaderText = "Trạng thái";
+			this.TrangThai.MinimumWidth = 6;
+			this.TrangThai.Name = "TrangThai";
+			this.TrangThai.Width = 125;
+			// 
+			// GioiTinh
+			// 
+			this.GioiTinh.DataPropertyName = "GioiTinh";
+			this.GioiTinh.FillWeight = 125F;
+			this.GioiTinh.HeaderText = "Giới tính";
+			this.GioiTinh.MinimumWidth = 6;
+			this.GioiTinh.Name = "GioiTinh";
+			this.GioiTinh.Width = 50;
+			// 
+			// NgaySinh
+			// 
+			this.NgaySinh.DataPropertyName = "NgaySinh";
+			this.NgaySinh.HeaderText = "Ngày sinh";
+			this.NgaySinh.MinimumWidth = 6;
+			this.NgaySinh.Name = "NgaySinh";
+			this.NgaySinh.Width = 125;
+			// 
+			// DienThoai
+			// 
+			this.DienThoai.DataPropertyName = "DienThoai";
+			this.DienThoai.HeaderText = "Điện thoại";
+			this.DienThoai.MinimumWidth = 6;
+			this.DienThoai.Name = "DienThoai";
+			this.DienThoai.Width = 125;
+			// 
+			// ChiTietCV
+			// 
+			this.ChiTietCV.DataPropertyName = "ChiTietCV";
+			this.ChiTietCV.HeaderText = "Chi tiết CV";
+			this.ChiTietCV.MinimumWidth = 6;
+			this.ChiTietCV.Name = "ChiTietCV";
+			this.ChiTietCV.Width = 200;
+			// 
+			// NguonUV
+			// 
+			this.NguonUV.DataPropertyName = "NguonUV";
+			this.NguonUV.HeaderText = "Nguồn ứng viên";
+			this.NguonUV.MinimumWidth = 6;
+			this.NguonUV.Name = "NguonUV";
+			this.NguonUV.Width = 125;
+			// 
+			// ChucVu
+			// 
+			this.ChucVu.DataPropertyName = "ChucVu";
+			this.ChucVu.FillWeight = 150F;
+			this.ChucVu.HeaderText = "Chức vụ ứng tuyển";
+			this.ChucVu.MinimumWidth = 6;
+			this.ChucVu.Name = "ChucVu";
+			this.ChucVu.Width = 125;
+			// 
+			// Email
+			// 
+			this.Email.DataPropertyName = "Email";
+			this.Email.HeaderText = "Email";
+			this.Email.MinimumWidth = 6;
+			this.Email.Name = "Email";
+			this.Email.Width = 200;
 			// 
 			// btn_themhoso
 			// 
@@ -335,36 +418,36 @@
 			this.cb_gioitinh.Size = new System.Drawing.Size(252, 28);
 			this.cb_gioitinh.TabIndex = 28;
 			// 
-			// panel1
+			// pn_hosoungvien
 			// 
-			this.panel1.Controls.Add(this.txb_hoten);
-			this.panel1.Controls.Add(this.lb_goiy);
-			this.panel1.Controls.Add(this.btn_tiepnhan);
-			this.panel1.Controls.Add(this.txb_email);
-			this.panel1.Controls.Add(this.cb_gioitinh);
-			this.panel1.Controls.Add(this.btn_themhoso);
-			this.panel1.Controls.Add(this.btn_suahoso);
-			this.panel1.Controls.Add(this.btn_xoahoso);
-			this.panel1.Controls.Add(this.lb_ngaysinh);
-			this.panel1.Controls.Add(this.btn_donghoso);
-			this.panel1.Controls.Add(this.lb_gioitinh);
-			this.panel1.Controls.Add(this.txb_chitietcv);
-			this.panel1.Controls.Add(this.cb_nguonungvien);
-			this.panel1.Controls.Add(this.cb_chucvu);
-			this.panel1.Controls.Add(this.txb_findhs);
-			this.panel1.Controls.Add(this.lb_email);
-			this.panel1.Controls.Add(this.dtp_ngaysinh);
-			this.panel1.Controls.Add(this.lb_chucvu);
-			this.panel1.Controls.Add(this.lb_hoten);
-			this.panel1.Controls.Add(this.btn_timhoso);
-			this.panel1.Controls.Add(this.txb_dienthoai);
-			this.panel1.Controls.Add(this.lb_dienthoai);
-			this.panel1.Controls.Add(this.lb_nguonungvien);
-			this.panel1.Controls.Add(this.lb_chitietcv);
-			this.panel1.Location = new System.Drawing.Point(3, 3);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(1475, 231);
-			this.panel1.TabIndex = 29;
+			this.pn_hosoungvien.Controls.Add(this.txb_hoten);
+			this.pn_hosoungvien.Controls.Add(this.lb_goiy);
+			this.pn_hosoungvien.Controls.Add(this.btn_tiepnhan);
+			this.pn_hosoungvien.Controls.Add(this.txb_email);
+			this.pn_hosoungvien.Controls.Add(this.cb_gioitinh);
+			this.pn_hosoungvien.Controls.Add(this.btn_themhoso);
+			this.pn_hosoungvien.Controls.Add(this.btn_suahoso);
+			this.pn_hosoungvien.Controls.Add(this.btn_xoahoso);
+			this.pn_hosoungvien.Controls.Add(this.lb_ngaysinh);
+			this.pn_hosoungvien.Controls.Add(this.btn_donghoso);
+			this.pn_hosoungvien.Controls.Add(this.lb_gioitinh);
+			this.pn_hosoungvien.Controls.Add(this.txb_chitietcv);
+			this.pn_hosoungvien.Controls.Add(this.cb_nguonungvien);
+			this.pn_hosoungvien.Controls.Add(this.cb_chucvu);
+			this.pn_hosoungvien.Controls.Add(this.txb_findhs);
+			this.pn_hosoungvien.Controls.Add(this.lb_email);
+			this.pn_hosoungvien.Controls.Add(this.dtp_ngaysinh);
+			this.pn_hosoungvien.Controls.Add(this.lb_chucvu);
+			this.pn_hosoungvien.Controls.Add(this.lb_hoten);
+			this.pn_hosoungvien.Controls.Add(this.btn_timhoso);
+			this.pn_hosoungvien.Controls.Add(this.txb_dienthoai);
+			this.pn_hosoungvien.Controls.Add(this.lb_dienthoai);
+			this.pn_hosoungvien.Controls.Add(this.lb_nguonungvien);
+			this.pn_hosoungvien.Controls.Add(this.lb_chitietcv);
+			this.pn_hosoungvien.Location = new System.Drawing.Point(3, 3);
+			this.pn_hosoungvien.Name = "pn_hosoungvien";
+			this.pn_hosoungvien.Size = new System.Drawing.Size(1475, 231);
+			this.pn_hosoungvien.TabIndex = 29;
 			// 
 			// txb_hoten
 			// 
@@ -384,87 +467,6 @@
 			this.lb_goiy.TabIndex = 45;
 			this.lb_goiy.Text = "(Tìm kiếm theo mã hồ sơ, tên ứng viên)";
 			// 
-			// Ma_HS
-			// 
-			this.Ma_HS.DataPropertyName = "MaHS";
-			this.Ma_HS.FillWeight = 125F;
-			this.Ma_HS.HeaderText = "Mã hồ sơ";
-			this.Ma_HS.MinimumWidth = 6;
-			this.Ma_HS.Name = "Ma_HS";
-			this.Ma_HS.Width = 75;
-			// 
-			// HoTen
-			// 
-			this.HoTen.DataPropertyName = "HoTen";
-			this.HoTen.HeaderText = "Tên ứng viên";
-			this.HoTen.MinimumWidth = 6;
-			this.HoTen.Name = "HoTen";
-			this.HoTen.Width = 125;
-			// 
-			// TrangThai
-			// 
-			this.TrangThai.DataPropertyName = "TrangThai";
-			this.TrangThai.HeaderText = "Trạng thái";
-			this.TrangThai.MinimumWidth = 6;
-			this.TrangThai.Name = "TrangThai";
-			this.TrangThai.Width = 125;
-			// 
-			// GioiTinh
-			// 
-			this.GioiTinh.DataPropertyName = "GioiTinh";
-			this.GioiTinh.FillWeight = 125F;
-			this.GioiTinh.HeaderText = "Giới tính";
-			this.GioiTinh.MinimumWidth = 6;
-			this.GioiTinh.Name = "GioiTinh";
-			this.GioiTinh.Width = 50;
-			// 
-			// NgaySinh
-			// 
-			this.NgaySinh.DataPropertyName = "NgaySinh";
-			this.NgaySinh.HeaderText = "Ngày sinh";
-			this.NgaySinh.MinimumWidth = 6;
-			this.NgaySinh.Name = "NgaySinh";
-			// 
-			// DienThoai
-			// 
-			this.DienThoai.DataPropertyName = "DienThoai";
-			this.DienThoai.HeaderText = "Điện thoại";
-			this.DienThoai.MinimumWidth = 6;
-			this.DienThoai.Name = "DienThoai";
-			// 
-			// ChiTietCV
-			// 
-			this.ChiTietCV.DataPropertyName = "ChiTietCV";
-			this.ChiTietCV.HeaderText = "Chi tiết CV";
-			this.ChiTietCV.MinimumWidth = 6;
-			this.ChiTietCV.Name = "ChiTietCV";
-			this.ChiTietCV.Width = 200;
-			// 
-			// NguonUV
-			// 
-			this.NguonUV.DataPropertyName = "NguonUV";
-			this.NguonUV.HeaderText = "Nguồn ứng viên";
-			this.NguonUV.MinimumWidth = 6;
-			this.NguonUV.Name = "NguonUV";
-			this.NguonUV.Width = 125;
-			// 
-			// ChucVu
-			// 
-			this.ChucVu.DataPropertyName = "ChucVu";
-			this.ChucVu.FillWeight = 150F;
-			this.ChucVu.HeaderText = "Chức vụ ứng tuyển";
-			this.ChucVu.MinimumWidth = 6;
-			this.ChucVu.Name = "ChucVu";
-			this.ChucVu.Width = 125;
-			// 
-			// Email
-			// 
-			this.Email.DataPropertyName = "Email";
-			this.Email.HeaderText = "Email";
-			this.Email.MinimumWidth = 6;
-			this.Email.Name = "Email";
-			this.Email.Width = 200;
-			// 
 			// fQuanlyhosoungvien
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -472,13 +474,14 @@
 			this.BackColor = System.Drawing.Color.BlanchedAlmond;
 			this.ClientSize = new System.Drawing.Size(1482, 778);
 			this.Controls.Add(this.dgv_hoso);
-			this.Controls.Add(this.panel1);
+			this.Controls.Add(this.pn_hosoungvien);
 			this.Name = "fQuanlyhosoungvien";
 			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Hồ sơ ứng viên";
 			((System.ComponentModel.ISupportInitialize)(this.dgv_hoso)).EndInit();
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
+			this.pn_hosoungvien.ResumeLayout(false);
+			this.pn_hosoungvien.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -508,7 +511,7 @@
 		private System.Windows.Forms.Label lb_email;
 		private System.Windows.Forms.TextBox txb_email;
 		private System.Windows.Forms.ComboBox cb_gioitinh;
-		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.Panel pn_hosoungvien;
 		private System.Windows.Forms.Label lb_goiy;
 		private System.Windows.Forms.TextBox txb_hoten;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Ma_HS;

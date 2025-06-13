@@ -15,11 +15,16 @@ namespace QuanLyNhanSu
 {
 	public partial class fDoimatkhau : Form
 	{
+		private Color originalEditButtonColor;
+		private Color originalCloseButtonColor;
 		public fDoimatkhau(string userName)
 		{
 			InitializeComponent();
 			LoadDataUser(userName);
+			originalEditButtonColor = btn_doimatkhau.BackColor;
+			originalCloseButtonColor = btn_dong.BackColor;
 		}
+
 		void LoadDataUser(string userName)
 		{
 			List<NguoidungDTO> data = NguoidungDAO.Instance.GetInforNVByUsername(userName);
@@ -31,9 +36,30 @@ namespace QuanLyNhanSu
 			}
 			else
 			{
-				MessageBox.Show("No data found for the given username.");
+				MessageBox.Show("Không tìm thấy dữ liệu cho nhân viên!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
+		#region Hovers
+		private void btn_doimatkhau_MouseEnter(object sender, EventArgs e)
+		{
+			btn_doimatkhau.BackColor = Color.LightBlue;
+		}
+		private void btn_doimatkhau_MouseLeave(object sender, EventArgs e)
+		{
+			btn_doimatkhau.BackColor = originalEditButtonColor;
+		}
+		private void btn_exit_MouseEnter(object sender, EventArgs e)
+		{
+			btn_dong.BackColor = Color.LightBlue;
+		}
+		private void btn_exit_MouseLeave(object sender, EventArgs e)
+		{
+			btn_dong.BackColor = originalCloseButtonColor;
+		}
+		#endregion
+
+		#region Events
+
 		private void btn_doimatkhau_Click(object sender, EventArgs e)
 		{
 			try
@@ -46,13 +72,13 @@ namespace QuanLyNhanSu
 					string.IsNullOrWhiteSpace(newPassword) ||
 					string.IsNullOrWhiteSpace(confirmPassword))
 				{
-					MessageBox.Show("Vui lòng nhập đầy đủ thông tin.");
+					MessageBox.Show("Vui lòng nhập đầy đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					return;
 				}
 
 				if (newPassword != confirmPassword)
 				{
-					MessageBox.Show("Mật khẩu mới và xác nhận không khớp.");
+					MessageBox.Show("Mật khẩu mới và xác nhận không khớp.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					return;
 				}
 
@@ -63,17 +89,17 @@ namespace QuanLyNhanSu
 
 				if (result)
 				{
-					MessageBox.Show("Đổi mật khẩu thành công!");
+					MessageBox.Show("Đổi mật khẩu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					this.Close();
 				}
 				else
 				{
-					MessageBox.Show("Đổi mật khẩu thất bại! Vui lòng kiểm tra lại mật khẩu cũ.");
+					MessageBox.Show("Đổi mật khẩu thất bại! Vui lòng kiểm tra lại mật khẩu cũ.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 
 
@@ -83,5 +109,6 @@ namespace QuanLyNhanSu
 		{
 			this.Close();
 		}
+		#endregion
 	}
 }

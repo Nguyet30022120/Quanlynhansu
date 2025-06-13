@@ -29,8 +29,6 @@ namespace QuanLyNhanSu
 			originalDeleteButtonColor = btn_xoatrinhdo.BackColor;
 			originalFindButtonColor = btn_timnhanvien.BackColor;
 			originalCloseButtonColor = btn_dongtrinhdo.BackColor;
-
-			//LoadIntialData();
 		}
 
 		void BindingLevelData()
@@ -44,18 +42,7 @@ namespace QuanLyNhanSu
 			txb_chuyennganh.DataBindings.Add(new Binding("Text", dgv_trinhdo.DataSource, "ChuyenNganh", true, DataSourceUpdateMode.Never));
 			txb_truonghoc.DataBindings.Add(new Binding("Text", dgv_trinhdo.DataSource, "TruongHoc", true, DataSourceUpdateMode.Never));
 		}
-		//void LoadIntialData()
-		//{
-		//	// Hiển thị "--Tất cả nhân viên--" khi mở form
-		//	txb_tennhanvien.Text = "--Tất cả nhân viên--";
 
-		//	// Gọi hàm lấy toàn bộ trình độ của tất cả nhân viên
-		//	levelList.DataSource = TrinhdochuyenmonDAO.Instance.GetListTrinhDoAll();
-
-		//	// Gán binding để hiển thị dữ liệu
-		//	BindingLevelData();
-
-		//}
 		void LoadLevel(string manv)
 		{
 			levelList.DataSource = TrinhdochuyenmonDAO.Instance.GetListTrinhDo(manv);
@@ -73,17 +60,17 @@ namespace QuanLyNhanSu
 
 				if (TrinhdochuyenmonDAO.Instance.InsertTrinhDo(manv, loaibc,chuyennganh,truonghoc))
 				{
-					MessageBox.Show("Thêm trình độ thành công", "Thông báo");
+					MessageBox.Show("Thêm trình độ thành công", "Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Information);
 					LoadLevel(manv);
 				}
 				else
 				{
-					MessageBox.Show("Thêm trình độ thất bại", "Thông báo");
+					MessageBox.Show("Thêm trình độ thất bại", "Thông báo",MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Hãy nhập mã nhân viên!","Thông báo");
+				MessageBox.Show("Không tìm thấy mã nhân viên trong hệ thống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
@@ -103,16 +90,16 @@ namespace QuanLyNhanSu
 
 				if (TrinhdochuyenmonDAO.Instance.UpdateTrinhDo(matd, loaibc,chuyennganh,truonghoc))
 				{
-					MessageBox.Show("Sửa trình độ thành công.", "Thông báo");
+					MessageBox.Show("Sửa trình độ thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
 				else
 				{
-					MessageBox.Show("Sửa trình độ thất bại.", "Thông báo");
+					MessageBox.Show("Sửa trình độ thất bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
@@ -128,16 +115,16 @@ namespace QuanLyNhanSu
 				string matd = dgv_trinhdo.CurrentRow.Cells["MaTD"].Value.ToString(); ;
 				if (TrinhdochuyenmonDAO.Instance.DeleteTrinhDo(matd))
 				{
-					MessageBox.Show("Xóa trình độ thành công.","Thông báo");
+					MessageBox.Show("Xóa trình độ thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
 				else
 				{
-					MessageBox.Show("Xóa trình độ thất bại.", "Thông báo");
+					MessageBox.Show("Xóa trình độ thất bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{

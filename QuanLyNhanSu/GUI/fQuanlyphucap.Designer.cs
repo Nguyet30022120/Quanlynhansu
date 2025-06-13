@@ -289,6 +289,7 @@
 			this.Controls.Add(this.btn_themphucap);
 			this.Controls.Add(this.txb_tennhanvien);
 			this.Name = "fQuanlyphucap";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Phụ cấp";
 			((System.ComponentModel.ISupportInitialize)(this.dgv_phucap)).EndInit();
 			this.ResumeLayout(false);

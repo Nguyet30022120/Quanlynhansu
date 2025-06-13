@@ -205,7 +205,7 @@
 			this.btn_dongcheckout.TabIndex = 19;
 			this.btn_dongcheckout.Text = "Đóng";
 			this.btn_dongcheckout.UseVisualStyleBackColor = false;
-			this.btn_dongcheckout.Click += new System.EventHandler(this.btn_deletecheckout_Click);
+			this.btn_dongcheckout.Click += new System.EventHandler(this.btn_closecheckout_Click);
 			this.btn_dongcheckout.MouseEnter += new System.EventHandler(this.btn_dongcheckout_MouseEnter);
 			this.btn_dongcheckout.MouseLeave += new System.EventHandler(this.btn_dongcheckout_MouseLeave);
 			// 

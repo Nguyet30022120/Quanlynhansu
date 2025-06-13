@@ -28,8 +28,8 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.label6 = new System.Windows.Forms.Label();
 			this.lb_tenkhoahoc = new System.Windows.Forms.Label();
 			this.lb_tennhanvien = new System.Windows.Forms.Label();
@@ -43,17 +43,17 @@
 			this.btn_xoadaotao = new System.Windows.Forms.Button();
 			this.btn_dongdaotao = new System.Windows.Forms.Button();
 			this.dgv_daotao = new System.Windows.Forms.DataGridView();
-			this.txb_manhanvien = new System.Windows.Forms.TextBox();
-			this.btn_timnhanvien = new System.Windows.Forms.Button();
-			this.cb_khoahoc = new System.Windows.Forms.ComboBox();
-			this.btn_xemkhoahoc = new System.Windows.Forms.Button();
-			this.pn_daotao = new System.Windows.Forms.Panel();
 			this.MaDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TenKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Ketqua = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.txb_manhanvien = new System.Windows.Forms.TextBox();
+			this.btn_timnhanvien = new System.Windows.Forms.Button();
+			this.cb_khoahoc = new System.Windows.Forms.ComboBox();
+			this.btn_xemkhoahoc = new System.Windows.Forms.Button();
+			this.pn_daotao = new System.Windows.Forms.Panel();
 			this.lb_manhanvien = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_daotao)).BeginInit();
 			this.pn_daotao.SuspendLayout();
@@ -192,17 +192,17 @@
 			// 
 			// dgv_daotao
 			// 
-			dataGridViewCellStyle5.BackColor = System.Drawing.Color.Tan;
-			this.dgv_daotao.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.Tan;
+			this.dgv_daotao.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
 			this.dgv_daotao.BackgroundColor = System.Drawing.Color.White;
-			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgv_daotao.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgv_daotao.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.dgv_daotao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgv_daotao.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaDT,
@@ -217,6 +217,54 @@
 			this.dgv_daotao.RowTemplate.Height = 24;
 			this.dgv_daotao.Size = new System.Drawing.Size(1474, 597);
 			this.dgv_daotao.TabIndex = 21;
+			// 
+			// MaDT
+			// 
+			this.MaDT.DataPropertyName = "MaDT";
+			this.MaDT.HeaderText = "Mã đào tạo";
+			this.MaDT.MinimumWidth = 6;
+			this.MaDT.Name = "MaDT";
+			this.MaDT.Width = 125;
+			// 
+			// MaNV
+			// 
+			this.MaNV.DataPropertyName = "MaNV";
+			this.MaNV.HeaderText = "Mã nhân viên";
+			this.MaNV.MinimumWidth = 6;
+			this.MaNV.Name = "MaNV";
+			this.MaNV.Width = 125;
+			// 
+			// TenNV
+			// 
+			this.TenNV.DataPropertyName = "TenNV";
+			this.TenNV.HeaderText = "Tên nhân viên";
+			this.TenNV.MinimumWidth = 6;
+			this.TenNV.Name = "TenNV";
+			this.TenNV.Width = 200;
+			// 
+			// TenKH
+			// 
+			this.TenKH.DataPropertyName = "TenKH";
+			this.TenKH.HeaderText = "Tên khóa học";
+			this.TenKH.MinimumWidth = 6;
+			this.TenKH.Name = "TenKH";
+			this.TenKH.Width = 200;
+			// 
+			// Ketqua
+			// 
+			this.Ketqua.DataPropertyName = "KetQua";
+			this.Ketqua.HeaderText = "Kết quả";
+			this.Ketqua.MinimumWidth = 6;
+			this.Ketqua.Name = "Ketqua";
+			this.Ketqua.Width = 200;
+			// 
+			// TrangThai
+			// 
+			this.TrangThai.DataPropertyName = "TrangThai";
+			this.TrangThai.HeaderText = "Trạng thái";
+			this.TrangThai.MinimumWidth = 6;
+			this.TrangThai.Name = "TrangThai";
+			this.TrangThai.Width = 200;
 			// 
 			// txb_manhanvien
 			// 
@@ -287,54 +335,6 @@
 			this.pn_daotao.Size = new System.Drawing.Size(1474, 180);
 			this.pn_daotao.TabIndex = 26;
 			// 
-			// MaDT
-			// 
-			this.MaDT.DataPropertyName = "MaDT";
-			this.MaDT.HeaderText = "Mã đào tạo";
-			this.MaDT.MinimumWidth = 6;
-			this.MaDT.Name = "MaDT";
-			this.MaDT.Width = 125;
-			// 
-			// MaNV
-			// 
-			this.MaNV.DataPropertyName = "MaNV";
-			this.MaNV.HeaderText = "Mã nhân viên";
-			this.MaNV.MinimumWidth = 6;
-			this.MaNV.Name = "MaNV";
-			this.MaNV.Width = 125;
-			// 
-			// TenNV
-			// 
-			this.TenNV.DataPropertyName = "TenNV";
-			this.TenNV.HeaderText = "Tên nhân viên";
-			this.TenNV.MinimumWidth = 6;
-			this.TenNV.Name = "TenNV";
-			this.TenNV.Width = 200;
-			// 
-			// TenKH
-			// 
-			this.TenKH.DataPropertyName = "TenKH";
-			this.TenKH.HeaderText = "Tên khóa học";
-			this.TenKH.MinimumWidth = 6;
-			this.TenKH.Name = "TenKH";
-			this.TenKH.Width = 200;
-			// 
-			// Ketqua
-			// 
-			this.Ketqua.DataPropertyName = "KetQua";
-			this.Ketqua.HeaderText = "Kết quả";
-			this.Ketqua.MinimumWidth = 6;
-			this.Ketqua.Name = "Ketqua";
-			this.Ketqua.Width = 200;
-			// 
-			// TrangThai
-			// 
-			this.TrangThai.DataPropertyName = "TrangThai";
-			this.TrangThai.HeaderText = "Trạng thái";
-			this.TrangThai.MinimumWidth = 6;
-			this.TrangThai.Name = "TrangThai";
-			this.TrangThai.Width = 200;
-			// 
 			// lb_manhanvien
 			// 
 			this.lb_manhanvien.AutoSize = true;
@@ -355,6 +355,7 @@
 			this.Controls.Add(this.label6);
 			this.Controls.Add(this.pn_daotao);
 			this.Name = "fQuanlydaotaonhanvien";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Đào tạo nhân viên";
 			((System.ComponentModel.ISupportInitialize)(this.dgv_daotao)).EndInit();
 			this.pn_daotao.ResumeLayout(false);

@@ -28,8 +28,8 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.txb_diachi = new System.Windows.Forms.TextBox();
 			this.txb_dienthoai = new System.Windows.Forms.TextBox();
 			this.txb_CCCD = new System.Windows.Forms.TextBox();
@@ -49,16 +49,6 @@
 			this.pn_thongtinnhanvien = new System.Windows.Forms.Panel();
 			this.lb_goiy = new System.Windows.Forms.Label();
 			this.dgv_nhanvien = new System.Windows.Forms.DataGridView();
-			this.btn_timnhanvien = new System.Windows.Forms.Button();
-			this.txb_email = new System.Windows.Forms.TextBox();
-			this.txb_timnhanvien = new System.Windows.Forms.TextBox();
-			this.lb_email = new System.Windows.Forms.Label();
-			this.cb_chucvu = new System.Windows.Forms.ComboBox();
-			this.cb_cuahang = new System.Windows.Forms.ComboBox();
-			this.btn_dongnhanvien = new System.Windows.Forms.Button();
-			this.btn_xoanhanvien = new System.Windows.Forms.Button();
-			this.btn_suanhanvien = new System.Windows.Forms.Button();
-			this.btn_themnhanvien = new System.Windows.Forms.Button();
 			this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ChucVu = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,6 +60,16 @@
 			this.GioiTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.NgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.btn_timnhanvien = new System.Windows.Forms.Button();
+			this.txb_email = new System.Windows.Forms.TextBox();
+			this.txb_timnhanvien = new System.Windows.Forms.TextBox();
+			this.lb_email = new System.Windows.Forms.Label();
+			this.cb_chucvu = new System.Windows.Forms.ComboBox();
+			this.cb_cuahang = new System.Windows.Forms.ComboBox();
+			this.btn_dongnhanvien = new System.Windows.Forms.Button();
+			this.btn_xoanhanvien = new System.Windows.Forms.Button();
+			this.btn_suanhanvien = new System.Windows.Forms.Button();
+			this.btn_themnhanvien = new System.Windows.Forms.Button();
 			this.pn_thongtinnhanvien.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_nhanvien)).BeginInit();
 			this.SuspendLayout();
@@ -280,17 +280,17 @@
 			// 
 			// dgv_nhanvien
 			// 
-			dataGridViewCellStyle1.BackColor = System.Drawing.Color.Tan;
-			this.dgv_nhanvien.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle3.BackColor = System.Drawing.Color.Tan;
+			this.dgv_nhanvien.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
 			this.dgv_nhanvien.BackgroundColor = System.Drawing.Color.White;
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgv_nhanvien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgv_nhanvien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
 			this.dgv_nhanvien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgv_nhanvien.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaNV,
@@ -310,6 +310,94 @@
 			this.dgv_nhanvien.RowTemplate.Height = 24;
 			this.dgv_nhanvien.Size = new System.Drawing.Size(1464, 545);
 			this.dgv_nhanvien.TabIndex = 0;
+			// 
+			// MaNV
+			// 
+			this.MaNV.DataPropertyName = "MaNV";
+			this.MaNV.HeaderText = "Mã nhân viên";
+			this.MaNV.MinimumWidth = 6;
+			this.MaNV.Name = "MaNV";
+			this.MaNV.Width = 75;
+			// 
+			// HoTen
+			// 
+			this.HoTen.DataPropertyName = "HoTen";
+			this.HoTen.HeaderText = "Họ tên ";
+			this.HoTen.MinimumWidth = 6;
+			this.HoTen.Name = "HoTen";
+			this.HoTen.Width = 125;
+			// 
+			// ChucVu
+			// 
+			this.ChucVu.DataPropertyName = "ChucVu";
+			this.ChucVu.HeaderText = "Chức vụ";
+			this.ChucVu.MinimumWidth = 6;
+			this.ChucVu.Name = "ChucVu";
+			this.ChucVu.Width = 125;
+			// 
+			// CuaHang
+			// 
+			this.CuaHang.DataPropertyName = "CuaHang";
+			this.CuaHang.HeaderText = "Cửa hàng";
+			this.CuaHang.MinimumWidth = 6;
+			this.CuaHang.Name = "CuaHang";
+			this.CuaHang.Width = 125;
+			// 
+			// TaiKhoan
+			// 
+			this.TaiKhoan.DataPropertyName = "TaiKhoan";
+			this.TaiKhoan.HeaderText = "Tài khoản";
+			this.TaiKhoan.MinimumWidth = 6;
+			this.TaiKhoan.Name = "TaiKhoan";
+			this.TaiKhoan.Width = 75;
+			// 
+			// CCCD
+			// 
+			this.CCCD.DataPropertyName = "CCCD";
+			this.CCCD.HeaderText = "CCCD";
+			this.CCCD.MinimumWidth = 6;
+			this.CCCD.Name = "CCCD";
+			this.CCCD.Width = 125;
+			// 
+			// DienThoai
+			// 
+			this.DienThoai.DataPropertyName = "DienThoai";
+			this.DienThoai.HeaderText = "Điện thoại";
+			this.DienThoai.MinimumWidth = 6;
+			this.DienThoai.Name = "DienThoai";
+			this.DienThoai.Width = 125;
+			// 
+			// Diachi
+			// 
+			this.Diachi.DataPropertyName = "DiaChi";
+			this.Diachi.HeaderText = "Địa chỉ";
+			this.Diachi.MinimumWidth = 6;
+			this.Diachi.Name = "Diachi";
+			this.Diachi.Width = 250;
+			// 
+			// GioiTinh
+			// 
+			this.GioiTinh.DataPropertyName = "GioiTinh";
+			this.GioiTinh.HeaderText = "Giới tính";
+			this.GioiTinh.MinimumWidth = 6;
+			this.GioiTinh.Name = "GioiTinh";
+			this.GioiTinh.Width = 75;
+			// 
+			// NgaySinh
+			// 
+			this.NgaySinh.DataPropertyName = "NgaySinh";
+			this.NgaySinh.HeaderText = "Ngày sinh";
+			this.NgaySinh.MinimumWidth = 6;
+			this.NgaySinh.Name = "NgaySinh";
+			this.NgaySinh.Width = 125;
+			// 
+			// Email
+			// 
+			this.Email.DataPropertyName = "Email";
+			this.Email.HeaderText = "Email";
+			this.Email.MinimumWidth = 6;
+			this.Email.Name = "Email";
+			this.Email.Width = 200;
 			// 
 			// btn_timnhanvien
 			// 
@@ -439,97 +527,13 @@
 			this.btn_themnhanvien.MouseEnter += new System.EventHandler(this.btn_themnhanvien_MouseEnter);
 			this.btn_themnhanvien.MouseLeave += new System.EventHandler(this.btn_themnhanvien_MouseLeave);
 			// 
-			// MaNV
-			// 
-			this.MaNV.DataPropertyName = "MaNV";
-			this.MaNV.HeaderText = "Mã nhân viên";
-			this.MaNV.MinimumWidth = 6;
-			this.MaNV.Name = "MaNV";
-			this.MaNV.Width = 75;
-			// 
-			// HoTen
-			// 
-			this.HoTen.DataPropertyName = "HoTen";
-			this.HoTen.HeaderText = "Họ tên ";
-			this.HoTen.MinimumWidth = 6;
-			this.HoTen.Name = "HoTen";
-			this.HoTen.Width = 125;
-			// 
-			// ChucVu
-			// 
-			this.ChucVu.DataPropertyName = "ChucVu";
-			this.ChucVu.HeaderText = "Chức vụ";
-			this.ChucVu.MinimumWidth = 6;
-			this.ChucVu.Name = "ChucVu";
-			this.ChucVu.Width = 125;
-			// 
-			// CuaHang
-			// 
-			this.CuaHang.DataPropertyName = "CuaHang";
-			this.CuaHang.HeaderText = "Cửa hàng";
-			this.CuaHang.MinimumWidth = 6;
-			this.CuaHang.Name = "CuaHang";
-			// 
-			// TaiKhoan
-			// 
-			this.TaiKhoan.DataPropertyName = "TaiKhoan";
-			this.TaiKhoan.HeaderText = "Tài khoản";
-			this.TaiKhoan.MinimumWidth = 6;
-			this.TaiKhoan.Name = "TaiKhoan";
-			this.TaiKhoan.Width = 75;
-			// 
-			// CCCD
-			// 
-			this.CCCD.DataPropertyName = "CCCD";
-			this.CCCD.HeaderText = "CCCD";
-			this.CCCD.MinimumWidth = 6;
-			this.CCCD.Name = "CCCD";
-			this.CCCD.Width = 125;
-			// 
-			// DienThoai
-			// 
-			this.DienThoai.DataPropertyName = "DienThoai";
-			this.DienThoai.HeaderText = "Điện thoại";
-			this.DienThoai.MinimumWidth = 6;
-			this.DienThoai.Name = "DienThoai";
-			this.DienThoai.Width = 125;
-			// 
-			// Diachi
-			// 
-			this.Diachi.DataPropertyName = "DiaChi";
-			this.Diachi.HeaderText = "Địa chỉ";
-			this.Diachi.MinimumWidth = 6;
-			this.Diachi.Name = "Diachi";
-			this.Diachi.Width = 250;
-			// 
-			// GioiTinh
-			// 
-			this.GioiTinh.DataPropertyName = "GioiTinh";
-			this.GioiTinh.HeaderText = "Giới tính";
-			this.GioiTinh.MinimumWidth = 6;
-			this.GioiTinh.Name = "GioiTinh";
-			this.GioiTinh.Width = 75;
-			// 
-			// NgaySinh
-			// 
-			this.NgaySinh.DataPropertyName = "NgaySinh";
-			this.NgaySinh.HeaderText = "Ngày sinh";
-			this.NgaySinh.MinimumWidth = 6;
-			this.NgaySinh.Name = "NgaySinh";
-			// 
-			// Email
-			// 
-			this.Email.DataPropertyName = "Email";
-			this.Email.HeaderText = "Email";
-			this.Email.MinimumWidth = 6;
-			this.Email.Name = "Email";
-			this.Email.Width = 200;
-			// 
 			// fQuanlynhanvien
 			// 
+			this.BackColor = System.Drawing.Color.BlanchedAlmond;
 			this.ClientSize = new System.Drawing.Size(1482, 778);
 			this.Controls.Add(this.pn_thongtinnhanvien);
 			this.Name = "fQuanlynhanvien";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Nhân viên";
 			this.pn_thongtinnhanvien.ResumeLayout(false);
 			this.pn_thongtinnhanvien.PerformLayout();

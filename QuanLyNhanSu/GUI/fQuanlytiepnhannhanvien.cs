@@ -45,7 +45,7 @@ namespace QuanLyNhanSu.GUI
 			}
 			else
 			{
-				MessageBox.Show("Không tìm thấy dữ liệu ứng viên.");
+				MessageBox.Show("Không tìm thấy dữ liệu ứng viên.","Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Error);
 			}
 		}
 		void LoadStaff()
@@ -106,18 +106,18 @@ namespace QuanLyNhanSu.GUI
 
 				if (NhanvienDAO.Instance.InsertStaff(chucvu, phongban, hoten, gioitinh, ngaysinh, cccd, dienthoai, diachi, email))
 				{
-					MessageBox.Show("Thêm nhân viên thành công.");
+					MessageBox.Show("Thêm nhân viên thành công.","Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Information);
 					this.Close();
 				}
 				else
 				{
-					MessageBox.Show("Thêm nhân viên thất bại.");
+					MessageBox.Show("Thêm nhân viên thất bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{

@@ -14,7 +14,8 @@ namespace QuanLyNhanSu
 		private Color originalQuanlynguoidungButtonColor; 
 		private Color originalDoimatkhauButtonColor;
 		private Color originalQuanlytaikhoanButtonColor; 
-		private Color originalDangxuatButtonColor; 
+		private Color originalDangxuatButtonColor;
+		private Color originalLichsudangnhapButtonColor;
 
 		private Color originalNhanvienButtonColor;
 		private Color originalPhongbanButtonColor;
@@ -58,13 +59,14 @@ namespace QuanLyNhanSu
 			originalDoimatkhauButtonColor = btn_doimatkhau.BackColor;
 			originalQuanlytaikhoanButtonColor = btn_quanlytaikhoan.BackColor;
 			originalDangxuatButtonColor = btn_dangxuat.BackColor;
+			originalLichsudangnhapButtonColor = btn_lichsudangnhap.BackColor;
 
 			originalNhanvienButtonColor = btn_quanlythongtinnhanvien.BackColor;
-			originalPhongbanButtonColor = btn_quanlyphongban.BackColor;
+			originalPhongbanButtonColor = btn_quanlycuahang.BackColor;
 			originalChucvuButtonColor = btn_quanlychucvu.BackColor;
-			originalTrinhdoButtonColor = btn_quanlytrinhdochuyenmon.BackColor;
-			originalHopdongButtonColor = btn_quanlyhopdonglaodong.BackColor;
-			originalDaotaoButtonColor = btn_quanlydaotaovaphattriennhanvien.BackColor;
+			originalTrinhdoButtonColor = btn_quanlytrinhdo.BackColor;
+			originalHopdongButtonColor = btn_quanlyhopdong.BackColor;
+			originalDaotaoButtonColor = btn_quanlydaotao.BackColor;
 
 			originalCheckinButtonColor = btn_checkin.BackColor;
 			originalCheckoutButtonColor = btn_checkout.BackColor;
@@ -74,27 +76,27 @@ namespace QuanLyNhanSu
 
 			originalNguonungvienButtonColor = btn_quanlynguonungvien.BackColor;
 			originalHosoungvienButtonColor = btn_quanlyhosoungvien.BackColor;
-			originalLichphongvanButtonColor = btn_quanlylichpv.BackColor;
+			originalLichphongvanButtonColor = btn_quanlylichphongvan.BackColor;
 			originalKetquaButtonColor = btn_quanlyketquaphongvan.BackColor;
 
 			originalBangluongButtonColor = btn_quanlybangluong.BackColor;
 			originalThueColor = btn_quanlyphucap.BackColor;
 			originalBaohiemButtonColor = btn_quanlybaohiem.BackColor;
-			originalKhenthuongkyluatButtonColor = btn_qlkhenthuongkyluat.BackColor;
+			originalKhenthuongkyluatButtonColor = btn_quanlykhenthuongkyluat.BackColor;
 
 			originalBaocaotongquannhansuButtonColor = btn_baocaotongquannhansu.BackColor;
 			originalThongkenghiphepButtonColor = btn_thongkeluotnghiphepcuanhanvien.BackColor;
-			originalThongkekhenthuongkyluatButtonColor = btn_thongkethongtinkhenthuongkyluat.BackColor;
+			originalThongkekhenthuongkyluatButtonColor = btn_thongkekhenthuongkyluat.BackColor;
 			originalThongketuyendungButtonColor = btn_thongketuyendung.BackColor;
 		}
 
 		void LoadUserInfo(string userName)
 		{
 			string name = TaikhoanDAO.Instance.GetNameNvByUsername(userName);
-			lb_namenv.Text = "Xin chào " + name;
+			lb_tennhanvien.Text = "Xin chào " + name;
 		}
 
-		#region menu event
+		#region Menu events
 		private void btn_dangxuat_Click(object sender, EventArgs e)
 		{
 			this.Close();
@@ -123,42 +125,17 @@ namespace QuanLyNhanSu
 			f.ShowDialog();
 			this.Show();
 		}
+		private void btn_lichsudangnhap_Click(object sender, EventArgs e)
+		{
+			fQuanlylichsudangnhap f = new fQuanlylichsudangnhap();
+			this.Hide();
+			f.ShowDialog();
+			this.Show();
+		}
 
-		private void btn_quanlynguoidung_MouseEnter(object sender, EventArgs e)
-		{
-			btn_quanlynguoidung.BackColor = System.Drawing.Color.LightBlue; 
-		}
-		private void btn_quanlynguoidung_MouseLeave(object sender, EventArgs e)
-		{
-			btn_quanlynguoidung.BackColor = originalQuanlynguoidungButtonColor;
-		}
-		private void btn_doimatkhau_MouseEnter(object sender, EventArgs e)
-		{
-			btn_doimatkhau.BackColor = System.Drawing.Color.LightBlue;
-		}
-		private void btn_doimatkhau_MouseLeave(object sender, EventArgs e)
-		{
-			btn_doimatkhau.BackColor = originalDoimatkhauButtonColor;
-		}
-		private void btn_quanlytaikhoan_MouseEnter(object sender, EventArgs e)
-		{
-			btn_quanlytaikhoan.BackColor = System.Drawing.Color.LightBlue;
-		}
-		private void btn_quanlytaikhoan_MouseLeave(object sender, EventArgs e)
-		{
-			btn_quanlytaikhoan.BackColor = originalQuanlytaikhoanButtonColor;
-		}
-		private void btn_dangxuat_MouseEnter(object sender, EventArgs e)
-		{
-			btn_dangxuat.BackColor = System.Drawing.Color.LightBlue;
-		}
-		private void btn_dangxuat_MouseLeave(object sender, EventArgs e)
-		{
-			btn_dangxuat.BackColor = originalDangxuatButtonColor;
-		}
 		#endregion
 
-		#region category
+		#region Danhmuc
 		private void btn_quanlythongtinnhanvien_Click(object sender, EventArgs e)
 		{
 			fQuanlynhanvien f = new fQuanlynhanvien();
@@ -206,64 +183,11 @@ namespace QuanLyNhanSu
 			f.ShowDialog();
 			this.Show();
 		}
-		private void btn_nhanvien_MouseEnter(object sender, EventArgs e)
-		{
-			btn_quanlythongtinnhanvien.BackColor = System.Drawing.Color.LightBlue;
-		}
-		private void btn_nhanvien_MouseLeave(object sender, EventArgs e)
-		{
-			btn_quanlythongtinnhanvien.BackColor = originalNhanvienButtonColor;
-		}
-
-		private void btn_phongban_MouseEnter(object sender, EventArgs e)
-		{
-			btn_quanlyphongban.BackColor = System.Drawing.Color.LightBlue;
-		}
-		private void btn_phongban_MouseLeave(object sender, EventArgs e)
-		{
-			btn_quanlyphongban.BackColor = originalPhongbanButtonColor;
-		}
-
-		private void btn_chucvu_MouseEnter(object sender, EventArgs e)
-		{
-			btn_quanlychucvu.BackColor = System.Drawing.Color.LightBlue;
-		}
-		private void btn_chucvu_MouseLeave(object sender, EventArgs e)
-		{
-			btn_quanlychucvu.BackColor = originalChucvuButtonColor;
-		}
-
-		private void btn_trinhdo_MouseEnter(object sender, EventArgs e)
-		{
-			btn_quanlytrinhdochuyenmon.BackColor = System.Drawing.Color.LightBlue;
-		}
-		private void btn_trinhdo_MouseLeave(object sender, EventArgs e)
-		{
-			btn_quanlytrinhdochuyenmon.BackColor = originalTrinhdoButtonColor;
-		}
-
-		private void btn_hopdong_MouseEnter(object sender, EventArgs e)
-		{
-			btn_quanlyhopdonglaodong.BackColor = System.Drawing.Color.LightBlue;
-		}
-		private void btn_hopdong_MouseLeave(object sender, EventArgs e)
-		{
-			btn_quanlyhopdonglaodong.BackColor = originalHopdongButtonColor;
-		}
-
-		private void btn_daotao_MouseEnter(object sender, EventArgs e)
-		{
-			btn_quanlydaotaovaphattriennhanvien.BackColor = System.Drawing.Color.LightBlue;
-		}
-		private void btn_daotao_MouseLeave(object sender, EventArgs e)
-		{
-			btn_quanlydaotaovaphattriennhanvien.BackColor = originalDaotaoButtonColor;
-		}
-
+		
 
 		#endregion
 
-		#region statistics
+		#region Thongke
 		private void btn_thongkethongtinkhenthuongkyluat_Click(object sender, EventArgs e)
 		{
 			fThongkekhenthuongkyluat f = new fThongkekhenthuongkyluat();
@@ -287,46 +211,20 @@ namespace QuanLyNhanSu
 			f.ShowDialog();
 			this.Show();
 		}
-
-		private void btn_baocaotongquannhansu_MouseEnter(object sender, EventArgs e)
+		private void btn_thongketuyendung_Click(object sender, EventArgs e)
 		{
-			btn_baocaotongquannhansu.BackColor = System.Drawing.Color.LightBlue;
-		}
-		private void btn_baocaotongquannhansu_MouseLeave(object sender, EventArgs e)
-		{
-			btn_baocaotongquannhansu.BackColor = originalBaocaotongquannhansuButtonColor;
-		}
-
-		private void btn_thongkenghiphep_MouseEnter(object sender, EventArgs e)
-		{
-			btn_thongkeluotnghiphepcuanhanvien.BackColor = System.Drawing.Color.LightBlue;
-		}
-		private void btn_thongkenghiphep_MouseLeave(object sender, EventArgs e)
-		{
-			btn_thongkeluotnghiphepcuanhanvien.BackColor = originalThongkenghiphepButtonColor;
+			fThongketuyendung f = new fThongketuyendung();
+			this.Hide();
+			f.ShowDialog();
+			this.Show();
 		}
 
 
-		private void btn_thongkekhenthuongkyluat_MouseEnter(object sender, EventArgs e)
-		{
-			btn_thongkethongtinkhenthuongkyluat.BackColor = System.Drawing.Color.LightBlue;
-		}
-		private void btn_thongkekhenthuongkyluat_MouseLeave(object sender, EventArgs e)
-		{
-			btn_thongkethongtinkhenthuongkyluat.BackColor = originalThongkekhenthuongkyluatButtonColor;
-		}
-		private void btn_thongketuyendung_MouseEnter(object sender, EventArgs e)
-		{
-			btn_thongketuyendung.BackColor = System.Drawing.Color.LightBlue;
-		}
-		private void btn_thongketuyendung_MouseLeave(object sender, EventArgs e)
-		{
-			btn_thongketuyendung.BackColor = originalThongketuyendungButtonColor;
-		}
 
 		#endregion
 
-		#region checkin/out
+		#region Bangcong
+
 		private void btn_checkin_Click(object sender, EventArgs e)
 		{
 			fCheckin f = new fCheckin();
@@ -367,6 +265,209 @@ namespace QuanLyNhanSu
 			this.Show();
 		}
 
+
+		#endregion
+
+		#region Tuyendung
+
+		private void btn_quanlynguonungvien_Click(object sender, EventArgs e)
+		{
+			fQuanlynguonungvien f = new fQuanlynguonungvien();
+			this.Hide();
+			f.ShowDialog();
+			this.Show();
+		}
+
+		private void btn_quanlyhosoungvien_Click(object sender, EventArgs e)
+		{
+			fQuanlyhosoungvien f = new fQuanlyhosoungvien();
+			this.Hide();
+			f.ShowDialog();
+			this.Show();
+		}
+		private void btn_quanlylichpv_Click(object sender, EventArgs e)
+		{
+			fQuanlylichphongvan f = new fQuanlylichphongvan();
+			this.Hide();
+			f.ShowDialog();
+			this.Show();
+		}
+		private void btn_quanlyketquaphongvan_Click(object sender, EventArgs e)
+		{
+			fQuanlyketquaphongvan f = new fQuanlyketquaphongvan();
+			this.Hide();
+			f.ShowDialog();
+			this.Show();
+		}
+		
+
+		#endregion
+
+		#region Bangluong
+		private void btn_quanlybangluong_Click(object sender, EventArgs e)
+		{
+			fBangluong f = new fBangluong();
+			this.Hide();
+			f.ShowDialog();
+			this.Show();
+		}
+
+
+		private void btn_qlkhenthuongkyluat_Click(object sender, EventArgs e)
+		{
+			fQuanlykhenthuongkyluat f = new fQuanlykhenthuongkyluat();
+			this.Hide();
+			f.ShowDialog();
+			this.Show();
+		}
+
+		private void btn_quanlyphucap_Click(object sender, EventArgs e)
+		{
+			fQuanlyphucap f = new fQuanlyphucap();
+			this.Hide();
+			f.ShowDialog();
+			this.Show();
+		}
+
+		private void btn_quanlybaohiem_Click(object sender, EventArgs e)
+		{
+			fQuanlybaohiem f = new fQuanlybaohiem();
+			this.Hide();
+			f.ShowDialog();
+			this.Show();
+		}
+
+		#endregion
+
+		#region Hovers
+		private void btn_quanlynguoidung_MouseEnter(object sender, EventArgs e)
+		{
+			btn_quanlynguoidung.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_quanlynguoidung_MouseLeave(object sender, EventArgs e)
+		{
+			btn_quanlynguoidung.BackColor = originalQuanlynguoidungButtonColor;
+		}
+		private void btn_doimatkhau_MouseEnter(object sender, EventArgs e)
+		{
+			btn_doimatkhau.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_doimatkhau_MouseLeave(object sender, EventArgs e)
+		{
+			btn_doimatkhau.BackColor = originalDoimatkhauButtonColor;
+		}
+		private void btn_quanlytaikhoan_MouseEnter(object sender, EventArgs e)
+		{
+			btn_quanlytaikhoan.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_quanlytaikhoan_MouseLeave(object sender, EventArgs e)
+		{
+			btn_quanlytaikhoan.BackColor = originalQuanlytaikhoanButtonColor;
+		}
+		private void btn_dangxuat_MouseEnter(object sender, EventArgs e)
+		{
+			btn_dangxuat.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_dangxuat_MouseLeave(object sender, EventArgs e)
+		{
+			btn_dangxuat.BackColor = originalDangxuatButtonColor;
+		}
+		private void btn_lichsudangnhap_MouseEnter(object sender, EventArgs e)
+		{
+			btn_lichsudangnhap.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_lichsudangnhap_MouseLeave(object sender, EventArgs e)
+		{
+			btn_lichsudangnhap.BackColor = originalLichsudangnhapButtonColor;
+		}
+		private void btn_nhanvien_MouseEnter(object sender, EventArgs e)
+		{
+			btn_quanlythongtinnhanvien.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_nhanvien_MouseLeave(object sender, EventArgs e)
+		{
+			btn_quanlythongtinnhanvien.BackColor = originalNhanvienButtonColor;
+		}
+
+		private void btn_phongban_MouseEnter(object sender, EventArgs e)
+		{
+			btn_quanlycuahang.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_phongban_MouseLeave(object sender, EventArgs e)
+		{
+			btn_quanlycuahang.BackColor = originalPhongbanButtonColor;
+		}
+
+		private void btn_chucvu_MouseEnter(object sender, EventArgs e)
+		{
+			btn_quanlychucvu.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_chucvu_MouseLeave(object sender, EventArgs e)
+		{
+			btn_quanlychucvu.BackColor = originalChucvuButtonColor;
+		}
+
+		private void btn_trinhdo_MouseEnter(object sender, EventArgs e)
+		{
+			btn_quanlytrinhdo.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_trinhdo_MouseLeave(object sender, EventArgs e)
+		{
+			btn_quanlytrinhdo.BackColor = originalTrinhdoButtonColor;
+		}
+
+		private void btn_hopdong_MouseEnter(object sender, EventArgs e)
+		{
+			btn_quanlyhopdong.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_hopdong_MouseLeave(object sender, EventArgs e)
+		{
+			btn_quanlyhopdong.BackColor = originalHopdongButtonColor;
+		}
+
+		private void btn_daotao_MouseEnter(object sender, EventArgs e)
+		{
+			btn_quanlydaotao.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_daotao_MouseLeave(object sender, EventArgs e)
+		{
+			btn_quanlydaotao.BackColor = originalDaotaoButtonColor;
+		}
+		private void btn_baocaotongquannhansu_MouseEnter(object sender, EventArgs e)
+		{
+			btn_baocaotongquannhansu.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_baocaotongquannhansu_MouseLeave(object sender, EventArgs e)
+		{
+			btn_baocaotongquannhansu.BackColor = originalBaocaotongquannhansuButtonColor;
+		}
+
+		private void btn_thongkenghiphep_MouseEnter(object sender, EventArgs e)
+		{
+			btn_thongkeluotnghiphepcuanhanvien.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_thongkenghiphep_MouseLeave(object sender, EventArgs e)
+		{
+			btn_thongkeluotnghiphepcuanhanvien.BackColor = originalThongkenghiphepButtonColor;
+		}
+
+
+		private void btn_thongkekhenthuongkyluat_MouseEnter(object sender, EventArgs e)
+		{
+			btn_thongkekhenthuongkyluat.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_thongkekhenthuongkyluat_MouseLeave(object sender, EventArgs e)
+		{
+			btn_thongkekhenthuongkyluat.BackColor = originalThongkekhenthuongkyluatButtonColor;
+		}
+		private void btn_thongketuyendung_MouseEnter(object sender, EventArgs e)
+		{
+			btn_thongketuyendung.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_thongketuyendung_MouseLeave(object sender, EventArgs e)
+		{
+			btn_thongketuyendung.BackColor = originalThongketuyendungButtonColor;
+		}
 		private void btn_checkin_MouseEnter(object sender, EventArgs e)
 		{
 			btn_checkin.BackColor = System.Drawing.Color.LightBlue;
@@ -411,47 +512,13 @@ namespace QuanLyNhanSu
 		{
 			btn_quanlybangcong.BackColor = originalBangcongButtonColor;
 		}
-
-
-		#endregion
-
-		#region recruitment
-		private void btn_quanlynguonungvien_Click(object sender, EventArgs e)
-		{
-			fQuanlynguonungvien f = new fQuanlynguonungvien();
-			this.Hide();
-			f.ShowDialog();
-			this.Show();
-		}
-
-		private void btn_quanlyhosoungvien_Click(object sender, EventArgs e)
-		{
-			fQuanlyhosoungvien f = new fQuanlyhosoungvien();
-			this.Hide();
-			f.ShowDialog();
-			this.Show();
-		}
-		private void btn_quanlylichpv_Click(object sender, EventArgs e)
-		{
-			fQuanlylichphongvan f = new fQuanlylichphongvan();
-			this.Hide();
-			f.ShowDialog();
-			this.Show();
-		}
-		private void btn_quanlyketquaphongvan_Click(object sender, EventArgs e)
-		{
-			fQuanlyketquaphongvan f = new fQuanlyketquaphongvan();
-			this.Hide();
-			f.ShowDialog();
-			this.Show();
-		}
 		private void btn_quanlylichpv_MouseEnter(object sender, EventArgs e)
 		{
-			btn_quanlylichpv.BackColor = System.Drawing.Color.LightBlue;
+			btn_quanlylichphongvan.BackColor = System.Drawing.Color.LightBlue;
 		}
 		private void btn_quanlylichpv_MouseLeave(object sender, EventArgs e)
 		{
-			btn_quanlylichpv.BackColor = originalLichphongvanButtonColor;
+			btn_quanlylichphongvan.BackColor = originalLichphongvanButtonColor;
 		}
 
 		private void btn_quanlyketquaphongvan_MouseEnter(object sender, EventArgs e)
@@ -478,26 +545,6 @@ namespace QuanLyNhanSu
 		private void btn_quanlyhosoungvien_MouseLeave(object sender, EventArgs e)
 		{
 			btn_quanlyhosoungvien.BackColor = originalHosoungvienButtonColor;
-		}
-
-		#endregion
-
-		#region compensation
-		private void btn_quanlybangluong_Click(object sender, EventArgs e)
-		{
-			fBangluong f = new fBangluong();
-			this.Hide();
-			f.ShowDialog();
-			this.Show();
-		}
-
-
-		private void btn_qlkhenthuongkyluat_Click(object sender, EventArgs e)
-		{
-			fQuanlykhenthuongkyluat f = new fQuanlykhenthuongkyluat();
-			this.Hide();
-			f.ShowDialog();
-			this.Show();
 		}
 		private void btn_quanlybangluong_MouseEnter(object sender, EventArgs e)
 		{
@@ -528,49 +575,16 @@ namespace QuanLyNhanSu
 
 		private void btn_qlkhenthuongkyluat_MouseEnter(object sender, EventArgs e)
 		{
-			btn_qlkhenthuongkyluat.BackColor = System.Drawing.Color.LightBlue;
+			btn_quanlykhenthuongkyluat.BackColor = System.Drawing.Color.LightBlue;
 		}
 		private void btn_qlkhenthuongkyluat_MouseLeave(object sender, EventArgs e)
 		{
-			btn_qlkhenthuongkyluat.BackColor = originalKhenthuongkyluatButtonColor;
-		}
-		private void btn_quanlyphucap_Click(object sender, EventArgs e)
-		{
-			fQuanlyphucap f = new fQuanlyphucap();
-			this.Hide();
-			f.ShowDialog();
-			this.Show();
-		}
-
-		private void btn_quanlybaohiem_Click(object sender, EventArgs e)
-		{
-			fQuanlybaohiem f = new fQuanlybaohiem();
-			this.Hide();
-			f.ShowDialog();
-			this.Show();
+			btn_quanlykhenthuongkyluat.BackColor = originalKhenthuongkyluatButtonColor;
 		}
 
 		#endregion
 
-		private void tc_SelectedIndexChanged(object sender, EventArgs e)
-		{
 
-		}
 
-		private void btn_thongketuyendung_Click(object sender, EventArgs e)
-		{
-			fThongketuyendung f = new fThongketuyendung();
-			this.Hide();
-			f.ShowDialog();
-			this.Show();
-		}
-
-		private void btn_lichsudangnhap_Click(object sender, EventArgs e)
-		{
-			fQuanlylichsudangnhap f = new fQuanlylichsudangnhap();
-			this.Hide();
-			f.ShowDialog();
-			this.Show();
-		}
 	}
 }

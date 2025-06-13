@@ -28,22 +28,12 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.btn_suanguoidung = new System.Windows.Forms.Button();
 			this.btn_xoanguoidung = new System.Windows.Forms.Button();
 			this.btn_dongnguoidung = new System.Windows.Forms.Button();
 			this.dgv_nguoidung = new System.Windows.Forms.DataGridView();
-			this.lb_hoten = new System.Windows.Forms.Label();
-			this.lb_chucvu = new System.Windows.Forms.Label();
-			this.lb_phongban = new System.Windows.Forms.Label();
-			this.txb_hoten = new System.Windows.Forms.TextBox();
-			this.txb_chucvu = new System.Windows.Forms.TextBox();
-			this.txb_phongban = new System.Windows.Forms.TextBox();
-			this.lb_vaitro = new System.Windows.Forms.Label();
-			this.la_motaquyenhan = new System.Windows.Forms.Label();
-			this.cb_vaitro = new System.Windows.Forms.ComboBox();
-			this.txb_motaquyenhan = new System.Windows.Forms.TextBox();
 			this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ChucVu = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +42,16 @@
 			this.TaiKhoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.VaiTro = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.MoTaQuyenHan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.lb_hoten = new System.Windows.Forms.Label();
+			this.lb_chucvu = new System.Windows.Forms.Label();
+			this.lb_phongban = new System.Windows.Forms.Label();
+			this.txb_hoten = new System.Windows.Forms.TextBox();
+			this.txb_chucvu = new System.Windows.Forms.TextBox();
+			this.txb_phongban = new System.Windows.Forms.TextBox();
+			this.lb_vaitro = new System.Windows.Forms.Label();
+			this.lb_motaquyenhan = new System.Windows.Forms.Label();
+			this.cb_vaitro = new System.Windows.Forms.ComboBox();
+			this.txb_motaquyenhan = new System.Windows.Forms.TextBox();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_nguoidung)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -66,6 +66,8 @@
 			this.btn_suanguoidung.Text = "Sửa";
 			this.btn_suanguoidung.UseVisualStyleBackColor = false;
 			this.btn_suanguoidung.Click += new System.EventHandler(this.btn_suanguoidung_Click);
+			this.btn_suanguoidung.MouseEnter += new System.EventHandler(this.btn_suanguoidung_MouseEnter);
+			this.btn_suanguoidung.MouseLeave += new System.EventHandler(this.btn_suanguoidung_MouseLeave);
 			// 
 			// btn_xoanguoidung
 			// 
@@ -78,6 +80,8 @@
 			this.btn_xoanguoidung.Text = "Xóa";
 			this.btn_xoanguoidung.UseVisualStyleBackColor = false;
 			this.btn_xoanguoidung.Click += new System.EventHandler(this.btn_xoanguoidung_Click);
+			this.btn_xoanguoidung.MouseEnter += new System.EventHandler(this.btn_xoanguoidung_MouseEnter);
+			this.btn_xoanguoidung.MouseLeave += new System.EventHandler(this.btn_xoanguoidung_MouseLeave);
 			// 
 			// btn_dongnguoidung
 			// 
@@ -90,22 +94,24 @@
 			this.btn_dongnguoidung.Text = "Đóng";
 			this.btn_dongnguoidung.UseVisualStyleBackColor = false;
 			this.btn_dongnguoidung.Click += new System.EventHandler(this.btn_dongnguoidung_Click);
+			this.btn_dongnguoidung.MouseEnter += new System.EventHandler(this.btn_dongnguoidung_MouseEnter);
+			this.btn_dongnguoidung.MouseLeave += new System.EventHandler(this.btn_dongnguoidung_MouseLeave);
 			// 
 			// dgv_nguoidung
 			// 
-			dataGridViewCellStyle1.BackColor = System.Drawing.Color.Tan;
-			dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
-			this.dgv_nguoidung.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle5.BackColor = System.Drawing.Color.Tan;
+			dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+			this.dgv_nguoidung.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
 			this.dgv_nguoidung.BackgroundColor = System.Drawing.Color.White;
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle2.BackColor = System.Drawing.Color.Tan;
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Tan;
-			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgv_nguoidung.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle6.BackColor = System.Drawing.Color.Tan;
+			dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Tan;
+			dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgv_nguoidung.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
 			this.dgv_nguoidung.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgv_nguoidung.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TenNV,
@@ -122,6 +128,70 @@
 			this.dgv_nguoidung.RowTemplate.Height = 24;
 			this.dgv_nguoidung.Size = new System.Drawing.Size(1458, 590);
 			this.dgv_nguoidung.TabIndex = 4;
+			// 
+			// TenNV
+			// 
+			this.TenNV.DataPropertyName = "TenNV";
+			this.TenNV.HeaderText = "Tên nhân viên";
+			this.TenNV.MinimumWidth = 6;
+			this.TenNV.Name = "TenNV";
+			this.TenNV.Width = 125;
+			// 
+			// MaNV
+			// 
+			this.MaNV.DataPropertyName = "MaNV";
+			this.MaNV.HeaderText = "Mã nhân viên";
+			this.MaNV.MinimumWidth = 6;
+			this.MaNV.Name = "MaNV";
+			this.MaNV.Width = 125;
+			// 
+			// ChucVu
+			// 
+			this.ChucVu.DataPropertyName = "ChucVu";
+			this.ChucVu.HeaderText = "Chức vụ";
+			this.ChucVu.MinimumWidth = 6;
+			this.ChucVu.Name = "ChucVu";
+			this.ChucVu.Width = 125;
+			// 
+			// CuaHang
+			// 
+			this.CuaHang.DataPropertyName = "CuaHang";
+			this.CuaHang.HeaderText = "Cửa hàng";
+			this.CuaHang.MinimumWidth = 6;
+			this.CuaHang.Name = "CuaHang";
+			this.CuaHang.Width = 125;
+			// 
+			// MaTK
+			// 
+			this.MaTK.DataPropertyName = "MaTK";
+			this.MaTK.HeaderText = "Mã tài khoản";
+			this.MaTK.MinimumWidth = 6;
+			this.MaTK.Name = "MaTK";
+			this.MaTK.Width = 125;
+			// 
+			// TaiKhoan
+			// 
+			this.TaiKhoan.DataPropertyName = "TaiKhoan";
+			this.TaiKhoan.HeaderText = "Tên tài khoản";
+			this.TaiKhoan.MinimumWidth = 6;
+			this.TaiKhoan.Name = "TaiKhoan";
+			this.TaiKhoan.Width = 125;
+			// 
+			// VaiTro
+			// 
+			this.VaiTro.DataPropertyName = "VaiTro";
+			this.VaiTro.HeaderText = "Vai trò";
+			this.VaiTro.MinimumWidth = 6;
+			this.VaiTro.Name = "VaiTro";
+			this.VaiTro.Width = 125;
+			// 
+			// MoTaQuyenHan
+			// 
+			this.MoTaQuyenHan.DataPropertyName = "MoTaQuyenHan";
+			this.MoTaQuyenHan.HeaderText = "Mô tả";
+			this.MoTaQuyenHan.MinimumWidth = 6;
+			this.MoTaQuyenHan.Name = "MoTaQuyenHan";
+			this.MoTaQuyenHan.Width = 125;
 			// 
 			// lb_hoten
 			// 
@@ -190,23 +260,23 @@
 			this.lb_vaitro.TabIndex = 11;
 			this.lb_vaitro.Text = "Vai trò";
 			// 
-			// la_motaquyenhan
+			// lb_motaquyenhan
 			// 
-			this.la_motaquyenhan.AutoSize = true;
-			this.la_motaquyenhan.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.la_motaquyenhan.Location = new System.Drawing.Point(415, 70);
-			this.la_motaquyenhan.Name = "la_motaquyenhan";
-			this.la_motaquyenhan.Size = new System.Drawing.Size(127, 20);
-			this.la_motaquyenhan.TabIndex = 12;
-			this.la_motaquyenhan.Text = "Mô tả quyền hạn";
+			this.lb_motaquyenhan.AutoSize = true;
+			this.lb_motaquyenhan.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lb_motaquyenhan.Location = new System.Drawing.Point(415, 70);
+			this.lb_motaquyenhan.Name = "lb_motaquyenhan";
+			this.lb_motaquyenhan.Size = new System.Drawing.Size(127, 20);
+			this.lb_motaquyenhan.TabIndex = 12;
+			this.lb_motaquyenhan.Text = "Mô tả quyền hạn";
 			// 
 			// cb_vaitro
 			// 
 			this.cb_vaitro.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cb_vaitro.FormattingEnabled = true;
 			this.cb_vaitro.Items.AddRange(new object[] {
-            "admin",
-            "user"});
+            "Admin",
+            "User"});
 			this.cb_vaitro.Location = new System.Drawing.Point(550, 20);
 			this.cb_vaitro.Name = "cb_vaitro";
 			this.cb_vaitro.Size = new System.Drawing.Size(252, 28);
@@ -221,70 +291,6 @@
 			this.txb_motaquyenhan.Size = new System.Drawing.Size(252, 77);
 			this.txb_motaquyenhan.TabIndex = 14;
 			// 
-			// TenNV
-			// 
-			this.TenNV.DataPropertyName = "TenNV";
-			this.TenNV.HeaderText = "Tên nhân viên";
-			this.TenNV.MinimumWidth = 6;
-			this.TenNV.Name = "TenNV";
-			this.TenNV.Width = 125;
-			// 
-			// MaNV
-			// 
-			this.MaNV.DataPropertyName = "MaNV";
-			this.MaNV.HeaderText = "Mã nhân viên";
-			this.MaNV.MinimumWidth = 6;
-			this.MaNV.Name = "MaNV";
-			this.MaNV.Width = 125;
-			// 
-			// ChucVu
-			// 
-			this.ChucVu.DataPropertyName = "ChucVu";
-			this.ChucVu.HeaderText = "Chức vụ";
-			this.ChucVu.MinimumWidth = 6;
-			this.ChucVu.Name = "ChucVu";
-			this.ChucVu.Width = 125;
-			// 
-			// CuaHang
-			// 
-			this.CuaHang.DataPropertyName = "CuaHang";
-			this.CuaHang.HeaderText = "Cửa hàng";
-			this.CuaHang.MinimumWidth = 6;
-			this.CuaHang.Name = "CuaHang";
-			this.CuaHang.Width = 125;
-			// 
-			// MaTK
-			// 
-			this.MaTK.DataPropertyName = "MaTK";
-			this.MaTK.HeaderText = "Mã tài khoản";
-			this.MaTK.MinimumWidth = 6;
-			this.MaTK.Name = "MaTK";
-			this.MaTK.Width = 125;
-			// 
-			// TaiKhoan
-			// 
-			this.TaiKhoan.DataPropertyName = "TaiKhoan";
-			this.TaiKhoan.HeaderText = "Tên tài khoản";
-			this.TaiKhoan.MinimumWidth = 6;
-			this.TaiKhoan.Name = "TaiKhoan";
-			this.TaiKhoan.Width = 125;
-			// 
-			// VaiTro
-			// 
-			this.VaiTro.DataPropertyName = "VaiTro";
-			this.VaiTro.HeaderText = "Vai trò";
-			this.VaiTro.MinimumWidth = 6;
-			this.VaiTro.Name = "VaiTro";
-			this.VaiTro.Width = 125;
-			// 
-			// MoTaQuyenHan
-			// 
-			this.MoTaQuyenHan.DataPropertyName = "MoTaQuyenHan";
-			this.MoTaQuyenHan.HeaderText = "Mô tả";
-			this.MoTaQuyenHan.MinimumWidth = 6;
-			this.MoTaQuyenHan.Name = "MoTaQuyenHan";
-			this.MoTaQuyenHan.Width = 175;
-			// 
 			// fQuanlynguoidung
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -293,7 +299,7 @@
 			this.ClientSize = new System.Drawing.Size(1480, 778);
 			this.Controls.Add(this.txb_motaquyenhan);
 			this.Controls.Add(this.cb_vaitro);
-			this.Controls.Add(this.la_motaquyenhan);
+			this.Controls.Add(this.lb_motaquyenhan);
 			this.Controls.Add(this.lb_vaitro);
 			this.Controls.Add(this.txb_phongban);
 			this.Controls.Add(this.txb_chucvu);
@@ -306,6 +312,7 @@
 			this.Controls.Add(this.btn_xoanguoidung);
 			this.Controls.Add(this.btn_suanguoidung);
 			this.Name = "fQuanlynguoidung";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Quản lý người dùng";
 			((System.ComponentModel.ISupportInitialize)(this.dgv_nguoidung)).EndInit();
 			this.ResumeLayout(false);
@@ -325,7 +332,7 @@
 		private System.Windows.Forms.TextBox txb_chucvu;
 		private System.Windows.Forms.TextBox txb_phongban;
 		private System.Windows.Forms.Label lb_vaitro;
-		private System.Windows.Forms.Label la_motaquyenhan;
+		private System.Windows.Forms.Label lb_motaquyenhan;
 		private System.Windows.Forms.ComboBox cb_vaitro;
 		private System.Windows.Forms.TextBox txb_motaquyenhan;
 		private System.Windows.Forms.DataGridViewTextBoxColumn TenNV;

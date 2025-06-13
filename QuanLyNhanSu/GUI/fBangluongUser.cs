@@ -20,22 +20,27 @@ namespace QuanLyNhanSu.GUI
 
 		private List<BangluongDTO> danhSachLuong;
 
-		public fBangluongUser()
+		public fBangluongUser(string manv)
 		{
 			InitializeComponent();
-			InitializeForm();
+			InitializeForm(manv);
 			originalCloseButtonColor = btn_close.BackColor;
 			originalTinhLuongButtonColor = btn_tinhluong.BackColor;
 			originalXuatBaoCaoButtonColor = btn_xuatbaocao.BackColor;
+			txb_manhanvien.Text = manv;
+			LoadTenNV(manv);
 		}
 
-		private void InitializeForm()
+		private void InitializeForm(string manv)
 		{
 			LoadInitialData();
 			ConfigureDataGridView();
-			LoadData();
+			LoadData(manv);
 		}
-
+		void LoadTenNV(string manv)
+		{
+			txb_tennhanvien.Text = NhanvienDAO.Instance.GetStaffTen(manv);
+		}
 		void LoadInitialData()
 		{
 			// Load ComboBox tháng (1-12)
@@ -92,7 +97,7 @@ namespace QuanLyNhanSu.GUI
 			// Cấu hình các cột
 			DataGridViewTextBoxColumn colMaNV = new DataGridViewTextBoxColumn();
 			colMaNV.Name = "MaNV";
-			colMaNV.HeaderText = "Mã NV";
+			colMaNV.HeaderText = "Mã nhân viên";
 			colMaNV.DataPropertyName = "MaNV";
 			colMaNV.Width = 80;
 			dgv_bangluong.Columns.Add(colMaNV);
@@ -164,6 +169,20 @@ namespace QuanLyNhanSu.GUI
 			colLuongThucLinh.DefaultCellStyle.Font = new Font(dgv_bangluong.Font, FontStyle.Bold);
 			dgv_bangluong.Columns.Add(colLuongThucLinh);
 
+			DataGridViewTextBoxColumn colThang = new DataGridViewTextBoxColumn();
+			colThang.Name = "Thang";
+			colThang.HeaderText = "Tháng";
+			colThang.DataPropertyName = "Thang";
+			colThang.Width = 150;
+			dgv_bangluong.Columns.Add(colThang);
+
+			DataGridViewTextBoxColumn colNam = new DataGridViewTextBoxColumn();
+			colNam.Name = "Nam";
+			colNam.HeaderText = "Năm";
+			colNam.DataPropertyName = "Nam";
+			colNam.Width = 150;
+			dgv_bangluong.Columns.Add(colNam);
+
 			// Cấu hình giao diện
 			dgv_bangluong.AlternatingRowsDefaultCellStyle.BackColor = Color.Tan;
 			dgv_bangluong.ColumnHeadersDefaultCellStyle.BackColor = Color.Tan;
@@ -171,63 +190,34 @@ namespace QuanLyNhanSu.GUI
 			dgv_bangluong.ColumnHeadersDefaultCellStyle.Font = new Font(dgv_bangluong.Font, FontStyle.Bold);
 		}
 
-		private void LoadData()
+		private void LoadData(string manv)
 		{
-			if (cb_thang.SelectedItem == null || cb_nam.SelectedItem == null) return;
-
-			int thang = cb_thang.SelectedIndex + 1; // Chọn tháng từ 1 đến 12
-			int nam = cb_nam.SelectedIndex + 2020; // Chọn năm từ 2020 đến hiện tại + 2
-			string maNV = txb_manhanvien.Text.Trim();
-
 			try
 			{
-				if (string.IsNullOrEmpty(maNV))
+				MessageBox.Show($"Đang load lương cho nhân viên: {manv}");
+				var list = BangluongDAO.Instance.BangLuongNhanVien(manv);
+				MessageBox.Show($"Số dòng trả về: {list.Count}");
+
+				// Gán trực tiếp vào biến của form
+				danhSachLuong = BangluongDAO.Instance.BangLuongNhanVien(manv);
+				if (danhSachLuong == null || danhSachLuong.Count == 0)
 				{
-					// Load tất cả nhân viên
-					danhSachLuong = BangluongDAO.Instance.TinhLuongTheoThang(thang, nam);
-					txb_tennhanvien.Text = "-- Tất cả nhân viên --";
+					MessageBox.Show("Không tìm thấy dữ kiện lương.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
 				else
 				{
-					// Load một nhân viên cụ thể
-					var luongNV = BangluongDAO.Instance.TinhLuongNhanVien(maNV, thang, nam);
-					danhSachLuong = luongNV != null ? new List<BangluongDTO> { luongNV } : new List<BangluongDTO>();
+					dgv_bangluong.DataSource = danhSachLuong;
 				}
-
-				dgv_bangluong.DataSource = danhSachLuong;
-				//UpdateStatistics();
-
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Lỗi khi tải dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Lỗi khi tải dữ kiện: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 
-		//private void UpdateStatistics()
-		//{
-		//	if (danhSachLuong == null || danhSachLuong.Count == 0)
-		//	{
-		//		lbl_tongnhanvien.Text = "0";
-		//		lbl_tongluong.Text = "0 VNĐ";
-		//		lbl_luongtrungbinh.Text = "0 VNĐ";
-		//		lbl_luongcaonhat.Text = "0 VNĐ";
-		//		lbl_luongthapnhat.Text = "0 VNĐ";
-		//		return;
-		//	}
 
-		//	int tongNV = danhSachLuong.Count;
-		//	decimal tongLuong = danhSachLuong.Sum(x => x.LuongThucLinh);
-		//	decimal luongTB = tongLuong / tongNV;
-		//	decimal luongMax = danhSachLuong.Max(x => x.LuongThucLinh);
-		//	decimal luongMin = danhSachLuong.Min(x => x.LuongThucLinh);
 
-		//	lbl_tongnhanvien.Text = tongNV.ToString();
-		//	lbl_tongluong.Text = tongLuong.ToString("N0") + " VNĐ";
-		//	lbl_luongtrungbinh.Text = luongTB.ToString("N0") + " VNĐ";
-		//	lbl_luongcaonhat.Text = luongMax.ToString("N0") + " VNĐ";
-		//	lbl_luongthapnhat.Text = luongMin.ToString("N0") + " VNĐ";
-		//}
+
 
 		private void btn_tinhluong_Click(object sender, EventArgs e)
 		{

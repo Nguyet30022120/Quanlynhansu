@@ -320,6 +320,7 @@
 			this.Controls.Add(this.lb_manhanvien);
 			this.Name = "fQuanlykhenthuongkyluat";
 			this.ShowInTaskbar = false;
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Khen thưởng và kỷ luật";
 			((System.ComponentModel.ISupportInitialize)(this.dgv_khenthuongkyluat)).EndInit();
 			this.ResumeLayout(false);

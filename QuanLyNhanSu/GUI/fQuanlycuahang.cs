@@ -54,17 +54,17 @@ namespace QuanLyNhanSu
 				string diachi = txb_diachi.Text;
 				if (CuahangDAO.Instance.InsertCuaHang(tench, diachi))
 				{
-					MessageBox.Show("Thêm cửa hàng thành công", "Thông báo");
+					MessageBox.Show("Thêm cửa hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					LoadOffice();
 				}
 				else
 				{
-					MessageBox.Show("Thêm cửa hàng thất bại", "Thông báo");
+					MessageBox.Show("Thêm cửa hàng thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
@@ -84,17 +84,17 @@ namespace QuanLyNhanSu
 
 					if (CuahangDAO.Instance.UpdateCuaHang(mach, tench, diachi))
 					{
-						MessageBox.Show("Sửa cửa hàng thành công.", "Thông báo");
+						MessageBox.Show("Sửa cửa hàng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					}
 					else
 					{
-						MessageBox.Show("Sửa cửa hàng thất bại.", "Thông báo");
+						MessageBox.Show("Sửa cửa hàng thất bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					}
 
 				}
 				catch (Exception ex)
 				{
-					MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 				finally
 				{
@@ -111,16 +111,16 @@ namespace QuanLyNhanSu
 
 				if (CuahangDAO.Instance.DeleteCuaHang(mach))
 				{
-					MessageBox.Show("Xóa cửa hàng thành công.", "Thông báo");
+					MessageBox.Show("Xóa cửa hàng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
 				else
 				{
-					MessageBox.Show("Xóa cửa hàng thất bại.", "Thông báo");
+					MessageBox.Show("Xóa cửa hàng thất bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Cửa hàng này hiện vẫn còn nhân viên, hãy điều chuyển nhân viên sang cửa hàng khác rồi xóa!", "Thông báo");
+				MessageBox.Show("Cửa hàng này hiện vẫn còn nhân viên. Hãy điều chuyển nhân viên sang cửa hàng khác trước khi xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{

@@ -65,17 +65,17 @@ namespace QuanLyNhanSu.GUI
 
 				if (PhucapDAO.Instance.InsertPhuCap(manv, loaipc, tienpc))
 				{
-					MessageBox.Show("Thêm phụ cấp thành công","Thông báo");
+					MessageBox.Show("Thêm phụ cấp thành công","Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Information);
 					LoadPhuCap(manv);
 				}
 				else
 				{
-					MessageBox.Show("Thêm phụ cấp thất bại", "Thông báo");
+					MessageBox.Show("Thêm phụ cấp thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Hãy nhập mã nhân viên!","Thông báo");
+				MessageBox.Show("Không tìm thấy mã nhân viên trong hệ thống!","Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 			finally
 			{
@@ -94,16 +94,16 @@ namespace QuanLyNhanSu.GUI
 
 				if (PhucapDAO.Instance.UpdatePhuCap(mapc, loaipc, manv, tienpc))
 				{
-					MessageBox.Show("Sửa phụ cấp thành công.", "Thông báo");
+					MessageBox.Show("Sửa phụ cấp thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
 				else
 				{
-					MessageBox.Show("Sửa phụ cấp thất bại.", "Thông báo");
+					MessageBox.Show("Sửa phụ cấp thất bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
@@ -119,16 +119,16 @@ namespace QuanLyNhanSu.GUI
 				string mapc = dgv_phucap.CurrentRow.Cells["MaPhuCap"].Value.ToString();
 				if (PhucapDAO.Instance.DeletePhuCap(mapc))
 				{
-					MessageBox.Show("Xóa phụ cấp thành công.", "Thông báo");
+					MessageBox.Show("Xóa phụ cấp thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
 				else
 				{
-					MessageBox.Show("Xóa phụ cấp thất bại.", "Thông báo");
+					MessageBox.Show("Xóa phụ cấp thất bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{

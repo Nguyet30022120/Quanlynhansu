@@ -21,21 +21,23 @@ namespace QuanLyNhanSu.GUI
 
 		BindingSource commendationList = new BindingSource();
 
-		public fQuanlykhenthuongkyluatUser()
+		public fQuanlykhenthuongkyluatUser(string manv)
 		{
 			InitializeComponent();
 			dgv_khenthuongkyluat.DataSource = commendationList;
-			//LoadCbHinhThuc();
-			//originalAddButtonColor = btn_themkhenthuongkyluat.BackColor;
-			//originalEditButtonColor = btn_suakhenthuongkyluat.BackColor;
-			//originalDeleteButtonColor = btn_xoakhenthuongkyluat.BackColor;
-			//originalFindButtonColor = btn_timnhanvien.BackColor;
+			LoadCommendation(manv);
 			originalCloseButtonColor = btn_dongkhenthuongkyluat.BackColor;
+			txb_manhanvien.Text = manv;
+			LoadTenNV(manv);
 		}
 
-
+		void LoadTenNV(string manv)
+		{
+			txb_tennhanvien.Text = NhanvienDAO.Instance.GetStaffTen(manv);
+		}
 		void BindingCommendationData()
 		{
+
 			txb_tennhanvien.DataBindings.Clear();
 			txb_noidung.DataBindings.Clear();
 			txb_hinhthuc.DataBindings.Clear();
@@ -43,7 +45,7 @@ namespace QuanLyNhanSu.GUI
 			txb_tennhanvien.DataBindings.Add(new Binding("Text", dgv_khenthuongkyluat.DataSource, "TenNV", true, DataSourceUpdateMode.Never));
 			txb_noidung.DataBindings.Add(new Binding("Text", dgv_khenthuongkyluat.DataSource, "NoiDung", true, DataSourceUpdateMode.Never));
 			txb_hinhthuc.DataBindings.Add(new Binding("Text", dgv_khenthuongkyluat.DataSource, "HinhThuc", true, DataSourceUpdateMode.Never));
-			txb_thoigian.DataBindings.Add(new Binding("Value", dgv_khenthuongkyluat.DataSource, "ThoiGian", true, DataSourceUpdateMode.Never));
+			txb_thoigian.DataBindings.Add(new Binding("Text", dgv_khenthuongkyluat.DataSource, "ThoiGian", true, DataSourceUpdateMode.Never));
 		}
 		void LoadCommendation(string manv)
 		{

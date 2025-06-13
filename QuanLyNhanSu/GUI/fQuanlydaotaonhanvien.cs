@@ -38,18 +38,8 @@ namespace QuanLyNhanSu
 			originalFindButtonColor = btn_timnhanvien.BackColor;
 			originalCloseButtonColor = btn_dongdaotao.BackColor;
 			originalViewCourseButtonColor = btn_xemkhoahoc.BackColor;
-			//LoadInitialData();
 		}
-		//void LoadInitialData()
-		//{
 
-
-		//	// Gọi hàm lấy toàn bộ trình độ của tất cả nhân viên
-		//	trainingList.DataSource = DaotaoDAO.Instance.GetListDaoTaoAll();
-
-		//	// Gán binding để hiển thị dữ liệu
-		//	BindingtrainingData();
-		//}
 		void BindingtrainingData()
 		{
 			txb_manhanvien.DataBindings.Clear();
@@ -97,17 +87,17 @@ namespace QuanLyNhanSu
 				string tenkh = cb_khoahoc.Text;
 				if (DaotaoDAO.Instance.InsertDaoTao(manv, tenkh))
 				{
-					MessageBox.Show("Thêm đào tạo thành công", "Thông báo");
+					MessageBox.Show("Thêm đào tạo thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					LoadTraining();
 				}
 				else
 				{
-					MessageBox.Show("Thêm đào tạo thất bại","Thông báo");
+					MessageBox.Show("Thêm đào tạo thất bại","Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Hãy nhập mã nhân viên!", "Thông báo");
+				MessageBox.Show("Không tìm thấy mã nhân viên trong hệ thống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
@@ -129,17 +119,17 @@ namespace QuanLyNhanSu
 
 					if (DaotaoDAO.Instance.UpdateDaoTao(madt, tennv,tenkh,trangthai,ketqua))
 					{
-						MessageBox.Show("Sửa đào tạo thành công.", "Thông báo");
+						MessageBox.Show("Sửa đào tạo thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					}
 					else
 					{
-						MessageBox.Show("Sửa đào tạo thất bại.", "Thông báo");
+						MessageBox.Show("Sửa đào tạo thất bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					}
 
 				}
 				catch (Exception ex)
 				{
-					MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 				finally
 				{
@@ -158,17 +148,17 @@ namespace QuanLyNhanSu
 
 					if (DaotaoDAO.Instance.DeleteDaoTao(madt))
 					{
-						MessageBox.Show("Xóa đào tạo thành công.", "Thông báo");
+						MessageBox.Show("Xóa đào tạo thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					}
 					else
 					{
-						MessageBox.Show("Xóa đào tạo thất bại.", "Thông báo");
+						MessageBox.Show("Xóa đào tạo thất bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					}
 
 				}
 				catch (Exception ex)
 				{
-					MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 				finally
 				{

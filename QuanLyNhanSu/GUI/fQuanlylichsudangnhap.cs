@@ -13,11 +13,25 @@ namespace QuanLyNhanSu.GUI
 {
 	public partial class fQuanlylichsudangnhap : Form
 	{
+		private Color originalCloseButtonColor;
 		public fQuanlylichsudangnhap()
 		{
 			InitializeComponent();
 			this.Load += fLichSuDangNhap_Load;
+			originalCloseButtonColor = btn_dong.BackColor;
 		}
+		#region Hovers
+		private void btn_dong_MouseEnter(object sender, EventArgs e)
+		{
+			btn_dong.BackColor = Color.LightBlue;
+		}
+		private void btn_dong_MouseLeave(object sender, EventArgs e)
+		{
+			btn_dong.BackColor = originalCloseButtonColor;
+		}
+		#endregion
+
+		#region Events
 
 		private void fLichSuDangNhap_Load(object sender, EventArgs e)
 		{
@@ -28,5 +42,6 @@ namespace QuanLyNhanSu.GUI
 		{
 			this.Close();
 		}
+		#endregion
 	}
 }

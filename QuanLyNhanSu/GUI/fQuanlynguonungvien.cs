@@ -30,7 +30,7 @@ namespace QuanLyNhanSu.GUI
 		public fQuanlynguonungvien()
 		{
 			InitializeComponent();
-			dgv_nguonuv.DataSource = sourceList;
+			dgv_nguonungvien.DataSource = sourceList;
 			BindingsourceData();
 			LoadCandidatePool();
 			originalAddButtonColor = btn_themnguonungvien.BackColor;
@@ -46,8 +46,8 @@ namespace QuanLyNhanSu.GUI
 
 		void BindingsourceData()
 		{
-			txb_nguonungvien.DataBindings.Add(new Binding("Text", dgv_nguonuv.DataSource, "TenNguon", true, DataSourceUpdateMode.Never));
-			txb_soluonghs.DataBindings.Add(new Binding("Text", dgv_nguonuv.DataSource, "SoLuongHoSo", true, DataSourceUpdateMode.Never));
+			txb_nguonungvien.DataBindings.Add(new Binding("Text", dgv_nguonungvien.DataSource, "TenNguon", true, DataSourceUpdateMode.Never));
+			txb_soluonghs.DataBindings.Add(new Binding("Text", dgv_nguonungvien.DataSource, "SoLuongHoSo", true, DataSourceUpdateMode.Never));
 		}
 		#region Events
 
@@ -58,17 +58,17 @@ namespace QuanLyNhanSu.GUI
 				string tennguonuv = txb_nguonungvien.Text;
 				if (NguonungvienDAO.Instance.InsertSource(tennguonuv))
 				{
-					MessageBox.Show("Thêm nguồn ứng viên thành công","Thông báo");
+					MessageBox.Show("Thêm nguồn ứng viên thành công","Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					LoadCandidatePool();
 				}
 				else
 				{
-					MessageBox.Show("Thêm nguồn ứng viên thất bại", "Thông báo");
+					MessageBox.Show("Thêm nguồn ứng viên thất bại", "Thông báo",MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
@@ -86,17 +86,17 @@ namespace QuanLyNhanSu.GUI
 
 					if (NguonungvienDAO.Instance.DeleteSource(nguonuv))
 					{
-						MessageBox.Show("Xóa nguồn ứng viên thành công.", "Thông báo");
+						MessageBox.Show("Xóa nguồn ứng viên thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					}
 					else
 					{
-						MessageBox.Show("Xóa nguồn ứng viên thất bại.", "Thông báo");
+						MessageBox.Show("Xóa nguồn ứng viên thất bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					}
 
 				}
 				catch (Exception ex)
 				{
-					MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 				finally
 				{
@@ -123,7 +123,7 @@ namespace QuanLyNhanSu.GUI
 			{
 				LiveCharts.SeriesCollection series = new LiveCharts.SeriesCollection();
 
-				foreach (DataGridViewRow row in dgv_nguonuv.Rows)
+				foreach (DataGridViewRow row in dgv_nguonungvien.Rows)
 				{
 					if (row.Cells["TenNguon"].Value != null && row.Cells["SoLuongHoSo"].Value != null)
 					{
@@ -152,13 +152,12 @@ namespace QuanLyNhanSu.GUI
 					Child = pieChart
 				};
 
-				// Gắn biểu đồ vào panel đã thiết kế
-				panel_chart.Controls.Clear();
-				panel_chart.Controls.Add(host);
+				pn_chart.Controls.Clear();
+				pn_chart.Controls.Add(host);
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Lỗi hiển thị biểu đồ: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Lỗi hiển thị biểu đồ: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 		#endregion

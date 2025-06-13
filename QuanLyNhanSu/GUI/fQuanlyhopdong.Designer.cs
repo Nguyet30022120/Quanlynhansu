@@ -30,7 +30,7 @@
 		{
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-			this.panel1 = new System.Windows.Forms.Panel();
+			this.pn_hopdong = new System.Windows.Forms.Panel();
 			this.lb_goiy = new System.Windows.Forms.Label();
 			this.btn_timhopdong = new System.Windows.Forms.Button();
 			this.txb_timhopdong = new System.Windows.Forms.TextBox();
@@ -54,32 +54,32 @@
 			this.NgayDK = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.NgayHH = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.panel1.SuspendLayout();
+			this.pn_hopdong.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_hopdong)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// panel1
+			// pn_hopdong
 			// 
-			this.panel1.Controls.Add(this.lb_goiy);
-			this.panel1.Controls.Add(this.btn_timhopdong);
-			this.panel1.Controls.Add(this.txb_timhopdong);
-			this.panel1.Controls.Add(this.txb_trangthai);
-			this.panel1.Controls.Add(this.lb_trangthai);
-			this.panel1.Controls.Add(this.btn_capnhathopdong);
-			this.panel1.Controls.Add(this.btn_donghopdong);
-			this.panel1.Controls.Add(this.btn_xoahopdong);
-			this.panel1.Controls.Add(this.btn_suahopdong);
-			this.panel1.Controls.Add(this.btn_themhopdong);
-			this.panel1.Controls.Add(this.dtp_ngayhethan);
-			this.panel1.Controls.Add(this.dtp_ngaybatdau);
-			this.panel1.Controls.Add(this.txb_tennhanvien);
-			this.panel1.Controls.Add(this.lb_ngayhethan);
-			this.panel1.Controls.Add(this.lb_ngaydangky);
-			this.panel1.Controls.Add(this.lb_tennhanvien);
-			this.panel1.Location = new System.Drawing.Point(8, 5);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(1472, 218);
-			this.panel1.TabIndex = 0;
+			this.pn_hopdong.Controls.Add(this.lb_goiy);
+			this.pn_hopdong.Controls.Add(this.btn_timhopdong);
+			this.pn_hopdong.Controls.Add(this.txb_timhopdong);
+			this.pn_hopdong.Controls.Add(this.txb_trangthai);
+			this.pn_hopdong.Controls.Add(this.lb_trangthai);
+			this.pn_hopdong.Controls.Add(this.btn_capnhathopdong);
+			this.pn_hopdong.Controls.Add(this.btn_donghopdong);
+			this.pn_hopdong.Controls.Add(this.btn_xoahopdong);
+			this.pn_hopdong.Controls.Add(this.btn_suahopdong);
+			this.pn_hopdong.Controls.Add(this.btn_themhopdong);
+			this.pn_hopdong.Controls.Add(this.dtp_ngayhethan);
+			this.pn_hopdong.Controls.Add(this.dtp_ngaybatdau);
+			this.pn_hopdong.Controls.Add(this.txb_tennhanvien);
+			this.pn_hopdong.Controls.Add(this.lb_ngayhethan);
+			this.pn_hopdong.Controls.Add(this.lb_ngaydangky);
+			this.pn_hopdong.Controls.Add(this.lb_tennhanvien);
+			this.pn_hopdong.Location = new System.Drawing.Point(8, 5);
+			this.pn_hopdong.Name = "pn_hopdong";
+			this.pn_hopdong.Size = new System.Drawing.Size(1472, 218);
+			this.pn_hopdong.TabIndex = 0;
 			// 
 			// lb_goiy
 			// 
@@ -225,6 +225,7 @@
 			this.txb_tennhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txb_tennhanvien.Location = new System.Drawing.Point(194, 15);
 			this.txb_tennhanvien.Name = "txb_tennhanvien";
+			this.txb_tennhanvien.ReadOnly = true;
 			this.txb_tennhanvien.Size = new System.Drawing.Size(252, 27);
 			this.txb_tennhanvien.TabIndex = 5;
 			// 
@@ -341,11 +342,12 @@
 			this.BackColor = System.Drawing.Color.BlanchedAlmond;
 			this.ClientSize = new System.Drawing.Size(1482, 778);
 			this.Controls.Add(this.dgv_hopdong);
-			this.Controls.Add(this.panel1);
+			this.Controls.Add(this.pn_hopdong);
 			this.Name = "fQuanlyhopdong";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Hợp đồng lao động";
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
+			this.pn_hopdong.ResumeLayout(false);
+			this.pn_hopdong.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_hopdong)).EndInit();
 			this.ResumeLayout(false);
 
@@ -353,7 +355,7 @@
 
 		#endregion
 
-		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.Panel pn_hopdong;
 		private System.Windows.Forms.DataGridView dgv_hopdong;
 		private System.Windows.Forms.DateTimePicker dtp_ngayhethan;
 		private System.Windows.Forms.DateTimePicker dtp_ngaybatdau;

@@ -153,11 +153,13 @@ namespace QuanLyNhanSu.GUI
 			int nam = (int)cb_nam.SelectedItem;
 
 			DateTime selectedDate = new DateTime(nam, thang, day);
-			
+
 			// Lọc dữ liệu theo ngày được chọn
 			var filteredData = currentBangCongData
-								.Where(x => x.Ngay.Date == selectedDate.Date)
-								.ToList();
+				.Where(x => x.Ngay.Date == selectedDate.Date)
+				.GroupBy(x => new { x.MaNV, x.GioCheckInDisplay, x.GioCheckOutDisplay }) // Nhóm theo các thuộc tính dễ trùng
+				.Select(g => g.First()) // Lấy bản đầu tiên trong mỗi nhóm
+				.ToList();
 
 			if (filteredData.Any())
 			{
@@ -172,7 +174,7 @@ namespace QuanLyNhanSu.GUI
 					info.AppendLine($"   ⏰ Giờ vào: {item.GioCheckInDisplay}");
 					info.AppendLine($"   ⏰ Giờ ra: {item.GioCheckOutDisplay}");
 					info.AppendLine($"   🕐 Số giờ làm: {item.SoGioLamDisplay}");
-					info.AppendLine();
+					//info.AppendLine();
 				}
 
 				MessageBox.Show(info.ToString(), "Chi tiết chấm công", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -194,7 +196,9 @@ namespace QuanLyNhanSu.GUI
 				// Lấy dữ liệu chấm công nhóm theo ngày
 				var attendanceByDay = currentBangCongData
 					.Where(x => x.SoGioLam > 0)
-					.GroupBy(x => x.Ngay.Day)
+					.GroupBy(x => new { x.MaNV, Ngay = x.Ngay.Date }) // nhóm theo nhân viên và ngày
+					.Select(g => g.First()) // lấy bản ghi đầu tiên mỗi nhân viên/ngày
+					.GroupBy(x => x.Ngay.Day) // giờ mới group theo ngày trong tháng
 					.ToDictionary(g => g.Key, g => g.ToList());
 
 				// Cập nhật màu và thông tin cho các button
@@ -321,27 +325,33 @@ namespace QuanLyNhanSu.GUI
 		{
 			try
 			{
+				// Loại bỏ bản ghi trùng nhau theo MaNV và Ngay.Date
+				var filteredData = data
+					.GroupBy(x => new { x.MaNV, Ngay = x.Ngay.Date })
+					.Select(g => g.First()) // chỉ lấy 1 bản ghi mỗi nhân viên mỗi ngày
+					.ToList();
+
 				if (string.IsNullOrEmpty(maNV))
 				{
 					// Thống kê tất cả nhân viên
-					var groupedData = data.GroupBy(x => x.MaNV).ToList();
-					int tongNgayLam = groupedData.Sum(g => g.Count(x => x.SoGioLam > 0));
-					double tongGioLam = data.Sum(x => x.SoGioLam);
-					int tongNgayVang = groupedData.Sum(g => g.Count(x => x.SoGioLam == 0));
+					int tongNgayLam = filteredData.Count(x => x.SoGioLam > 0);
+					double tongGioLam = filteredData.Sum(x => x.SoGioLam);
+					int tongNgayVang = filteredData.Count(x => x.SoGioLam == 0);
 
 					lbl_tonggio.Text = tongGioLam.ToString("0.0") + " giờ";
 					//lbl_tongngaylam.Text = tongNgayLam.ToString() + " ngày";
 				}
 				else
 				{
-					// Thống kê một nhân viên
-					int tongNgayLam = data.Count(x => x.SoGioLam > 0);
-					double tongGioLam = data.Sum(x => x.SoGioLam);
-					int tongNgayVang = data.Count(x => x.SoGioLam == 0);
+					// Chỉ lọc và thống kê cho 1 nhân viên
+					var nvData = filteredData.Where(x => x.MaNV == maNV).ToList();
+
+					int tongNgayLam = nvData.Count(x => x.SoGioLam > 0);
+					double tongGioLam = nvData.Sum(x => x.SoGioLam);
+					int tongNgayVang = nvData.Count(x => x.SoGioLam == 0);
 
 					lbl_tonggio.Text = tongGioLam.ToString("0.0") + " giờ";
 					//lbl_tongngaylam.Text = tongNgayLam.ToString() + " ngày";
-
 				}
 			}
 			catch (Exception ex)

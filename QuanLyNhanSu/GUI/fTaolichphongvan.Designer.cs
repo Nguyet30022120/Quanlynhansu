@@ -29,9 +29,9 @@
 		private void InitializeComponent()
 		{
 			this.btn_themlichphongvan = new System.Windows.Forms.Button();
-			this.txb_tenuv = new System.Windows.Forms.TextBox();
+			this.txb_tenungvien = new System.Windows.Forms.TextBox();
 			this.lb_tenungvien = new System.Windows.Forms.Label();
-			this.lb_ngaypv = new System.Windows.Forms.Label();
+			this.lb_ngayphongvan = new System.Windows.Forms.Label();
 			this.lb_nguoiphongvan = new System.Windows.Forms.Label();
 			this.lb_diadiem = new System.Windows.Forms.Label();
 			this.dtp_ngayphongvan = new System.Windows.Forms.DateTimePicker();
@@ -41,7 +41,7 @@
 			this.dtp_giophongvan = new System.Windows.Forms.DateTimePicker();
 			this.cb_diadiem = new System.Windows.Forms.ComboBox();
 			this.lb_mahoso = new System.Windows.Forms.Label();
-			this.txb_mahs = new System.Windows.Forms.TextBox();
+			this.txb_mahoso = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
 			// btn_themlichphongvan
@@ -58,13 +58,14 @@
 			this.btn_themlichphongvan.MouseEnter += new System.EventHandler(this.btn_addlichpv_MouseEnter);
 			this.btn_themlichphongvan.MouseLeave += new System.EventHandler(this.btn_addlichpv_MouseLeave);
 			// 
-			// txb_tenuv
+			// txb_tenungvien
 			// 
-			this.txb_tenuv.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_tenuv.Location = new System.Drawing.Point(190, 100);
-			this.txb_tenuv.Name = "txb_tenuv";
-			this.txb_tenuv.Size = new System.Drawing.Size(252, 27);
-			this.txb_tenuv.TabIndex = 1;
+			this.txb_tenungvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txb_tenungvien.Location = new System.Drawing.Point(190, 100);
+			this.txb_tenungvien.Name = "txb_tenungvien";
+			this.txb_tenungvien.ReadOnly = true;
+			this.txb_tenungvien.Size = new System.Drawing.Size(252, 27);
+			this.txb_tenungvien.TabIndex = 1;
 			// 
 			// lb_tenungvien
 			// 
@@ -76,15 +77,15 @@
 			this.lb_tenungvien.TabIndex = 5;
 			this.lb_tenungvien.Text = "Tên ứng viên";
 			// 
-			// lb_ngaypv
+			// lb_ngayphongvan
 			// 
-			this.lb_ngaypv.AutoSize = true;
-			this.lb_ngaypv.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_ngaypv.Location = new System.Drawing.Point(45, 150);
-			this.lb_ngaypv.Name = "lb_ngaypv";
-			this.lb_ngaypv.Size = new System.Drawing.Size(124, 20);
-			this.lb_ngaypv.TabIndex = 6;
-			this.lb_ngaypv.Text = "Ngày phỏng vấn";
+			this.lb_ngayphongvan.AutoSize = true;
+			this.lb_ngayphongvan.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lb_ngayphongvan.Location = new System.Drawing.Point(45, 150);
+			this.lb_ngayphongvan.Name = "lb_ngayphongvan";
+			this.lb_ngayphongvan.Size = new System.Drawing.Size(124, 20);
+			this.lb_ngayphongvan.TabIndex = 6;
+			this.lb_ngayphongvan.Text = "Ngày phỏng vấn";
 			// 
 			// lb_nguoiphongvan
 			// 
@@ -176,13 +177,14 @@
 			this.lb_mahoso.TabIndex = 16;
 			this.lb_mahoso.Text = "Mã hồ sơ";
 			// 
-			// txb_mahs
+			// txb_mahoso
 			// 
-			this.txb_mahs.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_mahs.Location = new System.Drawing.Point(190, 50);
-			this.txb_mahs.Name = "txb_mahs";
-			this.txb_mahs.Size = new System.Drawing.Size(252, 27);
-			this.txb_mahs.TabIndex = 17;
+			this.txb_mahoso.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txb_mahoso.Location = new System.Drawing.Point(190, 50);
+			this.txb_mahoso.Name = "txb_mahoso";
+			this.txb_mahoso.ReadOnly = true;
+			this.txb_mahoso.Size = new System.Drawing.Size(252, 27);
+			this.txb_mahoso.TabIndex = 17;
 			// 
 			// fTaolichphongvan
 			// 
@@ -190,7 +192,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.BlanchedAlmond;
 			this.ClientSize = new System.Drawing.Size(500, 502);
-			this.Controls.Add(this.txb_mahs);
+			this.Controls.Add(this.txb_mahoso);
 			this.Controls.Add(this.lb_mahoso);
 			this.Controls.Add(this.cb_diadiem);
 			this.Controls.Add(this.dtp_giophongvan);
@@ -200,11 +202,12 @@
 			this.Controls.Add(this.dtp_ngayphongvan);
 			this.Controls.Add(this.lb_diadiem);
 			this.Controls.Add(this.lb_nguoiphongvan);
-			this.Controls.Add(this.lb_ngaypv);
+			this.Controls.Add(this.lb_ngayphongvan);
 			this.Controls.Add(this.lb_tenungvien);
-			this.Controls.Add(this.txb_tenuv);
+			this.Controls.Add(this.txb_tenungvien);
 			this.Controls.Add(this.btn_themlichphongvan);
 			this.Name = "fTaolichphongvan";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Tạo lịch phỏng vấn";
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -214,9 +217,9 @@
 		#endregion
 
 		private System.Windows.Forms.Button btn_themlichphongvan;
-		private System.Windows.Forms.TextBox txb_tenuv;
+		private System.Windows.Forms.TextBox txb_tenungvien;
 		private System.Windows.Forms.Label lb_tenungvien;
-		private System.Windows.Forms.Label lb_ngaypv;
+		private System.Windows.Forms.Label lb_ngayphongvan;
 		private System.Windows.Forms.Label lb_nguoiphongvan;
 		private System.Windows.Forms.Label lb_diadiem;
 		private System.Windows.Forms.DateTimePicker dtp_ngayphongvan;
@@ -226,6 +229,6 @@
 		private System.Windows.Forms.DateTimePicker dtp_giophongvan;
 		private System.Windows.Forms.ComboBox cb_diadiem;
 		private System.Windows.Forms.Label lb_mahoso;
-		private System.Windows.Forms.TextBox txb_mahs;
+		private System.Windows.Forms.TextBox txb_mahoso;
 	}
 }

@@ -69,6 +69,7 @@
 			this.txb_manhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txb_manhanvien.Location = new System.Drawing.Point(139, 14);
 			this.txb_manhanvien.Name = "txb_manhanvien";
+			this.txb_manhanvien.ReadOnly = true;
 			this.txb_manhanvien.Size = new System.Drawing.Size(252, 27);
 			this.txb_manhanvien.TabIndex = 41;
 			// 
@@ -85,7 +86,6 @@
 			this.btn_dongdonnghiphep.Click += new System.EventHandler(this.btn_closedonnghiphep_Click);
 			this.btn_dongdonnghiphep.MouseEnter += new System.EventHandler(this.btn_dongdonnghiphep_MouseEnter);
 			this.btn_dongdonnghiphep.MouseLeave += new System.EventHandler(this.btn_dongdonnghiphep_MouseLeave);
-
 			// 
 			// btn_suadonnghiphep
 			// 
@@ -100,7 +100,6 @@
 			this.btn_suadonnghiphep.Click += new System.EventHandler(this.btn_editdonnghiphep_Click);
 			this.btn_suadonnghiphep.MouseEnter += new System.EventHandler(this.btn_suadonnghiphep_MouseEnter);
 			this.btn_suadonnghiphep.MouseLeave += new System.EventHandler(this.btn_suadonnghiphep_MouseLeave);
-
 			// 
 			// btn_themdonnghiphep
 			// 

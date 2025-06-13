@@ -36,7 +36,7 @@
 			this.lb_nhaplaimatkhau = new System.Windows.Forms.Label();
 			this.btn_doimatkhau = new System.Windows.Forms.Button();
 			this.btn_dong = new System.Windows.Forms.Button();
-			this.lb_matk = new System.Windows.Forms.Label();
+			this.lb_mataikhoan = new System.Windows.Forms.Label();
 			this.txb_tendangnhap = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
@@ -47,6 +47,7 @@
 			this.txb_matkhaucu.Name = "txb_matkhaucu";
 			this.txb_matkhaucu.Size = new System.Drawing.Size(252, 27);
 			this.txb_matkhaucu.TabIndex = 0;
+			this.txb_matkhaucu.UseSystemPasswordChar = true;
 			// 
 			// txb_matkhaumoi
 			// 
@@ -55,6 +56,7 @@
 			this.txb_matkhaumoi.Name = "txb_matkhaumoi";
 			this.txb_matkhaumoi.Size = new System.Drawing.Size(252, 27);
 			this.txb_matkhaumoi.TabIndex = 1;
+			this.txb_matkhaumoi.UseSystemPasswordChar = true;
 			// 
 			// txb_nhaplaimatkhaumoi
 			// 
@@ -63,6 +65,7 @@
 			this.txb_nhaplaimatkhaumoi.Name = "txb_nhaplaimatkhaumoi";
 			this.txb_nhaplaimatkhaumoi.Size = new System.Drawing.Size(252, 27);
 			this.txb_nhaplaimatkhaumoi.TabIndex = 2;
+			this.txb_nhaplaimatkhaumoi.UseSystemPasswordChar = true;
 			// 
 			// lb_matkhaucu
 			// 
@@ -105,28 +108,32 @@
 			this.btn_doimatkhau.Text = "Đổi mật khẩu";
 			this.btn_doimatkhau.UseVisualStyleBackColor = false;
 			this.btn_doimatkhau.Click += new System.EventHandler(this.btn_doimatkhau_Click);
+			this.btn_doimatkhau.MouseEnter += new System.EventHandler(this.btn_doimatkhau_MouseEnter);
+			this.btn_doimatkhau.MouseLeave += new System.EventHandler(this.btn_doimatkhau_MouseLeave);
 			// 
 			// btn_dong
 			// 
 			this.btn_dong.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_dong.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_dong.Location = new System.Drawing.Point(415, 352);
+			this.btn_dong.Location = new System.Drawing.Point(429, 352);
 			this.btn_dong.Name = "btn_dong";
 			this.btn_dong.Size = new System.Drawing.Size(115, 40);
 			this.btn_dong.TabIndex = 7;
 			this.btn_dong.Text = "Đóng";
 			this.btn_dong.UseVisualStyleBackColor = false;
 			this.btn_dong.Click += new System.EventHandler(this.btn_exit_Click);
+			this.btn_dong.MouseEnter += new System.EventHandler(this.btn_exit_MouseEnter);
+			this.btn_dong.MouseLeave += new System.EventHandler(this.btn_exit_MouseLeave);
 			// 
-			// lb_matk
+			// lb_mataikhoan
 			// 
-			this.lb_matk.AutoSize = true;
-			this.lb_matk.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_matk.Location = new System.Drawing.Point(45, 75);
-			this.lb_matk.Name = "lb_matk";
-			this.lb_matk.Size = new System.Drawing.Size(112, 20);
-			this.lb_matk.TabIndex = 8;
-			this.lb_matk.Text = "Tên đăng nhập";
+			this.lb_mataikhoan.AutoSize = true;
+			this.lb_mataikhoan.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lb_mataikhoan.Location = new System.Drawing.Point(45, 75);
+			this.lb_mataikhoan.Name = "lb_mataikhoan";
+			this.lb_mataikhoan.Size = new System.Drawing.Size(112, 20);
+			this.lb_mataikhoan.TabIndex = 8;
+			this.lb_mataikhoan.Text = "Tên đăng nhập";
 			// 
 			// txb_tendangnhap
 			// 
@@ -144,7 +151,7 @@
 			this.BackColor = System.Drawing.Color.BlanchedAlmond;
 			this.ClientSize = new System.Drawing.Size(582, 413);
 			this.Controls.Add(this.txb_tendangnhap);
-			this.Controls.Add(this.lb_matk);
+			this.Controls.Add(this.lb_mataikhoan);
 			this.Controls.Add(this.btn_dong);
 			this.Controls.Add(this.btn_doimatkhau);
 			this.Controls.Add(this.lb_nhaplaimatkhau);
@@ -154,6 +161,7 @@
 			this.Controls.Add(this.txb_matkhaumoi);
 			this.Controls.Add(this.txb_matkhaucu);
 			this.Name = "fDoimatkhau";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Đổi mật khẩu";
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -170,7 +178,7 @@
 		private System.Windows.Forms.Label lb_nhaplaimatkhau;
 		private System.Windows.Forms.Button btn_doimatkhau;
 		private System.Windows.Forms.Button btn_dong;
-		private System.Windows.Forms.Label lb_matk;
+		private System.Windows.Forms.Label lb_mataikhoan;
 		private System.Windows.Forms.TextBox txb_tendangnhap;
 	}
 }

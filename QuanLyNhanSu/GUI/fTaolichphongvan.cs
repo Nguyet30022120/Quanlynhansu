@@ -26,8 +26,8 @@ namespace QuanLyNhanSu.GUI
 		public fTaolichphongvan(string tenuv, string mahs)
 		{
 			InitializeComponent();
-			txb_tenuv.Text = tenuv;
-			txb_mahs.Text = mahs;
+			txb_tenungvien.Text = tenuv;
+			txb_mahoso.Text = mahs;
 			LoadCbDiaDiem();
 			LoadStaffNames();
 			SetupAutoCompleteForNguoiPV();
@@ -41,11 +41,9 @@ namespace QuanLyNhanSu.GUI
 		}
 		void LoadCbDiaDiem()
 		{
-			List<string> diaDiem = new List<string>()
-			{
-				"Cửa hàng 1", "Cửa hàng 2", "Cửa hàng 3", "Cửa hàng 4", "Cửa hàng 5"
-			};
-			cb_diadiem.DataSource = diaDiem;
+			cb_diadiem.DataSource = CuahangDAO.Instance.GetListCuaHang();
+			cb_diadiem.DisplayMember = "TenCH";
+			cb_diadiem.ValueMember = "MaCH";
 		}
 		private void SetupAutoCompleteForNguoiPV()
 		{
@@ -66,8 +64,8 @@ namespace QuanLyNhanSu.GUI
 		{
 			try
 			{
-				string tenuv = txb_tenuv.Text;
-				string mahs = txb_mahs.Text;
+				string tenuv = txb_tenungvien.Text;
+				string mahs = txb_mahoso.Text;
 				string nguoipv = txb_nguoiphongvan.Text;
 				DateTime ngaypv = dtp_ngayphongvan.Value;
 				DateTime thoigianpv = dtp_giophongvan.Value;
@@ -75,13 +73,13 @@ namespace QuanLyNhanSu.GUI
 
 				if (LichphongvanDAO.Instance.InsertSchedule(mahs, nguoipv, ngaypv, thoigianpv, diadiem))
 				{
-					MessageBox.Show("Thêm lịch phỏng vấn thành công");
+					MessageBox.Show("Thêm lịch phỏng vấn thành công", "Thông báo", MessageBoxButtons.OK,MessageBoxIcon.Information);
 					LoadSchedule();
 					this.Close();
 				}
 				else
 				{
-					MessageBox.Show("Thêm lịch phỏng vấn thất bại");
+					MessageBox.Show("Thêm lịch phỏng vấn thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)

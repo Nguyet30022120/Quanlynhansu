@@ -40,14 +40,14 @@
 			this.btn_themnhanvien = new System.Windows.Forms.Button();
 			this.btn_dong = new System.Windows.Forms.Button();
 			this.txb_hoten = new System.Windows.Forms.TextBox();
-			this.cb_gioitinh = new System.Windows.Forms.ComboBox();
-			this.dtp_ngaysinh = new System.Windows.Forms.DateTimePicker();
 			this.txb_dienthoai = new System.Windows.Forms.TextBox();
 			this.txb_email = new System.Windows.Forms.TextBox();
 			this.txb_cccd = new System.Windows.Forms.TextBox();
 			this.cb_phongban = new System.Windows.Forms.ComboBox();
 			this.txb_diachi = new System.Windows.Forms.TextBox();
+			this.cb_gioitinh = new System.Windows.Forms.ComboBox();
 			this.cb_chucvu = new System.Windows.Forms.ComboBox();
+			this.dtp_ngaysinh = new System.Windows.Forms.DateTimePicker();
 			this.SuspendLayout();
 			// 
 			// lb_hoten
@@ -158,7 +158,7 @@
 			// 
 			this.btn_dong.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_dong.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_dong.Location = new System.Drawing.Point(453, 542);
+			this.btn_dong.Location = new System.Drawing.Point(434, 542);
 			this.btn_dong.Name = "btn_dong";
 			this.btn_dong.Size = new System.Drawing.Size(115, 40);
 			this.btn_dong.TabIndex = 11;
@@ -171,29 +171,11 @@
 			// txb_hoten
 			// 
 			this.txb_hoten.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_hoten.Location = new System.Drawing.Point(200, 45);
+			this.txb_hoten.Location = new System.Drawing.Point(200, 50);
 			this.txb_hoten.Name = "txb_hoten";
 			this.txb_hoten.ReadOnly = true;
 			this.txb_hoten.Size = new System.Drawing.Size(252, 27);
 			this.txb_hoten.TabIndex = 12;
-			// 
-			// cb_gioitinh
-			// 
-			this.cb_gioitinh.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.cb_gioitinh.FormattingEnabled = true;
-			this.cb_gioitinh.Location = new System.Drawing.Point(200, 150);
-			this.cb_gioitinh.Name = "cb_gioitinh";
-			this.cb_gioitinh.Size = new System.Drawing.Size(252, 28);
-			this.cb_gioitinh.TabIndex = 14;
-			// 
-			// dtp_ngaysinh
-			// 
-			this.dtp_ngaysinh.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.dtp_ngaysinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.dtp_ngaysinh.Location = new System.Drawing.Point(200, 200);
-			this.dtp_ngaysinh.Name = "dtp_ngaysinh";
-			this.dtp_ngaysinh.Size = new System.Drawing.Size(252, 27);
-			this.dtp_ngaysinh.TabIndex = 15;
 			// 
 			// txb_dienthoai
 			// 
@@ -238,29 +220,47 @@
 			this.txb_diachi.Size = new System.Drawing.Size(252, 27);
 			this.txb_diachi.TabIndex = 21;
 			// 
+			// cb_gioitinh
+			// 
+			this.cb_gioitinh.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.cb_gioitinh.FormattingEnabled = true;
+			this.cb_gioitinh.Location = new System.Drawing.Point(200, 100);
+			this.cb_gioitinh.Name = "cb_gioitinh";
+			this.cb_gioitinh.Size = new System.Drawing.Size(252, 28);
+			this.cb_gioitinh.TabIndex = 22;
+			// 
 			// cb_chucvu
 			// 
 			this.cb_chucvu.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cb_chucvu.FormattingEnabled = true;
-			this.cb_chucvu.Location = new System.Drawing.Point(200, 100);
+			this.cb_chucvu.Location = new System.Drawing.Point(200, 150);
 			this.cb_chucvu.Name = "cb_chucvu";
 			this.cb_chucvu.Size = new System.Drawing.Size(252, 28);
-			this.cb_chucvu.TabIndex = 22;
+			this.cb_chucvu.TabIndex = 23;
+			// 
+			// dtp_ngaysinh
+			// 
+			this.dtp_ngaysinh.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.dtp_ngaysinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.dtp_ngaysinh.Location = new System.Drawing.Point(200, 200);
+			this.dtp_ngaysinh.Name = "dtp_ngaysinh";
+			this.dtp_ngaysinh.Size = new System.Drawing.Size(252, 27);
+			this.dtp_ngaysinh.TabIndex = 24;
 			// 
 			// fQuanlytiepnhannhanvien
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.BlanchedAlmond;
-			this.ClientSize = new System.Drawing.Size(625, 622);
+			this.ClientSize = new System.Drawing.Size(600, 622);
+			this.Controls.Add(this.dtp_ngaysinh);
 			this.Controls.Add(this.cb_chucvu);
+			this.Controls.Add(this.cb_gioitinh);
 			this.Controls.Add(this.txb_diachi);
 			this.Controls.Add(this.cb_phongban);
 			this.Controls.Add(this.txb_cccd);
 			this.Controls.Add(this.txb_email);
 			this.Controls.Add(this.txb_dienthoai);
-			this.Controls.Add(this.dtp_ngaysinh);
-			this.Controls.Add(this.cb_gioitinh);
 			this.Controls.Add(this.txb_hoten);
 			this.Controls.Add(this.btn_dong);
 			this.Controls.Add(this.btn_themnhanvien);
@@ -274,6 +274,7 @@
 			this.Controls.Add(this.lb_chucvu);
 			this.Controls.Add(this.lb_hoten);
 			this.Name = "fQuanlytiepnhannhanvien";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Tiếp nhận nhân viên";
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -294,13 +295,13 @@
 		private System.Windows.Forms.Button btn_themnhanvien;
 		private System.Windows.Forms.Button btn_dong;
 		private System.Windows.Forms.TextBox txb_hoten;
-		private System.Windows.Forms.ComboBox cb_gioitinh;
-		private System.Windows.Forms.DateTimePicker dtp_ngaysinh;
 		private System.Windows.Forms.TextBox txb_dienthoai;
 		private System.Windows.Forms.TextBox txb_email;
 		private System.Windows.Forms.TextBox txb_cccd;
 		private System.Windows.Forms.ComboBox cb_phongban;
 		private System.Windows.Forms.TextBox txb_diachi;
+		private System.Windows.Forms.ComboBox cb_gioitinh;
 		private System.Windows.Forms.ComboBox cb_chucvu;
+		private System.Windows.Forms.DateTimePicker dtp_ngaysinh;
 	}
 }

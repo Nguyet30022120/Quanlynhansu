@@ -28,30 +28,30 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.dgv_lichsudangnhap = new System.Windows.Forms.DataGridView();
+			this.btn_dong = new System.Windows.Forms.Button();
 			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ThoiGianDangNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.DiaChiIP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.btn_dong = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_lichsudangnhap)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// dgv_lichsudangnhap
 			// 
-			dataGridViewCellStyle3.BackColor = System.Drawing.Color.Tan;
-			this.dgv_lichsudangnhap.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.Tan;
+			this.dgv_lichsudangnhap.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
 			this.dgv_lichsudangnhap.BackgroundColor = System.Drawing.Color.White;
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgv_lichsudangnhap.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgv_lichsudangnhap.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.dgv_lichsudangnhap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgv_lichsudangnhap.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.STT,
@@ -64,6 +64,20 @@
 			this.dgv_lichsudangnhap.RowTemplate.Height = 24;
 			this.dgv_lichsudangnhap.Size = new System.Drawing.Size(958, 583);
 			this.dgv_lichsudangnhap.TabIndex = 0;
+			// 
+			// btn_dong
+			// 
+			this.btn_dong.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_dong.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_dong.Location = new System.Drawing.Point(855, 601);
+			this.btn_dong.Name = "btn_dong";
+			this.btn_dong.Size = new System.Drawing.Size(115, 40);
+			this.btn_dong.TabIndex = 1;
+			this.btn_dong.Text = "Đóng";
+			this.btn_dong.UseVisualStyleBackColor = false;
+			this.btn_dong.Click += new System.EventHandler(this.btn_dong_Click);
+			this.btn_dong.MouseEnter += new System.EventHandler(this.btn_dong_MouseEnter);
+			this.btn_dong.MouseLeave += new System.EventHandler(this.btn_dong_MouseLeave);
 			// 
 			// STT
 			// 
@@ -79,7 +93,7 @@
 			this.UserName.HeaderText = "Tài khoản";
 			this.UserName.MinimumWidth = 6;
 			this.UserName.Name = "UserName";
-			this.UserName.Width = 175;
+			this.UserName.Width = 150;
 			// 
 			// ThoiGianDangNhap
 			// 
@@ -95,19 +109,7 @@
 			this.DiaChiIP.HeaderText = "Địa chỉ IP";
 			this.DiaChiIP.MinimumWidth = 6;
 			this.DiaChiIP.Name = "DiaChiIP";
-			this.DiaChiIP.Width = 175;
-			// 
-			// btn_dong
-			// 
-			this.btn_dong.BackColor = System.Drawing.Color.DarkOrange;
-			this.btn_dong.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_dong.Location = new System.Drawing.Point(855, 601);
-			this.btn_dong.Name = "btn_dong";
-			this.btn_dong.Size = new System.Drawing.Size(115, 40);
-			this.btn_dong.TabIndex = 1;
-			this.btn_dong.Text = "Đóng";
-			this.btn_dong.UseVisualStyleBackColor = false;
-			this.btn_dong.Click += new System.EventHandler(this.btn_dong_Click);
+			this.DiaChiIP.Width = 150;
 			// 
 			// fQuanlylichsudangnhap
 			// 
@@ -118,6 +120,7 @@
 			this.Controls.Add(this.btn_dong);
 			this.Controls.Add(this.dgv_lichsudangnhap);
 			this.Name = "fQuanlylichsudangnhap";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Lịch sử đăng nhập";
 			((System.ComponentModel.ISupportInitialize)(this.dgv_lichsudangnhap)).EndInit();
 			this.ResumeLayout(false);

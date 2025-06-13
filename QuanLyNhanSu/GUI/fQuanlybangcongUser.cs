@@ -21,17 +21,19 @@ namespace QuanLyNhanSu.GUI
 		private List<Button> dayButtons = new List<Button>();
 		private List<BangcongDTO> currentBangCongData = new List<BangcongDTO>();
 
-		public fQuanlybangcongUser()
+		public fQuanlybangcongUser(string manv)
 		{
 			InitializeComponent();
-			LoadInitialData();
+			LoadInitialData(manv);
 			CreateCalendarView();
+			LoadBangCongTheoMaNV(manv);
 			originalStatisticButtonColor = btn_xem.BackColor;
 			originalExportButtonColor = btn_xuatbaocao.BackColor;
 			originalCloseButtonColor = btn_close.BackColor;
+			txb_manhanvien.Text = manv;
 		}
 
-		void LoadInitialData()
+		void LoadInitialData(string manv)
 		{
 			// Load ComboBox tháng (1-12)
 			for (int i = 1; i <= 12; i++)
@@ -47,9 +49,9 @@ namespace QuanLyNhanSu.GUI
 				cb_nam.Items.Add(i);
 			}
 			cb_nam.SelectedItem = currentYear;
-			txb_manhanvien.Text = ""; // Đầu vào mặc định là rỗng (tức là tất cả nhân viên)
-			txb_tennhanvien.Text = "--Tất cả nhân viên--";
-			LoadBangCongTheoMaNV(""); // Hiển thị dữ liệu tất cả nhân viên ngay khi vào form
+			txb_manhanvien.Text = manv; // Hiển thị mã nhân viên ngay khi vào form
+			//txb_tennhanvien.Text = 
+			//LoadBangCongTheoMaNV(manv); // Hiển thị dữ liệu tất cả nhân viên ngay khi vào form
 
 
 		}
@@ -155,8 +157,11 @@ namespace QuanLyNhanSu.GUI
 
 			// Lọc dữ liệu theo ngày được chọn
 			var filteredData = currentBangCongData
-								.Where(x => x.Ngay.Date == selectedDate.Date)
-								.ToList();
+				.Where(x => x.Ngay.Date == selectedDate.Date)
+				.GroupBy(x => new { x.MaNV, x.GioCheckInDisplay, x.GioCheckOutDisplay }) // Nhóm theo các thuộc tính dễ trùng
+				.Select(g => g.First()) // Lấy bản đầu tiên trong mỗi nhóm
+				.ToList();
+
 
 			if (filteredData.Any())
 			{
@@ -192,9 +197,11 @@ namespace QuanLyNhanSu.GUI
 
 				// Lấy dữ liệu chấm công nhóm theo ngày
 				var attendanceByDay = currentBangCongData
-					.Where(x => x.SoGioLam > 0)
-					.GroupBy(x => x.Ngay.Day)
-					.ToDictionary(g => g.Key, g => g.ToList());
+				.Where(x => x.SoGioLam > 0)
+				.GroupBy(x => new { x.MaNV, Ngay = x.Ngay.Date }) // nhóm theo nhân viên và ngày
+				.Select(g => g.First()) // lấy bản ghi đầu tiên mỗi nhân viên/ngày
+				.GroupBy(x => x.Ngay.Day) // giờ mới group theo ngày trong tháng
+				.ToDictionary(g => g.Key, g => g.ToList());
 
 				// Cập nhật màu và thông tin cho các button
 				foreach (Button btn in dayButtons)
@@ -266,81 +273,87 @@ namespace QuanLyNhanSu.GUI
 			}
 		}
 
-		void LoadBangCong()
-		{
-			int thang = (int)cb_thang.SelectedItem;
-			int nam = (int)cb_nam.SelectedItem;
-			string maNV = txb_manhanvien.Text.Trim();
-			//string maNV = cb_nhanvien.SelectedValue?.ToString();
+		//void LoadBangCong()
+		//{
+		//	int thang = (int)cb_thang.SelectedItem;
+		//	int nam = (int)cb_nam.SelectedItem;
+		//	string maNV = txb_manhanvien.Text.Trim();
+		//	//string maNV = cb_nhanvien.SelectedValue?.ToString();
 
-			List<BangcongDTO> bangCongData = new List<BangcongDTO>();
+		//	List<BangcongDTO> bangCongData = new List<BangcongDTO>();
 
-			if (string.IsNullOrEmpty(maNV))
-			{
-				// Hiển thị tất cả nhân viên
-				bangCongData = BangcongDAO.Instance.GetBangCongTheoThang(thang, nam);
-			}
-			else
-			{
-				// Hiển thị một nhân viên cụ thể
-				bangCongData = BangcongDAO.Instance.GetBangCongNhanVienTheoThang(maNV, thang, nam);
-			}
+		//	if (string.IsNullOrEmpty(maNV))
+		//	{
+		//		// Hiển thị tất cả nhân viên
+		//		bangCongData = BangcongDAO.Instance.GetBangCongTheoThang(thang, nam);
+		//	}
+		//	else
+		//	{
+		//		// Hiển thị một nhân viên cụ thể
+		//		bangCongData = BangcongDAO.Instance.GetBangCongNhanVienTheoThang(maNV, thang, nam);
+		//	}
 
-			currentBangCongData = bangCongData;
-			CalculateStatistics(bangCongData, maNV);
-			UpdateCalendarColors(); // Cập nhật màu calendar
+		//	currentBangCongData = bangCongData;
+		//	CalculateStatistics(bangCongData, maNV);
+		//	UpdateCalendarColors(); // Cập nhật màu calendar
 
-			// Thống kê chi tiết
-			var tongGioLam = bangCongData.Sum(x => x.SoGioLam);
-			var tongNgayLam = bangCongData.Count(x => x.SoGioLam > 0);
-			var nhanVienCount = bangCongData.Select(x => x.MaNV).Distinct().Count();
+		//	// Thống kê chi tiết
+		//	var tongGioLam = bangCongData.Sum(x => x.SoGioLam);
+		//	var tongNgayLam = bangCongData.Count(x => x.SoGioLam > 0);
+		//	var nhanVienCount = bangCongData.Select(x => x.MaNV).Distinct().Count();
 
-			if (bangCongData.Any())
-			{
-				// Kiểm tra xem có dữ liệu SoGioLam > 0 trước khi tính min/max
-				var validWorkHours = bangCongData.Where(x => x.SoGioLam > 0).ToList();
+		//	if (bangCongData.Any())
+		//	{
+		//		// Kiểm tra xem có dữ liệu SoGioLam > 0 trước khi tính min/max
+		//		var validWorkHours = bangCongData.Where(x => x.SoGioLam > 0).ToList();
 
-				if (validWorkHours.Any())
-				{
-					var maxGio = validWorkHours.Max(x => x.SoGioLam);
-					var minGio = validWorkHours.Min(x => x.SoGioLam);
-				}
-				else
-				{
+		//		if (validWorkHours.Any())
+		//		{
+		//			var maxGio = validWorkHours.Max(x => x.SoGioLam);
+		//			var minGio = validWorkHours.Min(x => x.SoGioLam);
+		//		}
+		//		else
+		//		{
 
-				}
-			}
-			else
-			{
-			}
+		//		}
+		//	}
+		//	else
+		//	{
+		//	}
 
-		}
+		//}
 
 		void CalculateStatistics(List<BangcongDTO> data, string maNV)
 		{
 			try
 			{
+				// Loại bỏ bản ghi trùng nhau theo MaNV và Ngay.Date
+				var filteredData = data
+					.GroupBy(x => new { x.MaNV, Ngay = x.Ngay.Date })
+					.Select(g => g.First()) // chỉ lấy 1 bản ghi mỗi nhân viên mỗi ngày
+					.ToList();
+
 				if (string.IsNullOrEmpty(maNV))
 				{
 					// Thống kê tất cả nhân viên
-					var groupedData = data.GroupBy(x => x.MaNV).ToList();
-					int tongNgayLam = groupedData.Sum(g => g.Count(x => x.SoGioLam > 0));
-					double tongGioLam = data.Sum(x => x.SoGioLam);
-					int tongNgayVang = groupedData.Sum(g => g.Count(x => x.SoGioLam == 0));
+					int tongNgayLam = filteredData.Count(x => x.SoGioLam > 0);
+					double tongGioLam = filteredData.Sum(x => x.SoGioLam);
+					int tongNgayVang = filteredData.Count(x => x.SoGioLam == 0);
 
 					lbl_tonggio.Text = tongGioLam.ToString("0.0") + " giờ";
 					//lbl_tongngaylam.Text = tongNgayLam.ToString() + " ngày";
 				}
 				else
 				{
-					// Thống kê một nhân viên
-					int tongNgayLam = data.Count(x => x.SoGioLam > 0);
-					double tongGioLam = data.Sum(x => x.SoGioLam);
-					int tongNgayVang = data.Count(x => x.SoGioLam == 0);
+					// Chỉ lọc và thống kê cho 1 nhân viên
+					var nvData = filteredData.Where(x => x.MaNV == maNV).ToList();
+
+					int tongNgayLam = nvData.Count(x => x.SoGioLam > 0);
+					double tongGioLam = nvData.Sum(x => x.SoGioLam);
+					int tongNgayVang = nvData.Count(x => x.SoGioLam == 0);
 
 					lbl_tonggio.Text = tongGioLam.ToString("0.0") + " giờ";
 					//lbl_tongngaylam.Text = tongNgayLam.ToString() + " ngày";
-
 				}
 			}
 			catch (Exception ex)
@@ -432,9 +445,31 @@ namespace QuanLyNhanSu.GUI
 		}
 		void LoadBangCongTheoMaNV(string maNV)
 		{
+			if (cb_thang.SelectedItem == null ||
+		cb_nam.SelectedItem == null)
+			{
+				MessageBox.Show("Vui lòng chọn đầy đủ tháng, năm để xem thống kê.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+
 			int thang = (int)cb_thang.SelectedItem;
 			int nam = (int)cb_nam.SelectedItem;
 
+			// Hiển thị tên nhân viên nếu có
+			string tenNV = "";
+			if (!string.IsNullOrEmpty(maNV))
+			{
+				DataTable dtNhanVien = BangcongDAO.Instance.GetDanhSachNhanVienCoChamCong();
+				var rows = dtNhanVien.Select($"Ma_NV = '{maNV}'");
+
+				if (rows.Length > 0)
+				{
+					tenNV = rows[0]["HoTen"].ToString();
+				}
+			}
+			txb_tennhanvien.Text = tenNV;
+
+			// Tải dữ kiện chấm công
 			List<BangcongDTO> bangCongData;
 			if (string.IsNullOrEmpty(maNV))
 				bangCongData = BangcongDAO.Instance.GetBangCongTheoThang(thang, nam);
@@ -442,44 +477,32 @@ namespace QuanLyNhanSu.GUI
 				bangCongData = BangcongDAO.Instance.GetBangCongNhanVienTheoThang(maNV, thang, nam);
 
 			currentBangCongData = bangCongData;
+
+			// Thống kê
 			CalculateStatistics(bangCongData, maNV);
+
+			// Cập nhật màu calendar
 			UpdateCalendarColors();
+
+			//// Hiển thị lên DataGridView
+			//dgv_khenthuongkyluat.DataSource = currentBangCongData;
+
+			// Tải thêm nếu bạn muốn
+			CreateCalendarView();
+
+
 		}
 		private void btn_xem_Click(object sender, EventArgs e)
 		{
-			CreateCalendarView();
-			if (cb_thang.SelectedItem != null && cb_nam.SelectedItem != null)
-			{
-				string maNV = txb_manhanvien.Text.Trim();
-				string tenNV = "";
-				if (!string.IsNullOrEmpty(maNV))
-				{
-					// Tìm tên nhân viên theo mã
-					DataTable dtNhanVien = BangcongDAO.Instance.GetDanhSachNhanVienCoChamCong();
-					var rows = dtNhanVien.Select($"Ma_NV = '{maNV}'");
-					if (rows.Length > 0)
-					{
-						tenNV = rows[0]["HoTen"].ToString();
-					}
-					else
-					{
-						tenNV = "";
-					}
-				}
-				else
-				{
-					tenNV = "";
-				}
-				txb_tennhanvien.Text = tenNV;
+			string maNV = txb_manhanvien.Text.Trim();
 
-				// Thống kê theo mã nhân viên
-				LoadBangCongTheoMaNV(maNV);
-			}
-			else
-			{
-				MessageBox.Show("Vui lòng chọn đầy đủ tháng, năm để xem thống kê.");
-			}
+			LoadBangCongTheoMaNV(maNV);
+
+		}
+			//else
+			//{
+			//	MessageBox.Show("Vui lòng chọn đầy đủ tháng, năm để xem thống kê.");
+			//}
 		}
 
 	}
-}

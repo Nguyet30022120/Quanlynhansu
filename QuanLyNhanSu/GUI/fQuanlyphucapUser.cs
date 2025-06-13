@@ -20,15 +20,20 @@ namespace QuanLyNhanSu.GUI
 		private Color originalSearchButtonColor;
 
 		BindingSource phucapList = new BindingSource();
-		public fQuanlyphucapUser()
+		public fQuanlyphucapUser(string manv)
 		{
 			InitializeComponent();
 			dgv_phucap.DataSource = phucapList;
 			originalCloseButtonColor = btn_dongphucap.BackColor;
-
+			LoadPhuCap(manv);
+			txb_manhanvien.Text = manv;
+			LoadTenNV(manv);
 
 		}
-
+		void LoadTenNV(string manv)
+		{
+			txb_tennhanvien.Text = NhanvienDAO.Instance.GetStaffTen(manv);
+		}
 		void BindingPhuCapData()
 		{
 

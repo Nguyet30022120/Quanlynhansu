@@ -250,6 +250,7 @@
 			this.Controls.Add(this.txb_tenkhoahoc);
 			this.Controls.Add(this.pn_khoahoc);
 			this.Name = "fQuanlykhoahoc";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Khóa học";
 			this.Load += new System.EventHandler(this.fCourseManagement_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dgv_khoahoc)).EndInit();

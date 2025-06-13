@@ -1,4 +1,5 @@
 ﻿using QuanLyNhanSu.DAO;
+using QuanLyNhanSu.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,7 @@ namespace QuanLyNhanSu.GUI
 	{
 		private string userName;
 		private string matk;
+		private string manv;
 
 		private Color originalQuanlynguoidungButtonColor;
 		private Color originalDoimatkhauButtonColor;
@@ -59,6 +61,8 @@ namespace QuanLyNhanSu.GUI
 			InitializeComponent();
 			this.userName = userName;
 			LoadUserInfo(userName);
+			LoadUserMaNVInfo(userName);
+
 
 			originalDoimatkhauButtonColor = btn_doimatkhau.BackColor;
 			originalQuanlytaikhoanButtonColor = btn_quanlytaikhoan.BackColor;
@@ -100,6 +104,13 @@ namespace QuanLyNhanSu.GUI
 		{
 			string name = TaikhoanDAO.Instance.GetNameNvByUsername(userName);
 			lb_namenv.Text = "Xin chào " + name;
+
+		}
+		void LoadUserMaNVInfo(string userName)
+		{
+			string name = TaikhoanDAO.Instance.GetMaNvByUsername(userName);
+			manv = name;
+
 		}
 
 		#region menu event
@@ -154,177 +165,13 @@ namespace QuanLyNhanSu.GUI
 		#endregion
 
 		#region category
-		private void btn_quanlythongtinnhanvien_Click(object sender, EventArgs e)
-		{
-			fQuanlynhanvien f = new fQuanlynhanvien();
-			this.Hide();
-			f.ShowDialog();
-			this.Show();
-		}
-
-		private void btn_quanlyphongban_Click(object sender, EventArgs e)
-		{
-			fQuanlycuahang f = new fQuanlycuahang();
-			this.Hide();
-			f.ShowDialog();
-			this.Show();
-		}
-
-		private void btn_quanlychucvu_Click(object sender, EventArgs e)
-		{
-			fQuanlychucvu f = new fQuanlychucvu();
-			this.Hide();
-			f.ShowDialog();
-			this.Show();
-		}
-
-		private void btn_quanlytrinhdochuyenmon_Click(object sender, EventArgs e)
-		{
-			fQuanlytrinhdochuyenmon f = new fQuanlytrinhdochuyenmon();
-			this.Hide();
-			f.ShowDialog();
-			this.Show();
-		}
-
-		private void btn_quanlyhopdonglaodong_Click(object sender, EventArgs e)
-		{
-			fQuanlyhopdong f = new fQuanlyhopdong();
-			this.Hide();
-			f.ShowDialog();
-			this.Show();
-		}
-
-		private void btn_quanlydaotaovaphattriennhanvien_Click(object sender, EventArgs e)
-		{
-			fQuanlydaotaonhanvien f = new fQuanlydaotaonhanvien();
-			this.Hide();
-			f.ShowDialog();
-			this.Show();
-		}
-		//private void btn_nhanvien_MouseEnter(object sender, EventArgs e)
-		//{
-		//	btn_quanlythongtinnhanvien.BackColor = System.Drawing.Color.LightBlue;
-		//}
-		//private void btn_nhanvien_MouseLeave(object sender, EventArgs e)
-		//{
-		//	btn_quanlythongtinnhanvien.BackColor = originalNhanvienButtonColor;
-		//}
-
-		//private void btn_phongban_MouseEnter(object sender, EventArgs e)
-		//{
-		//	btn_quanlyphongban.BackColor = System.Drawing.Color.LightBlue;
-		//}
-		//private void btn_phongban_MouseLeave(object sender, EventArgs e)
-		//{
-		//	btn_quanlyphongban.BackColor = originalPhongbanButtonColor;
-		//}
-
-		//private void btn_chucvu_MouseEnter(object sender, EventArgs e)
-		//{
-		//	btn_quanlychucvu.BackColor = System.Drawing.Color.LightBlue;
-		//}
-		//private void btn_chucvu_MouseLeave(object sender, EventArgs e)
-		//{
-		//	btn_quanlychucvu.BackColor = originalChucvuButtonColor;
-		//}
-
-		//private void btn_trinhdo_MouseEnter(object sender, EventArgs e)
-		//{
-		//	btn_quanlytrinhdochuyenmon.BackColor = System.Drawing.Color.LightBlue;
-		//}
-		//private void btn_trinhdo_MouseLeave(object sender, EventArgs e)
-		//{
-		//	btn_quanlytrinhdochuyenmon.BackColor = originalTrinhdoButtonColor;
-		//}
-
-		//private void btn_hopdong_MouseEnter(object sender, EventArgs e)
-		//{
-		//	btn_quanlyhopdonglaodong.BackColor = System.Drawing.Color.LightBlue;
-		//}
-		//private void btn_hopdong_MouseLeave(object sender, EventArgs e)
-		//{
-		//	btn_quanlyhopdonglaodong.BackColor = originalHopdongButtonColor;
-		//}
-
-		//private void btn_daotao_MouseEnter(object sender, EventArgs e)
-		//{
-		//	btn_quanlydaotaovaphattriennhanvien.BackColor = System.Drawing.Color.LightBlue;
-		//}
-		//private void btn_daotao_MouseLeave(object sender, EventArgs e)
-		//{
-		//	btn_quanlydaotaovaphattriennhanvien.BackColor = originalDaotaoButtonColor;
-		//}
-
-
-		#endregion
-
-		#region statistics
-		private void btn_thongkethongtinkhenthuongkyluat_Click(object sender, EventArgs e)
-		{
-			fThongkekhenthuongkyluat f = new fThongkekhenthuongkyluat();
-			this.Hide();
-			f.ShowDialog();
-			this.Show();
-		}
-
-		private void btn_thongkeluotnghiphepcuanhanvien_Click(object sender, EventArgs e)
-		{
-			fThongkenghiphep f = new fThongkenghiphep();
-			this.Hide();
-			f.ShowDialog();
-			this.Show();
-		}
-
-		private void btn_baocaohieusuatnhanvien_Click(object sender, EventArgs e)
-		{
-			fThongketongquannhansu f = new fThongketongquannhansu();
-			this.Hide();
-			f.ShowDialog();
-			this.Show();
-		}
-		//private void btn_baocaotongquannhansu_MouseEnter(object sender, EventArgs e)
-		//{
-		//	btn_baocaotongquannhansu.BackColor = System.Drawing.Color.LightBlue;
-		//}
-		//private void btn_baocaotongquannhansu_MouseLeave(object sender, EventArgs e)
-		//{
-		//	btn_baocaotongquannhansu.BackColor = originalBaocaotongquannhansuButtonColor;
-		//}
-
-		//private void btn_thongkenghiphep_MouseEnter(object sender, EventArgs e)
-		//{
-		//	btn_thongkeluotnghiphepcuanhanvien.BackColor = System.Drawing.Color.LightBlue;
-		//}
-		//private void btn_thongkenghiphep_MouseLeave(object sender, EventArgs e)
-		//{
-		//	btn_thongkeluotnghiphepcuanhanvien.BackColor = originalThongkenghiphepButtonColor;
-		//}
-
-		//private void btn_thongkeluong_MouseEnter(object sender, EventArgs e)
-		//{
-		//	btn_baocaoluongthuong.BackColor = System.Drawing.Color.LightBlue;
-		//}
-		//private void btn_thongkeluong_MouseLeave(object sender, EventArgs e)
-		//{
-		//	btn_baocaoluongthuong.BackColor = originalThongkeluongButtonColor;
-		//}
-
-		//private void btn_thongkekhenthuongkyluat_MouseEnter(object sender, EventArgs e)
-		//{
-		//	btn_thongkethongtinkhenthuongkyluat.BackColor = System.Drawing.Color.LightBlue;
-		//}
-		//private void btn_thongkekhenthuongkyluat_MouseLeave(object sender, EventArgs e)
-		//{
-		//	btn_thongkethongtinkhenthuongkyluat.BackColor = originalThongkekhenthuongkyluatButtonColor;
-		//}
-
-
-		#endregion
+		
+		
 
 		#region checkin/out
 		private void btn_checkin_Click(object sender, EventArgs e)
 		{
-			fCheckinUser f = new fCheckinUser();
+			fCheckinUser f = new fCheckinUser(manv);
 			this.Hide();
 			f.ShowDialog();
 			this.Show();
@@ -332,7 +179,7 @@ namespace QuanLyNhanSu.GUI
 
 		private void btn_checkout_Click(object sender, EventArgs e)
 		{
-			fCheckoutUser f = new fCheckoutUser();
+			fCheckoutUser f = new fCheckoutUser(manv);
 			this.Hide();
 			f.ShowDialog();
 			this.Show();
@@ -340,19 +187,12 @@ namespace QuanLyNhanSu.GUI
 
 		private void btn_dangkynghiphep_Click(object sender, EventArgs e)
 		{
-			fQuanlydangkynghiphepUser f = new fQuanlydangkynghiphepUser();
+			fQuanlydangkynghiphepUser f = new fQuanlydangkynghiphepUser(manv);
 			this.Hide();
 			f.ShowDialog();
 			this.Show();
 		}
 
-		private void btn_duyetnghiphep_Click(object sender, EventArgs e)
-		{
-			fQuanlyduyetnghiphep f = new fQuanlyduyetnghiphep();
-			this.Hide();
-			f.ShowDialog();
-			this.Show();
-		}
 
 		//private void btn_quanlycalamviec_Click(object sender, EventArgs e)
 		//{
@@ -372,7 +212,7 @@ namespace QuanLyNhanSu.GUI
 
 		private void btn_quanlybangcong_Click(object sender, EventArgs e)
 		{
-			fQuanlybangcongUser f = new fQuanlybangcongUser();
+			fQuanlybangcongUser f = new fQuanlybangcongUser(manv);
 			this.Hide();
 			f.ShowDialog();
 			this.Show();
@@ -523,30 +363,30 @@ namespace QuanLyNhanSu.GUI
 		#region compensation
 		private void btn_quanlybangluong_Click(object sender, EventArgs e)
 		{
-			fBangluongUser f = new fBangluongUser();
+			fBangluongUser f = new fBangluongUser(manv);
 			this.Hide();
 			f.ShowDialog();
 			this.Show();
 		}
 
-		private void btn_quanlythuongvaphucloinhanvien_Click(object sender, EventArgs e)
-		{
-			fQuanlythuongvaphucloinhanvien f = new fQuanlythuongvaphucloinhanvien();
-			this.Hide();
-			f.ShowDialog();
-			this.Show();
-		}
+		//private void btn_quanlythuongvaphucloinhanvien_Click(object sender, EventArgs e)
+		//{
+		//	fQuanlythuongvaphucloinhanvien f = new fQuanlythuongvaphucloinhanvien(manv);
+		//	this.Hide();
+		//	f.ShowDialog();
+		//	this.Show();
+		//}
 
 		private void btn_quanlythuevabaohiemxahoi_Click(object sender, EventArgs e)
 		{
-			fQuanlybaohiemUser f = new fQuanlybaohiemUser();
+			fQuanlybaohiemUser f = new fQuanlybaohiemUser(manv);
 			this.Hide();
 			f.ShowDialog();
 			this.Show();
 		}
 		private void btn_quanlyphucap_Click(object sender, EventArgs e)
 		{
-			fQuanlyphucapUser f = new fQuanlyphucapUser();
+			fQuanlyphucapUser f = new fQuanlyphucapUser(manv);
 			this.Hide();
 			f.ShowDialog();
 			this.Show();
@@ -554,7 +394,7 @@ namespace QuanLyNhanSu.GUI
 
 		private void btn_qlkhenthuongkyluat_Click(object sender, EventArgs e)
 		{
-			fQuanlykhenthuongkyluatUser f = new fQuanlykhenthuongkyluatUser();
+			fQuanlykhenthuongkyluatUser f = new fQuanlykhenthuongkyluatUser(manv);
 			this.Hide();
 			f.ShowDialog();
 			this.Show();
@@ -595,7 +435,7 @@ namespace QuanLyNhanSu.GUI
 			btn_qlkhenthuongkyluat.BackColor = originalKhenthuongkyluatButtonColor;
 		}
 
-
+		#endregion
 		#endregion
 	}
 }

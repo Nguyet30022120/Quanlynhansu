@@ -70,12 +70,12 @@ namespace QuanLyNhanSu.GUI
 
 				if (KetquaphongvanDAO.Instance.InsertResult(mahs, danhgia, ketluan, ngaydanhgia))
 				{
-					MessageBox.Show("Thêm kết quả phỏng vấn thành công", "Thông báo");
+					MessageBox.Show("Thêm kết quả phỏng vấn thành công", "Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Information);
 					LoadResult();
 				}
 				else
 				{
-					MessageBox.Show("Thêm kết quả phỏng vấn thất bại", "Thông báo");
+					MessageBox.Show("Thêm kết quả phỏng vấn thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
@@ -99,17 +99,17 @@ namespace QuanLyNhanSu.GUI
 
 					if (KetquaphongvanDAO.Instance.UpdateResult(makq, tenuv, danhgia, ketluan, ngaydanhgia))
 					{
-						MessageBox.Show("Sửa kết quả phỏng vấn thành công", "Thông báo");
+						MessageBox.Show("Sửa kết quả phỏng vấn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					}
 					else
 					{
-						MessageBox.Show("Sửa kết quả phỏng vấn thất bại", "Thông báo");
+						MessageBox.Show("Sửa kết quả phỏng vấn thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					}
 
 				}
 				catch (Exception ex)
 				{
-					MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 				finally
 				{
@@ -129,17 +129,17 @@ namespace QuanLyNhanSu.GUI
 
 					if (KetquaphongvanDAO.Instance.DeleteResult(makq))
 					{
-						MessageBox.Show("Xóa kết quả phỏng vấn thành công", "Thông báo");
+						MessageBox.Show("Xóa kết quả phỏng vấn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					}
 					else
 					{
-						MessageBox.Show("Xóa kết quả phỏng vấn thất bại", "Thông báo");
+						MessageBox.Show("Xóa kết quả phỏng vấn thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					}
 
 				}
 				catch (Exception ex)
 				{
-					MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 				finally
 				{
@@ -236,8 +236,8 @@ namespace QuanLyNhanSu.GUI
 		{
 			btn_tiepnhan.BackColor = originalAcceptButtonColor;
 		}
-		#endregion
 
+		#endregion
 
 	}
 }

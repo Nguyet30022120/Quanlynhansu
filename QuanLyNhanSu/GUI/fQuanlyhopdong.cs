@@ -108,17 +108,17 @@ namespace QuanLyNhanSu
 				DateTime ngayhh = dtp_ngayhethan.Value;
 				if (HopdongDAO.Instance.InsertHopDong(manv, ngaydk, ngayhh))
 				{
-					MessageBox.Show("Thêm hợp đồng thành công","Thông báo");
+					MessageBox.Show("Thêm hợp đồng thành công","Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Information);
 					LoadContract();
 				}
 				else
 				{
-					MessageBox.Show("Thêm hợp đồng thất bại", "Thông báo");
+					MessageBox.Show("Thêm hợp đồng thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
@@ -138,17 +138,17 @@ namespace QuanLyNhanSu
 
 					if (HopdongDAO.Instance.UpdateHopDong(mahd, ngaydk, ngayhh))
 					{
-						MessageBox.Show("Sửa hợp đồng thành công.", "Thông báo");
+						MessageBox.Show("Sửa hợp đồng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					}
 					else
 					{
-						MessageBox.Show("Sửa hợp đồng thất bại.", "Thông báo");
+						MessageBox.Show("Sửa hợp đồng thất bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					}
 
 				}
 				catch (Exception ex)
 				{
-					MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 				finally
 				{
@@ -168,17 +168,17 @@ namespace QuanLyNhanSu
 
 					if (HopdongDAO.Instance.DeleteContract(mahd))
 					{
-						MessageBox.Show("Xóa hợp đồng thành công.", "Thông báo");
+						MessageBox.Show("Xóa hợp đồng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					}
 					else
 					{
-						MessageBox.Show("Xóa hợp đồng thất bại.", "Thông báo");
+						MessageBox.Show("Xóa hợp đồng thất bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					}
 
 				}
 				catch (Exception ex)
 				{
-					MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 				finally
 				{
@@ -203,17 +203,17 @@ namespace QuanLyNhanSu
 
 					if (HopdongDAO.Instance.UpdateTrangThai())
 					{
-						MessageBox.Show("Cập nhật trạng thái thành công.", "Thông báo");
+						MessageBox.Show("Cập nhật trạng thái thành công.", "Thông báo",MessageBoxButtons.OK, MessageBoxIcon.Information);
 					}
 					else
 					{
-						MessageBox.Show("Cập nhật trạng thái thất bại.", "Thông báo");
+						MessageBox.Show("Cập nhật trạng thái thất bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					}
 
 				}
 				catch (Exception ex)
 				{
-					MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 				finally
 				{

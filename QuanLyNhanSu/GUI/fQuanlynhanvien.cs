@@ -137,7 +137,6 @@ namespace QuanLyNhanSu
 
 		#region Events
 
-
 		private void btn_addnv_Click(object sender, EventArgs e)
 		{
 
@@ -156,17 +155,17 @@ namespace QuanLyNhanSu
 
 				if (NhanvienDAO.Instance.InsertStaff(chucvu, phongban, hoten, gioitinh, ngaysinh, cccd, dienthoai, diachi, email))
 				{
-					MessageBox.Show("Thêm nhân viên thành công.", "Thông báo");
+					MessageBox.Show("Thêm nhân viên thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
 				else
 				{
-					MessageBox.Show("Thêm nhân viên thất bại.", "Thông báo");
+					MessageBox.Show("Thêm nhân viên thất bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
@@ -195,17 +194,17 @@ namespace QuanLyNhanSu
 
 					if (NhanvienDAO.Instance.UpdateStaff(manv, chucvu, phongban, hoten, gioitinh, ngaysinh, cccd, dienthoai, diachi, email))
 					{
-						MessageBox.Show("Sửa nhân viên thành công", "Thông báo");
+						MessageBox.Show("Sửa nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					}
 					else
 					{
-						MessageBox.Show("Sửa nhân viên thất bại", "Thông báo");
+						MessageBox.Show("Sửa nhân viên thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					}
 
 				}
 				catch (Exception ex)
 				{
-					MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 				finally
 				{
@@ -225,17 +224,17 @@ namespace QuanLyNhanSu
 
 					if (NhanvienDAO.Instance.DeleteStaff(manv))
 					{
-						MessageBox.Show("Xóa nhân viên thành công","Thông báo");
+						MessageBox.Show("Xóa nhân viên thành công","Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					}
 					else
 					{
-						MessageBox.Show("Xóa nhân viên thất bại", "Thông báo");
+						MessageBox.Show("Xóa nhân viên thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					}
 
 				}
 				catch (Exception ex)
 				{
-					MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 				finally
 				{

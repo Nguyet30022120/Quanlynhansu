@@ -176,6 +176,8 @@ namespace QuanLyNhanSu.GUI
 			this.dgv_checkin.RowTemplate.Height = 24;
 			this.dgv_checkin.Size = new System.Drawing.Size(725, 426);
 			this.dgv_checkin.TabIndex = 17;
+			dgv_checkin.CellFormatting += dgv_checkin_CellFormatting;
+
 			// 
 			// lb_giocheckin
 			// 

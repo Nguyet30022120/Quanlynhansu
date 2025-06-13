@@ -22,14 +22,18 @@ namespace QuanLyNhanSu.GUI
 		BindingSource donNghiPhepList = new BindingSource();
 
 		private List<string> staffNames = new List<string>();
-		public fQuanlydangkynghiphepUser()
+		public fQuanlydangkynghiphepUser(string manv)
 		{
 			InitializeComponent();
 			dgv_donnghiphep.DataSource = donNghiPhepList;
-			LoadDonNghiPhep(txb_manhanvien.Text);
+			txb_manhanvien.Text = manv;
+			LoadTenNV(manv);
+			LoadDonNghiPhep(manv);
 			LoadStaffNames();
 			LoadCbLoaiPhep();
 			SetupAutoCompleteForNguoiDuyet();
+			
+
 			//LoadCbTrangThai();
 			originalAddButtonColor = btn_themdonnghiphep.BackColor;
 			//originalDeleteButtonColor = btn_xoadonnghiphep.BackColor;
@@ -56,6 +60,10 @@ namespace QuanLyNhanSu.GUI
 			txb_trangthai.DataBindings.Add(new Binding("Text", dgv_donnghiphep.DataSource, "TrangThai", true, DataSourceUpdateMode.Never));
 			txb_nguoiduyet.DataBindings.Add(new Binding("Text", dgv_donnghiphep.DataSource, "NguoiDuyet", true, DataSourceUpdateMode.Never));
 
+		}
+		void LoadTenNV(string manv)
+		{
+			txb_tennhanvien.Text = NhanvienDAO.Instance.GetStaffTen(manv);
 		}
 
 		void LoadDonNghiPhep(string manv)

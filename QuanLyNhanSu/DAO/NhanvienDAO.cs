@@ -44,6 +44,19 @@ namespace QuanLyNhanSu.DAO
 
 			return list;
 		}
+		public string GetStaffTen(string maNV)
+		{
+			string query = "SELECT HoTen FROM [NhanVien] WHERE Ma_NV = @maNV";
+			DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { maNV });
+
+			if (data.Rows.Count > 0)
+			{
+				return data.Rows[0]["HoTen"].ToString();
+			}
+
+			return null; // hoặc return string.Empty;
+		}
+
 		public bool IsStaffExistsByEmail(string email)
 		{
 			string query = $"SELECT COUNT(*) FROM [NhanVien] WHERE Email = '{email}'";

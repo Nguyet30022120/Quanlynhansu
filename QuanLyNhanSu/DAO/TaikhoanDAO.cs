@@ -62,6 +62,14 @@ namespace QuanLyNhanSu.DAO
 			return name;
 		
 		}
+		public string GetMaNvByUsername(string userName)
+		{
+			string maNV = DataProvider.Instance.ExcuteScalar("SELECT nv.Ma_NV FROM [dbo].[NhanVien] nv INNER JOIN [dbo].[TaiKhoan] tk ON nv.Ma_TK = tk.Ma_TK WHERE tk.TaiKhoan = @username ;",new object[] { userName })?.ToString();
+
+			return maNV;
+		}
+
+
 
 		public bool DoiMatKhau(string username, string matKhauCu, string matKhauMoi)
 		{

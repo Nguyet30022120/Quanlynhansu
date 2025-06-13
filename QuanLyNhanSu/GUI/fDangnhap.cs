@@ -26,6 +26,7 @@ namespace QuanLyNhanSu
 			originalExitButtonColor = btn_exit.BackColor; 
 		}
 
+		#region Events
 		private void btn_login_Click(object sender, EventArgs e)
 		{
 			string userName = txb_username.Text;
@@ -58,7 +59,7 @@ namespace QuanLyNhanSu
 			}
 			else
 			{
-				MessageBox.Show("Sai tên tài khoản hoặc mật khẩu!");
+				MessageBox.Show("Sai tên tài khoản hoặc mật khẩu!", "Thông báo" ,MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 
 			bool Login(string userName1, string passWord1)
@@ -66,15 +67,24 @@ namespace QuanLyNhanSu
 				return TaikhoanDAO.Instance.Login(userName, passWord);
 			}
 		}
+		private void lb_quenmk_Click(object sender, EventArgs e)
+		{
+			fQuenmatkhau quenmatkhauForm = new fQuenmatkhau();
+			this.Hide();
+			quenmatkhauForm.ShowDialog();
+			this.Show();
+		}
 
 		private void btn_exit_Click(object sender, EventArgs e)
 		{
 			Application.Exit();
 		}
+		#endregion
+
+		#region Hovers
 		private void btn_login_MouseEnter(object sender, EventArgs e)
 		{
-			// Add logic here if needed, or leave empty if no specific behavior is required
-			btn_login.BackColor = System.Drawing.Color.LightBlue; // Example: Change button color on hover
+			btn_login.BackColor = System.Drawing.Color.LightBlue; 
 		}
 		private void btn_login_MouseLeave(object sender, EventArgs e)
 		{
@@ -93,14 +103,9 @@ namespace QuanLyNhanSu
 		{
 			txb_password.UseSystemPasswordChar = !chb_hienmk.Checked;
 		}
+		#endregion
 
-		private void lb_quenmk_Click(object sender, EventArgs e)
-		{
-			fQuenmatkhau quenmatkhauForm = new fQuenmatkhau();
-			this.Hide();
-			quenmatkhauForm.ShowDialog();
-			this.Show();
-		}
+
 
 
 	}

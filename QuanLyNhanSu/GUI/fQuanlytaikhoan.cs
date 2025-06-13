@@ -14,10 +14,12 @@ namespace QuanLyNhanSu
 {
 	public partial class fQuanlytaikhoan : Form
 	{
+		private Color originalCloseButtonColor;
 		public fQuanlytaikhoan(string maTK)
 		{
 			InitializeComponent();
 			LoadDataUser(maTK);
+			originalCloseButtonColor = btn_dongtaikhoan.BackColor;
 		}
 
 		void LoadDataUser(string maTK)
@@ -29,10 +31,10 @@ namespace QuanLyNhanSu
 				NguoidungDTO user = data[0];
 				txb_cccd.Text = user.CCCD;
 				txb_manhanvien.Text = user.MaNV;
-				txb_tennv.Text = user.TenNV;
+				txb_tennhanvien.Text = user.TenNV;
 				txb_chucvu.Text = user.ChucVu;
 				txb_cuahang.Text = user.CuaHang;
-				txb_matk.Text = user.MaTK;
+				txb_mataikhoan.Text = user.MaTK;
 				txb_taikhoan.Text = user.TaiKhoan;
 				txb_vaitro.Text = user.VaiTro;
 				txb_motaquyenhan.Text = user.MoTaQuyenHan;
@@ -45,13 +47,26 @@ namespace QuanLyNhanSu
 			}
 			else
 			{
-				MessageBox.Show("No data found for the given username.");
+				MessageBox.Show("Không tìm thấy thông tin nhân viên", "Thông báo", MessageBoxButtons.OK,MessageBoxIcon.Error);
 			}
 		}
+		#region Hovers
+		private void btn_dongtaikhoan_MouseEnter(object sender, EventArgs e)
+		{
+			btn_dongtaikhoan.BackColor = Color.LightBlue;
+		}
+		private void btn_dongtaikhoan_MouseLeave(object sender, EventArgs e)
+		{
+			btn_dongtaikhoan.BackColor = originalCloseButtonColor;
+		}
+		#endregion
+
+		#region Events
 
 		private void btn_dongtaikhoan_Click(object sender, EventArgs e)
 		{
 			this.Close();
 		}
+		#endregion
 	}
 }

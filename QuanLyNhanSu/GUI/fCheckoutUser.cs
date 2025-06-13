@@ -19,19 +19,22 @@ namespace QuanLyNhanSu.GUI
 		private Color originalSearchButtonColor;
 
 		BindingSource checkoutList = new BindingSource();
-		public fCheckoutUser()
+		public fCheckoutUser(string manv)
 		{
 			InitializeComponent();
+			txb_manhanvien.Text = manv;
 			lb_giocheckout.Text = DateTime.Now.ToLongTimeString();
 			giocheckout.Start();
 			dgv_checkout.DataSource = checkoutList;
 			var col = dgv_checkout.Columns["GioCheckOut"];
 			if (col != null)
 				col.DefaultCellStyle.Format = "HH:mm:ss";
+			LoadCheckOut(manv);
 			//originalSearchButtonColor = btn_timnhanvien.BackColor;
 			originalAddButtonColor = btn_checkout.BackColor;
 			originalDeleteButtonColor = btn_xoacheckout.BackColor;
 			originalCloseButtonColor = btn_dongcheckout.BackColor;
+			LoadTenNV();
 		}
 
 		private void giocheckout_Tick(object sender, EventArgs e)

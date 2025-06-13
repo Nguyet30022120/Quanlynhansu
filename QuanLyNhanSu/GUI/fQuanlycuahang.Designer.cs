@@ -30,7 +30,7 @@
 		{
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-			this.pn_phongban = new System.Windows.Forms.Panel();
+			this.pn_cuahang = new System.Windows.Forms.Panel();
 			this.lb_goiy = new System.Windows.Forms.Label();
 			this.txb_timcuahang = new System.Windows.Forms.TextBox();
 			this.btn_dongcuahang = new System.Windows.Forms.Button();
@@ -46,28 +46,28 @@
 			this.MaCH = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TenCH = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.pn_phongban.SuspendLayout();
+			this.pn_cuahang.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_cuahang)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// pn_phongban
+			// pn_cuahang
 			// 
-			this.pn_phongban.BackColor = System.Drawing.Color.BlanchedAlmond;
-			this.pn_phongban.Controls.Add(this.lb_goiy);
-			this.pn_phongban.Controls.Add(this.txb_timcuahang);
-			this.pn_phongban.Controls.Add(this.btn_dongcuahang);
-			this.pn_phongban.Controls.Add(this.txb_tencuahang);
-			this.pn_phongban.Controls.Add(this.btn_timcuahang);
-			this.pn_phongban.Controls.Add(this.btn_xoacuahang);
-			this.pn_phongban.Controls.Add(this.btn_suacuahang);
-			this.pn_phongban.Controls.Add(this.btn_themcuahang);
-			this.pn_phongban.Controls.Add(this.lb_diachi);
-			this.pn_phongban.Controls.Add(this.lb_tencuahang);
-			this.pn_phongban.Controls.Add(this.txb_diachi);
-			this.pn_phongban.Location = new System.Drawing.Point(7, 3);
-			this.pn_phongban.Name = "pn_phongban";
-			this.pn_phongban.Size = new System.Drawing.Size(1471, 178);
-			this.pn_phongban.TabIndex = 0;
+			this.pn_cuahang.BackColor = System.Drawing.Color.BlanchedAlmond;
+			this.pn_cuahang.Controls.Add(this.lb_goiy);
+			this.pn_cuahang.Controls.Add(this.txb_timcuahang);
+			this.pn_cuahang.Controls.Add(this.btn_dongcuahang);
+			this.pn_cuahang.Controls.Add(this.txb_tencuahang);
+			this.pn_cuahang.Controls.Add(this.btn_timcuahang);
+			this.pn_cuahang.Controls.Add(this.btn_xoacuahang);
+			this.pn_cuahang.Controls.Add(this.btn_suacuahang);
+			this.pn_cuahang.Controls.Add(this.btn_themcuahang);
+			this.pn_cuahang.Controls.Add(this.lb_diachi);
+			this.pn_cuahang.Controls.Add(this.lb_tencuahang);
+			this.pn_cuahang.Controls.Add(this.txb_diachi);
+			this.pn_cuahang.Location = new System.Drawing.Point(7, 3);
+			this.pn_cuahang.Name = "pn_cuahang";
+			this.pn_cuahang.Size = new System.Drawing.Size(1471, 178);
+			this.pn_cuahang.TabIndex = 0;
 			// 
 			// lb_goiy
 			// 
@@ -82,7 +82,7 @@
 			// txb_timcuahang
 			// 
 			this.txb_timcuahang.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_timcuahang.Location = new System.Drawing.Point(12, 20);
+			this.txb_timcuahang.Location = new System.Drawing.Point(12, 16);
 			this.txb_timcuahang.Name = "txb_timcuahang";
 			this.txb_timcuahang.Size = new System.Drawing.Size(1209, 27);
 			this.txb_timcuahang.TabIndex = 10;
@@ -249,11 +249,12 @@
 			this.BackColor = System.Drawing.Color.BlanchedAlmond;
 			this.ClientSize = new System.Drawing.Size(1482, 778);
 			this.Controls.Add(this.dgv_cuahang);
-			this.Controls.Add(this.pn_phongban);
+			this.Controls.Add(this.pn_cuahang);
 			this.Name = "fQuanlycuahang";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Cửa hàng";
-			this.pn_phongban.ResumeLayout(false);
-			this.pn_phongban.PerformLayout();
+			this.pn_cuahang.ResumeLayout(false);
+			this.pn_cuahang.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_cuahang)).EndInit();
 			this.ResumeLayout(false);
 
@@ -261,7 +262,7 @@
 
 		#endregion
 
-		private System.Windows.Forms.Panel pn_phongban;
+		private System.Windows.Forms.Panel pn_cuahang;
 		private System.Windows.Forms.DataGridView dgv_cuahang;
 		private System.Windows.Forms.TextBox txb_diachi;
 		private System.Windows.Forms.TextBox txb_tencuahang;

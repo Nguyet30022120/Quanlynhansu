@@ -79,21 +79,22 @@ namespace QuanLyNhanSu.GUI
 
 				if (KhenthuongkyluatDAO.Instance.InsertCommendation(manv, noidung,hinhthuc,thoigian))
 				{
-					MessageBox.Show("Thêm khen thưởng/kỷ luật thành công", "Thông báo");
+					MessageBox.Show("Thêm khen thưởng/kỷ luật thành công", "Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Information);
 					LoadCommendation(manv);
 				}
 				else
 				{
-					MessageBox.Show("Thêm khen thưởng/kỷ luật thất bại", "Thông báo");
+					MessageBox.Show("Thêm khen thưởng/kỷ luật thành công", "Thông báo",MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Hãy nhập mã nhân viên!", "Thông báo");
+				MessageBox.Show("Không tìm thấy mã nhân viên trong hệ thống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 			finally
 			{
 				LoadCommendation(manv);
+				LoadCbHinhThuc();
 			}
 		}
 
@@ -110,20 +111,21 @@ namespace QuanLyNhanSu.GUI
 
 				if (KhenthuongkyluatDAO.Instance.UpdateCommendation(maktkl,noidung,hinhthuc,thoigian))
 				{
-					MessageBox.Show("Sửa khen thưởng/kỷ luật thành công.", "Thông báo");
+					MessageBox.Show("Sửa khen thưởng/kỷ luật thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
 				else
 				{
-					MessageBox.Show("Sửa khen thưởng/kỷ luật thất bại.", "Thông báo");
+					MessageBox.Show("Sửa khen thưởng/kỷ luật thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
 				LoadCommendation(manv);
+				LoadCbHinhThuc();
 			}
 		}
 
@@ -135,20 +137,21 @@ namespace QuanLyNhanSu.GUI
 				string matd = dgv_khenthuongkyluat.CurrentRow.Cells["MaKTKL"].Value.ToString(); ;
 				if (KhenthuongkyluatDAO.Instance.DeleteCommendation(matd))
 				{
-					MessageBox.Show("Xóa khen thưởng/kỷ luật thành công.", "Thông báo");
+					MessageBox.Show("Xóa khen thưởng/kỷ luật thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
 				else
 				{
-					MessageBox.Show("Xóa khen thưởng/kỷ luật thất bại.", "Thông báo");
+					MessageBox.Show("Xóa khen thưởng/kỷ luật thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
 				LoadCommendation(manv);
+				LoadCbHinhThuc();
 			}
 		}
 
@@ -200,6 +203,7 @@ namespace QuanLyNhanSu.GUI
 			btn_dongkhenthuongkyluat.BackColor = originalCloseButtonColor;
 		}
 		#endregion
+
 
 	}
 }

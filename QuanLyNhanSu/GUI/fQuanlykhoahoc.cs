@@ -56,17 +56,17 @@ namespace QuanLyNhanSu.GUI
 				string mota = txb_mota.Text;
 				if (KhoahocDAO.Instance.InsertCourse(tenkh, mota))
 				{
-					MessageBox.Show("Thêm khóa học thành công", "Thông báo");
+					MessageBox.Show("Thêm khóa học thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					LoadCourse();
 				}
 				else
 				{
-					MessageBox.Show("Thêm khóa học thất bại", "Thông báo");
+					MessageBox.Show("Thêm khóa học thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
@@ -86,17 +86,17 @@ namespace QuanLyNhanSu.GUI
 
 					if (KhoahocDAO.Instance.UpdateCourse(makh, tenkh,mota))
 					{
-						MessageBox.Show("Sửa khóa học thành công.", "Thông báo");
+						MessageBox.Show("Sửa khóa học thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					}
 					else
 					{
-						MessageBox.Show("Sửa khóa học thất bại.", "Thông báo");
+						MessageBox.Show("Sửa khóa học thất bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					}
 
 				}
 				catch (Exception ex)
 				{
-					MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 				finally
 				{
@@ -116,17 +116,17 @@ namespace QuanLyNhanSu.GUI
 
 					if (KhoahocDAO.Instance.DeleteCourse(makh))
 					{
-						MessageBox.Show("Xóa khóa học thành công.", "Thông báo");
+						MessageBox.Show("Xóa khóa học thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					}
 					else
 					{
-						MessageBox.Show("Xóa khóa học thất bại.", "Thông báo");
+						MessageBox.Show("Xóa khóa học thất bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					}
 
 				}
 				catch (Exception ex)
 				{
-					MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 				finally
 				{
@@ -189,5 +189,6 @@ namespace QuanLyNhanSu.GUI
 			btn_dongkhoahoc.BackColor = originalCloseButtonColor;
 		}
 		#endregion
+
 	}
 }

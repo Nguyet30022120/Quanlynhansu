@@ -20,13 +20,19 @@ namespace QuanLyNhanSu.GUI
 		private Color originalCloseButtonColor;
 
 		BindingSource insuranceList = new BindingSource();
-		public fQuanlybaohiemUser()
+		public fQuanlybaohiemUser(string manv)
 		{
 			InitializeComponent();
 			dgv_baohiem.DataSource = insuranceList;
 			originalCloseButtonColor = btn_dongbaohiem.BackColor;
+			txb_manhanvien.Text = manv;
+			LoadTenNV(manv);
+			LoadInsurance(manv);
 		}
-
+		void LoadTenNV(string manv)
+		{
+			txb_tennhanvien.Text = NhanvienDAO.Instance.GetStaffTen(manv);
+		}
 		void BindingInsuranceData()
 		{
 
@@ -40,8 +46,8 @@ namespace QuanLyNhanSu.GUI
 			txb_tennhanvien.DataBindings.Add(new Binding("Text", dgv_baohiem.DataSource, "TenNV", true, DataSourceUpdateMode.Never));
 			txb_loaibaohiem.DataBindings.Add(new Binding("Text", dgv_baohiem.DataSource, "LoaiBH", true, DataSourceUpdateMode.Never));
 			txb_mota.DataBindings.Add(new Binding("Text", dgv_baohiem.DataSource, "MoTa", true, DataSourceUpdateMode.Never));
-			txb_ngaybatdau.DataBindings.Add(new Binding("Value", dgv_baohiem.DataSource, "NgayBD", true, DataSourceUpdateMode.Never));
-			txb_ngayketthuc.DataBindings.Add(new Binding("Value", dgv_baohiem.DataSource, "NgayKT", true, DataSourceUpdateMode.Never));
+			txb_ngaybatdau.DataBindings.Add(new Binding("Text", dgv_baohiem.DataSource, "NgayBD", true, DataSourceUpdateMode.Never));
+			txb_ngayketthuc.DataBindings.Add(new Binding("Text", dgv_baohiem.DataSource, "NgayKT", true, DataSourceUpdateMode.Never));
 			txb_tienbaohiem.DataBindings.Add(new Binding("Text", dgv_baohiem.DataSource, "TienBH", true, DataSourceUpdateMode.Never));
 		}
 		void LoadInsurance(string manv)

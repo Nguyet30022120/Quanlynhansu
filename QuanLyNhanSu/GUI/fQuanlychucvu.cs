@@ -52,17 +52,17 @@ namespace QuanLyNhanSu
 				string motachuvu = txb_motachucvu.Text;
 				if (ChucvuDAO.Instance.InsertPosition(tencv, motachuvu))
 				{
-					MessageBox.Show("Thêm chức vụ thành công","Thông báo");
+					MessageBox.Show("Thêm chức vụ thành công","Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Information);
 					LoadPosition();
 				}
 				else
 				{
-					MessageBox.Show("Thêm chức vụ thất bại", "Thông báo");
+					MessageBox.Show("Thêm chức vụ thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
@@ -81,17 +81,17 @@ namespace QuanLyNhanSu
 
 					if (ChucvuDAO.Instance.UpdatePosition(macv, tencv, motachucvu))
 					{
-						MessageBox.Show("Sửa chức vụ thành công.", "Thông báo");
+						MessageBox.Show("Sửa chức vụ thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					}
 					else
 					{
-						MessageBox.Show("Sửa chức vụ thất bại.", "Thông báo");
+						MessageBox.Show("Sửa chức vụ thất bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					}
 
 				}
 				catch (Exception ex)
 				{
-					MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 				finally
 				{
@@ -110,17 +110,17 @@ namespace QuanLyNhanSu
 
 					if (ChucvuDAO.Instance.DeletePosition(macv))
 					{
-						MessageBox.Show("Xóa chức vụ thành công.", "Thông báo");
+						MessageBox.Show("Xóa chức vụ thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					}
 					else
 					{
-						MessageBox.Show("Xóa chức vụ thất bại.", "Thông báo");
+						MessageBox.Show("Xóa chức vụ thất bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					}
 
 				}
 				catch (Exception ex)
 				{
-					MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show("Vẫn còn nhân viên có chức vụ này. Hãy đổi chức vụ cho nhân viên trước khi xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 				finally
 				{

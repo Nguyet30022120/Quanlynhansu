@@ -73,7 +73,7 @@
 			// 
 			this.lb_goiy.AutoSize = true;
 			this.lb_goiy.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_goiy.Location = new System.Drawing.Point(1023, 61);
+			this.lb_goiy.Location = new System.Drawing.Point(1036, 61);
 			this.lb_goiy.Name = "lb_goiy";
 			this.lb_goiy.Size = new System.Drawing.Size(136, 17);
 			this.lb_goiy.TabIndex = 48;
@@ -251,6 +251,7 @@
 			this.Controls.Add(this.dgv_chucvu);
 			this.Controls.Add(this.pn_chucvu);
 			this.Name = "fQuanlychucvu";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Chức vụ";
 			this.pn_chucvu.ResumeLayout(false);
 			this.pn_chucvu.PerformLayout();

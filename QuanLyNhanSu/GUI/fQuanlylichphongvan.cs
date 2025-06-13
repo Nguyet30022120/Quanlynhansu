@@ -70,11 +70,9 @@ namespace QuanLyNhanSu.GUI
 		}
 		void LoadCbDiaDiem()
 		{
-			List<string> diaDiem = new List<string>()
-			{
-				"Cửa hàng 1", "Cửa hàng 2", "Cửa hàng 3", "Cửa hàng 4", "Cửa hàng 5"
-			};
-			cb_diadiem.DataSource = diaDiem;
+			cb_diadiem.DataSource = CuahangDAO.Instance.GetListCuaHang();
+			cb_diadiem.DisplayMember = "TenCH";
+			cb_diadiem.ValueMember = "MaCH";
 		}
 		private void SetupAutoCompleteForNguoiPV()
 		{
@@ -107,12 +105,12 @@ namespace QuanLyNhanSu.GUI
 
 				if (LichphongvanDAO.Instance.InsertSchedule(mahs, nguoipv, ngaypv, thoigianpv, diadiem))
 				{
-					MessageBox.Show("Thêm lịch phỏng vấn thành công","Thông báo");
+					MessageBox.Show("Thêm lịch phỏng vấn thành công","Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Information);
 					LoadSchedule();
 				}
 				else
 				{
-					MessageBox.Show("Thêm lịch phỏng vấn thất bại", "Thông báo");
+					MessageBox.Show("Thêm lịch phỏng vấn thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
@@ -137,11 +135,11 @@ namespace QuanLyNhanSu.GUI
 
 					if (LichphongvanDAO.Instance.UpdateSchedule(mapv, nguoipv, ngaypv, thoigianpv, diadiem, trangthai))
 					{
-						MessageBox.Show("Sửa lịch phỏng vấn thành công.", "Thông báo");
+						MessageBox.Show("Sửa lịch phỏng vấn thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					}
 					else
 					{
-						MessageBox.Show("Sửa lịch phỏng vấn thất bại.", "Thông báo");
+						MessageBox.Show("Sửa lịch phỏng vấn thất bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					}
 
 				}
@@ -166,17 +164,17 @@ namespace QuanLyNhanSu.GUI
 
 					if (LichphongvanDAO.Instance.DeleteSchedule(mapv))
 					{
-						MessageBox.Show("Xóa lịch phỏng vấn thành công.", "Thông báo");
+						MessageBox.Show("Xóa lịch phỏng vấn thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					}
 					else
 					{
-						MessageBox.Show("Xóa lịch phỏng vấn thất bại.", "Thông báo");
+						MessageBox.Show("Xóa lịch phỏng vấn thất bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					}
 
 				}
 				catch (Exception ex)
 				{
-					MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show("Nhân viên này đã có kết quả phỏng vấn! Không thể xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 				finally
 				{
@@ -195,7 +193,7 @@ namespace QuanLyNhanSu.GUI
 		#region Hover
 		private void btn_findlichpv_Click(object sender, EventArgs e)
 		{
-			scheduleList.DataSource = LichphongvanDAO.Instance.SearchSchedule(txb_findlichpv.Text);
+			scheduleList.DataSource = LichphongvanDAO.Instance.SearchSchedule(txb_timlichphongvan.Text);
 		}
 		private void btn_themlichphongvan_MouseEnter(object sender, EventArgs e)
 		{

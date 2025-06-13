@@ -96,17 +96,17 @@ namespace QuanLyNhanSu.GUI
 
 				if (HosoungvienDAO.Instance.InsertProfile(hoten, tenchucvu, gioitinh, ngaysinh, tennguon, dienthoai, chitietcv, email))
 				{
-					MessageBox.Show("Thêm hồ sơ ứng viên thành công", "Thông báo");
+					MessageBox.Show("Thêm hồ sơ ứng viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					LoadProfile();
 				}
 				else
 				{
-					MessageBox.Show("Thêm hồ sơ ứng viên thất bại", "Thông báo");
+					MessageBox.Show("Thêm hồ sơ ứng viên thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
@@ -132,17 +132,17 @@ namespace QuanLyNhanSu.GUI
 
 					if (HosoungvienDAO.Instance.UpdateProfile(mahs, hoten, tenchucvu, gioitinh, ngaysinh, tennguon, dienthoai, chitietcv, email))
 					{
-						MessageBox.Show("Sửa hồ sơ ứng viên thành công", "Thông báo");
+						MessageBox.Show("Sửa hồ sơ ứng viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					}
 					else
 					{
-						MessageBox.Show("Sửa hồ sơ ứng viên thất bại", "Thông báo");
+						MessageBox.Show("Sửa hồ sơ ứng viên thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					}
 
 				}
 				catch (Exception ex)
 				{
-					MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 				finally
 				{
@@ -162,17 +162,17 @@ namespace QuanLyNhanSu.GUI
 
 					if (HosoungvienDAO.Instance.DeleteProfile(mahs))
 					{
-						MessageBox.Show("Xóa hồ sơ thành công", "Thông báo");
+						MessageBox.Show("Xóa hồ sơ thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					}
 					else
 					{
-						MessageBox.Show("Xóa hồ sơ thất bại", "Thông báo");
+						MessageBox.Show("Xóa hồ sơ thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					}
 
 				}
 				catch (Exception ex)
 				{
-					MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show("Ứng viên này đã được tiếp nhận! Hãy lưu trữ hồ sơ của ứng viên!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 				finally
 				{

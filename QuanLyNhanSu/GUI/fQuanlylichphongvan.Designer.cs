@@ -28,8 +28,8 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.lb_tenungvien = new System.Windows.Forms.Label();
 			this.lb_ngayphongvan = new System.Windows.Forms.Label();
 			this.lb_giophongvan = new System.Windows.Forms.Label();
@@ -41,18 +41,6 @@
 			this.dtp_giophongvan = new System.Windows.Forms.DateTimePicker();
 			this.txb_nguoiphongvan = new System.Windows.Forms.TextBox();
 			this.dgv_lichphongvan = new System.Windows.Forms.DataGridView();
-			this.btn_themlichphongvan = new System.Windows.Forms.Button();
-			this.btn_sualichphongvan = new System.Windows.Forms.Button();
-			this.btn_xoalichphongvan = new System.Windows.Forms.Button();
-			this.btn_donglichphongvan = new System.Windows.Forms.Button();
-			this.txb_findlichpv = new System.Windows.Forms.TextBox();
-			this.btn_timlichphongvan = new System.Windows.Forms.Button();
-			this.cb_diadiem = new System.Windows.Forms.ComboBox();
-			this.cb_trangthai = new System.Windows.Forms.ComboBox();
-			this.pn_lichphongvan = new System.Windows.Forms.Panel();
-			this.lb_goiy = new System.Windows.Forms.Label();
-			this.txb_mahoso = new System.Windows.Forms.TextBox();
-			this.lb_mahoso = new System.Windows.Forms.Label();
 			this.MaPV = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TenUV = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.MaHS = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,6 +49,18 @@
 			this.NgayPV = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.DiaDiem = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.btn_themlichphongvan = new System.Windows.Forms.Button();
+			this.btn_sualichphongvan = new System.Windows.Forms.Button();
+			this.btn_xoalichphongvan = new System.Windows.Forms.Button();
+			this.btn_donglichphongvan = new System.Windows.Forms.Button();
+			this.txb_timlichphongvan = new System.Windows.Forms.TextBox();
+			this.btn_timlichphongvan = new System.Windows.Forms.Button();
+			this.cb_diadiem = new System.Windows.Forms.ComboBox();
+			this.cb_trangthai = new System.Windows.Forms.ComboBox();
+			this.pn_lichphongvan = new System.Windows.Forms.Panel();
+			this.lb_goiy = new System.Windows.Forms.Label();
+			this.txb_mahoso = new System.Windows.Forms.TextBox();
+			this.lb_mahoso = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_lichphongvan)).BeginInit();
 			this.pn_lichphongvan.SuspendLayout();
 			this.SuspendLayout();
@@ -162,17 +162,17 @@
 			// 
 			// dgv_lichphongvan
 			// 
-			dataGridViewCellStyle3.BackColor = System.Drawing.Color.Tan;
-			this.dgv_lichphongvan.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.Tan;
+			this.dgv_lichphongvan.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
 			this.dgv_lichphongvan.BackgroundColor = System.Drawing.Color.White;
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgv_lichphongvan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgv_lichphongvan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.dgv_lichphongvan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgv_lichphongvan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaPV,
@@ -189,6 +189,71 @@
 			this.dgv_lichphongvan.RowTemplate.Height = 24;
 			this.dgv_lichphongvan.Size = new System.Drawing.Size(1477, 557);
 			this.dgv_lichphongvan.TabIndex = 32;
+			this.dgv_lichphongvan.SelectionChanged += new System.EventHandler(this.dgv_lichphongvan_SelectionChanged);
+			// 
+			// MaPV
+			// 
+			this.MaPV.DataPropertyName = "MaPV";
+			this.MaPV.HeaderText = "Mã phỏng vấn";
+			this.MaPV.MinimumWidth = 6;
+			this.MaPV.Name = "MaPV";
+			this.MaPV.Width = 125;
+			// 
+			// TenUV
+			// 
+			this.TenUV.DataPropertyName = "TenUV";
+			this.TenUV.HeaderText = "Tên ứng viên";
+			this.TenUV.MinimumWidth = 6;
+			this.TenUV.Name = "TenUV";
+			this.TenUV.Width = 125;
+			// 
+			// MaHS
+			// 
+			this.MaHS.DataPropertyName = "MaHS";
+			this.MaHS.HeaderText = "Mã hồ sơ";
+			this.MaHS.MinimumWidth = 6;
+			this.MaHS.Name = "MaHS";
+			this.MaHS.Width = 75;
+			// 
+			// NguoiPV
+			// 
+			this.NguoiPV.DataPropertyName = "NguoiPV";
+			this.NguoiPV.HeaderText = "Người phỏng vấn";
+			this.NguoiPV.MinimumWidth = 6;
+			this.NguoiPV.Name = "NguoiPV";
+			this.NguoiPV.Width = 200;
+			// 
+			// ThoiGianPV
+			// 
+			this.ThoiGianPV.DataPropertyName = "ThoiGianPV";
+			this.ThoiGianPV.HeaderText = "Giờ phỏng vấn";
+			this.ThoiGianPV.MinimumWidth = 6;
+			this.ThoiGianPV.Name = "ThoiGianPV";
+			this.ThoiGianPV.Width = 75;
+			// 
+			// NgayPV
+			// 
+			this.NgayPV.DataPropertyName = "NgayPV";
+			this.NgayPV.HeaderText = "Ngày phỏng vấn";
+			this.NgayPV.MinimumWidth = 6;
+			this.NgayPV.Name = "NgayPV";
+			this.NgayPV.Width = 75;
+			// 
+			// DiaDiem
+			// 
+			this.DiaDiem.DataPropertyName = "DiaDiem";
+			this.DiaDiem.HeaderText = "Địa điểm";
+			this.DiaDiem.MinimumWidth = 6;
+			this.DiaDiem.Name = "DiaDiem";
+			this.DiaDiem.Width = 125;
+			// 
+			// TrangThai
+			// 
+			this.TrangThai.DataPropertyName = "TrangThai";
+			this.TrangThai.HeaderText = "Trạng thái";
+			this.TrangThai.MinimumWidth = 6;
+			this.TrangThai.Name = "TrangThai";
+			this.TrangThai.Width = 125;
 			// 
 			// btn_themlichphongvan
 			// 
@@ -246,13 +311,13 @@
 			this.btn_donglichphongvan.MouseEnter += new System.EventHandler(this.btn_donglichphongvan_MouseEnter);
 			this.btn_donglichphongvan.MouseLeave += new System.EventHandler(this.btn_donglichphongvan_MouseLeave);
 			// 
-			// txb_findlichpv
+			// txb_timlichphongvan
 			// 
-			this.txb_findlichpv.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_findlichpv.Location = new System.Drawing.Point(34, 180);
-			this.txb_findlichpv.Name = "txb_findlichpv";
-			this.txb_findlichpv.Size = new System.Drawing.Size(1300, 27);
-			this.txb_findlichpv.TabIndex = 38;
+			this.txb_timlichphongvan.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txb_timlichphongvan.Location = new System.Drawing.Point(34, 180);
+			this.txb_timlichphongvan.Name = "txb_timlichphongvan";
+			this.txb_timlichphongvan.Size = new System.Drawing.Size(1300, 27);
+			this.txb_timlichphongvan.TabIndex = 38;
 			// 
 			// btn_timlichphongvan
 			// 
@@ -303,7 +368,7 @@
 			this.pn_lichphongvan.Controls.Add(this.btn_timlichphongvan);
 			this.pn_lichphongvan.Controls.Add(this.lb_tenungvien);
 			this.pn_lichphongvan.Controls.Add(this.dtp_giophongvan);
-			this.pn_lichphongvan.Controls.Add(this.txb_findlichpv);
+			this.pn_lichphongvan.Controls.Add(this.txb_timlichphongvan);
 			this.pn_lichphongvan.Controls.Add(this.lb_trangthai);
 			this.pn_lichphongvan.Controls.Add(this.lb_giophongvan);
 			this.pn_lichphongvan.Controls.Add(this.lb_nguoiphongvan);
@@ -313,7 +378,6 @@
 			this.pn_lichphongvan.Name = "pn_lichphongvan";
 			this.pn_lichphongvan.Size = new System.Drawing.Size(1477, 220);
 			this.pn_lichphongvan.TabIndex = 42;
-			dgv_lichphongvan.SelectionChanged += dgv_lichphongvan_SelectionChanged;
 			// 
 			// lb_goiy
 			// 
@@ -343,69 +407,6 @@
 			this.lb_mahoso.TabIndex = 42;
 			this.lb_mahoso.Text = "Mã hồ sơ";
 			// 
-			// MaPV
-			// 
-			this.MaPV.DataPropertyName = "MaPV";
-			this.MaPV.HeaderText = "Mã phỏng vấn";
-			this.MaPV.MinimumWidth = 6;
-			this.MaPV.Name = "MaPV";
-			this.MaPV.Width = 125;
-			// 
-			// TenUV
-			// 
-			this.TenUV.DataPropertyName = "TenUV";
-			this.TenUV.HeaderText = "Tên ứng viên";
-			this.TenUV.MinimumWidth = 6;
-			this.TenUV.Name = "TenUV";
-			this.TenUV.Width = 125;
-			// 
-			// MaHS
-			// 
-			this.MaHS.DataPropertyName = "MaHS";
-			this.MaHS.HeaderText = "Mã hồ sơ";
-			this.MaHS.MinimumWidth = 6;
-			this.MaHS.Name = "MaHS";
-			this.MaHS.Width = 75;
-			// 
-			// NguoiPV
-			// 
-			this.NguoiPV.DataPropertyName = "NguoiPV";
-			this.NguoiPV.HeaderText = "Người phỏng vấn";
-			this.NguoiPV.MinimumWidth = 6;
-			this.NguoiPV.Name = "NguoiPV";
-			this.NguoiPV.Width = 200;
-			// 
-			// ThoiGianPV
-			// 
-			this.ThoiGianPV.DataPropertyName = "ThoiGianPV";
-			this.ThoiGianPV.HeaderText = "Giờ phỏng vấn";
-			this.ThoiGianPV.MinimumWidth = 6;
-			this.ThoiGianPV.Name = "ThoiGianPV";
-			this.ThoiGianPV.Width = 75;
-			// 
-			// NgayPV
-			// 
-			this.NgayPV.DataPropertyName = "NgayPV";
-			this.NgayPV.HeaderText = "Ngày phỏng vấn";
-			this.NgayPV.MinimumWidth = 6;
-			this.NgayPV.Name = "NgayPV";
-			this.NgayPV.Width = 75;
-			// 
-			// DiaDiem
-			// 
-			this.DiaDiem.DataPropertyName = "DiaDiem";
-			this.DiaDiem.HeaderText = "Địa điểm";
-			this.DiaDiem.MinimumWidth = 6;
-			this.DiaDiem.Name = "DiaDiem";
-			// 
-			// TrangThai
-			// 
-			this.TrangThai.DataPropertyName = "TrangThai";
-			this.TrangThai.HeaderText = "Trạng thái";
-			this.TrangThai.MinimumWidth = 6;
-			this.TrangThai.Name = "TrangThai";
-			this.TrangThai.Width = 125;
-			// 
 			// fQuanlylichphongvan
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -415,6 +416,7 @@
 			this.Controls.Add(this.pn_lichphongvan);
 			this.Controls.Add(this.dgv_lichphongvan);
 			this.Name = "fQuanlylichphongvan";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Lịch phỏng vấn";
 			((System.ComponentModel.ISupportInitialize)(this.dgv_lichphongvan)).EndInit();
 			this.pn_lichphongvan.ResumeLayout(false);
@@ -439,7 +441,7 @@
 		private System.Windows.Forms.Button btn_sualichphongvan;
 		private System.Windows.Forms.Button btn_xoalichphongvan;
 		private System.Windows.Forms.Button btn_donglichphongvan;
-		private System.Windows.Forms.TextBox txb_findlichpv;
+		private System.Windows.Forms.TextBox txb_timlichphongvan;
 		private System.Windows.Forms.Button btn_timlichphongvan;
 		private System.Windows.Forms.ComboBox cb_diadiem;
 		private System.Windows.Forms.ComboBox cb_trangthai;

@@ -91,7 +91,6 @@
 			this.btn_timnhanvien.Click += new System.EventHandler(this.btn_findtd_Click);
 			this.btn_timnhanvien.MouseEnter += new System.EventHandler(this.btn_timnhanvien_MouseEnter);
 			this.btn_timnhanvien.MouseLeave += new System.EventHandler(this.btn_timnhanvien_MouseLeave);
-
 			// 
 			// lb_manhanvien
 			// 
@@ -330,6 +329,7 @@
 			this.Controls.Add(this.dgv_trinhdo);
 			this.Controls.Add(this.pn_trinhdo);
 			this.Name = "fQuanlytrinhdochuyenmon";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Trình độ ";
 			this.pn_trinhdo.ResumeLayout(false);
 			this.pn_trinhdo.PerformLayout();

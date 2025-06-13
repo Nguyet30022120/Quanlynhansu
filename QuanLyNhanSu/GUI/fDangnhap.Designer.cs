@@ -169,7 +169,8 @@
 			this.Controls.Add(this.lb_username);
 			this.Controls.Add(this.txb_username);
 			this.Name = "fDangnhap";
-			this.Text = "Login";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.Text = "Đăng nhập";
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

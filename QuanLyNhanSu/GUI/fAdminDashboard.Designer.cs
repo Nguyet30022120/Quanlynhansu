@@ -32,26 +32,26 @@
 			this.pn_mainmenu = new System.Windows.Forms.Panel();
 			this.btn_lichsudangnhap = new System.Windows.Forms.Button();
 			this.btn_quanlynguoidung = new System.Windows.Forms.Button();
-			this.pictureBox3 = new System.Windows.Forms.PictureBox();
-			this.lb_namenv = new System.Windows.Forms.Label();
+			this.pb_nguoidung = new System.Windows.Forms.PictureBox();
+			this.lb_tennhanvien = new System.Windows.Forms.Label();
 			this.btn_dangxuat = new System.Windows.Forms.Button();
 			this.btn_quanlytaikhoan = new System.Windows.Forms.Button();
 			this.btn_doimatkhau = new System.Windows.Forms.Button();
 			this.panel2 = new System.Windows.Forms.Panel();
-			this.pictureBox2 = new System.Windows.Forms.PictureBox();
-			this.tc = new System.Windows.Forms.TabControl();
+			this.pb_logo = new System.Windows.Forms.PictureBox();
+			this.tc_danhmuc = new System.Windows.Forms.TabControl();
 			this.tp_quanlydanhmuc = new System.Windows.Forms.TabPage();
 			this.btn_quanlychucvu = new System.Windows.Forms.Button();
-			this.btn_quanlydaotaovaphattriennhanvien = new System.Windows.Forms.Button();
-			this.btn_quanlyhopdonglaodong = new System.Windows.Forms.Button();
-			this.btn_quanlytrinhdochuyenmon = new System.Windows.Forms.Button();
+			this.btn_quanlydaotao = new System.Windows.Forms.Button();
+			this.btn_quanlyhopdong = new System.Windows.Forms.Button();
+			this.btn_quanlytrinhdo = new System.Windows.Forms.Button();
 			this.btn_quanlythongtinnhanvien = new System.Windows.Forms.Button();
-			this.btn_quanlyphongban = new System.Windows.Forms.Button();
+			this.btn_quanlycuahang = new System.Windows.Forms.Button();
 			this.tp_baocaothongke = new System.Windows.Forms.TabPage();
 			this.btn_thongketuyendung = new System.Windows.Forms.Button();
 			this.btn_baocaotongquannhansu = new System.Windows.Forms.Button();
 			this.btn_thongkeluotnghiphepcuanhanvien = new System.Windows.Forms.Button();
-			this.btn_thongkethongtinkhenthuongkyluat = new System.Windows.Forms.Button();
+			this.btn_thongkekhenthuongkyluat = new System.Windows.Forms.Button();
 			this.tp_quanlychamcongvathoigianlamviec = new System.Windows.Forms.TabPage();
 			this.btn_quanlybangcong = new System.Windows.Forms.Button();
 			this.btn_duyetnghiphep = new System.Windows.Forms.Button();
@@ -59,20 +59,20 @@
 			this.btn_checkin = new System.Windows.Forms.Button();
 			this.btn_checkout = new System.Windows.Forms.Button();
 			this.tb_quanlytuyendung = new System.Windows.Forms.TabPage();
-			this.btn_quanlylichpv = new System.Windows.Forms.Button();
+			this.btn_quanlylichphongvan = new System.Windows.Forms.Button();
 			this.btn_quanlyketquaphongvan = new System.Windows.Forms.Button();
 			this.btn_quanlynguonungvien = new System.Windows.Forms.Button();
 			this.btn_quanlyhosoungvien = new System.Windows.Forms.Button();
 			this.tp_quanlytienluongvaphucloi = new System.Windows.Forms.TabPage();
-			this.btn_qlkhenthuongkyluat = new System.Windows.Forms.Button();
+			this.btn_quanlykhenthuongkyluat = new System.Windows.Forms.Button();
 			this.btn_quanlyphucap = new System.Windows.Forms.Button();
 			this.btn_quanlybangluong = new System.Windows.Forms.Button();
 			this.btn_quanlybaohiem = new System.Windows.Forms.Button();
 			this.pn_mainmenu.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pb_nguoidung)).BeginInit();
 			this.panel2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-			this.tc.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pb_logo)).BeginInit();
+			this.tc_danhmuc.SuspendLayout();
 			this.tp_quanlydanhmuc.SuspendLayout();
 			this.tp_baocaothongke.SuspendLayout();
 			this.tp_quanlychamcongvathoigianlamviec.SuspendLayout();
@@ -86,8 +86,8 @@
 			this.pn_mainmenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.pn_mainmenu.Controls.Add(this.btn_lichsudangnhap);
 			this.pn_mainmenu.Controls.Add(this.btn_quanlynguoidung);
-			this.pn_mainmenu.Controls.Add(this.pictureBox3);
-			this.pn_mainmenu.Controls.Add(this.lb_namenv);
+			this.pn_mainmenu.Controls.Add(this.pb_nguoidung);
+			this.pn_mainmenu.Controls.Add(this.lb_tennhanvien);
 			this.pn_mainmenu.Controls.Add(this.btn_dangxuat);
 			this.pn_mainmenu.Controls.Add(this.btn_quanlytaikhoan);
 			this.pn_mainmenu.Controls.Add(this.btn_doimatkhau);
@@ -107,6 +107,8 @@
 			this.btn_lichsudangnhap.Text = "Lịch sử đăng nhập";
 			this.btn_lichsudangnhap.UseVisualStyleBackColor = false;
 			this.btn_lichsudangnhap.Click += new System.EventHandler(this.btn_lichsudangnhap_Click);
+			this.btn_lichsudangnhap.MouseEnter += new System.EventHandler(this.btn_lichsudangnhap_MouseEnter);
+			this.btn_lichsudangnhap.MouseLeave += new System.EventHandler(this.btn_lichsudangnhap_MouseLeave);
 			// 
 			// btn_quanlynguoidung
 			// 
@@ -122,25 +124,25 @@
 			this.btn_quanlynguoidung.MouseEnter += new System.EventHandler(this.btn_quanlynguoidung_MouseEnter);
 			this.btn_quanlynguoidung.MouseLeave += new System.EventHandler(this.btn_quanlynguoidung_MouseLeave);
 			// 
-			// pictureBox3
+			// pb_nguoidung
 			// 
-			this.pictureBox3.BackColor = System.Drawing.Color.BlanchedAlmond;
-			this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
-			this.pictureBox3.Location = new System.Drawing.Point(68, 34);
-			this.pictureBox3.Name = "pictureBox3";
-			this.pictureBox3.Size = new System.Drawing.Size(200, 190);
-			this.pictureBox3.TabIndex = 5;
-			this.pictureBox3.TabStop = false;
+			this.pb_nguoidung.BackColor = System.Drawing.Color.BlanchedAlmond;
+			this.pb_nguoidung.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pb_nguoidung.BackgroundImage")));
+			this.pb_nguoidung.Location = new System.Drawing.Point(68, 34);
+			this.pb_nguoidung.Name = "pb_nguoidung";
+			this.pb_nguoidung.Size = new System.Drawing.Size(200, 190);
+			this.pb_nguoidung.TabIndex = 5;
+			this.pb_nguoidung.TabStop = false;
 			// 
-			// lb_namenv
+			// lb_tennhanvien
 			// 
-			this.lb_namenv.AutoSize = true;
-			this.lb_namenv.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_namenv.Location = new System.Drawing.Point(39, 252);
-			this.lb_namenv.Name = "lb_namenv";
-			this.lb_namenv.Size = new System.Drawing.Size(59, 23);
-			this.lb_namenv.TabIndex = 4;
-			this.lb_namenv.Text = "label1";
+			this.lb_tennhanvien.AutoSize = true;
+			this.lb_tennhanvien.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lb_tennhanvien.Location = new System.Drawing.Point(39, 252);
+			this.lb_tennhanvien.Name = "lb_tennhanvien";
+			this.lb_tennhanvien.Size = new System.Drawing.Size(137, 23);
+			this.lb_tennhanvien.TabIndex = 4;
+			this.lb_tennhanvien.Text = "Tên người dùng";
 			// 
 			// btn_dangxuat
 			// 
@@ -188,48 +190,47 @@
 			// 
 			this.panel2.BackColor = System.Drawing.Color.BlanchedAlmond;
 			this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.panel2.Controls.Add(this.pictureBox2);
-			this.panel2.Controls.Add(this.tc);
+			this.panel2.Controls.Add(this.pb_logo);
+			this.panel2.Controls.Add(this.tc_danhmuc);
 			this.panel2.Location = new System.Drawing.Point(361, 4);
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(1011, 844);
 			this.panel2.TabIndex = 1;
 			// 
-			// pictureBox2
+			// pb_logo
 			// 
-			this.pictureBox2.BackColor = System.Drawing.Color.Black;
-			this.pictureBox2.BackgroundImage = global::QuanLyNhanSu.Properties.Resources.logo3;
-			this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Default;
-			this.pictureBox2.Location = new System.Drawing.Point(11, 8);
-			this.pictureBox2.Name = "pictureBox2";
-			this.pictureBox2.Size = new System.Drawing.Size(991, 279);
-			this.pictureBox2.TabIndex = 1;
-			this.pictureBox2.TabStop = false;
+			this.pb_logo.BackColor = System.Drawing.Color.Black;
+			this.pb_logo.BackgroundImage = global::QuanLyNhanSu.Properties.Resources.logo3;
+			this.pb_logo.Cursor = System.Windows.Forms.Cursors.Default;
+			this.pb_logo.Location = new System.Drawing.Point(11, 8);
+			this.pb_logo.Name = "pb_logo";
+			this.pb_logo.Size = new System.Drawing.Size(991, 279);
+			this.pb_logo.TabIndex = 1;
+			this.pb_logo.TabStop = false;
 			// 
-			// tc
+			// tc_danhmuc
 			// 
-			this.tc.Controls.Add(this.tp_quanlydanhmuc);
-			this.tc.Controls.Add(this.tp_baocaothongke);
-			this.tc.Controls.Add(this.tp_quanlychamcongvathoigianlamviec);
-			this.tc.Controls.Add(this.tb_quanlytuyendung);
-			this.tc.Controls.Add(this.tp_quanlytienluongvaphucloi);
-			this.tc.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.tc.Location = new System.Drawing.Point(11, 293);
-			this.tc.Name = "tc";
-			this.tc.SelectedIndex = 0;
-			this.tc.Size = new System.Drawing.Size(1000, 550);
-			this.tc.TabIndex = 0;
-			this.tc.SelectedIndexChanged += new System.EventHandler(this.tc_SelectedIndexChanged);
+			this.tc_danhmuc.Controls.Add(this.tp_quanlydanhmuc);
+			this.tc_danhmuc.Controls.Add(this.tp_baocaothongke);
+			this.tc_danhmuc.Controls.Add(this.tp_quanlychamcongvathoigianlamviec);
+			this.tc_danhmuc.Controls.Add(this.tb_quanlytuyendung);
+			this.tc_danhmuc.Controls.Add(this.tp_quanlytienluongvaphucloi);
+			this.tc_danhmuc.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tc_danhmuc.Location = new System.Drawing.Point(11, 293);
+			this.tc_danhmuc.Name = "tc_danhmuc";
+			this.tc_danhmuc.SelectedIndex = 0;
+			this.tc_danhmuc.Size = new System.Drawing.Size(1000, 550);
+			this.tc_danhmuc.TabIndex = 0;
 			// 
 			// tp_quanlydanhmuc
 			// 
 			this.tp_quanlydanhmuc.BackColor = System.Drawing.Color.BlanchedAlmond;
 			this.tp_quanlydanhmuc.Controls.Add(this.btn_quanlychucvu);
-			this.tp_quanlydanhmuc.Controls.Add(this.btn_quanlydaotaovaphattriennhanvien);
-			this.tp_quanlydanhmuc.Controls.Add(this.btn_quanlyhopdonglaodong);
-			this.tp_quanlydanhmuc.Controls.Add(this.btn_quanlytrinhdochuyenmon);
+			this.tp_quanlydanhmuc.Controls.Add(this.btn_quanlydaotao);
+			this.tp_quanlydanhmuc.Controls.Add(this.btn_quanlyhopdong);
+			this.tp_quanlydanhmuc.Controls.Add(this.btn_quanlytrinhdo);
 			this.tp_quanlydanhmuc.Controls.Add(this.btn_quanlythongtinnhanvien);
-			this.tp_quanlydanhmuc.Controls.Add(this.btn_quanlyphongban);
+			this.tp_quanlydanhmuc.Controls.Add(this.btn_quanlycuahang);
 			this.tp_quanlydanhmuc.Location = new System.Drawing.Point(4, 29);
 			this.tp_quanlydanhmuc.Name = "tp_quanlydanhmuc";
 			this.tp_quanlydanhmuc.Padding = new System.Windows.Forms.Padding(3);
@@ -253,53 +254,53 @@
 			this.btn_quanlychucvu.MouseEnter += new System.EventHandler(this.btn_chucvu_MouseEnter);
 			this.btn_quanlychucvu.MouseLeave += new System.EventHandler(this.btn_chucvu_MouseLeave);
 			// 
-			// btn_quanlydaotaovaphattriennhanvien
+			// btn_quanlydaotao
 			// 
-			this.btn_quanlydaotaovaphattriennhanvien.BackColor = System.Drawing.Color.Tan;
-			this.btn_quanlydaotaovaphattriennhanvien.Font = new System.Drawing.Font("Consolas", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_quanlydaotaovaphattriennhanvien.Image = global::QuanLyNhanSu.Properties.Resources.training1;
-			this.btn_quanlydaotaovaphattriennhanvien.Location = new System.Drawing.Point(656, 255);
-			this.btn_quanlydaotaovaphattriennhanvien.Name = "btn_quanlydaotaovaphattriennhanvien";
-			this.btn_quanlydaotaovaphattriennhanvien.Size = new System.Drawing.Size(325, 250);
-			this.btn_quanlydaotaovaphattriennhanvien.TabIndex = 7;
-			this.btn_quanlydaotaovaphattriennhanvien.Text = "Đào tạo nhân viên";
-			this.btn_quanlydaotaovaphattriennhanvien.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-			this.btn_quanlydaotaovaphattriennhanvien.UseVisualStyleBackColor = false;
-			this.btn_quanlydaotaovaphattriennhanvien.Click += new System.EventHandler(this.btn_quanlydaotaovaphattriennhanvien_Click);
-			this.btn_quanlydaotaovaphattriennhanvien.MouseEnter += new System.EventHandler(this.btn_daotao_MouseEnter);
-			this.btn_quanlydaotaovaphattriennhanvien.MouseLeave += new System.EventHandler(this.btn_daotao_MouseLeave);
+			this.btn_quanlydaotao.BackColor = System.Drawing.Color.Tan;
+			this.btn_quanlydaotao.Font = new System.Drawing.Font("Consolas", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_quanlydaotao.Image = global::QuanLyNhanSu.Properties.Resources.training1;
+			this.btn_quanlydaotao.Location = new System.Drawing.Point(656, 255);
+			this.btn_quanlydaotao.Name = "btn_quanlydaotao";
+			this.btn_quanlydaotao.Size = new System.Drawing.Size(325, 250);
+			this.btn_quanlydaotao.TabIndex = 7;
+			this.btn_quanlydaotao.Text = "Đào tạo nhân viên";
+			this.btn_quanlydaotao.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+			this.btn_quanlydaotao.UseVisualStyleBackColor = false;
+			this.btn_quanlydaotao.Click += new System.EventHandler(this.btn_quanlydaotaovaphattriennhanvien_Click);
+			this.btn_quanlydaotao.MouseEnter += new System.EventHandler(this.btn_daotao_MouseEnter);
+			this.btn_quanlydaotao.MouseLeave += new System.EventHandler(this.btn_daotao_MouseLeave);
 			// 
-			// btn_quanlyhopdonglaodong
+			// btn_quanlyhopdong
 			// 
-			this.btn_quanlyhopdonglaodong.BackColor = System.Drawing.Color.Tan;
-			this.btn_quanlyhopdonglaodong.Font = new System.Drawing.Font("Consolas", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_quanlyhopdonglaodong.Image = global::QuanLyNhanSu.Properties.Resources.contract2;
-			this.btn_quanlyhopdonglaodong.Location = new System.Drawing.Point(6, 255);
-			this.btn_quanlyhopdonglaodong.Name = "btn_quanlyhopdonglaodong";
-			this.btn_quanlyhopdonglaodong.Size = new System.Drawing.Size(325, 250);
-			this.btn_quanlyhopdonglaodong.TabIndex = 8;
-			this.btn_quanlyhopdonglaodong.Text = "Hợp đồng lao động";
-			this.btn_quanlyhopdonglaodong.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-			this.btn_quanlyhopdonglaodong.UseVisualStyleBackColor = false;
-			this.btn_quanlyhopdonglaodong.Click += new System.EventHandler(this.btn_quanlyhopdonglaodong_Click);
-			this.btn_quanlyhopdonglaodong.MouseEnter += new System.EventHandler(this.btn_hopdong_MouseEnter);
-			this.btn_quanlyhopdonglaodong.MouseLeave += new System.EventHandler(this.btn_hopdong_MouseLeave);
+			this.btn_quanlyhopdong.BackColor = System.Drawing.Color.Tan;
+			this.btn_quanlyhopdong.Font = new System.Drawing.Font("Consolas", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_quanlyhopdong.Image = global::QuanLyNhanSu.Properties.Resources.contract2;
+			this.btn_quanlyhopdong.Location = new System.Drawing.Point(6, 255);
+			this.btn_quanlyhopdong.Name = "btn_quanlyhopdong";
+			this.btn_quanlyhopdong.Size = new System.Drawing.Size(325, 250);
+			this.btn_quanlyhopdong.TabIndex = 8;
+			this.btn_quanlyhopdong.Text = "Hợp đồng lao động";
+			this.btn_quanlyhopdong.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+			this.btn_quanlyhopdong.UseVisualStyleBackColor = false;
+			this.btn_quanlyhopdong.Click += new System.EventHandler(this.btn_quanlyhopdonglaodong_Click);
+			this.btn_quanlyhopdong.MouseEnter += new System.EventHandler(this.btn_hopdong_MouseEnter);
+			this.btn_quanlyhopdong.MouseLeave += new System.EventHandler(this.btn_hopdong_MouseLeave);
 			// 
-			// btn_quanlytrinhdochuyenmon
+			// btn_quanlytrinhdo
 			// 
-			this.btn_quanlytrinhdochuyenmon.BackColor = System.Drawing.Color.Tan;
-			this.btn_quanlytrinhdochuyenmon.Font = new System.Drawing.Font("Consolas", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_quanlytrinhdochuyenmon.Image = global::QuanLyNhanSu.Properties.Resources.intermediate_level21;
-			this.btn_quanlytrinhdochuyenmon.Location = new System.Drawing.Point(331, 255);
-			this.btn_quanlytrinhdochuyenmon.Name = "btn_quanlytrinhdochuyenmon";
-			this.btn_quanlytrinhdochuyenmon.Size = new System.Drawing.Size(325, 250);
-			this.btn_quanlytrinhdochuyenmon.TabIndex = 9;
-			this.btn_quanlytrinhdochuyenmon.Text = "Trình độ chuyên môn";
-			this.btn_quanlytrinhdochuyenmon.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-			this.btn_quanlytrinhdochuyenmon.UseVisualStyleBackColor = false;
-			this.btn_quanlytrinhdochuyenmon.Click += new System.EventHandler(this.btn_quanlytrinhdochuyenmon_Click);
-			this.btn_quanlytrinhdochuyenmon.MouseEnter += new System.EventHandler(this.btn_trinhdo_MouseEnter);
-			this.btn_quanlytrinhdochuyenmon.MouseLeave += new System.EventHandler(this.btn_trinhdo_MouseLeave);
+			this.btn_quanlytrinhdo.BackColor = System.Drawing.Color.Tan;
+			this.btn_quanlytrinhdo.Font = new System.Drawing.Font("Consolas", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_quanlytrinhdo.Image = global::QuanLyNhanSu.Properties.Resources.intermediate_level21;
+			this.btn_quanlytrinhdo.Location = new System.Drawing.Point(331, 255);
+			this.btn_quanlytrinhdo.Name = "btn_quanlytrinhdo";
+			this.btn_quanlytrinhdo.Size = new System.Drawing.Size(325, 250);
+			this.btn_quanlytrinhdo.TabIndex = 9;
+			this.btn_quanlytrinhdo.Text = "Trình độ chuyên môn";
+			this.btn_quanlytrinhdo.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+			this.btn_quanlytrinhdo.UseVisualStyleBackColor = false;
+			this.btn_quanlytrinhdo.Click += new System.EventHandler(this.btn_quanlytrinhdochuyenmon_Click);
+			this.btn_quanlytrinhdo.MouseEnter += new System.EventHandler(this.btn_trinhdo_MouseEnter);
+			this.btn_quanlytrinhdo.MouseLeave += new System.EventHandler(this.btn_trinhdo_MouseLeave);
 			// 
 			// btn_quanlythongtinnhanvien
 			// 
@@ -317,21 +318,21 @@
 			this.btn_quanlythongtinnhanvien.MouseEnter += new System.EventHandler(this.btn_nhanvien_MouseEnter);
 			this.btn_quanlythongtinnhanvien.MouseLeave += new System.EventHandler(this.btn_nhanvien_MouseLeave);
 			// 
-			// btn_quanlyphongban
+			// btn_quanlycuahang
 			// 
-			this.btn_quanlyphongban.BackColor = System.Drawing.Color.Tan;
-			this.btn_quanlyphongban.Font = new System.Drawing.Font("Consolas", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_quanlyphongban.Image = global::QuanLyNhanSu.Properties.Resources.office1;
-			this.btn_quanlyphongban.Location = new System.Drawing.Point(331, 6);
-			this.btn_quanlyphongban.Name = "btn_quanlyphongban";
-			this.btn_quanlyphongban.Size = new System.Drawing.Size(325, 250);
-			this.btn_quanlyphongban.TabIndex = 5;
-			this.btn_quanlyphongban.Text = "Cửa hàng";
-			this.btn_quanlyphongban.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-			this.btn_quanlyphongban.UseVisualStyleBackColor = false;
-			this.btn_quanlyphongban.Click += new System.EventHandler(this.btn_quanlyphongban_Click);
-			this.btn_quanlyphongban.MouseEnter += new System.EventHandler(this.btn_phongban_MouseEnter);
-			this.btn_quanlyphongban.MouseLeave += new System.EventHandler(this.btn_phongban_MouseLeave);
+			this.btn_quanlycuahang.BackColor = System.Drawing.Color.Tan;
+			this.btn_quanlycuahang.Font = new System.Drawing.Font("Consolas", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_quanlycuahang.Image = global::QuanLyNhanSu.Properties.Resources.office1;
+			this.btn_quanlycuahang.Location = new System.Drawing.Point(331, 6);
+			this.btn_quanlycuahang.Name = "btn_quanlycuahang";
+			this.btn_quanlycuahang.Size = new System.Drawing.Size(325, 250);
+			this.btn_quanlycuahang.TabIndex = 5;
+			this.btn_quanlycuahang.Text = "Cửa hàng";
+			this.btn_quanlycuahang.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+			this.btn_quanlycuahang.UseVisualStyleBackColor = false;
+			this.btn_quanlycuahang.Click += new System.EventHandler(this.btn_quanlyphongban_Click);
+			this.btn_quanlycuahang.MouseEnter += new System.EventHandler(this.btn_phongban_MouseEnter);
+			this.btn_quanlycuahang.MouseLeave += new System.EventHandler(this.btn_phongban_MouseLeave);
 			// 
 			// tp_baocaothongke
 			// 
@@ -339,7 +340,7 @@
 			this.tp_baocaothongke.Controls.Add(this.btn_thongketuyendung);
 			this.tp_baocaothongke.Controls.Add(this.btn_baocaotongquannhansu);
 			this.tp_baocaothongke.Controls.Add(this.btn_thongkeluotnghiphepcuanhanvien);
-			this.tp_baocaothongke.Controls.Add(this.btn_thongkethongtinkhenthuongkyluat);
+			this.tp_baocaothongke.Controls.Add(this.btn_thongkekhenthuongkyluat);
 			this.tp_baocaothongke.Location = new System.Drawing.Point(4, 29);
 			this.tp_baocaothongke.Name = "tp_baocaothongke";
 			this.tp_baocaothongke.Padding = new System.Windows.Forms.Padding(3);
@@ -395,21 +396,21 @@
 			this.btn_thongkeluotnghiphepcuanhanvien.MouseEnter += new System.EventHandler(this.btn_thongkenghiphep_MouseEnter);
 			this.btn_thongkeluotnghiphepcuanhanvien.MouseLeave += new System.EventHandler(this.btn_thongkenghiphep_MouseLeave);
 			// 
-			// btn_thongkethongtinkhenthuongkyluat
+			// btn_thongkekhenthuongkyluat
 			// 
-			this.btn_thongkethongtinkhenthuongkyluat.BackColor = System.Drawing.Color.Tan;
-			this.btn_thongkethongtinkhenthuongkyluat.Font = new System.Drawing.Font("Consolas", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_thongkethongtinkhenthuongkyluat.Image = global::QuanLyNhanSu.Properties.Resources.Webp_net_resizeimage;
-			this.btn_thongkethongtinkhenthuongkyluat.Location = new System.Drawing.Point(360, 175);
-			this.btn_thongkethongtinkhenthuongkyluat.Name = "btn_thongkethongtinkhenthuongkyluat";
-			this.btn_thongkethongtinkhenthuongkyluat.Size = new System.Drawing.Size(623, 164);
-			this.btn_thongkethongtinkhenthuongkyluat.TabIndex = 4;
-			this.btn_thongkethongtinkhenthuongkyluat.Text = "Thống kê thông tin khen thưởng và kỷ luật";
-			this.btn_thongkethongtinkhenthuongkyluat.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-			this.btn_thongkethongtinkhenthuongkyluat.UseVisualStyleBackColor = false;
-			this.btn_thongkethongtinkhenthuongkyluat.Click += new System.EventHandler(this.btn_thongkethongtinkhenthuongkyluat_Click);
-			this.btn_thongkethongtinkhenthuongkyluat.MouseEnter += new System.EventHandler(this.btn_thongkekhenthuongkyluat_MouseEnter);
-			this.btn_thongkethongtinkhenthuongkyluat.MouseLeave += new System.EventHandler(this.btn_thongkekhenthuongkyluat_MouseLeave);
+			this.btn_thongkekhenthuongkyluat.BackColor = System.Drawing.Color.Tan;
+			this.btn_thongkekhenthuongkyluat.Font = new System.Drawing.Font("Consolas", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_thongkekhenthuongkyluat.Image = global::QuanLyNhanSu.Properties.Resources.Webp_net_resizeimage;
+			this.btn_thongkekhenthuongkyluat.Location = new System.Drawing.Point(360, 175);
+			this.btn_thongkekhenthuongkyluat.Name = "btn_thongkekhenthuongkyluat";
+			this.btn_thongkekhenthuongkyluat.Size = new System.Drawing.Size(623, 164);
+			this.btn_thongkekhenthuongkyluat.TabIndex = 4;
+			this.btn_thongkekhenthuongkyluat.Text = "Thống kê khen thưởng và kỷ luật";
+			this.btn_thongkekhenthuongkyluat.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+			this.btn_thongkekhenthuongkyluat.UseVisualStyleBackColor = false;
+			this.btn_thongkekhenthuongkyluat.Click += new System.EventHandler(this.btn_thongkethongtinkhenthuongkyluat_Click);
+			this.btn_thongkekhenthuongkyluat.MouseEnter += new System.EventHandler(this.btn_thongkekhenthuongkyluat_MouseEnter);
+			this.btn_thongkekhenthuongkyluat.MouseLeave += new System.EventHandler(this.btn_thongkekhenthuongkyluat_MouseLeave);
 			// 
 			// tp_quanlychamcongvathoigianlamviec
 			// 
@@ -509,7 +510,7 @@
 			// tb_quanlytuyendung
 			// 
 			this.tb_quanlytuyendung.BackColor = System.Drawing.Color.BlanchedAlmond;
-			this.tb_quanlytuyendung.Controls.Add(this.btn_quanlylichpv);
+			this.tb_quanlytuyendung.Controls.Add(this.btn_quanlylichphongvan);
 			this.tb_quanlytuyendung.Controls.Add(this.btn_quanlyketquaphongvan);
 			this.tb_quanlytuyendung.Controls.Add(this.btn_quanlynguonungvien);
 			this.tb_quanlytuyendung.Controls.Add(this.btn_quanlyhosoungvien);
@@ -520,21 +521,21 @@
 			this.tb_quanlytuyendung.TabIndex = 3;
 			this.tb_quanlytuyendung.Text = "Tuyển dụng";
 			// 
-			// btn_quanlylichpv
+			// btn_quanlylichphongvan
 			// 
-			this.btn_quanlylichpv.BackColor = System.Drawing.Color.Tan;
-			this.btn_quanlylichpv.Font = new System.Drawing.Font("Consolas", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_quanlylichpv.Image = global::QuanLyNhanSu.Properties.Resources.lichpv;
-			this.btn_quanlylichpv.Location = new System.Drawing.Point(495, 6);
-			this.btn_quanlylichpv.Name = "btn_quanlylichpv";
-			this.btn_quanlylichpv.Size = new System.Drawing.Size(240, 500);
-			this.btn_quanlylichpv.TabIndex = 5;
-			this.btn_quanlylichpv.Text = "Lịch phỏng vấn";
-			this.btn_quanlylichpv.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-			this.btn_quanlylichpv.UseVisualStyleBackColor = false;
-			this.btn_quanlylichpv.Click += new System.EventHandler(this.btn_quanlylichpv_Click);
-			this.btn_quanlylichpv.MouseEnter += new System.EventHandler(this.btn_quanlylichpv_MouseEnter);
-			this.btn_quanlylichpv.MouseLeave += new System.EventHandler(this.btn_quanlylichpv_MouseLeave);
+			this.btn_quanlylichphongvan.BackColor = System.Drawing.Color.Tan;
+			this.btn_quanlylichphongvan.Font = new System.Drawing.Font("Consolas", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_quanlylichphongvan.Image = global::QuanLyNhanSu.Properties.Resources.lichpv;
+			this.btn_quanlylichphongvan.Location = new System.Drawing.Point(495, 6);
+			this.btn_quanlylichphongvan.Name = "btn_quanlylichphongvan";
+			this.btn_quanlylichphongvan.Size = new System.Drawing.Size(240, 500);
+			this.btn_quanlylichphongvan.TabIndex = 5;
+			this.btn_quanlylichphongvan.Text = "Lịch phỏng vấn";
+			this.btn_quanlylichphongvan.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+			this.btn_quanlylichphongvan.UseVisualStyleBackColor = false;
+			this.btn_quanlylichphongvan.Click += new System.EventHandler(this.btn_quanlylichpv_Click);
+			this.btn_quanlylichphongvan.MouseEnter += new System.EventHandler(this.btn_quanlylichpv_MouseEnter);
+			this.btn_quanlylichphongvan.MouseLeave += new System.EventHandler(this.btn_quanlylichpv_MouseLeave);
 			// 
 			// btn_quanlyketquaphongvan
 			// 
@@ -587,7 +588,7 @@
 			// tp_quanlytienluongvaphucloi
 			// 
 			this.tp_quanlytienluongvaphucloi.BackColor = System.Drawing.Color.BlanchedAlmond;
-			this.tp_quanlytienluongvaphucloi.Controls.Add(this.btn_qlkhenthuongkyluat);
+			this.tp_quanlytienluongvaphucloi.Controls.Add(this.btn_quanlykhenthuongkyluat);
 			this.tp_quanlytienluongvaphucloi.Controls.Add(this.btn_quanlyphucap);
 			this.tp_quanlytienluongvaphucloi.Controls.Add(this.btn_quanlybangluong);
 			this.tp_quanlytienluongvaphucloi.Controls.Add(this.btn_quanlybaohiem);
@@ -598,21 +599,21 @@
 			this.tp_quanlytienluongvaphucloi.TabIndex = 4;
 			this.tp_quanlytienluongvaphucloi.Text = "Quản lý lương";
 			// 
-			// btn_qlkhenthuongkyluat
+			// btn_quanlykhenthuongkyluat
 			// 
-			this.btn_qlkhenthuongkyluat.BackColor = System.Drawing.Color.Tan;
-			this.btn_qlkhenthuongkyluat.Font = new System.Drawing.Font("Consolas", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_qlkhenthuongkyluat.Image = global::QuanLyNhanSu.Properties.Resources.Webp1;
-			this.btn_qlkhenthuongkyluat.Location = new System.Drawing.Point(6, 6);
-			this.btn_qlkhenthuongkyluat.Name = "btn_qlkhenthuongkyluat";
-			this.btn_qlkhenthuongkyluat.Size = new System.Drawing.Size(240, 500);
-			this.btn_qlkhenthuongkyluat.TabIndex = 5;
-			this.btn_qlkhenthuongkyluat.Text = "Khen thưởng và kỷ luật";
-			this.btn_qlkhenthuongkyluat.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-			this.btn_qlkhenthuongkyluat.UseVisualStyleBackColor = false;
-			this.btn_qlkhenthuongkyluat.Click += new System.EventHandler(this.btn_qlkhenthuongkyluat_Click);
-			this.btn_qlkhenthuongkyluat.MouseEnter += new System.EventHandler(this.btn_qlkhenthuongkyluat_MouseEnter);
-			this.btn_qlkhenthuongkyluat.MouseLeave += new System.EventHandler(this.btn_qlkhenthuongkyluat_MouseLeave);
+			this.btn_quanlykhenthuongkyluat.BackColor = System.Drawing.Color.Tan;
+			this.btn_quanlykhenthuongkyluat.Font = new System.Drawing.Font("Consolas", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_quanlykhenthuongkyluat.Image = global::QuanLyNhanSu.Properties.Resources.Webp1;
+			this.btn_quanlykhenthuongkyluat.Location = new System.Drawing.Point(6, 6);
+			this.btn_quanlykhenthuongkyluat.Name = "btn_quanlykhenthuongkyluat";
+			this.btn_quanlykhenthuongkyluat.Size = new System.Drawing.Size(240, 500);
+			this.btn_quanlykhenthuongkyluat.TabIndex = 5;
+			this.btn_quanlykhenthuongkyluat.Text = "Khen thưởng và kỷ luật";
+			this.btn_quanlykhenthuongkyluat.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+			this.btn_quanlykhenthuongkyluat.UseVisualStyleBackColor = false;
+			this.btn_quanlykhenthuongkyluat.Click += new System.EventHandler(this.btn_qlkhenthuongkyluat_Click);
+			this.btn_quanlykhenthuongkyluat.MouseEnter += new System.EventHandler(this.btn_qlkhenthuongkyluat_MouseEnter);
+			this.btn_quanlykhenthuongkyluat.MouseLeave += new System.EventHandler(this.btn_qlkhenthuongkyluat_MouseLeave);
 			// 
 			// btn_quanlyphucap
 			// 
@@ -671,13 +672,13 @@
 			this.Controls.Add(this.pn_mainmenu);
 			this.Name = "AdminDashboard";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "Admin Dashboard";
+			this.Text = "Dashboard Admin";
 			this.pn_mainmenu.ResumeLayout(false);
 			this.pn_mainmenu.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pb_nguoidung)).EndInit();
 			this.panel2.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-			this.tc.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.pb_logo)).EndInit();
+			this.tc_danhmuc.ResumeLayout(false);
 			this.tp_quanlydanhmuc.ResumeLayout(false);
 			this.tp_baocaothongke.ResumeLayout(false);
 			this.tp_quanlychamcongvathoigianlamviec.ResumeLayout(false);
@@ -693,18 +694,18 @@
 		private System.Windows.Forms.Button btn_dangxuat;
 		private System.Windows.Forms.Button btn_quanlytaikhoan;
 		private System.Windows.Forms.Button btn_doimatkhau;
-		private System.Windows.Forms.Label lb_namenv;
+		private System.Windows.Forms.Label lb_tennhanvien;
 		private System.Windows.Forms.Panel panel2;
-		private System.Windows.Forms.PictureBox pictureBox2;
-		private System.Windows.Forms.PictureBox pictureBox3;
-		private System.Windows.Forms.TabControl tc;
+		private System.Windows.Forms.PictureBox pb_logo;
+		private System.Windows.Forms.PictureBox pb_nguoidung;
+		private System.Windows.Forms.TabControl tc_danhmuc;
 		private System.Windows.Forms.TabPage tp_quanlydanhmuc;
 		private System.Windows.Forms.Button btn_quanlychucvu;
-		private System.Windows.Forms.Button btn_quanlydaotaovaphattriennhanvien;
-		private System.Windows.Forms.Button btn_quanlyhopdonglaodong;
-		private System.Windows.Forms.Button btn_quanlytrinhdochuyenmon;
+		private System.Windows.Forms.Button btn_quanlydaotao;
+		private System.Windows.Forms.Button btn_quanlyhopdong;
+		private System.Windows.Forms.Button btn_quanlytrinhdo;
 		private System.Windows.Forms.Button btn_quanlythongtinnhanvien;
-		private System.Windows.Forms.Button btn_quanlyphongban;
+		private System.Windows.Forms.Button btn_quanlycuahang;
 		private System.Windows.Forms.TabPage tp_baocaothongke;
 		private System.Windows.Forms.TabPage tp_quanlychamcongvathoigianlamviec;
 		private System.Windows.Forms.Button btn_quanlybangcong;
@@ -713,12 +714,12 @@
 		private System.Windows.Forms.Button btn_checkin;
 		private System.Windows.Forms.Button btn_checkout;
 		private System.Windows.Forms.TabPage tb_quanlytuyendung;
-		private System.Windows.Forms.Button btn_quanlylichpv;
+		private System.Windows.Forms.Button btn_quanlylichphongvan;
 		private System.Windows.Forms.Button btn_quanlyketquaphongvan;
 		private System.Windows.Forms.Button btn_quanlynguonungvien;
 		private System.Windows.Forms.Button btn_quanlyhosoungvien;
 		private System.Windows.Forms.TabPage tp_quanlytienluongvaphucloi;
-		private System.Windows.Forms.Button btn_qlkhenthuongkyluat;
+		private System.Windows.Forms.Button btn_quanlykhenthuongkyluat;
 		private System.Windows.Forms.Button btn_quanlybangluong;
 		private System.Windows.Forms.Button btn_quanlybaohiem;
 		private System.Windows.Forms.Button btn_quanlynguoidung;
@@ -726,7 +727,7 @@
 		private System.Windows.Forms.Button btn_thongketuyendung;
 		private System.Windows.Forms.Button btn_baocaotongquannhansu;
 		private System.Windows.Forms.Button btn_thongkeluotnghiphepcuanhanvien;
-		private System.Windows.Forms.Button btn_thongkethongtinkhenthuongkyluat;
+		private System.Windows.Forms.Button btn_thongkekhenthuongkyluat;
 		private System.Windows.Forms.Button btn_lichsudangnhap;
 	}
 }

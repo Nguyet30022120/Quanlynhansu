@@ -1,6 +1,6 @@
 ﻿namespace QuanLyNhanSu.GUI
 {
-	partial class fCheckOut
+	partial class fCheckout
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -37,7 +37,6 @@
 			this.txb_manhanvien = new System.Windows.Forms.TextBox();
 			this.btn_timnhanvien = new System.Windows.Forms.Button();
 			this.btn_checkout = new System.Windows.Forms.Button();
-			this.btn_suacheckout = new System.Windows.Forms.Button();
 			this.btn_xoacheckout = new System.Windows.Forms.Button();
 			this.giocheckout = new System.Windows.Forms.Timer(this.components);
 			this.dgv_checkout = new System.Windows.Forms.DataGridView();
@@ -100,6 +99,8 @@
 			this.btn_timnhanvien.Text = "Tìm kiếm";
 			this.btn_timnhanvien.UseVisualStyleBackColor = false;
 			this.btn_timnhanvien.Click += new System.EventHandler(this.btn_findnv_Click);
+			this.btn_timnhanvien.MouseEnter += new System.EventHandler(this.btn_timnhanvien_MouseEnter);
+			this.btn_timnhanvien.MouseLeave += new System.EventHandler(this.btn_timnhanvien_MouseLeave);
 			// 
 			// btn_checkout
 			// 
@@ -112,18 +113,8 @@
 			this.btn_checkout.Text = "Check out";
 			this.btn_checkout.UseVisualStyleBackColor = false;
 			this.btn_checkout.Click += new System.EventHandler(this.btn_checkout_Click);
-			// 
-			// btn_suacheckout
-			// 
-			this.btn_suacheckout.BackColor = System.Drawing.Color.DarkOrange;
-			this.btn_suacheckout.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_suacheckout.Location = new System.Drawing.Point(61, 378);
-			this.btn_suacheckout.Name = "btn_suacheckout";
-			this.btn_suacheckout.Size = new System.Drawing.Size(115, 40);
-			this.btn_suacheckout.TabIndex = 6;
-			this.btn_suacheckout.Text = "Sửa";
-			this.btn_suacheckout.UseVisualStyleBackColor = false;
-			this.btn_suacheckout.Click += new System.EventHandler(this.btn_editcheckout_Click);
+			this.btn_checkout.MouseEnter += new System.EventHandler(this.btn_checkout_MouseEnter);
+			this.btn_checkout.MouseLeave += new System.EventHandler(this.btn_checkout_MouseLeave);
 			// 
 			// btn_xoacheckout
 			// 
@@ -136,6 +127,8 @@
 			this.btn_xoacheckout.Text = "Xóa";
 			this.btn_xoacheckout.UseVisualStyleBackColor = false;
 			this.btn_xoacheckout.Click += new System.EventHandler(this.btn_deletecheckout_Click);
+			this.btn_xoacheckout.MouseEnter += new System.EventHandler(this.btn_xoacheckout_MouseEnter);
+			this.btn_xoacheckout.MouseLeave += new System.EventHandler(this.btn_xoacheckout_MouseLeave);
 			// 
 			// giocheckout
 			// 
@@ -220,12 +213,15 @@
 			this.btn_dongcheckout.Text = "Đóng";
 			this.btn_dongcheckout.UseVisualStyleBackColor = false;
 			this.btn_dongcheckout.Click += new System.EventHandler(this.btn_closecheckout_Click);
+			this.btn_dongcheckout.MouseEnter += new System.EventHandler(this.btn_dongcheckout_MouseEnter);
+			this.btn_dongcheckout.MouseLeave += new System.EventHandler(this.btn_dongcheckout_MouseLeave);
 			// 
 			// txb_tennhanvien
 			// 
 			this.txb_tennhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txb_tennhanvien.Location = new System.Drawing.Point(718, 19);
 			this.txb_tennhanvien.Name = "txb_tennhanvien";
+			this.txb_tennhanvien.ReadOnly = true;
 			this.txb_tennhanvien.Size = new System.Drawing.Size(252, 27);
 			this.txb_tennhanvien.TabIndex = 10;
 			// 
@@ -239,7 +235,6 @@
 			this.Controls.Add(this.btn_dongcheckout);
 			this.Controls.Add(this.dgv_checkout);
 			this.Controls.Add(this.btn_xoacheckout);
-			this.Controls.Add(this.btn_suacheckout);
 			this.Controls.Add(this.btn_checkout);
 			this.Controls.Add(this.btn_timnhanvien);
 			this.Controls.Add(this.txb_manhanvien);
@@ -262,7 +257,6 @@
 		private System.Windows.Forms.TextBox txb_manhanvien;
 		private System.Windows.Forms.Button btn_timnhanvien;
 		private System.Windows.Forms.Button btn_checkout;
-		private System.Windows.Forms.Button btn_suacheckout;
 		private System.Windows.Forms.Button btn_xoacheckout;
 		private System.Windows.Forms.Timer giocheckout;
 		private System.Windows.Forms.DataGridView dgv_checkout;

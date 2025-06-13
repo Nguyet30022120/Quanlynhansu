@@ -13,11 +13,16 @@ namespace QuanLyNhanSu.GUI
 {
 	public partial class fQuanlykhoahoc : Form
 	{
+		private Color originalAddButtonColor;
+		private Color originalEditButtonColor;
+		private Color originalDeleteButtonColor;
+		private Color originalFindButtonColor;
+		private Color originalCloseButtonColor;
+
 		BindingSource courseList = new BindingSource();
 
 		public void fCourseManagement_Load(object sender, EventArgs e)
 		{
-			// Add logic to initialize the form when it loads  
 			LoadCourse();
 		}
 		public fQuanlykhoahoc()
@@ -26,32 +31,37 @@ namespace QuanLyNhanSu.GUI
 			dgv_khoahoc.DataSource = courseList;
 			LoadCourse();
 			BindingCourseData();
+			originalAddButtonColor = btn_themkhoahoc.BackColor;
+			originalEditButtonColor = btn_suakhoahoc.BackColor;
+			originalDeleteButtonColor = btn_xoakhoahoc.BackColor;
+			originalFindButtonColor = btn_timkhoahoc.BackColor;
+			originalCloseButtonColor = btn_dongkhoahoc.BackColor;
+
 		}
 		void BindingCourseData()
 		{
-			//txb_makh.DataBindings.Add(new Binding("Text", dgv_khoahoc.DataSource, "MaKhoaHoc", true, DataSourceUpdateMode.Never));
-			txb_tenkh.DataBindings.Add(new Binding("Text", dgv_khoahoc.DataSource, "TenKhoaHoc", true, DataSourceUpdateMode.Never));
-			txb_motakh.DataBindings.Add(new Binding("Text", dgv_khoahoc.DataSource, "MoTaKhoaHoc", true, DataSourceUpdateMode.Never));
+			txb_tenkhoahoc.DataBindings.Add(new Binding("Text", dgv_khoahoc.DataSource, "TenKhoaHoc", true, DataSourceUpdateMode.Never));
+			txb_mota.DataBindings.Add(new Binding("Text", dgv_khoahoc.DataSource, "MoTaKhoaHoc", true, DataSourceUpdateMode.Never));
 		}
 		void LoadCourse()
 		{
 			courseList.DataSource = KhoahocDAO.Instance.GetListCourse();
 		}
-
+		#region Events
 		private void btn_addkh_Click(object sender, EventArgs e)
 		{
 			try
 			{
-				string tenkh = txb_tenkh.Text;
-				string mota = txb_motakh.Text;
+				string tenkh = txb_tenkhoahoc.Text;
+				string mota = txb_mota.Text;
 				if (KhoahocDAO.Instance.InsertCourse(tenkh, mota))
 				{
-					MessageBox.Show("Thêm khóa học thành công");
+					MessageBox.Show("Thêm khóa học thành công", "Thông báo");
 					LoadCourse();
 				}
 				else
 				{
-					MessageBox.Show("Thêm khóa học thất bại");
+					MessageBox.Show("Thêm khóa học thất bại", "Thông báo");
 				}
 			}
 			catch (Exception ex)
@@ -71,16 +81,16 @@ namespace QuanLyNhanSu.GUI
 				try
 				{
 					string makh = dgv_khoahoc.CurrentRow.Cells["MaKH"].Value.ToString();
-					string tenkh = txb_tenkh.Text;
-					string mota = txb_motakh.Text;
+					string tenkh = txb_tenkhoahoc.Text;
+					string mota = txb_mota.Text;
 
 					if (KhoahocDAO.Instance.UpdateCourse(makh, tenkh,mota))
 					{
-						MessageBox.Show("Sửa khóa học thành công.");
+						MessageBox.Show("Sửa khóa học thành công.", "Thông báo");
 					}
 					else
 					{
-						MessageBox.Show("Sửa khóa học thất bại.");
+						MessageBox.Show("Sửa khóa học thất bại.", "Thông báo");
 					}
 
 				}
@@ -106,11 +116,11 @@ namespace QuanLyNhanSu.GUI
 
 					if (KhoahocDAO.Instance.DeleteCourse(makh))
 					{
-						MessageBox.Show("Xóa khóa học thành công.");
+						MessageBox.Show("Xóa khóa học thành công.", "Thông báo");
 					}
 					else
 					{
-						MessageBox.Show("Xóa khóa học thất bại.");
+						MessageBox.Show("Xóa khóa học thất bại.", "Thông báo");
 					}
 
 				}
@@ -132,7 +142,52 @@ namespace QuanLyNhanSu.GUI
 
 		private void btn_findkh_Click(object sender, EventArgs e)
 		{
-			courseList.DataSource = KhoahocDAO.Instance.SearchCourse(txb_findkh.Text);
+			courseList.DataSource = KhoahocDAO.Instance.SearchCourse(txb_timkhoahoc.Text);
 		}
+		#endregion
+
+		#region Hover
+
+		private void btn_themkhoahoc_MouseEnter(object sender, EventArgs e)
+		{
+			btn_themkhoahoc.BackColor = Color.LightBlue;
+		}
+		private void btn_themkhoahoc_MouseLeave(object sender, EventArgs e)
+		{
+			btn_themkhoahoc.BackColor = originalAddButtonColor;
+		}
+		private void btn_suakhoahoc_MouseEnter(object sender, EventArgs e)
+		{
+			btn_suakhoahoc.BackColor = Color.LightBlue;
+		}
+		private void btn_suakhoahoc_MouseLeave(object sender, EventArgs e)
+		{
+			btn_suakhoahoc.BackColor = originalEditButtonColor;
+		}
+		private void btn_xoakhoahoc_MouseEnter(object sender, EventArgs e)
+		{
+			btn_xoakhoahoc.BackColor = Color.LightBlue;
+		}
+		private void btn_xoakhoahoc_MouseLeave(object sender, EventArgs e)
+		{
+			btn_xoakhoahoc.BackColor = originalDeleteButtonColor;
+		}
+		private void btn_timkhoahoc_MouseEnter(object sender, EventArgs e)
+		{
+			btn_timkhoahoc.BackColor = Color.LightBlue;
+		}
+		private void btn_timkhoahoc_MouseLeave(object sender, EventArgs e)
+		{
+			btn_timkhoahoc.BackColor = originalFindButtonColor;
+		}
+		private void btn_dongkhoahoc_MouseEnter(object sender, EventArgs e)
+		{
+			btn_dongkhoahoc.BackColor = Color.LightBlue;
+		}
+		private void btn_dongkhoahoc_MouseLeave(object sender, EventArgs e)
+		{
+			btn_dongkhoahoc.BackColor = originalCloseButtonColor;
+		}
+		#endregion
 	}
 }

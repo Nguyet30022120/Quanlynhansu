@@ -54,7 +54,7 @@ namespace QuanLyNhanSu.DAO
 		{
 			List<KhoahocDTO> list = new List<KhoahocDTO>();
 
-			string query = string.Format("SELECT * FROM [KhoaHoc] WHERE Ma_KhoaHoc LIKE N'%{0}%' OR TenKhoaHoc LIKE N'%{1}%'", value, value);
+			string query = string.Format("SELECT * FROM [KhoaHoc] WHERE Ma_KH LIKE N'%{0}%' OR TenKhoaHoc LIKE N'%{1}%'", value, value);
 
 			Console.WriteLine(query);
 

@@ -11,10 +11,15 @@ using System.Windows.Forms;
 
 namespace QuanLyNhanSu.GUI
 {
-	public partial class fCheckOut : Form
+	public partial class fCheckout : Form
 	{
+		private Color originalAddButtonColor;
+		private Color originalDeleteButtonColor;
+		private Color originalCloseButtonColor;
+		private Color originalSearchButtonColor;
+
 		BindingSource checkoutList = new BindingSource();
-		public fCheckOut()
+		public fCheckout()
 		{
 			InitializeComponent();
 			lb_giocheckout.Text = DateTime.Now.ToLongTimeString();
@@ -23,6 +28,10 @@ namespace QuanLyNhanSu.GUI
 			var col = dgv_checkout.Columns["GioCheckOut"];
 			if (col != null)
 				col.DefaultCellStyle.Format = "HH:mm:ss";
+			originalSearchButtonColor = btn_timnhanvien.BackColor;
+			originalAddButtonColor = btn_checkout.BackColor;
+			originalDeleteButtonColor = btn_xoacheckout.BackColor;
+			originalCloseButtonColor = btn_dongcheckout.BackColor;
 		}
 
 		private void giocheckout_Tick(object sender, EventArgs e)
@@ -38,7 +47,7 @@ namespace QuanLyNhanSu.GUI
 		{
 			checkoutList.DataSource = CheckoutDAO.Instance.GetCheckOutByMaNV(manv);
 		}
-
+		#region Events
 		private void btn_findnv_Click(object sender, EventArgs e)
 		{
 			try
@@ -54,23 +63,31 @@ namespace QuanLyNhanSu.GUI
 
 		private void btn_checkout_Click(object sender, EventArgs e)
 		{
-
 			try
 			{
 				string manv = txb_manhanvien.Text;
+				var list = CheckoutDAO.Instance.GetCheckOutByMaNV(manv);
+				bool daCheckOut = list.Any(c => c.NgayCheckOut.Date == DateTime.Now.Date);
+
+				if (daCheckOut)
+				{
+					MessageBox.Show("Nhân viên đã checkout hôm nay!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return;
+				}
+
 				if (CheckoutDAO.Instance.InsertCheckOut(manv))
 				{
-					MessageBox.Show("Thêm checkout thành công");
+					MessageBox.Show("Thêm checkout thành công.", "Thông báo");
 					LoadCheckOut(txb_manhanvien.Text);
 				}
 				else
 				{
-					MessageBox.Show("Thêm checkout thất bại");
+					MessageBox.Show("Thêm checkout thất bại.", "Thông báo");
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
@@ -78,23 +95,6 @@ namespace QuanLyNhanSu.GUI
 			}
 		}
 
-		private void btn_editcheckout_Click(object sender, EventArgs e)
-		{
-			DialogResult result = MessageBox.Show("Bạn có muốn sửa checkout cho nhân viên này?",
-							"Xác nhận",
-							MessageBoxButtons.YesNo,
-							MessageBoxIcon.Question);
-
-			if (result == DialogResult.Yes)
-			{
-				string manv = txb_manhanvien.Text;
-				fSuaCheckout editCheckout = new fSuaCheckout(manv);
-				editCheckout.ShowDialog();
-			}
-			else if (result == DialogResult.No)
-			{
-			}
-		}
 
 		private void btn_deletecheckout_Click(object sender, EventArgs e)
 		{
@@ -103,12 +103,12 @@ namespace QuanLyNhanSu.GUI
 				int macheckout = Convert.ToInt32(dgv_checkout.CurrentRow.Cells["MaCheckOut"].Value);
 				if (CheckoutDAO.Instance.DeleteCheckOut(macheckout))
 				{
-					MessageBox.Show("Xóa checkout thành công");
+					MessageBox.Show("Xóa checkout thành công.", "Thông báo");
 					LoadCheckOut(txb_manhanvien.Text);
 				}
 				else
 				{
-					MessageBox.Show("Xóa checkout thất bại");
+					MessageBox.Show("Xóa checkout thất bại.", "Thông báo");
 				}
 			}
 			catch (Exception ex)
@@ -125,5 +125,41 @@ namespace QuanLyNhanSu.GUI
 		{
 			this.Close();
 		}
+		#endregion
+
+		#region Hover
+		private void btn_timnhanvien_MouseEnter(object sender, EventArgs e)
+		{
+			btn_timnhanvien.BackColor = Color.LightBlue;
+		}
+		private void btn_timnhanvien_MouseLeave(object sender, EventArgs e)
+		{
+			btn_timnhanvien.BackColor = originalSearchButtonColor;
+		}
+		private void btn_checkout_MouseEnter(object sender, EventArgs e)
+		{
+			btn_checkout.BackColor = Color.LightBlue;
+		}
+		private void btn_checkout_MouseLeave(object sender, EventArgs e)
+		{
+			btn_checkout.BackColor = originalAddButtonColor;
+		}
+		private void btn_xoacheckout_MouseEnter(object sender, EventArgs e)
+		{
+			btn_xoacheckout.BackColor = Color.LightBlue;
+		}
+		private void btn_xoacheckout_MouseLeave(object sender, EventArgs e)
+		{
+			btn_xoacheckout.BackColor = originalDeleteButtonColor;
+		}
+		private void btn_dongcheckout_MouseEnter(object sender, EventArgs e)
+		{
+			btn_dongcheckout.BackColor = Color.LightBlue;
+		}
+		private void btn_dongcheckout_MouseLeave(object sender, EventArgs e)
+		{
+			btn_dongcheckout.BackColor = originalCloseButtonColor;
+		}
+		#endregion
 	}
 }

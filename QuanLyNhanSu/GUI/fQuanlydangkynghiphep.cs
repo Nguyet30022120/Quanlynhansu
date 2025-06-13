@@ -1,12 +1,25 @@
 ﻿using QuanLyNhanSu.DAO;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using QuanLyNhanSu.GUI;
+
 
 namespace QuanLyNhanSu.GUI
 {
 	public partial class fQuanlydangkynghiphep : Form
 	{
+		private Color originalAddButtonColor;
+		private Color originalDeleteButtonColor;
+		private Color originalCloseButtonColor;
+		private Color originalSearchButtonColor;
+		private Color originalEditButtonColor;
 
 		BindingSource donNghiPhepList = new BindingSource();
 
@@ -20,6 +33,12 @@ namespace QuanLyNhanSu.GUI
 			LoadCbLoaiPhep();
 			SetupAutoCompleteForNguoiDuyet();
 			LoadCbTrangThai();
+			originalAddButtonColor = btn_themdonnghiphep.BackColor;
+			originalDeleteButtonColor = btn_xoadonnghiphep.BackColor;
+			originalCloseButtonColor = btn_dongdonnghiphep.BackColor;
+			originalSearchButtonColor = btn_timnhanvien.BackColor;
+			originalEditButtonColor = btn_suadonnghiphep.BackColor;
+
 		}
 		void BindingDonNghiPhepData()
 		{
@@ -75,7 +94,7 @@ namespace QuanLyNhanSu.GUI
 			};
 			cb_trangthai.DataSource = trangThai;
 		}
-
+		#region Events
 		private void btn_findnv_Click(object sender, System.EventArgs e)
 		{
 			LoadDonNghiPhep(txb_manhanvien.Text);
@@ -94,14 +113,14 @@ namespace QuanLyNhanSu.GUI
 				DateTime ngaykt = dtp_ngayketthuc.Value;
 				string nguoiduyet = txb_nguoiduyet.Text;
 
-				if (DonnghiphepDAO.Instance.InsertDonNghiPhep(tennv,loaiphep,trangthai,lydo,ngaybd,ngaykt,nguoiduyet))
+				if (DonnghiphepDAO.Instance.InsertDonNghiPhep(manv,loaiphep,trangthai,lydo,ngaybd,ngaykt,nguoiduyet))
 				{
-					MessageBox.Show("Thêm đơn nghỉ phép thành công");
+					MessageBox.Show("Thêm đơn nghỉ phép thành công", "Thông báo");
 					LoadDonNghiPhep(manv);
 				}
 				else
 				{
-					MessageBox.Show("Thêm đơn nghỉ phép thất bại");
+					MessageBox.Show("Thêm đơn nghỉ phép thất bại", "Thông báo");
 				}
 			}
 			catch (Exception ex)
@@ -130,12 +149,12 @@ namespace QuanLyNhanSu.GUI
 
 				if (DonnghiphepDAO.Instance.UpdateDonNghiPhep(madonnghiphep, tennv, loaiphep, trangthai, lydo, ngaybd, ngaykt, nguoiduyet))
 				{
-					MessageBox.Show("Sửa đơn nghỉ phép thành công");
+					MessageBox.Show("Sửa đơn nghỉ phép thành công", "Thông báo");
 					LoadDonNghiPhep(manv);
 				}
 				else
 				{
-					MessageBox.Show("Sửa đơn nghỉ phép thất bại");
+					MessageBox.Show("Sửa đơn nghỉ phép thất bại", "Thông báo");
 				}
 			}
 			catch (Exception ex)
@@ -157,12 +176,12 @@ namespace QuanLyNhanSu.GUI
 
 				if (DonnghiphepDAO.Instance.DeleteDonNghiPhep(madonnghiphep))
 				{
-					MessageBox.Show("Xóa đơn nghỉ phép thành công");
+					MessageBox.Show("Xóa đơn nghỉ phép thành công", "Thông báo");
 					LoadDonNghiPhep(manv);
 				}
 				else
 				{
-					MessageBox.Show("Xóa đơn nghỉ phép thất bại");
+					MessageBox.Show("Xóa đơn nghỉ phép thất bại", "Thông báo");
 				}
 			}
 			catch (Exception ex)
@@ -179,6 +198,49 @@ namespace QuanLyNhanSu.GUI
 		{
 			this.Close();
 		}
+		#endregion
 
+		#region Hover
+		private void btn_themdonnghiphep_MouseEnter(object sender, EventArgs e)
+		{
+			btn_themdonnghiphep.BackColor = Color.LightBlue;
+		}
+		private void btn_themdonnghiphep_MouseLeave(object sender, EventArgs e)
+		{
+			btn_themdonnghiphep.BackColor = originalAddButtonColor;
+		}
+		private void btn_xoadonnghiphep_MouseEnter(object sender, EventArgs e)
+		{
+			btn_xoadonnghiphep.BackColor = Color.LightBlue;
+		}
+		private void btn_xoadonnghiphep_MouseLeave(object sender, EventArgs e)
+		{
+			btn_xoadonnghiphep.BackColor = originalDeleteButtonColor;
+		}
+		private void btn_dongdonnghiphep_MouseEnter(object sender, EventArgs e)
+		{
+			btn_dongdonnghiphep.BackColor = Color.LightBlue;
+		}
+		private void btn_dongdonnghiphep_MouseLeave(object sender, EventArgs e)
+		{
+			btn_dongdonnghiphep.BackColor = originalCloseButtonColor;
+		}
+		private void btn_timnhanvien_MouseEnter(object sender, EventArgs e)
+		{
+			btn_timnhanvien.BackColor = Color.LightBlue;
+		}
+		private void btn_timnhanvien_MouseLeave(object sender, EventArgs e)
+		{
+			btn_timnhanvien.BackColor = originalSearchButtonColor;
+		}
+		private void btn_suadonnghiphep_MouseEnter(object sender, EventArgs e)
+		{
+			btn_suadonnghiphep.BackColor = Color.LightBlue;
+		}
+		private void btn_suadonnghiphep_MouseLeave(object sender, EventArgs e)
+		{
+			btn_suadonnghiphep.BackColor = originalEditButtonColor;
+		}
+		#endregion
 	}
 }

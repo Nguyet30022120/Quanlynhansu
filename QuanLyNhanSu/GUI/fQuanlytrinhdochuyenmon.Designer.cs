@@ -28,13 +28,13 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.pn_trinhdo = new System.Windows.Forms.Panel();
 			this.btn_timnhanvien = new System.Windows.Forms.Button();
 			this.lb_manhanvien = new System.Windows.Forms.Label();
 			this.lb_tennhanvien = new System.Windows.Forms.Label();
-			this.txb_manv = new System.Windows.Forms.TextBox();
+			this.txb_manhanvien = new System.Windows.Forms.TextBox();
 			this.txb_tennhanvien = new System.Windows.Forms.TextBox();
 			this.txb_truonghoc = new System.Windows.Forms.TextBox();
 			this.lb_truonghoc = new System.Windows.Forms.Label();
@@ -61,7 +61,7 @@
 			this.pn_trinhdo.Controls.Add(this.btn_timnhanvien);
 			this.pn_trinhdo.Controls.Add(this.lb_manhanvien);
 			this.pn_trinhdo.Controls.Add(this.lb_tennhanvien);
-			this.pn_trinhdo.Controls.Add(this.txb_manv);
+			this.pn_trinhdo.Controls.Add(this.txb_manhanvien);
 			this.pn_trinhdo.Controls.Add(this.txb_tennhanvien);
 			this.pn_trinhdo.Controls.Add(this.txb_truonghoc);
 			this.pn_trinhdo.Controls.Add(this.lb_truonghoc);
@@ -89,6 +89,9 @@
 			this.btn_timnhanvien.Text = "Tìm kiếm";
 			this.btn_timnhanvien.UseVisualStyleBackColor = false;
 			this.btn_timnhanvien.Click += new System.EventHandler(this.btn_findtd_Click);
+			this.btn_timnhanvien.MouseEnter += new System.EventHandler(this.btn_timnhanvien_MouseEnter);
+			this.btn_timnhanvien.MouseLeave += new System.EventHandler(this.btn_timnhanvien_MouseLeave);
+
 			// 
 			// lb_manhanvien
 			// 
@@ -112,19 +115,20 @@
 			this.lb_tennhanvien.TabIndex = 14;
 			this.lb_tennhanvien.Text = "Tên nhân viên ";
 			// 
-			// txb_manv
+			// txb_manhanvien
 			// 
-			this.txb_manv.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_manv.Location = new System.Drawing.Point(135, 14);
-			this.txb_manv.Name = "txb_manv";
-			this.txb_manv.Size = new System.Drawing.Size(252, 27);
-			this.txb_manv.TabIndex = 0;
+			this.txb_manhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txb_manhanvien.Location = new System.Drawing.Point(135, 14);
+			this.txb_manhanvien.Name = "txb_manhanvien";
+			this.txb_manhanvien.Size = new System.Drawing.Size(252, 27);
+			this.txb_manhanvien.TabIndex = 0;
 			// 
 			// txb_tennhanvien
 			// 
 			this.txb_tennhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txb_tennhanvien.Location = new System.Drawing.Point(135, 74);
 			this.txb_tennhanvien.Name = "txb_tennhanvien";
+			this.txb_tennhanvien.ReadOnly = true;
 			this.txb_tennhanvien.Size = new System.Drawing.Size(252, 27);
 			this.txb_tennhanvien.TabIndex = 13;
 			// 
@@ -150,6 +154,16 @@
 			// 
 			this.cb_loaibangcap.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cb_loaibangcap.FormattingEnabled = true;
+			this.cb_loaibangcap.Items.AddRange(new object[] {
+            "Tiểu học",
+            "THCS",
+            "THPT",
+            "Sơ cấp nghề",
+            "Trung cấp nghề/Trung cấp",
+            "Cao đẳng nghề/Cao đẳng",
+            "Đại học",
+            "Thạc sĩ",
+            "Tiến sĩ"});
 			this.cb_loaibangcap.Location = new System.Drawing.Point(135, 131);
 			this.cb_loaibangcap.Name = "cb_loaibangcap";
 			this.cb_loaibangcap.Size = new System.Drawing.Size(252, 28);
@@ -166,6 +180,8 @@
 			this.btn_dongtrinhdo.Text = "Đóng";
 			this.btn_dongtrinhdo.UseVisualStyleBackColor = false;
 			this.btn_dongtrinhdo.Click += new System.EventHandler(this.btn_closetd_Click);
+			this.btn_dongtrinhdo.MouseEnter += new System.EventHandler(this.btn_dongtrinhdo_MouseEnter);
+			this.btn_dongtrinhdo.MouseLeave += new System.EventHandler(this.btn_dongtrinhdo_MouseLeave);
 			// 
 			// btn_xoatrinhdo
 			// 
@@ -178,6 +194,8 @@
 			this.btn_xoatrinhdo.Text = "Xóa";
 			this.btn_xoatrinhdo.UseVisualStyleBackColor = false;
 			this.btn_xoatrinhdo.Click += new System.EventHandler(this.btn_deletetd_Click);
+			this.btn_xoatrinhdo.MouseEnter += new System.EventHandler(this.btn_xoatrinhdo_MouseEnter);
+			this.btn_xoatrinhdo.MouseLeave += new System.EventHandler(this.btn_xoatrinhdo_MouseLeave);
 			// 
 			// btn_suatrinhdo
 			// 
@@ -190,6 +208,8 @@
 			this.btn_suatrinhdo.Text = "Sửa";
 			this.btn_suatrinhdo.UseVisualStyleBackColor = false;
 			this.btn_suatrinhdo.Click += new System.EventHandler(this.btn_edittd_Click);
+			this.btn_suatrinhdo.MouseEnter += new System.EventHandler(this.btn_suatrinhdo_MouseEnter);
+			this.btn_suatrinhdo.MouseLeave += new System.EventHandler(this.btn_suatrinhdo_MouseLeave);
 			// 
 			// btn_themtrinhdo
 			// 
@@ -203,6 +223,8 @@
 			this.btn_themtrinhdo.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
 			this.btn_themtrinhdo.UseVisualStyleBackColor = false;
 			this.btn_themtrinhdo.Click += new System.EventHandler(this.btn_addtd_Click);
+			this.btn_themtrinhdo.MouseEnter += new System.EventHandler(this.btn_themtrinhdo_MouseEnter);
+			this.btn_themtrinhdo.MouseLeave += new System.EventHandler(this.btn_themtrinhdo_MouseLeave);
 			// 
 			// lb_chuyennganh
 			// 
@@ -234,17 +256,17 @@
 			// 
 			// dgv_trinhdo
 			// 
-			dataGridViewCellStyle3.BackColor = System.Drawing.Color.Tan;
-			this.dgv_trinhdo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.Tan;
+			this.dgv_trinhdo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
 			this.dgv_trinhdo.BackgroundColor = System.Drawing.Color.White;
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgv_trinhdo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgv_trinhdo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.dgv_trinhdo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgv_trinhdo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaTD,
@@ -308,7 +330,7 @@
 			this.Controls.Add(this.dgv_trinhdo);
 			this.Controls.Add(this.pn_trinhdo);
 			this.Name = "fQuanlytrinhdochuyenmon";
-			this.Text = "Quản lý trình độ ";
+			this.Text = "Trình độ ";
 			this.pn_trinhdo.ResumeLayout(false);
 			this.pn_trinhdo.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_trinhdo)).EndInit();
@@ -328,7 +350,7 @@
 		private System.Windows.Forms.Label lb_loaibangcap;
 		private System.Windows.Forms.Label lb_manhanvien;
 		private System.Windows.Forms.TextBox txb_chuyennganh;
-		private System.Windows.Forms.TextBox txb_manv;
+		private System.Windows.Forms.TextBox txb_manhanvien;
 		private System.Windows.Forms.Button btn_timnhanvien;
 		private System.Windows.Forms.TextBox txb_truonghoc;
 		private System.Windows.Forms.Label lb_truonghoc;

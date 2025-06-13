@@ -58,7 +58,7 @@ namespace QuanLyNhanSu.DTO
 			this.NgayKT = Convert.ToDateTime(row["DenNgay"]);
 			this.SoNgay = Convert.ToInt32(row["SoNgay"]);
 			this.NgayTao = Convert.ToDateTime(row["NgayTao"]);
-			this.MaDonNghiPhep = Convert.ToInt32(row["MaDonNghiPhep"]);
+			this.MaDonNghiPhep = Convert.ToInt32(row["Ma_DNP"]);
 		}
 
 		public string TenNV { get => tenNV; set => tenNV=value; }

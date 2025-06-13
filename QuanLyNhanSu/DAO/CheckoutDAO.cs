@@ -20,7 +20,7 @@ namespace QuanLyNhanSu.DAO
 		public List<CheckoutDTO> GetCheckOutByMaNV(string manv)
 		{
 			List<CheckoutDTO> list = new List<CheckoutDTO>();
-			string query = $"SELECT c.MaCheckOut, c.Ma_NV, c.GioCheckOut, c.NgayCheckOut, n.HoTen FROM CheckOut c JOIN [Nhan Vien] n ON c.Ma_NV = n.Ma_NV WHERE n.Ma_NV ='{manv}';\r\n";
+			string query = $"SELECT c.Ma_CheckOut, c.Ma_NV, c.GioCheckOut, c.NgayCheckOut, n.HoTen FROM CheckOut c JOIN [NhanVien] n ON c.Ma_NV = n.Ma_NV WHERE n.Ma_NV ='{manv}';\r\n";
 			DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { });
 			foreach (DataRow item in data.Rows)
 			{

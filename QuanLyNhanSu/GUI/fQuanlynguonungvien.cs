@@ -19,43 +19,51 @@ namespace QuanLyNhanSu.GUI
 {
 	public partial class fQuanlynguonungvien : Form
 	{
+		private Color originalAddButtonColor;
+		private Color originalDeleteButtonColor;
+		private Color originalFindButtonColor;
+		private Color originalCloseButtonColor;
+		private Color originalLoadButtonColor;
+
+
 		BindingSource sourceList = new BindingSource();
 		public fQuanlynguonungvien()
 		{
 			InitializeComponent();
 			dgv_nguonuv.DataSource = sourceList;
 			BindingsourceData();
-			LoadCbNguonUV();
 			LoadCandidatePool();
+			originalAddButtonColor = btn_themnguonungvien.BackColor;
+			originalDeleteButtonColor = btn_xoanguonungvien.BackColor;
+			originalFindButtonColor = btn_timnguonungvien.BackColor;
+			originalCloseButtonColor = btn_dongnguonungvien.BackColor;
+			originalLoadButtonColor = btn_load.BackColor;
 		}
 		void LoadCandidatePool()
 		{
 			sourceList.DataSource = NguonungvienDAO.Instance.GetListSource();
 		}
-		void LoadCbNguonUV()
-		{
-			cb_nguonungvien.DataSource = NguonungvienDAO.Instance.GetListSource();
-			cb_nguonungvien.DisplayMember = "TenNguon";
-		}
+
 		void BindingsourceData()
 		{
-			cb_nguonungvien.DataBindings.Add(new Binding("Text", dgv_nguonuv.DataSource, "TenNguon", true, DataSourceUpdateMode.Never));
+			txb_nguonungvien.DataBindings.Add(new Binding("Text", dgv_nguonuv.DataSource, "TenNguon", true, DataSourceUpdateMode.Never));
 			txb_soluonghs.DataBindings.Add(new Binding("Text", dgv_nguonuv.DataSource, "SoLuongHoSo", true, DataSourceUpdateMode.Never));
 		}
+		#region Events
 
 		private void btn_addnguonuv_Click(object sender, EventArgs e)
 		{
 			try
 			{
-				string tennguonuv = cb_nguonungvien.Text;
+				string tennguonuv = txb_nguonungvien.Text;
 				if (NguonungvienDAO.Instance.InsertSource(tennguonuv))
 				{
-					MessageBox.Show("Thêm nguồn ứng viên thành công");
+					MessageBox.Show("Thêm nguồn ứng viên thành công","Thông báo");
 					LoadCandidatePool();
 				}
 				else
 				{
-					MessageBox.Show("Thêm nguồn ứng viên thất bại");
+					MessageBox.Show("Thêm nguồn ứng viên thất bại", "Thông báo");
 				}
 			}
 			catch (Exception ex)
@@ -74,15 +82,15 @@ namespace QuanLyNhanSu.GUI
 
 				try
 				{
-					string nguonuv = cb_nguonungvien.Text;
+					string nguonuv = txb_nguonungvien.Text;
 
 					if (NguonungvienDAO.Instance.DeleteSource(nguonuv))
 					{
-						MessageBox.Show("Xóa nguồn ứng viên thành công.");
+						MessageBox.Show("Xóa nguồn ứng viên thành công.", "Thông báo");
 					}
 					else
 					{
-						MessageBox.Show("Xóa nguồn ứng viên thất bại.");
+						MessageBox.Show("Xóa nguồn ứng viên thất bại.", "Thông báo");
 					}
 
 				}
@@ -153,8 +161,50 @@ namespace QuanLyNhanSu.GUI
 				MessageBox.Show("Lỗi hiển thị biểu đồ: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
+		#endregion
 
-
+		#region Hover
+		private void btn_addnguonuv_MouseEnter(object sender, EventArgs e)
+		{
+			btn_themnguonungvien.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_addnguonuv_MouseLeave(object sender, EventArgs e)
+		{
+			btn_themnguonungvien.BackColor = originalAddButtonColor;
+		}
+		private void btn_deletenguonuv_MouseEnter(object sender, EventArgs e)
+		{
+			btn_xoanguonungvien.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_deletenguonuv_MouseLeave(object sender, EventArgs e)
+		{
+			btn_xoanguonungvien.BackColor = originalDeleteButtonColor;
+		}
+		private void btn_findnguonuv_MouseEnter(object sender, EventArgs e)
+		{
+			btn_timnguonungvien.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_findnguonuv_MouseLeave(object sender, EventArgs e)
+		{
+			btn_timnguonungvien.BackColor = originalFindButtonColor;
+		}
+		private void btn_closenguonuv_MouseEnter(object sender, EventArgs e)
+		{
+			btn_dongnguonungvien.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_closenguonuv_MouseLeave(object sender, EventArgs e)
+		{
+			btn_dongnguonungvien.BackColor = originalCloseButtonColor;
+		}
+		private void btn_load_MouseEnter(object sender, EventArgs e)
+		{
+			btn_load.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_load_MouseLeave(object sender, EventArgs e)
+		{
+			btn_load.BackColor = originalLoadButtonColor;
+		}
+		#endregion
 
 	}
 }

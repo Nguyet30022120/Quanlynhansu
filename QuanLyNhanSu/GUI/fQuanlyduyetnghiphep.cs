@@ -13,6 +13,11 @@ namespace QuanLyNhanSu.GUI
 {
 	public partial class fQuanlyduyetnghiphep : Form
 	{
+		private Color originalApproveButtonColor;
+		private Color originalRejectButtonColor;
+		private Color originalCloseButtonColor;
+		private Color originalSearchButtonColor;
+
 		BindingSource duyetDonNghiPhepList = new BindingSource();
 
 		private List<string> staffNames = new List<string>();
@@ -22,17 +27,16 @@ namespace QuanLyNhanSu.GUI
 			InitializeComponent();
 			dgv_duyetdonnghiphep.DataSource = duyetDonNghiPhepList;
 			LoadDonNghiPhep();
-		}
-		void BindingDonNghiPhepData()
-		{
-			txb_madonnghiphep.DataBindings.Clear();
-			txb_madonnghiphep.DataBindings.Add(new Binding("Text", dgv_duyetdonnghiphep.DataSource, "MaDonNghiPhep", true, DataSourceUpdateMode.Never));
+			originalApproveButtonColor = btn_duyet.BackColor;
+			originalRejectButtonColor = btn_tuchoi.BackColor;
+			originalCloseButtonColor = btn_dong.BackColor;
+			originalSearchButtonColor = btn_timkiemdonnghiphep.BackColor;
 		}
 		void LoadDonNghiPhep()
 		{
 			duyetDonNghiPhepList.DataSource = DonnghiphepDAO.Instance.GetDonNghiPhepCanDuyet();
-			BindingDonNghiPhepData();
 		}
+
 		private void btn_dong_Click(object sender, EventArgs e)
 		{
 			this.Close();
@@ -42,16 +46,16 @@ namespace QuanLyNhanSu.GUI
 		{
 			try
 			{
-				int madon = txb_madonnghiphep.Text == "" ? 0 : Convert.ToInt32(txb_madonnghiphep.Text);
+				int madon = Convert.ToInt32(dgv_duyetdonnghiphep.CurrentRow.Cells["MaDonNghiPhep"].Value);
 
 				if (DonnghiphepDAO.Instance.DuyetDonNghiPhep(madon))
 				{
-					MessageBox.Show("Duyệt đơn nghỉ phép thành công");
+					MessageBox.Show("Duyệt đơn nghỉ phép thành công", "Thông báo");
 					LoadDonNghiPhep();
 				}
 				else
 				{
-					MessageBox.Show("Duyệt đơn nghỉ phép thất bại");
+					MessageBox.Show("Duyệt đơn nghỉ phép thất bại", "Thông báo");
 				}
 			}
 			catch (Exception ex)
@@ -68,16 +72,16 @@ namespace QuanLyNhanSu.GUI
 		{
 			try
 			{
-				int madon = txb_madonnghiphep.Text == "" ? 0 : Convert.ToInt32(txb_madonnghiphep.Text);
+				int madon = Convert.ToInt32(dgv_duyetdonnghiphep.CurrentRow.Cells["MaDonNghiPhep"].Value);
 
 				if (DonnghiphepDAO.Instance.TuChoiDonNghiPhep(madon))
 				{
-					MessageBox.Show("Từ chối đơn nghỉ phép thành công");
+					MessageBox.Show("Từ chối đơn nghỉ phép thành công", "Thông báo");
 					LoadDonNghiPhep();
 				}
 				else
 				{
-					MessageBox.Show("Từ chối đơn nghỉ phép thất bại");
+					MessageBox.Show("Từ chối đơn nghỉ phép thất bại", "Thông báo");
 				}
 			}
 			catch (Exception ex)
@@ -94,5 +98,39 @@ namespace QuanLyNhanSu.GUI
 		{
 			duyetDonNghiPhepList.DataSource = DonnghiphepDAO.Instance.SearchDonnghiphep(txb_timkiemdonnghiphep.Text);
 		}
+
+		private void btn_duyet_MouseEnter(object sender, EventArgs e)
+		{
+			btn_duyet.BackColor = Color.LightBlue;
+		}
+		private void btn_duyet_MouseLeave(object sender, EventArgs e)
+		{
+			btn_duyet.BackColor = originalApproveButtonColor;
+		}
+		private void btn_tuchoi_MouseEnter(object sender, EventArgs e)
+		{
+			btn_tuchoi.BackColor = Color.LightBlue;
+		}
+		private void btn_tuchoi_MouseLeave(object sender, EventArgs e)
+		{
+			btn_tuchoi.BackColor = originalRejectButtonColor;
+		}
+		private void btn_dong_MouseEnter(object sender, EventArgs e)
+		{
+			btn_dong.BackColor = Color.LightBlue;
+		}
+		private void btn_dong_MouseLeave(object sender, EventArgs e)
+		{
+			btn_dong.BackColor = originalCloseButtonColor;
+		}
+		private void btn_timkiemdonnghiphep_MouseEnter(object sender, EventArgs e)
+		{
+			btn_timkiemdonnghiphep.BackColor = Color.LightBlue;
+		}
+		private void btn_timkiemdonnghiphep_MouseLeave(object sender, EventArgs e)
+		{
+			btn_timkiemdonnghiphep.BackColor = originalSearchButtonColor;
+		}
+
 	}
 }

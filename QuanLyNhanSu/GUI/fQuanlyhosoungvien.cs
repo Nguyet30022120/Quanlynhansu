@@ -15,12 +15,14 @@ namespace QuanLyNhanSu.GUI
 {
 	public partial class fQuanlyhosoungvien : Form
 	{
+		private Color originalAddButtonColor;
+		private Color originalEditButtonColor;
+		private Color originalDeleteButtonColor;
+		private Color originalFindButtonColor;
+		private Color originalCloseButtonColor;
+		private Color originalAcceptButtonColor;
+
 		BindingSource profileList = new BindingSource();
-		BindingSource scheduleList = new BindingSource();
-		public DataGridView DgvHoSo
-		{
-			get { return dgv_hoso; }
-		}
 
 		public fQuanlyhosoungvien()
 		{
@@ -31,6 +33,12 @@ namespace QuanLyNhanSu.GUI
 			LoadCbGioiTinh();
 			LoadCbChucVu();
 			LoadCbNguonUV();
+			originalAddButtonColor = btn_themhoso.BackColor;
+			originalDeleteButtonColor = btn_xoahoso.BackColor;
+			originalEditButtonColor = btn_suahoso.BackColor;
+			originalFindButtonColor = btn_timhoso.BackColor;
+			originalCloseButtonColor = btn_donghoso.BackColor;
+			originalAcceptButtonColor = btn_tiepnhan.BackColor;
 		}
 
 		void LoadCbGioiTinh()
@@ -43,10 +51,6 @@ namespace QuanLyNhanSu.GUI
 			cb_gioitinh.DataSource = gioitinh;
 			cb_gioitinh.DisplayMember = "Value";
 			cb_gioitinh.ValueMember = "Key";
-		}
-		void LoadSchedule()
-		{
-			scheduleList.DataSource = LichphongvanDAO.Instance.GetSchedule();
 		}
 		void LoadCbChucVu()
 		{
@@ -62,23 +66,21 @@ namespace QuanLyNhanSu.GUI
 
 		void BindingStaffData()
 		{
-			//txb_mahs.DataBindings.Add(new Binding("Text", dgv_hoso.DataSource, "MaHS", true, DataSourceUpdateMode.Never));
 			txb_hoten.DataBindings.Add(new Binding("Text", dgv_hoso.DataSource, "HoTen", true, DataSourceUpdateMode.Never));
 			cb_chucvu.DataBindings.Add(new Binding("Text", dgv_hoso.DataSource, "ChucVu", true, DataSourceUpdateMode.Never));
 			txb_dienthoai.DataBindings.Add(new Binding("Text", dgv_hoso.DataSource, "DienThoai", true, DataSourceUpdateMode.Never));
-			cb_gioitinh.DataBindings.Add(new Binding("SelectedValue", dgv_hoso.DataSource, "GioiTinh", true, DataSourceUpdateMode.Never));
+			cb_gioitinh.DataBindings.Add(new Binding("Text", dgv_hoso.DataSource, "GioiTinh", true, DataSourceUpdateMode.Never));
 			dtp_ngaysinh.DataBindings.Add(new Binding("Value", dgv_hoso.DataSource, "NgaySinh", true, DataSourceUpdateMode.Never));
 			txb_email.DataBindings.Add(new Binding("Text", dgv_hoso.DataSource, "Email", true, DataSourceUpdateMode.Never));
 			txb_chitietcv.DataBindings.Add(new Binding("Text", dgv_hoso.DataSource, "ChiTietCV", true, DataSourceUpdateMode.Never));
-			cb_nguonungvien.DataBindings.Add(new Binding("Text",dgv_hoso.DataSource,"NguonUV", true, DataSourceUpdateMode.Never));
-			txb_trangthai.DataBindings.Add(new Binding("Text", dgv_hoso.DataSource, "TrangThai", true, DataSourceUpdateMode.Never));
+			cb_nguonungvien.DataBindings.Add(new Binding("Text", dgv_hoso.DataSource, "NguonUV", true, DataSourceUpdateMode.Never));
 		}
 
 		void LoadProfile()
 		{
 			profileList.DataSource = HosoungvienDAO.Instance.GetProfile();
 		}
-
+		#region Events
 		private void btn_addhs_Click(object sender, EventArgs e)
 		{
 			try
@@ -94,12 +96,12 @@ namespace QuanLyNhanSu.GUI
 
 				if (HosoungvienDAO.Instance.InsertProfile(hoten, tenchucvu, gioitinh, ngaysinh, tennguon, dienthoai, chitietcv, email))
 				{
-					MessageBox.Show("Thêm hồ sơ ứng viên thành công");
+					MessageBox.Show("Thêm hồ sơ ứng viên thành công", "Thông báo");
 					LoadProfile();
 				}
 				else
 				{
-					MessageBox.Show("Thêm hồ sơ ứng viên thất bại");
+					MessageBox.Show("Thêm hồ sơ ứng viên thất bại", "Thông báo");
 				}
 			}
 			catch (Exception ex)
@@ -130,11 +132,11 @@ namespace QuanLyNhanSu.GUI
 
 					if (HosoungvienDAO.Instance.UpdateProfile(mahs, hoten, tenchucvu, gioitinh, ngaysinh, tennguon, dienthoai, chitietcv, email))
 					{
-						MessageBox.Show("Sửa hồ sơ ứng viên thành công");
+						MessageBox.Show("Sửa hồ sơ ứng viên thành công", "Thông báo");
 					}
 					else
 					{
-						MessageBox.Show("Sửa hồ sơ ứng viên thất bại");
+						MessageBox.Show("Sửa hồ sơ ứng viên thất bại", "Thông báo");
 					}
 
 				}
@@ -160,11 +162,11 @@ namespace QuanLyNhanSu.GUI
 
 					if (HosoungvienDAO.Instance.DeleteProfile(mahs))
 					{
-						MessageBox.Show("Xóa hồ sơ thành công");
+						MessageBox.Show("Xóa hồ sơ thành công", "Thông báo");
 					}
 					else
 					{
-						MessageBox.Show("Xóa hồ sơ thất bại");
+						MessageBox.Show("Xóa hồ sơ thất bại", "Thông báo");
 					}
 
 				}
@@ -210,7 +212,64 @@ namespace QuanLyNhanSu.GUI
 				string tenuv = txb_hoten.Text;
 				fTaolichphongvan schedule = new fTaolichphongvan(tenuv, mahs);
 				schedule.ShowDialog();
+
+				LoadProfile();
 			}
 		}
+		#endregion
+
+		#region Hover
+		private void btn_addhs_MouseEnter(object sender, EventArgs e)
+		{
+			btn_themhoso.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_addhs_MouseLeave(object sender, EventArgs e)
+		{
+			btn_themhoso.BackColor = originalAddButtonColor;
+		}
+		private void btn_ediths_MouseEnter(object sender, EventArgs e)
+		{
+			btn_suahoso.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_ediths_MouseLeave(object sender, EventArgs e)
+		{
+			btn_suahoso.BackColor = originalEditButtonColor;
+		}
+		private void btn_deletehs_MouseEnter(object sender, EventArgs e)
+		{
+			btn_xoahoso.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_deletehs_MouseLeave(object sender, EventArgs e)
+		{
+			btn_xoahoso.BackColor = originalDeleteButtonColor;
+		}
+		private void btn_findhs_MouseEnter(object sender, EventArgs e)
+		{
+			btn_timhoso.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_findhs_MouseLeave(object sender, EventArgs e)
+		{
+			btn_timhoso.BackColor = originalFindButtonColor;
+		}
+		private void btn_closehs_MouseEnter(object sender, EventArgs e)
+		{
+			btn_donghoso.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_closehs_MouseLeave(object sender, EventArgs e)
+		{
+			btn_donghoso.BackColor = originalCloseButtonColor;
+		}
+		private void btn_tiepnhan_MouseEnter(object sender, EventArgs e)
+		{
+			btn_tiepnhan.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_tiepnhan_MouseLeave(object sender, EventArgs e)
+		{
+			btn_tiepnhan.BackColor = originalAcceptButtonColor;
+
+		}
+		#endregion
+
 	}
 }
+

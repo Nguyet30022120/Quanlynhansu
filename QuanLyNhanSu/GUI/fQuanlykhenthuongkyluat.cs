@@ -13,27 +13,37 @@ namespace QuanLyNhanSu.GUI
 {
 	public partial class fQuanlykhenthuongkyluat : Form
 	{
+		private Color originalAddButtonColor;
+		private Color originalEditButtonColor;
+		private Color originalDeleteButtonColor;
+		private Color originalFindButtonColor;
+		private Color originalCloseButtonColor;
 
 		BindingSource commendationList = new BindingSource();
 
 		public fQuanlykhenthuongkyluat()
 		{
 			InitializeComponent();
-			dgv_ktkl.DataSource = commendationList;
+			dgv_khenthuongkyluat.DataSource = commendationList;
 			LoadCbHinhThuc();
+			originalAddButtonColor = btn_themkhenthuongkyluat.BackColor;
+			originalEditButtonColor = btn_suakhenthuongkyluat.BackColor;
+			originalDeleteButtonColor = btn_xoakhenthuongkyluat.BackColor;
+			originalFindButtonColor = btn_timnhanvien.BackColor;
+			originalCloseButtonColor = btn_dongkhenthuongkyluat.BackColor;
 		}
+
 
 		void BindingCommendationData()
 		{
-			// Clear old bindings
 			txb_tennhanvien.DataBindings.Clear();
 			txb_noidung.DataBindings.Clear();
 			cb_hinhthuc.DataBindings.Clear();
 			dtp_thoigian.DataBindings.Clear();
-			txb_tennhanvien.DataBindings.Add(new Binding("Text", dgv_ktkl.DataSource, "TenNV", true, DataSourceUpdateMode.Never));
-			txb_noidung.DataBindings.Add(new Binding("Text", dgv_ktkl.DataSource, "NoiDung", true, DataSourceUpdateMode.Never));
-			cb_hinhthuc.DataBindings.Add(new Binding("Text", dgv_ktkl.DataSource, "HinhThuc", true, DataSourceUpdateMode.Never));
-			dtp_thoigian.DataBindings.Add(new Binding("Value", dgv_ktkl.DataSource, "ThoiGian", true, DataSourceUpdateMode.Never));
+			txb_tennhanvien.DataBindings.Add(new Binding("Text", dgv_khenthuongkyluat.DataSource, "TenNV", true, DataSourceUpdateMode.Never));
+			txb_noidung.DataBindings.Add(new Binding("Text", dgv_khenthuongkyluat.DataSource, "NoiDung", true, DataSourceUpdateMode.Never));
+			cb_hinhthuc.DataBindings.Add(new Binding("Text", dgv_khenthuongkyluat.DataSource, "HinhThuc", true, DataSourceUpdateMode.Never));
+			dtp_thoigian.DataBindings.Add(new Binding("Value", dgv_khenthuongkyluat.DataSource, "ThoiGian", true, DataSourceUpdateMode.Never));
 		}
 		void LoadCommendation(string manv)
 		{
@@ -51,7 +61,7 @@ namespace QuanLyNhanSu.GUI
 			cb_hinhthuc.DisplayMember = "Value";
 			cb_hinhthuc.ValueMember = "Key";
 		}
-
+		#region Events
 		private void btn_findnv_Click(object sender, EventArgs e)
 		{
 			LoadCommendation(txb_manhanvien.Text);
@@ -69,17 +79,17 @@ namespace QuanLyNhanSu.GUI
 
 				if (KhenthuongkyluatDAO.Instance.InsertCommendation(manv, noidung,hinhthuc,thoigian))
 				{
-					MessageBox.Show("Thêm khen thưởng/kỷ luật thành công");
+					MessageBox.Show("Thêm khen thưởng/kỷ luật thành công", "Thông báo");
 					LoadCommendation(manv);
 				}
 				else
 				{
-					MessageBox.Show("Thêm khen thưởng/kỷ luật thất bại");
+					MessageBox.Show("Thêm khen thưởng/kỷ luật thất bại", "Thông báo");
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Hãy nhập mã nhân viên!", "Thông báo");
 			}
 			finally
 			{
@@ -92,7 +102,7 @@ namespace QuanLyNhanSu.GUI
 			string manv = txb_manhanvien.Text;
 			try
 			{
-				string maktkl = dgv_ktkl.CurrentRow.Cells["MaKTKL"].Value.ToString();
+				string maktkl = dgv_khenthuongkyluat.CurrentRow.Cells["MaKTKL"].Value.ToString();
 				string noidung = txb_noidung.Text;
 				int hinhthuc = (int)cb_hinhthuc.SelectedValue;
 				DateTime thoigian = dtp_thoigian.Value;
@@ -100,11 +110,11 @@ namespace QuanLyNhanSu.GUI
 
 				if (KhenthuongkyluatDAO.Instance.UpdateCommendation(maktkl,noidung,hinhthuc,thoigian))
 				{
-					MessageBox.Show("Sửa khen thưởng/kỷ luật thành công.");
+					MessageBox.Show("Sửa khen thưởng/kỷ luật thành công.", "Thông báo");
 				}
 				else
 				{
-					MessageBox.Show("Sửa khen thưởng/kỷ luật thất bại.");
+					MessageBox.Show("Sửa khen thưởng/kỷ luật thất bại.", "Thông báo");
 				}
 			}
 			catch (Exception ex)
@@ -122,14 +132,14 @@ namespace QuanLyNhanSu.GUI
 			string manv = txb_manhanvien.Text;
 			try
 			{
-				string matd = dgv_ktkl.CurrentRow.Cells["MaKTKL"].Value.ToString(); ;
+				string matd = dgv_khenthuongkyluat.CurrentRow.Cells["MaKTKL"].Value.ToString(); ;
 				if (KhenthuongkyluatDAO.Instance.DeleteCommendation(matd))
 				{
-					MessageBox.Show("Xóa khen thưởng/kỷ luật thành công.");
+					MessageBox.Show("Xóa khen thưởng/kỷ luật thành công.", "Thông báo");
 				}
 				else
 				{
-					MessageBox.Show("Xóa khen thưởng/kỷ luật thất bại.");
+					MessageBox.Show("Xóa khen thưởng/kỷ luật thất bại.", "Thông báo");
 				}
 			}
 			catch (Exception ex)
@@ -146,7 +156,51 @@ namespace QuanLyNhanSu.GUI
 		{
 			this.Close();
 		}
+		#endregion
+
+		#region Hover
+		private void btn_themkhenthuongkyluat_MouseEnter(object sender, EventArgs e)
+		{
+			btn_themkhenthuongkyluat.BackColor = Color.LightBlue;
+		}
+		private void btn_themkhenthuongkyluat_MouseLeave(object sender, EventArgs e)
+		{
+			btn_themkhenthuongkyluat.BackColor = originalAddButtonColor;
+		}
+		private void btn_suakhenthuongkyluat_MouseEnter(object sender, EventArgs e)
+		{
+			btn_suakhenthuongkyluat.BackColor = Color.LightBlue;
+		}
+		private void btn_suakhenthuongkyluat_MouseLeave(object sender, EventArgs e)
+		{
+			btn_suakhenthuongkyluat.BackColor = originalEditButtonColor;
+		}
+		private void btn_xoakhenthuongkyluat_MouseEnter(object sender, EventArgs e)
+		{
+			btn_xoakhenthuongkyluat.BackColor = Color.LightBlue;
+		}
+		private void btn_xoakhenthuongkyluat_MouseLeave(object sender, EventArgs e)
+		{
+			btn_xoakhenthuongkyluat.BackColor = originalDeleteButtonColor;
+		}
+		private void btn_timnhanvien_MouseEnter(object sender, EventArgs e)
+		{
+			btn_timnhanvien.BackColor = Color.LightBlue;
+		}
+		private void btn_timnhanvien_MouseLeave(object sender, EventArgs e)
+		{
+			btn_timnhanvien.BackColor = originalFindButtonColor;
+		}
+		private void btn_dongkhenthuongkyluat_MouseEnter(object sender, EventArgs e)
+		{
+			btn_dongkhenthuongkyluat.BackColor = Color.LightBlue;
+		}
+		private void btn_dongkhenthuongkyluat_MouseLeave(object sender, EventArgs e)
+		{
+			btn_dongkhenthuongkyluat.BackColor = originalCloseButtonColor;
+		}
+		#endregion
 
 	}
-	}
+}
 

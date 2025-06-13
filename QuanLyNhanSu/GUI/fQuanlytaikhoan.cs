@@ -29,17 +29,17 @@ namespace QuanLyNhanSu
 				NguoidungDTO user = data[0];
 				txb_cccd.Text = user.CCCD;
 				txb_manhanvien.Text = user.MaNV;
-				txb_tennv.Text = user.NameNV;
+				txb_tennv.Text = user.TenNV;
 				txb_chucvu.Text = user.ChucVu;
-				cb_phongban.Text = user.PhongBan;
+				txb_cuahang.Text = user.CuaHang;
 				txb_matk.Text = user.MaTK;
 				txb_taikhoan.Text = user.TaiKhoan;
-				cb_vaitro.Text = user.VaiTro;
+				txb_vaitro.Text = user.VaiTro;
 				txb_motaquyenhan.Text = user.MoTaQuyenHan;
 				txb_sodienthoai.Text = user.SoDienThoai;
 				txb_diachi.Text = user.DiaChi;
-				cb_gioitinh.Text = user.GioiTinh == 1 ? "Nam" : "Nữ";
-				dtp_ngaysinh.Value = user.NgaySinh ?? DateTime.Now;
+				txb_gioitinh.Text = user.GioiTinh == 1 ? "Nam" : "Nữ";
+				txb_ngaysinh.Text = user.NgaySinh.HasValue ? user.NgaySinh.Value.ToString("yyyy-MM-dd") : DateTime.Now.ToString("yyyy-MM-dd");
 
 
 			}

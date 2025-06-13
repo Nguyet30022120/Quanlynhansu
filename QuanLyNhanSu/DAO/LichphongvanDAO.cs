@@ -22,7 +22,7 @@ namespace QuanLyNhanSu.DAO
 		{
 			List<LichphongvanDTO> list = new List<LichphongvanDTO>();
 
-			string query = "SELECT LPV.Ma_HS, LPV.Ma_PV, HSV.HoTen, LPV.NgayPV, LPV.ThoiGianPV, LPV.DiaDiem, NV.HoTen + '-' + NV.Ma_NV AS [NguoiPV], LPV.TrangThai FROM LichPhongVan LPV JOIN HoSoUngVien HSV ON LPV.Ma_HS = HSV.Ma_HS JOIN [Nhan vien] NV ON LPV.Ma_NV_PV = NV.Ma_NV ORDER BY NgayPV ASC, ThoiGianPV ASC;;\r\n";
+			string query = "SELECT LPV.Ma_HS, LPV.Ma_PV, HSV.HoTen, LPV.NgayPV, LPV.ThoiGianPV, LPV.DiaDiem, NV.HoTen + '-' + NV.Ma_NV AS [NguoiPV], LPV.TrangThai FROM LichPhongVan LPV JOIN HoSoUngVien HSV ON LPV.Ma_HS = HSV.Ma_HS JOIN [NhanVien] NV ON LPV.Ma_NV_PV = NV.Ma_NV ORDER BY NgayPV ASC, ThoiGianPV ASC;;\r\n";
 			DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
 			foreach (DataRow item in data.Rows)
@@ -61,7 +61,7 @@ namespace QuanLyNhanSu.DAO
 		{
 			List<LichphongvanDTO> list = new List<LichphongvanDTO>();
 
-			string query = string.Format("SELECT LPV.Ma_HS, LPV.Ma_PV, HSV.HoTen, LPV.NgayPV, LPV.ThoiGianPV, LPV.DiaDiem, NV.HoTen + '-' + NV.Ma_NV AS [NguoiPV], LPV.TrangThai FROM LichPhongVan LPV JOIN HoSoUngVien HSV ON LPV.Ma_HS = HSV.Ma_HS JOIN [Nhan vien] NV ON LPV.Ma_NV_PV = NV.Ma_NV WHERE LPV.Ma_HS LIKE '%{5}%' OR LPV.Ma_PV LIKE N'%{0}%' OR HSV.HoTen LIKE N'%{1}%' OR LPV.NgayPV LIKE '%{2}%' OR LPV.DiaDiem LIKE N'%{3}%' OR LPV.TrangThai LIKE N'%{4}%'", value, value, value, value, value, value);
+			string query = string.Format("SELECT LPV.Ma_HS, LPV.Ma_PV, HSV.HoTen, LPV.NgayPV, LPV.ThoiGianPV, LPV.DiaDiem, NV.HoTen + '-' + NV.Ma_NV AS [NguoiPV], LPV.TrangThai FROM LichPhongVan LPV JOIN HoSoUngVien HSV ON LPV.Ma_HS = HSV.Ma_HS JOIN [Nhanvien] NV ON LPV.Ma_NV_PV = NV.Ma_NV WHERE LPV.Ma_HS LIKE '%{5}%' OR LPV.Ma_PV LIKE N'%{0}%' OR HSV.HoTen LIKE N'%{1}%' OR LPV.NgayPV LIKE '%{2}%' OR LPV.DiaDiem LIKE N'%{3}%' OR LPV.TrangThai LIKE N'%{4}%'", value, value, value, value, value, value);
 
 			Console.WriteLine(query);
 

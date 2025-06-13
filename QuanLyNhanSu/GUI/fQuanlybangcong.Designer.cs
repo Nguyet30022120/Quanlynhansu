@@ -1,6 +1,6 @@
 namespace QuanLyNhanSu.GUI
 {
-	partial class fBangcong
+	partial class fQuanlybangcong
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -29,16 +29,18 @@ namespace QuanLyNhanSu.GUI
 		private void InitializeComponent()
 		{
 			this.panel1 = new System.Windows.Forms.Panel();
-			this.btn_debug_test = new System.Windows.Forms.Button();
+			this.txb_tennhanvien = new System.Windows.Forms.TextBox();
+			this.txb_manhanvien = new System.Windows.Forms.TextBox();
+			this.label1 = new System.Windows.Forms.Label();
 			this.btn_close = new System.Windows.Forms.Button();
 			this.btn_xuatbaocao = new System.Windows.Forms.Button();
 			this.btn_xem = new System.Windows.Forms.Button();
-			this.cb_nhanvien = new System.Windows.Forms.ComboBox();
 			this.cb_nam = new System.Windows.Forms.ComboBox();
 			this.cb_thang = new System.Windows.Forms.ComboBox();
-			this.label4 = new System.Windows.Forms.Label();
+			this.lb_manhanvien = new System.Windows.Forms.Label();
 			this.lb_nam = new System.Windows.Forms.Label();
 			this.lb_thang = new System.Windows.Forms.Label();
+			this.btn_debug_test = new System.Windows.Forms.Button();
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.panel_calendar = new System.Windows.Forms.Panel();
 			this.panel_days = new System.Windows.Forms.Panel();
@@ -49,11 +51,7 @@ namespace QuanLyNhanSu.GUI
 			this.button_green_sample = new System.Windows.Forms.Button();
 			this.label9 = new System.Windows.Forms.Label();
 			this.panel3 = new System.Windows.Forms.Panel();
-			this.lbl_tongngayvang = new System.Windows.Forms.Label();
-			this.lbl_tongngaylam = new System.Windows.Forms.Label();
 			this.lbl_tonggio = new System.Windows.Forms.Label();
-			this.label7 = new System.Windows.Forms.Label();
-			this.label6 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
@@ -65,13 +63,15 @@ namespace QuanLyNhanSu.GUI
 			// panel1
 			// 
 			this.panel1.BackColor = System.Drawing.Color.BlanchedAlmond;
+			this.panel1.Controls.Add(this.txb_tennhanvien);
+			this.panel1.Controls.Add(this.txb_manhanvien);
+			this.panel1.Controls.Add(this.label1);
 			this.panel1.Controls.Add(this.btn_close);
 			this.panel1.Controls.Add(this.btn_xuatbaocao);
 			this.panel1.Controls.Add(this.btn_xem);
-			this.panel1.Controls.Add(this.cb_nhanvien);
 			this.panel1.Controls.Add(this.cb_nam);
 			this.panel1.Controls.Add(this.cb_thang);
-			this.panel1.Controls.Add(this.label4);
+			this.panel1.Controls.Add(this.lb_manhanvien);
 			this.panel1.Controls.Add(this.lb_nam);
 			this.panel1.Controls.Add(this.lb_thang);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -80,18 +80,32 @@ namespace QuanLyNhanSu.GUI
 			this.panel1.Size = new System.Drawing.Size(1482, 129);
 			this.panel1.TabIndex = 0;
 			// 
-			// btn_debug_test
+			// txb_tennhanvien
 			// 
-			this.btn_debug_test.BackColor = System.Drawing.Color.Orange;
-			this.btn_debug_test.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-			this.btn_debug_test.Location = new System.Drawing.Point(56, 40);
-			this.btn_debug_test.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-			this.btn_debug_test.Name = "btn_debug_test";
-			this.btn_debug_test.Size = new System.Drawing.Size(120, 44);
-			this.btn_debug_test.TabIndex = 10;
-			this.btn_debug_test.Text = "🔍 Test DB";
-			this.btn_debug_test.UseVisualStyleBackColor = false;
-			this.btn_debug_test.Click += new System.EventHandler(this.btn_test_debug_Click);
+			this.txb_tennhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txb_tennhanvien.Location = new System.Drawing.Point(632, 31);
+			this.txb_tennhanvien.Name = "txb_tennhanvien";
+			this.txb_tennhanvien.ReadOnly = true;
+			this.txb_tennhanvien.Size = new System.Drawing.Size(252, 27);
+			this.txb_tennhanvien.TabIndex = 12;
+			// 
+			// txb_manhanvien
+			// 
+			this.txb_manhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txb_manhanvien.Location = new System.Drawing.Point(632, 83);
+			this.txb_manhanvien.Name = "txb_manhanvien";
+			this.txb_manhanvien.Size = new System.Drawing.Size(252, 27);
+			this.txb_manhanvien.TabIndex = 11;
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.Location = new System.Drawing.Point(496, 34);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(119, 23);
+			this.label1.TabIndex = 10;
+			this.label1.Text = "Tên nhân viên";
 			// 
 			// btn_close
 			// 
@@ -104,41 +118,36 @@ namespace QuanLyNhanSu.GUI
 			this.btn_close.Text = "Đóng";
 			this.btn_close.UseVisualStyleBackColor = false;
 			this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
+			this.btn_close.MouseEnter += new System.EventHandler(this.btn_close_MouseEnter);
+			this.btn_close.MouseLeave += new System.EventHandler(this.btn_close_MouseLeave);
 			// 
 			// btn_xuatbaocao
 			// 
 			this.btn_xuatbaocao.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_xuatbaocao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_xuatbaocao.Location = new System.Drawing.Point(1109, 22);
+			this.btn_xuatbaocao.Location = new System.Drawing.Point(1150, 22);
 			this.btn_xuatbaocao.Name = "btn_xuatbaocao";
 			this.btn_xuatbaocao.Size = new System.Drawing.Size(137, 40);
 			this.btn_xuatbaocao.TabIndex = 8;
 			this.btn_xuatbaocao.Text = "Xuất báo cáo";
 			this.btn_xuatbaocao.UseVisualStyleBackColor = false;
 			this.btn_xuatbaocao.Click += new System.EventHandler(this.btn_xuatbaocao_Click);
+			this.btn_xuatbaocao.MouseEnter += new System.EventHandler(this.btn_xuatbaocao_MouseEnter);
+			this.btn_xuatbaocao.MouseLeave += new System.EventHandler(this.btn_xuatbaocao_MouseLeave);
 			// 
 			// btn_xem
 			// 
 			this.btn_xem.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_xem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_xem.Location = new System.Drawing.Point(889, 22);
+			this.btn_xem.Location = new System.Drawing.Point(977, 22);
 			this.btn_xem.Name = "btn_xem";
 			this.btn_xem.Size = new System.Drawing.Size(115, 40);
 			this.btn_xem.TabIndex = 7;
 			this.btn_xem.Text = "Thống kê";
 			this.btn_xem.UseVisualStyleBackColor = false;
 			this.btn_xem.Click += new System.EventHandler(this.btn_xem_Click);
-			// 
-			// cb_nhanvien
-			// 
-			this.cb_nhanvien.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cb_nhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.cb_nhanvien.FormattingEnabled = true;
-			this.cb_nhanvien.Location = new System.Drawing.Point(632, 29);
-			this.cb_nhanvien.Name = "cb_nhanvien";
-			this.cb_nhanvien.Size = new System.Drawing.Size(200, 28);
-			this.cb_nhanvien.TabIndex = 6;
-			this.cb_nhanvien.SelectedIndexChanged += new System.EventHandler(this.cb_nhanvien_SelectedIndexChanged);
+			this.btn_xem.MouseEnter += new System.EventHandler(this.btn_thongke_MouseEnter);
+			this.btn_xem.MouseLeave += new System.EventHandler(this.btn_thongke_MouseLeave);
 			// 
 			// cb_nam
 			// 
@@ -162,15 +171,15 @@ namespace QuanLyNhanSu.GUI
 			this.cb_thang.TabIndex = 4;
 			this.cb_thang.SelectedIndexChanged += new System.EventHandler(this.cb_thang_SelectedIndexChanged);
 			// 
-			// label4
+			// lb_manhanvien
 			// 
-			this.label4.AutoSize = true;
-			this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label4.Location = new System.Drawing.Point(506, 32);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(90, 23);
-			this.label4.TabIndex = 3;
-			this.label4.Text = "Nhân viên";
+			this.lb_manhanvien.AutoSize = true;
+			this.lb_manhanvien.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lb_manhanvien.Location = new System.Drawing.Point(498, 83);
+			this.lb_manhanvien.Name = "lb_manhanvien";
+			this.lb_manhanvien.Size = new System.Drawing.Size(117, 23);
+			this.lb_manhanvien.TabIndex = 3;
+			this.lb_manhanvien.Text = "Mã nhân viên";
 			// 
 			// lb_nam
 			// 
@@ -191,6 +200,18 @@ namespace QuanLyNhanSu.GUI
 			this.lb_thang.Size = new System.Drawing.Size(60, 23);
 			this.lb_thang.TabIndex = 1;
 			this.lb_thang.Text = "Tháng";
+			// 
+			// btn_debug_test
+			// 
+			this.btn_debug_test.BackColor = System.Drawing.Color.Orange;
+			this.btn_debug_test.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+			this.btn_debug_test.Location = new System.Drawing.Point(56, 40);
+			this.btn_debug_test.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+			this.btn_debug_test.Name = "btn_debug_test";
+			this.btn_debug_test.Size = new System.Drawing.Size(120, 44);
+			this.btn_debug_test.TabIndex = 10;
+			this.btn_debug_test.Text = "🔍 Test DB";
+			this.btn_debug_test.UseVisualStyleBackColor = false;
 			// 
 			// panel2
 			// 
@@ -309,11 +330,7 @@ namespace QuanLyNhanSu.GUI
 			// panel3
 			// 
 			this.panel3.BackColor = System.Drawing.Color.Tan;
-			this.panel3.Controls.Add(this.lbl_tongngayvang);
-			this.panel3.Controls.Add(this.lbl_tongngaylam);
 			this.panel3.Controls.Add(this.lbl_tonggio);
-			this.panel3.Controls.Add(this.label7);
-			this.panel3.Controls.Add(this.label6);
 			this.panel3.Controls.Add(this.label5);
 			this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.panel3.Location = new System.Drawing.Point(0, 678);
@@ -321,70 +338,28 @@ namespace QuanLyNhanSu.GUI
 			this.panel3.Size = new System.Drawing.Size(1482, 100);
 			this.panel3.TabIndex = 2;
 			// 
-			// lbl_tongngayvang
-			// 
-			this.lbl_tongngayvang.AutoSize = true;
-			this.lbl_tongngayvang.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbl_tongngayvang.ForeColor = System.Drawing.Color.Black;
-			this.lbl_tongngayvang.Location = new System.Drawing.Point(1441, 47);
-			this.lbl_tongngayvang.Name = "lbl_tongngayvang";
-			this.lbl_tongngayvang.Size = new System.Drawing.Size(24, 28);
-			this.lbl_tongngayvang.TabIndex = 5;
-			this.lbl_tongngayvang.Text = "0";
-			// 
-			// lbl_tongngaylam
-			// 
-			this.lbl_tongngaylam.AutoSize = true;
-			this.lbl_tongngaylam.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbl_tongngaylam.ForeColor = System.Drawing.Color.Black;
-			this.lbl_tongngaylam.Location = new System.Drawing.Point(808, 47);
-			this.lbl_tongngaylam.Name = "lbl_tongngaylam";
-			this.lbl_tongngaylam.Size = new System.Drawing.Size(24, 28);
-			this.lbl_tongngaylam.TabIndex = 4;
-			this.lbl_tongngaylam.Text = "0";
-			// 
 			// lbl_tonggio
 			// 
 			this.lbl_tonggio.AutoSize = true;
-			this.lbl_tonggio.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbl_tonggio.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbl_tonggio.ForeColor = System.Drawing.Color.Black;
-			this.lbl_tonggio.Location = new System.Drawing.Point(205, 47);
+			this.lbl_tonggio.Location = new System.Drawing.Point(953, 34);
 			this.lbl_tonggio.Name = "lbl_tonggio";
-			this.lbl_tonggio.Size = new System.Drawing.Size(24, 28);
+			this.lbl_tonggio.Size = new System.Drawing.Size(40, 46);
 			this.lbl_tonggio.TabIndex = 3;
 			this.lbl_tonggio.Text = "0";
-			// 
-			// label7
-			// 
-			this.label7.AutoSize = true;
-			this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label7.Location = new System.Drawing.Point(1244, 47);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(191, 28);
-			this.label7.TabIndex = 2;
-			this.label7.Text = "Tổng số ngày vắng";
-			// 
-			// label6
-			// 
-			this.label6.AutoSize = true;
-			this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label6.Location = new System.Drawing.Point(618, 47);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(180, 28);
-			this.label6.TabIndex = 1;
-			this.label6.Text = "Tổng số ngày làm";
 			// 
 			// label5
 			// 
 			this.label5.AutoSize = true;
-			this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label5.Location = new System.Drawing.Point(12, 47);
+			this.label5.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label5.Location = new System.Drawing.Point(690, 42);
 			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(165, 28);
+			this.label5.Size = new System.Drawing.Size(203, 35);
 			this.label5.TabIndex = 0;
 			this.label5.Text = "Tổng số giờ làm";
 			// 
-			// fBangcong
+			// fQuanlybangcong
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -392,7 +367,7 @@ namespace QuanLyNhanSu.GUI
 			this.Controls.Add(this.panel2);
 			this.Controls.Add(this.panel3);
 			this.Controls.Add(this.panel1);
-			this.Name = "fBangcong";
+			this.Name = "fQuanlybangcong";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Bảng Chấm Công";
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -415,19 +390,14 @@ namespace QuanLyNhanSu.GUI
 		private System.Windows.Forms.Button btn_close;
 		private System.Windows.Forms.Button btn_xuatbaocao;
 		private System.Windows.Forms.Button btn_xem;
-		private System.Windows.Forms.ComboBox cb_nhanvien;
 		private System.Windows.Forms.ComboBox cb_nam;
 		private System.Windows.Forms.ComboBox cb_thang;
-		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.Label lb_manhanvien;
 		private System.Windows.Forms.Label lb_nam;
 		private System.Windows.Forms.Label lb_thang;
 		private System.Windows.Forms.Panel panel2;
 		private System.Windows.Forms.Panel panel3;
-		private System.Windows.Forms.Label lbl_tongngayvang;
-		private System.Windows.Forms.Label lbl_tongngaylam;
 		private System.Windows.Forms.Label lbl_tonggio;
-		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.Panel panel_calendar;
 		private System.Windows.Forms.Panel panel_days;
@@ -437,5 +407,8 @@ namespace QuanLyNhanSu.GUI
 		private System.Windows.Forms.Label label_green;
 		private System.Windows.Forms.Button button_green_sample;
 		private System.Windows.Forms.Label label9;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.TextBox txb_manhanvien;
+		private System.Windows.Forms.TextBox txb_tennhanvien;
 	}
 } 

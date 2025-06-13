@@ -1,6 +1,6 @@
 ﻿namespace QuanLyNhanSu.GUI
 {
-	partial class fCheckIn
+	partial class fCheckin
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -39,11 +39,10 @@
 			this.btn_checkin = new System.Windows.Forms.Button();
 			this.sqlDataAdapter1 = new Microsoft.Data.SqlClient.SqlDataAdapter();
 			this.dgv_checkin = new System.Windows.Forms.DataGridView();
-			this.btn_suacheckin = new System.Windows.Forms.Button();
 			this.btn_xoacheckin = new System.Windows.Forms.Button();
 			this.btn_dongcheckin = new System.Windows.Forms.Button();
 			this.btn_timnhanvien = new System.Windows.Forms.Button();
-			this.txb_tennv = new System.Windows.Forms.TextBox();
+			this.txb_tennhanvien = new System.Windows.Forms.TextBox();
 			this.MaCheckIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,10 +82,10 @@
 			// lb_giocheckin
 			// 
 			this.lb_giocheckin.AutoSize = true;
-			this.lb_giocheckin.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_giocheckin.Location = new System.Drawing.Point(12, 213);
+			this.lb_giocheckin.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lb_giocheckin.Location = new System.Drawing.Point(28, 213);
 			this.lb_giocheckin.Name = "lb_giocheckin";
-			this.lb_giocheckin.Size = new System.Drawing.Size(199, 45);
+			this.lb_giocheckin.Size = new System.Drawing.Size(181, 41);
 			this.lb_giocheckin.TabIndex = 3;
 			this.lb_giocheckin.Text = "Giờ checkin";
 			// 
@@ -107,6 +106,8 @@
 			this.btn_checkin.Text = "Check in";
 			this.btn_checkin.UseVisualStyleBackColor = false;
 			this.btn_checkin.Click += new System.EventHandler(this.btn_checkin_Click);
+			this.btn_checkin.MouseEnter += new System.EventHandler(this.btn_checkin_MouseEnter);
+			this.btn_checkin.MouseLeave += new System.EventHandler(this.btn_checkin_MouseLeave);
 			// 
 			// dgv_checkin
 			// 
@@ -134,18 +135,7 @@
 			this.dgv_checkin.RowTemplate.Height = 24;
 			this.dgv_checkin.Size = new System.Drawing.Size(725, 426);
 			this.dgv_checkin.TabIndex = 6;
-			// 
-			// btn_suacheckin
-			// 
-			this.btn_suacheckin.BackColor = System.Drawing.Color.DarkOrange;
-			this.btn_suacheckin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_suacheckin.Location = new System.Drawing.Point(61, 378);
-			this.btn_suacheckin.Name = "btn_suacheckin";
-			this.btn_suacheckin.Size = new System.Drawing.Size(115, 40);
-			this.btn_suacheckin.TabIndex = 7;
-			this.btn_suacheckin.Text = "Sửa";
-			this.btn_suacheckin.UseVisualStyleBackColor = false;
-			this.btn_suacheckin.Click += new System.EventHandler(this.btn_editcheckin_Click);
+			this.dgv_checkin.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_checkin_CellFormatting);
 			// 
 			// btn_xoacheckin
 			// 
@@ -158,6 +148,8 @@
 			this.btn_xoacheckin.Text = "Xóa";
 			this.btn_xoacheckin.UseVisualStyleBackColor = false;
 			this.btn_xoacheckin.Click += new System.EventHandler(this.btn_deletecheckin_Click);
+			this.btn_xoacheckin.MouseEnter += new System.EventHandler(this.btn_xoacheckin_MouseEnter);
+			this.btn_xoacheckin.MouseLeave += new System.EventHandler(this.btn_xoacheckin_MouseLeave);
 			// 
 			// btn_dongcheckin
 			// 
@@ -170,6 +162,8 @@
 			this.btn_dongcheckin.Text = "Đóng";
 			this.btn_dongcheckin.UseVisualStyleBackColor = false;
 			this.btn_dongcheckin.Click += new System.EventHandler(this.btn_closecheckin_Click);
+			this.btn_dongcheckin.MouseEnter += new System.EventHandler(this.btn_dongcheckin_MouseEnter);
+			this.btn_dongcheckin.MouseLeave += new System.EventHandler(this.btn_dongcheckin_MouseLeave);
 			// 
 			// btn_timnhanvien
 			// 
@@ -182,14 +176,17 @@
 			this.btn_timnhanvien.Text = "Tìm kiếm";
 			this.btn_timnhanvien.UseVisualStyleBackColor = false;
 			this.btn_timnhanvien.Click += new System.EventHandler(this.btn_findnv_Click);
+			this.btn_timnhanvien.MouseEnter += new System.EventHandler(this.btn_timnhanvien_MouseEnter);
+			this.btn_timnhanvien.MouseLeave += new System.EventHandler(this.btn_timnhanvien_MouseLeave);
 			// 
-			// txb_tennv
+			// txb_tennhanvien
 			// 
-			this.txb_tennv.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_tennv.Location = new System.Drawing.Point(718, 15);
-			this.txb_tennv.Name = "txb_tennv";
-			this.txb_tennv.Size = new System.Drawing.Size(252, 27);
-			this.txb_tennv.TabIndex = 11;
+			this.txb_tennhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txb_tennhanvien.Location = new System.Drawing.Point(718, 15);
+			this.txb_tennhanvien.Name = "txb_tennhanvien";
+			this.txb_tennhanvien.ReadOnly = true;
+			this.txb_tennhanvien.Size = new System.Drawing.Size(252, 27);
+			this.txb_tennhanvien.TabIndex = 11;
 			// 
 			// MaCheckIn
 			// 
@@ -213,7 +210,6 @@
 			this.TenNV.HeaderText = "Tên nhân viên";
 			this.TenNV.MinimumWidth = 6;
 			this.TenNV.Name = "TenNV";
-			this.TenNV.Width = 125;
 			// 
 			// NgayCheckIn
 			// 
@@ -221,7 +217,6 @@
 			this.NgayCheckIn.HeaderText = "Ngày checkin";
 			this.NgayCheckIn.MinimumWidth = 6;
 			this.NgayCheckIn.Name = "NgayCheckIn";
-			this.NgayCheckIn.Width = 125;
 			// 
 			// GioCheckIn
 			// 
@@ -237,11 +232,10 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.BlanchedAlmond;
 			this.ClientSize = new System.Drawing.Size(982, 503);
-			this.Controls.Add(this.txb_tennv);
+			this.Controls.Add(this.txb_tennhanvien);
 			this.Controls.Add(this.btn_timnhanvien);
 			this.Controls.Add(this.btn_dongcheckin);
 			this.Controls.Add(this.btn_xoacheckin);
-			this.Controls.Add(this.btn_suacheckin);
 			this.Controls.Add(this.dgv_checkin);
 			this.Controls.Add(this.btn_checkin);
 			this.Controls.Add(this.lb_giocheckin);
@@ -249,12 +243,10 @@
 			this.Controls.Add(this.lb_manhanvien);
 			this.Controls.Add(this.txb_manhanvien);
 			this.Name = "fCheckIn";
-			this.Text = "Check in";
+			this.Text = "Checkin";
 			((System.ComponentModel.ISupportInitialize)(this.dgv_checkin)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
-			dgv_checkin.CellFormatting += dgv_checkin_CellFormatting;
-
 
 		}
 
@@ -268,11 +260,10 @@
 		private System.Windows.Forms.Button btn_checkin;
 		private Microsoft.Data.SqlClient.SqlDataAdapter sqlDataAdapter1;
 		private System.Windows.Forms.DataGridView dgv_checkin;
-		private System.Windows.Forms.Button btn_suacheckin;
 		private System.Windows.Forms.Button btn_xoacheckin;
 		private System.Windows.Forms.Button btn_dongcheckin;
 		private System.Windows.Forms.Button btn_timnhanvien;
-		private System.Windows.Forms.TextBox txb_tennv;
+		private System.Windows.Forms.TextBox txb_tennhanvien;
 		private System.Windows.Forms.DataGridViewTextBoxColumn MaCheckIn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn MaNV;
 		private System.Windows.Forms.DataGridViewTextBoxColumn TenNV;

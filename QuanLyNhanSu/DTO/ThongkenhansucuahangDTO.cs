@@ -7,25 +7,25 @@ using System.Threading.Tasks;
 
 namespace QuanLyNhanSu.DTO
 {
-	public class ThongkenhansuphongbanDTO
+	public class ThongkenhansucuahangDTO
 	{
-		public ThongkenhansuphongbanDTO(string phongBan, int soLuong)
+		public ThongkenhansucuahangDTO(string cuaHang, int soLuong)
 		{
-			this.PhongBan = phongBan;
+			this.CuaHang = cuaHang;
 			this.SoLuong = soLuong;
 		}
 
-		public ThongkenhansuphongbanDTO(DataRow row)
+		public ThongkenhansucuahangDTO(DataRow row)
 		{
-			this.PhongBan = row["PhongBan"].ToString();
+			this.CuaHang = row["CuaHang"].ToString();
 			this.SoLuong = (int)row["SoLuong"];
 		}
 
-		private string phongBan;
+		private string cuaHang;
 
 		private int soLuong;
 
-		public string PhongBan { get => phongBan; set => phongBan=value; }
+		public string CuaHang { get => cuaHang; set => cuaHang=value; }
 		public int SoLuong { get => soLuong; set => soLuong=value; }
 	}
 }

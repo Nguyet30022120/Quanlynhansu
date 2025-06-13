@@ -133,6 +133,7 @@
 			this.txb_tendangnhap.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txb_tendangnhap.Location = new System.Drawing.Point(245, 75);
 			this.txb_tendangnhap.Name = "txb_tendangnhap";
+			this.txb_tendangnhap.ReadOnly = true;
 			this.txb_tendangnhap.Size = new System.Drawing.Size(252, 27);
 			this.txb_tendangnhap.TabIndex = 9;
 			// 

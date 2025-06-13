@@ -16,7 +16,6 @@ namespace QuanLyNhanSu.DTO
 			this.loaiBC = loaiBC;
 			this.chuyenNganh = chuyenNganh;
 			this.truongHoc = truongHoc;
-			//this.maNV = maNV;
 		}
 
 		public TrinhdochuyenmonDTO(DataRow row)
@@ -26,7 +25,6 @@ namespace QuanLyNhanSu.DTO
 			this.loaiBC = row["LoaiBangCap"].ToString();
 			this.chuyenNganh = row["ChuyenNganh"].ToString();
 			this.truongHoc = row["TruongHoc"].ToString();
-			//this.maNV = row["Ma_NV"].ToString();
 		}
 		private string tenNV;
 
@@ -44,6 +42,5 @@ namespace QuanLyNhanSu.DTO
 		public string ChuyenNganh { get => chuyenNganh; set => chuyenNganh=value; }
 		public string TruongHoc { get => truongHoc; set => truongHoc=value; }
 		public string MaTD { get => maTD; set => maTD=value; }
-		//public string MaNV { get => maNV; set => maNV=value; }
 	}
 }

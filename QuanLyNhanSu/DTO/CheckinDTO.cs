@@ -19,10 +19,12 @@ namespace QuanLyNhanSu.DTO
 		}
 		public CheckinDTO(DataRow row)
 		{
-			this.MaCheckIn = row["MaCheckIn"].ToString();
+			this.MaCheckIn = row["Ma_CheckIn"].ToString();
 			this.MaNV = row["Ma_NV"].ToString();
 			this.TenNV = row["HoTen"].ToString();
-			this.GioCheckIn = TimeSpan.Parse(row["GioCheckIn"].ToString());
+			this.GioCheckIn = row["GioCheckIn"] is TimeSpan
+	            ? (TimeSpan)row["GioCheckIn"]
+	:           TimeSpan.Parse(row["GioCheckIn"].ToString());
 			this.NgayCheckIn = (DateTime)row["NgayCheckIn"];
 		}
 

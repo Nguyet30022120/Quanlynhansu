@@ -14,7 +14,8 @@ namespace QuanLyNhanSu.GUI
 	public partial class fTaolichphongvan : Form
 	{
 		private List<string> staffNames;
-
+		private Color originalAddButtonColor;
+		private Color originalCloseButtonColor;
 		void LoadSchedule()
 		{
 			scheduleList.DataSource = LichphongvanDAO.Instance.GetSchedule();
@@ -28,8 +29,10 @@ namespace QuanLyNhanSu.GUI
 			txb_tenuv.Text = tenuv;
 			txb_mahs.Text = mahs;
 			LoadCbDiaDiem();
-			LoadStaffNames(); 
-			SetupAutoCompleteForNguoiPV(); 
+			LoadStaffNames();
+			SetupAutoCompleteForNguoiPV();
+			originalAddButtonColor = btn_themlichphongvan.BackColor;
+			originalCloseButtonColor = btn_dong.BackColor;
 		}
 
 		private void LoadStaffNames()
@@ -38,9 +41,9 @@ namespace QuanLyNhanSu.GUI
 		}
 		void LoadCbDiaDiem()
 		{
-			List<string> diaDiem = new List<string>() 
+			List<string> diaDiem = new List<string>()
 			{
-				"Phòng 1", "Phòng 2", "Phòng 3", "Phòng 4", "Phòng 5"
+				"Cửa hàng 1", "Cửa hàng 2", "Cửa hàng 3", "Cửa hàng 4", "Cửa hàng 5"
 			};
 			cb_diadiem.DataSource = diaDiem;
 		}
@@ -53,7 +56,7 @@ namespace QuanLyNhanSu.GUI
 			txb_nguoiphongvan.AutoCompleteSource = AutoCompleteSource.CustomSource;
 			txb_nguoiphongvan.AutoCompleteCustomSource = autoComplete;
 		}
-
+		#region Events
 		private void btn_close_Click(object sender, EventArgs e)
 		{
 			this.Close();
@@ -74,6 +77,7 @@ namespace QuanLyNhanSu.GUI
 				{
 					MessageBox.Show("Thêm lịch phỏng vấn thành công");
 					LoadSchedule();
+					this.Close();
 				}
 				else
 				{
@@ -85,6 +89,27 @@ namespace QuanLyNhanSu.GUI
 				MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
+		#endregion
+
+		#region Hover
+		private void btn_addlichpv_MouseEnter(object sender, EventArgs e)
+		{
+			btn_themlichphongvan.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_addlichpv_MouseLeave(object sender, EventArgs e)
+		{
+			btn_themlichphongvan.BackColor = originalAddButtonColor;
+		}
+		private void btn_dong_MouseEnter(object sender, EventArgs e)
+		{
+			btn_dong.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_dong_MouseLeave(object sender, EventArgs e)
+		{
+			btn_dong.BackColor = originalCloseButtonColor;
+
+		}
+		#endregion
 
 	}
 }

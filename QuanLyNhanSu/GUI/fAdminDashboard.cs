@@ -44,7 +44,7 @@ namespace QuanLyNhanSu
 
 		private Color originalBaocaotongquannhansuButtonColor;
 		private Color originalThongkenghiphepButtonColor;
-		private Color originalThongkeluongButtonColor;
+		private Color originalThongketuyendungButtonColor;
 		private Color originalThongkekhenthuongkyluatButtonColor;
 
 
@@ -85,6 +85,7 @@ namespace QuanLyNhanSu
 			originalBaocaotongquannhansuButtonColor = btn_baocaotongquannhansu.BackColor;
 			originalThongkenghiphepButtonColor = btn_thongkeluotnghiphepcuanhanvien.BackColor;
 			originalThongkekhenthuongkyluatButtonColor = btn_thongkethongtinkhenthuongkyluat.BackColor;
+			originalThongketuyendungButtonColor = btn_thongketuyendung.BackColor;
 		}
 
 		void LoadUserInfo(string userName)
@@ -168,7 +169,7 @@ namespace QuanLyNhanSu
 
 		private void btn_quanlyphongban_Click(object sender, EventArgs e)
 		{
-			fQuanlyphongban f = new fQuanlyphongban();
+			fQuanlycuahang f = new fQuanlycuahang();
 			this.Hide();
 			f.ShowDialog();
 			this.Show();
@@ -287,13 +288,6 @@ namespace QuanLyNhanSu
 			this.Show();
 		}
 
-		private void btn_baocaochitraxuatphieuluong_Click(object sender, EventArgs e)
-		{
-			fThongkeluong f = new fThongkeluong();
-			this.Hide();
-			f.ShowDialog();
-			this.Show();
-		}
 		private void btn_baocaotongquannhansu_MouseEnter(object sender, EventArgs e)
 		{
 			btn_baocaotongquannhansu.BackColor = System.Drawing.Color.LightBlue;
@@ -321,14 +315,21 @@ namespace QuanLyNhanSu
 		{
 			btn_thongkethongtinkhenthuongkyluat.BackColor = originalThongkekhenthuongkyluatButtonColor;
 		}
-
+		private void btn_thongketuyendung_MouseEnter(object sender, EventArgs e)
+		{
+			btn_thongketuyendung.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_thongketuyendung_MouseLeave(object sender, EventArgs e)
+		{
+			btn_thongketuyendung.BackColor = originalThongketuyendungButtonColor;
+		}
 
 		#endregion
 
 		#region checkin/out
 		private void btn_checkin_Click(object sender, EventArgs e)
 		{
-			fCheckIn f = new fCheckIn();
+			fCheckin f = new fCheckin();
 			this.Hide();
 			f.ShowDialog();
 			this.Show();
@@ -336,7 +337,7 @@ namespace QuanLyNhanSu
 
 		private void btn_checkout_Click(object sender, EventArgs e)
 		{
-			fCheckOut f = new fCheckOut();
+			fCheckout f = new fCheckout();
 			this.Hide();
 			f.ShowDialog();
 			this.Show();
@@ -360,7 +361,7 @@ namespace QuanLyNhanSu
 
 		private void btn_quanlybangcong_Click(object sender, EventArgs e)
 		{
-			fBangcong f = new fBangcong();
+			fQuanlybangcong f = new fQuanlybangcong();
 			this.Hide();
 			f.ShowDialog();
 			this.Show();
@@ -564,6 +565,12 @@ namespace QuanLyNhanSu
 			this.Show();
 		}
 
-
+		private void btn_lichsudangnhap_Click(object sender, EventArgs e)
+		{
+			fQuanlylichsudangnhap f = new fQuanlylichsudangnhap();
+			this.Hide();
+			f.ShowDialog();
+			this.Show();
+		}
 	}
 }

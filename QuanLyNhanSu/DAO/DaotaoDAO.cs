@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace QuanLyNhanSu.DAO
 {
@@ -12,24 +13,36 @@ namespace QuanLyNhanSu.DAO
 	{
 		private static DaotaoDAO instance;
 
-		//public static TrainingDAO Instance { get => instance; set => instance=value; }
-
 		public static DaotaoDAO Instance { get => instance==null ? instance = new DaotaoDAO() : instance; private set => instance=value; }
 
 		private DaotaoDAO() { }
 
-
-		public List<DaotaoDTO> GetListDaoTao()
+		public List<DaotaoDTO> GetListDaoTaoAll()
 		{
 			List<DaotaoDTO> list = new List<DaotaoDTO>();
 
-			string query = "SELECT DT.Ma_DaoTao, NV.HoTen, KH.TenKhoaHoc, DT.KetQua, DT.TrangThai FROM DaoTaoNhanVien DT INNER JOIN [Nhan vien] NV ON DT.Ma_NV = NV.Ma_NV INNER JOIN KhoaHoc KH ON DT.Ma_KhoaHoc = KH.Ma_KhoaHoc;";
+			string query = $"SELECT DT.Ma_NV, DT.Ma_DT, NV.HoTen, KH.TenKhoaHoc, DT.KetQua, DT.TrangThai FROM DaoTaoNhanVien DT INNER JOIN [NhanVien] NV ON DT.Ma_NV = NV.Ma_NV INNER JOIN KhoaHoc KH ON DT.Ma_KH = KH.Ma_KH;\r\n";
 			DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
 			foreach (DataRow item in data.Rows)
 			{
 				DaotaoDTO training = new DaotaoDTO(item);
 
+				list.Add(training);
+			}
+
+			return list;
+		}
+		public List<DaotaoDTO> GetListDaoTao(string manv)
+		{
+			List<DaotaoDTO> list = new List<DaotaoDTO>();
+
+			string query = $"SELECT DT.Ma_NV, DT.Ma_DT, NV.HoTen, KH.TenKhoaHoc, DT.KetQua, DT.TrangThai FROM DaoTaoNhanVien DT INNER JOIN [NhanVien] NV ON DT.Ma_NV = NV.Ma_NV INNER JOIN KhoaHoc KH ON DT.Ma_KH = KH.Ma_KH WHERE NV.Ma_NV ='{manv}';\r\n";
+			DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+			foreach (DataRow item in data.Rows)
+			{
+				DaotaoDTO training = new DaotaoDTO(item);
 
 				list.Add(training);
 			}
@@ -37,9 +50,9 @@ namespace QuanLyNhanSu.DAO
 			return list;
 		}
 
-		public bool InsertDaoTao(string tennv, string tenkh)
+		public bool InsertDaoTao(string manv, string tenkh)
 		{
-			string query = $"EXEC [USP_InsertDaoTaoNhanVien_ByName] @TenNhanVien = N'{tennv}',  @TenKhoaHoc = N'{tenkh}';";
+			string query = $"EXEC USP_InsertDaoTaoNhanVien @Ma_NV = '{manv}', @TenKhoaHoc = N'{tenkh}';";
 			int re = DataProvider.Instance.ExcuteNonQuery(query);
 			return re != 0;
 		}
@@ -55,24 +68,6 @@ namespace QuanLyNhanSu.DAO
 			string query = $"EXEC USP_DeleteDaoTaoByID @Ma_DaoTao = '{madt}';";
 			int re = Convert.ToInt32(DataProvider.Instance.ExcuteScalar(query));
 			return re == 0;
-		}
-		public List<DaotaoDTO> SearchTraining(string value)
-		{
-			List<DaotaoDTO> list = new List<DaotaoDTO>();
-
-			string query = string.Format("SELECT DT.Ma_DaoTao, NV.HoTen, KH.TenKhoaHoc, DT.KetQua, DT.TrangThai FROM DaoTaoNhanVien DT INNER JOIN [Nhan vien] NV ON DT.Ma_NV = NV.Ma_NV INNER JOIN KhoaHoc KH ON DT.Ma_KhoaHoc = KH.Ma_KhoaHoc WHERE DT.Ma_DaoTao LIKE N'%{0}%' OR NV.HoTen LIKE N'%{1}%' OR KH.TenKhoaHoc LIKE N'%{2}%'", value, value, value);
-
-			Console.WriteLine(query);
-
-			DataTable data = DataProvider.Instance.ExecuteQuery(query);
-
-			foreach (DataRow item in data.Rows)
-			{
-				DaotaoDTO Training = new DaotaoDTO(item);
-
-				list.Add(Training);
-			}
-			return list;
 		}
 	}
 }

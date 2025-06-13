@@ -123,6 +123,7 @@
 			this.txb_email.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txb_email.Location = new System.Drawing.Point(249, 60);
 			this.txb_email.Name = "txb_email";
+			this.txb_email.ReadOnly = true;
 			this.txb_email.Size = new System.Drawing.Size(252, 27);
 			this.txb_email.TabIndex = 20;
 			// 
@@ -153,7 +154,7 @@
 			this.Controls.Add(this.txb_nhaplaimatkhaumoi);
 			this.Controls.Add(this.txb_matkhaumoi);
 			this.Name = "fDoimatkhaukhiquen";
-			this.Text = "fDoimatkhaukhiquen";
+			this.Text = "Đổi lại mật khẩu";
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

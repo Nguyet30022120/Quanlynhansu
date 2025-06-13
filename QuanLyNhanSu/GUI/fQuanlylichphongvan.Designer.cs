@@ -28,8 +28,8 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.lb_tenungvien = new System.Windows.Forms.Label();
 			this.lb_ngayphongvan = new System.Windows.Forms.Label();
 			this.lb_giophongvan = new System.Windows.Forms.Label();
@@ -100,6 +100,7 @@
 			this.txb_tenungvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txb_tenungvien.Location = new System.Drawing.Point(165, 58);
 			this.txb_tenungvien.Name = "txb_tenungvien";
+			this.txb_tenungvien.ReadOnly = true;
 			this.txb_tenungvien.Size = new System.Drawing.Size(252, 27);
 			this.txb_tenungvien.TabIndex = 23;
 			// 
@@ -161,17 +162,17 @@
 			// 
 			// dgv_lichphongvan
 			// 
-			dataGridViewCellStyle1.BackColor = System.Drawing.Color.Tan;
-			this.dgv_lichphongvan.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle3.BackColor = System.Drawing.Color.Tan;
+			this.dgv_lichphongvan.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
 			this.dgv_lichphongvan.BackgroundColor = System.Drawing.Color.White;
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgv_lichphongvan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgv_lichphongvan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
 			this.dgv_lichphongvan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgv_lichphongvan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaPV,
@@ -200,6 +201,8 @@
 			this.btn_themlichphongvan.Text = "Thêm";
 			this.btn_themlichphongvan.UseVisualStyleBackColor = false;
 			this.btn_themlichphongvan.Click += new System.EventHandler(this.btn_addlich_Click);
+			this.btn_themlichphongvan.MouseEnter += new System.EventHandler(this.btn_themlichphongvan_MouseEnter);
+			this.btn_themlichphongvan.MouseLeave += new System.EventHandler(this.btn_themlichphongvan_MouseLeave);
 			// 
 			// btn_sualichphongvan
 			// 
@@ -212,6 +215,8 @@
 			this.btn_sualichphongvan.Text = "Sửa";
 			this.btn_sualichphongvan.UseVisualStyleBackColor = false;
 			this.btn_sualichphongvan.Click += new System.EventHandler(this.btn_editlichpv_Click);
+			this.btn_sualichphongvan.MouseEnter += new System.EventHandler(this.btn_sualichphongvan_MouseEnter);
+			this.btn_sualichphongvan.MouseLeave += new System.EventHandler(this.btn_sualichphongvan_MouseLeave);
 			// 
 			// btn_xoalichphongvan
 			// 
@@ -224,6 +229,8 @@
 			this.btn_xoalichphongvan.Text = "Xóa";
 			this.btn_xoalichphongvan.UseVisualStyleBackColor = false;
 			this.btn_xoalichphongvan.Click += new System.EventHandler(this.btn_deletelichpv_Click);
+			this.btn_xoalichphongvan.MouseEnter += new System.EventHandler(this.btn_xoalichphongvan_MouseEnter);
+			this.btn_xoalichphongvan.MouseLeave += new System.EventHandler(this.btn_xoalichphongvan_MouseLeave);
 			// 
 			// btn_donglichphongvan
 			// 
@@ -236,6 +243,8 @@
 			this.btn_donglichphongvan.Text = "Đóng";
 			this.btn_donglichphongvan.UseVisualStyleBackColor = false;
 			this.btn_donglichphongvan.Click += new System.EventHandler(this.btn_closelichpv_Click);
+			this.btn_donglichphongvan.MouseEnter += new System.EventHandler(this.btn_donglichphongvan_MouseEnter);
+			this.btn_donglichphongvan.MouseLeave += new System.EventHandler(this.btn_donglichphongvan_MouseLeave);
 			// 
 			// txb_findlichpv
 			// 
@@ -256,6 +265,8 @@
 			this.btn_timlichphongvan.Text = "Tìm kiếm";
 			this.btn_timlichphongvan.UseVisualStyleBackColor = false;
 			this.btn_timlichphongvan.Click += new System.EventHandler(this.btn_findlichpv_Click);
+			this.btn_timlichphongvan.MouseEnter += new System.EventHandler(this.btn_timlichphongvan_MouseEnter);
+			this.btn_timlichphongvan.MouseLeave += new System.EventHandler(this.btn_timlichphongvan_MouseLeave);
 			// 
 			// cb_diadiem
 			// 
@@ -302,6 +313,7 @@
 			this.pn_lichphongvan.Name = "pn_lichphongvan";
 			this.pn_lichphongvan.Size = new System.Drawing.Size(1477, 220);
 			this.pn_lichphongvan.TabIndex = 42;
+			dgv_lichphongvan.SelectionChanged += dgv_lichphongvan_SelectionChanged;
 			// 
 			// lb_goiy
 			// 
@@ -309,10 +321,9 @@
 			this.lb_goiy.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lb_goiy.Location = new System.Drawing.Point(34, 153);
 			this.lb_goiy.Name = "lb_goiy";
-			this.lb_goiy.Size = new System.Drawing.Size(571, 17);
+			this.lb_goiy.Size = new System.Drawing.Size(344, 17);
 			this.lb_goiy.TabIndex = 44;
-			this.lb_goiy.Text = "(Tìm kiếm theo mã hồ sơ, tên ứng viên, người phỏng vấn, địa điểm, trạng thái hoặc" +
-    " ngày phỏng vấn)";
+			this.lb_goiy.Text = "(Tìm kiếm theo mã hồ sơ, tên ứng viên, địa điểm, trạng thái)";
 			// 
 			// txb_mahoso
 			// 
@@ -346,7 +357,7 @@
 			this.TenUV.HeaderText = "Tên ứng viên";
 			this.TenUV.MinimumWidth = 6;
 			this.TenUV.Name = "TenUV";
-			this.TenUV.Width = 200;
+			this.TenUV.Width = 125;
 			// 
 			// MaHS
 			// 
@@ -354,7 +365,7 @@
 			this.MaHS.HeaderText = "Mã hồ sơ";
 			this.MaHS.MinimumWidth = 6;
 			this.MaHS.Name = "MaHS";
-			this.MaHS.Width = 125;
+			this.MaHS.Width = 75;
 			// 
 			// NguoiPV
 			// 
@@ -362,7 +373,7 @@
 			this.NguoiPV.HeaderText = "Người phỏng vấn";
 			this.NguoiPV.MinimumWidth = 6;
 			this.NguoiPV.Name = "NguoiPV";
-			this.NguoiPV.Width = 250;
+			this.NguoiPV.Width = 200;
 			// 
 			// ThoiGianPV
 			// 
@@ -370,7 +381,7 @@
 			this.ThoiGianPV.HeaderText = "Giờ phỏng vấn";
 			this.ThoiGianPV.MinimumWidth = 6;
 			this.ThoiGianPV.Name = "ThoiGianPV";
-			this.ThoiGianPV.Width = 125;
+			this.ThoiGianPV.Width = 75;
 			// 
 			// NgayPV
 			// 
@@ -378,7 +389,7 @@
 			this.NgayPV.HeaderText = "Ngày phỏng vấn";
 			this.NgayPV.MinimumWidth = 6;
 			this.NgayPV.Name = "NgayPV";
-			this.NgayPV.Width = 125;
+			this.NgayPV.Width = 75;
 			// 
 			// DiaDiem
 			// 
@@ -386,7 +397,6 @@
 			this.DiaDiem.HeaderText = "Địa điểm";
 			this.DiaDiem.MinimumWidth = 6;
 			this.DiaDiem.Name = "DiaDiem";
-			this.DiaDiem.Width = 125;
 			// 
 			// TrangThai
 			// 
@@ -405,7 +415,7 @@
 			this.Controls.Add(this.pn_lichphongvan);
 			this.Controls.Add(this.dgv_lichphongvan);
 			this.Name = "fQuanlylichphongvan";
-			this.Text = "Quản lý lịch phỏng vấn";
+			this.Text = "Lịch phỏng vấn";
 			((System.ComponentModel.ISupportInitialize)(this.dgv_lichphongvan)).EndInit();
 			this.pn_lichphongvan.ResumeLayout(false);
 			this.pn_lichphongvan.PerformLayout();

@@ -13,44 +13,107 @@ namespace QuanLyNhanSu
 {
 	public partial class fQuanlyhopdong : Form
 	{
+		private Color originalAddButtonColor;
+		private Color originalEditButtonColor;
+		private Color originalDeleteButtonColor;
+		private Color originalCloseButtonColor;
+		private Color originalUpdateButtonColor;
+		private Color originalSearchButtonColor;
+
 		BindingSource contractList = new BindingSource();
 		public fQuanlyhopdong()
 		{
 			InitializeComponent();
-			dgv_contract.DataSource = contractList;
+			dgv_hopdong.DataSource = contractList;
 			LoadContract();
 			BindingContractData();
+			originalAddButtonColor = btn_themhopdong.BackColor;
+			originalEditButtonColor = btn_suahopdong.BackColor;
+			originalDeleteButtonColor = btn_xoahopdong.BackColor;
+			originalCloseButtonColor = btn_donghopdong.BackColor;
+			originalUpdateButtonColor = btn_capnhathopdong.BackColor;
+			originalSearchButtonColor = btn_timhopdong.BackColor;
 		}
 
 		void BindingContractData()
 		{
-			txb_tennhanvien.DataBindings.Add(new Binding("Text", dgv_contract.DataSource, "TenNV", true, DataSourceUpdateMode.Never));
-			//txb_mahd.DataBindings.Add(new Binding("Text", dgv_contract.DataSource, "MaHD", true, DataSourceUpdateMode.Never));
-			dtp_ngaydk.DataBindings.Add(new Binding("Value", dgv_contract.DataSource, "NgayDK", true, DataSourceUpdateMode.Never));
-			dtp_ngayhh.DataBindings.Add(new Binding("Value", dgv_contract.DataSource, "NgayHH", true, DataSourceUpdateMode.Never));
-			txb_status.DataBindings.Add(new Binding("Text", dgv_contract.DataSource, "TrangThai", true, DataSourceUpdateMode.Never));
+			txb_tennhanvien.DataBindings.Add(new Binding("Text", dgv_hopdong.DataSource, "TenNV", true, DataSourceUpdateMode.Never));
+			dtp_ngaybatdau.DataBindings.Add(new Binding("Value", dgv_hopdong.DataSource, "NgayDK", true, DataSourceUpdateMode.Never));
+			dtp_ngayhethan.DataBindings.Add(new Binding("Value", dgv_hopdong.DataSource, "NgayHH", true, DataSourceUpdateMode.Never));
+			txb_trangthai.DataBindings.Add(new Binding("Text", dgv_hopdong.DataSource, "TrangThai", true, DataSourceUpdateMode.Never));
 		}
 		void LoadContract()
 		{
 			contractList.DataSource = HopdongDAO.Instance.GetListHopDong();
 		}
+		#region Hover
 
+		private void btn_themhopdong_MouseEnter(object sender, EventArgs e)
+		{
+			btn_themhopdong.BackColor = Color.LightBlue;
+		}
+		private void btn_themhopdong_MouseLeave(object sender, EventArgs e)
+		{
+			btn_themhopdong.BackColor = originalAddButtonColor;
+		}
+		private void btn_suahopdong_MouseEnter(object sender, EventArgs e)
+		{
+			btn_suahopdong.BackColor = Color.LightBlue;
+		}
+		private void btn_suahopdong_MouseLeave(object sender, EventArgs e)
+		{
+			btn_suahopdong.BackColor = originalEditButtonColor;
+		}
+		private void btn_xoahopdong_MouseEnter(object sender, EventArgs e)
+		{
+			btn_xoahopdong.BackColor = Color.LightBlue;
+		}
+		private void btn_xoahopdong_MouseLeave(object sender, EventArgs e)
+		{
+			btn_xoahopdong.BackColor = originalDeleteButtonColor;
+		}
+		private void btn_donghopdong_MouseEnter(object sender, EventArgs e)
+		{
+			btn_donghopdong.BackColor = Color.LightBlue;
+		}
+		private void btn_donghopdong_MouseLeave(object sender, EventArgs e)
+		{
+			btn_donghopdong.BackColor = originalCloseButtonColor;
+		}
+		private void btn_capnhathopdong_MouseEnter(object sender, EventArgs e)
+		{
+			btn_capnhathopdong.BackColor = Color.LightBlue;
+		}
+		private void btn_capnhathopdong_MouseLeave(object sender, EventArgs e)
+		{
+			btn_capnhathopdong.BackColor = originalUpdateButtonColor;
+		}
+		private void btn_timhopdong_MouseEnter(object sender, EventArgs e)
+		{
+			btn_timhopdong.BackColor = Color.LightBlue;
+		}
+		private void btn_timhopdong_MouseLeave(object sender, EventArgs e)
+		{
+			btn_timhopdong.BackColor = originalSearchButtonColor;
+		}
+		#endregion
 
+		#region Events
 		private void btn_addhd_Click(object sender, EventArgs e)
 		{
 			try
 			{
-				string manv = txb_tennhanvien.Text;
-				DateTime ngaydk = dtp_ngaydk.Value;
-				DateTime ngayhh = dtp_ngayhh.Value;
+				string manv = dgv_hopdong.CurrentRow.Cells["MaNV"].Value.ToString();
+				DateTime ngaydk = dtp_ngaybatdau.Value;
+				DateTime ngayhh = dtp_ngayhethan.Value;
 				if (HopdongDAO.Instance.InsertHopDong(manv, ngaydk, ngayhh))
 				{
-					MessageBox.Show("Thêm hợp đồng thành công");
+					MessageBox.Show("Thêm hợp đồng thành công","Thông báo");
 					LoadContract();
 				}
 				else
 				{
-					MessageBox.Show("Thêm hợp đồng thất bại");
+					MessageBox.Show("Thêm hợp đồng thất bại", "Thông báo");
 				}
 			}
 			catch (Exception ex)
@@ -69,17 +132,17 @@ namespace QuanLyNhanSu
 
 				try
 				{
-					string mahd = dgv_contract.CurrentRow.Cells["MaHD"].Value.ToString();
-					DateTime ngaydk = dtp_ngaydk.Value;
-					DateTime ngayhh = dtp_ngayhh.Value;
+					string mahd = dgv_hopdong.CurrentRow.Cells["MaHD"].Value.ToString();
+					DateTime ngaydk = dtp_ngaybatdau.Value;
+					DateTime ngayhh = dtp_ngayhethan.Value;
 
 					if (HopdongDAO.Instance.UpdateHopDong(mahd, ngaydk, ngayhh))
 					{
-						MessageBox.Show("Sửa hợp đồng thành công.");
+						MessageBox.Show("Sửa hợp đồng thành công.", "Thông báo");
 					}
 					else
 					{
-						MessageBox.Show("Sửa hợp đồng thất bại.");
+						MessageBox.Show("Sửa hợp đồng thất bại.", "Thông báo");
 					}
 
 				}
@@ -100,16 +163,16 @@ namespace QuanLyNhanSu
 
 				try
 				{
-					string mahd = dgv_contract.CurrentRow.Cells["MaHD"].Value.ToString();
+					string mahd = dgv_hopdong.CurrentRow.Cells["MaHD"].Value.ToString();
 
 
 					if (HopdongDAO.Instance.DeleteContract(mahd))
 					{
-						MessageBox.Show("Xóa hợp đồng thành công.");
+						MessageBox.Show("Xóa hợp đồng thành công.", "Thông báo");
 					}
 					else
 					{
-						MessageBox.Show("Xóa hợp đồng thất bại.");
+						MessageBox.Show("Xóa hợp đồng thất bại.", "Thông báo");
 					}
 
 				}
@@ -140,11 +203,11 @@ namespace QuanLyNhanSu
 
 					if (HopdongDAO.Instance.UpdateTrangThai())
 					{
-						MessageBox.Show("Cập nhật trạng thái thành công.");
+						MessageBox.Show("Cập nhật trạng thái thành công.", "Thông báo");
 					}
 					else
 					{
-						MessageBox.Show("Cập nhật trạng thái thất bại.");
+						MessageBox.Show("Cập nhật trạng thái thất bại.", "Thông báo");
 					}
 
 				}
@@ -165,3 +228,8 @@ namespace QuanLyNhanSu
 		}
 	}
 }
+#endregion
+
+
+
+

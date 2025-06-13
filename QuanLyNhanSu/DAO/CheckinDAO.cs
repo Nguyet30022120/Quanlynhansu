@@ -20,7 +20,7 @@ namespace QuanLyNhanSu.DAO
 		public List<CheckinDTO> GetCheckInByMaNV(string manv)
 		{
 			List<CheckinDTO> list = new List<CheckinDTO>();
-			string query = $"SELECT c.MaCheckIn, c.Ma_NV, CONVERT(varchar(8), c.GioCheckIn, 108) AS GioCheckIn, c.NgayCheckIn, n.HoTen FROM CheckIn c JOIN [Nhan Vien] n ON c.Ma_NV = n.Ma_NV WHERE n.Ma_NV ='{manv}';";
+			string query = $"SELECT c.Ma_CheckIn, c.Ma_NV, c.GioCheckIn, c.NgayCheckIn, n.HoTen FROM CheckIn c JOIN [NhanVien] n ON c.Ma_NV = n.Ma_NV WHERE n.Ma_NV ='{manv}';";
 			DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { });
 			foreach (DataRow item in data.Rows)
 			{

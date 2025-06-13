@@ -10,13 +10,13 @@ namespace QuanLyNhanSu.DTO
 {
 	public class NguoidungDTO
 	{
-		public NguoidungDTO (string nameNV, string maNV, string chucVu, string phongBan, string maTK, string taiKhoan, string vaiTro, string moTaQUyenHan, DateTime ngaySinh, int gioiTinh, string diaChi,
+		public NguoidungDTO (string tenNV, string maNV, string chucVu, string cuaHang, string maTK, string taiKhoan, string vaiTro, string moTaQUyenHan, DateTime ngaySinh, int gioiTinh, string diaChi,
 			string cCCD, string soDienThoai)
 		{
-			this.NameNV = nameNV;
+			this.tenNV = tenNV;
 			this.MaNV = maNV;
 			this.ChucVu = chucVu;
-			this.PhongBan = phongBan;
+			this.CuaHang = cuaHang;
 			this.MaTK = maTK;
 			this.TaiKhoan = taiKhoan;
 			this.VaiTro = vaiTro;
@@ -30,28 +30,28 @@ namespace QuanLyNhanSu.DTO
 
 		public NguoidungDTO (DataRow row)
 		{
-			this.NameNV = row["HoTen"].ToString();
+			this.TenNV = row["HoTen"].ToString();
 			this.MaNV = row["Ma_NV"].ToString();
 			this.ChucVu = row["TenChucVu"].ToString();
-			this.PhongBan = row["TenPhong"].ToString();
+			this.CuaHang = row["TenCuaHang"].ToString();
 			this.MaTK = row["Ma_TK"].ToString();
 			this.TaiKhoan = row["TaiKhoan"].ToString();
 			this.VaiTro = row["VaiTro"].ToString();
 			this.MoTaQuyenHan = row["MoTaQuyenHan"].ToString();
 			this.NgaySinh = row["NgaySinh"] != DBNull.Value ? (DateTime?)row["NgaySinh"] : null;
 			this.DiaChi = row["DiaChi"].ToString();
-			this.CCCD = row["CMND"].ToString();
+			this.CCCD = row["CCCD"].ToString();
 			this.SoDienThoai = row["DienThoai"].ToString();
 			this.GioiTinh = Convert.ToInt32(row["GioiTinh"]);
 		}
 
-		private string nameNV;
+		private string tenNV;
 
 		private string maNV;
 
 		private string chucVu;
 
-		private string phongBan;
+		private string cuaHang;
 
 		private string maTK;
 
@@ -71,10 +71,10 @@ namespace QuanLyNhanSu.DTO
 
 		private string soDienThoai;
 
-		public string NameNV { get => nameNV; set => nameNV=value; }
+		public string TenNV { get => tenNV; set => tenNV=value; }
 		public string MaNV { get => maNV; set => maNV=value; }
 		public string ChucVu { get => chucVu; set => chucVu=value; }
-		public string PhongBan { get => phongBan; set => phongBan=value; }
+		public string CuaHang { get => cuaHang; set => cuaHang=value; }
 		public string MaTK { get => maTK; set => maTK=value; }
 		public string TaiKhoan { get => taiKhoan; set => taiKhoan=value; }
 		public string VaiTro { get => vaiTro; set => vaiTro=value; }

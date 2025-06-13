@@ -20,7 +20,7 @@ namespace QuanLyNhanSu.DAO
 		public List<PhucapDTO> GetListPhuCap(string manv)
 		{
 			List<PhucapDTO> list = new List<PhucapDTO>();
-			string query = $"SELECT nv.HoTen, pc.LoaiPhuCap, pc.SoTienPhuCap, pc.Ma_PC FROM ThongTinPhuCap pc JOIN [Nhan vien] nv ON pc.Ma_NV = nv.Ma_NV WHERE pc.Ma_NV = '{manv}';\r\n;";
+			string query = $"SELECT nv.HoTen, pc.LoaiPhuCap, pc.SoTienPhuCap, pc.Ma_PC, pc.Ma_NV FROM ThongTinPhuCap pc JOIN [NhanVien] nv ON pc.Ma_NV = nv.Ma_NV WHERE pc.Ma_NV = '{manv}';\r\n;";
 			DataTable data = DataProvider.Instance.ExecuteQuery(query);
 			foreach (DataRow item in data.Rows)
 			{

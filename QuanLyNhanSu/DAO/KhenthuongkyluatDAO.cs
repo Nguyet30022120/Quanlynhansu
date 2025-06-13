@@ -17,10 +17,23 @@ namespace QuanLyNhanSu.DAO
 			private set { instance = value; }
 		}
 		private KhenthuongkyluatDAO() { }
+		#region ManagementV
+		public List<KhenthuongkyluatDTO> GetCommendations()
+		{
+			List<KhenthuongkyluatDTO> list = new List<KhenthuongkyluatDTO>();
+			string query = $"SELECT ktkl.Ma_NV, ktkl.Ma_KTKL, nv.HoTen AS TenNhanVien, ktkl.ThoiGian, ktkl.NoiDung, CASE WHEN ktkl.HinhThuc = 1 THEN N'Khen thưởng' WHEN ktkl.HinhThuc = 0 THEN N'Kỷ luật' ELSE N'Không xác định' END AS HinhThuc FROM KhenThuongKyLuat ktkl JOIN [NhanVien] nv ON ktkl.Ma_NV = nv.Ma_NV";
+			DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { });
+			foreach (DataRow item in data.Rows)
+			{
+				KhenthuongkyluatDTO commendation = new KhenthuongkyluatDTO(item);
+				list.Add(commendation);
+			}
+			return list;
+		}
 		public List<KhenthuongkyluatDTO> GetCommendationsByMaNV(string maNV)
 		{
 			List<KhenthuongkyluatDTO> list = new List<KhenthuongkyluatDTO>();
-			string query = $"SELECT ktkl.Ma_NV, ktkl.MaKTKL, nv.HoTen AS TenNhanVien, ktkl.ThoiGian, ktkl.NoiDung, CASE WHEN ktkl.HinhThuc = 1 THEN N'Khen thưởng' WHEN ktkl.HinhThuc = 0 THEN N'Kỷ luật' ELSE N'Không xác định' END AS HinhThuc FROM KhenThuongKyLuat ktkl JOIN [Nhan vien] nv ON ktkl.Ma_NV = nv.Ma_NV WHERE NV.Ma_NV = '{maNV}'";
+			string query = $"SELECT ktkl.Ma_NV, ktkl.Ma_KTKL, nv.HoTen AS TenNhanVien, ktkl.ThoiGian, ktkl.NoiDung, CASE WHEN ktkl.HinhThuc = 1 THEN N'Khen thưởng' WHEN ktkl.HinhThuc = 0 THEN N'Kỷ luật' ELSE N'Không xác định' END AS HinhThuc FROM KhenThuongKyLuat ktkl JOIN [NhanVien] nv ON ktkl.Ma_NV = nv.Ma_NV WHERE NV.Ma_NV = '{maNV}'";
 			DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { maNV });
 			foreach (DataRow item in data.Rows)
 			{
@@ -33,7 +46,7 @@ namespace QuanLyNhanSu.DAO
 		{
 			string query = $"EXEC USP_InsertKTKL @MaNV = '{maNV}', @ThoiGian = '{thoiGian}', @NoiDung = N'{noiDung}', @HinhThuc = {hinhThuc}\r\n";
 			int result = DataProvider.Instance.ExcuteNonQuery(query, new object[] { maNV, noiDung, hinhThuc, thoiGian });
-			return result > 0;
+			return result != 0;
 		}
 		public bool UpdateCommendation(string maktkl, string noidung, int hinhthuc, DateTime thoigian)
 		{
@@ -49,11 +62,14 @@ namespace QuanLyNhanSu.DAO
 			int re = Convert.ToInt32(DataProvider.Instance.ExcuteScalar(query));
 			return re != 0;
 		}
+
+		#endregion
+
 		#region statistic
 		public List<ThongkekhenthuongkyluatDTO> GetCommendationsStatistic()
 		{
 			List<ThongkekhenthuongkyluatDTO> list = new List<ThongkekhenthuongkyluatDTO>();
-			string query = $"SELECT nv.HoTen, nv.Ma_NV, YEAR(ktkl.ThoiGian) as Nam, SUM(CASE WHEN ktkl.HinhThuc = 1 THEN 1 ELSE 0 END) as KhenThuong, SUM(CASE WHEN ktkl.HinhThuc = 0 THEN 1 ELSE 0 END) as KyLuat FROM KhenThuongKyLuat ktkl JOIN [Nhan vien] nv ON ktkl.Ma_NV = nv.Ma_NV GROUP BY nv.HoTen, nv.Ma_NV, YEAR(ktkl.ThoiGian) ORDER BY nv.HoTen, YEAR(ktkl.ThoiGian);\r\n";
+			string query = "SELECT nv.HoTen, nv.Ma_NV, YEAR(ktkl.ThoiGian) AS Nam, SUM(CASE WHEN ktkl.HinhThuc = 1 THEN 1 ELSE 0 END) AS KhenThuong, SUM(CASE WHEN ktkl.HinhThuc = 0 THEN 1 ELSE 0 END) AS KyLuat FROM KhenThuongKyLuat ktkl JOIN NhanVien nv ON ktkl.Ma_NV = nv.Ma_NV GROUP BY nv.HoTen, nv.Ma_NV, YEAR(ktkl.ThoiGian) ORDER BY nv.HoTen, YEAR(ktkl.ThoiGian);";
 			DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { });
 			foreach (DataRow item in data.Rows)
 			{
@@ -62,23 +78,11 @@ namespace QuanLyNhanSu.DAO
 			}
 			return list;
 		}
-
-		public List<ThongkekhenthuongkyluatDTO> GetCommendationByMaNV(string manv)
+		
+		public List<ThongkekhenthuongkyluatDTO> GetCommendationByNam(string manv, int nam)
 		{
 			List<ThongkekhenthuongkyluatDTO> list = new List<ThongkekhenthuongkyluatDTO>();
-			string query = $"SELECT nv.HoTen, nv.Ma_NV, YEAR(ktkl.ThoiGian) as Nam, SUM(CASE WHEN ktkl.HinhThuc = 1 THEN 1 ELSE 0 END) as KhenThuong, SUM(CASE WHEN ktkl.HinhThuc = 0 THEN 1 ELSE 0 END) as KyLuat FROM KhenThuongKyLuat ktkl JOIN [Nhan vien] nv ON ktkl.Ma_NV = nv.Ma_NV WHERE nv.Ma_NV = '{manv}' GROUP BY nv.HoTen, nv.Ma_NV, YEAR(ktkl.ThoiGian) ORDER BY nv.HoTen, YEAR(ktkl.ThoiGian);\r\n";
-			DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { });
-			foreach (DataRow item in data.Rows)
-			{
-				ThongkekhenthuongkyluatDTO commendation = new ThongkekhenthuongkyluatDTO(item);
-				list.Add(commendation);
-			}
-			return list;
-		}
-		public List<ThongkekhenthuongkyluatDTO> GetCommendationByNam(int nam)
-		{
-			List<ThongkekhenthuongkyluatDTO> list = new List<ThongkekhenthuongkyluatDTO>();
-			string query = $"SELECT nv.HoTen, nv.Ma_NV, YEAR(ktkl.ThoiGian) as Nam, SUM(CASE WHEN ktkl.HinhThuc = 1 THEN 1 ELSE 0 END) as KhenThuong, SUM(CASE WHEN ktkl.HinhThuc = 0 THEN 1 ELSE 0 END) as KyLuat FROM KhenThuongKyLuat ktkl JOIN [Nhan vien] nv ON ktkl.Ma_NV = nv.Ma_NV WHERE YEAR(ktkl.ThoiGian) = {nam} GROUP BY nv.HoTen, nv.Ma_NV, YEAR(ktkl.ThoiGian) ORDER BY nv.HoTen, YEAR(ktkl.ThoiGian);\r\n";
+			string query = $"SELECT nv.HoTen, nv.Ma_NV, YEAR(ktkl.ThoiGian) AS Nam, SUM(CASE WHEN ktkl.HinhThuc = 1 THEN 1 ELSE 0 END) AS KhenThuong, SUM(CASE WHEN ktkl.HinhThuc = 0 THEN 1 ELSE 0 END) AS KyLuat FROM KhenThuongKyLuat ktkl JOIN [NhanVien] nv ON ktkl.Ma_NV = nv.Ma_NV WHERE nv.Ma_NV = '{manv}' AND YEAR(ktkl.ThoiGian) = {nam} GROUP BY nv.HoTen, nv.Ma_NV, YEAR(ktkl.ThoiGian) ORDER BY nv.HoTen, YEAR(ktkl.ThoiGian);\r\n;\r\n";
 			DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { });
 			foreach (DataRow item in data.Rows)
 			{

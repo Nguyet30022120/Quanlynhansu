@@ -22,7 +22,7 @@ namespace QuanLyNhanSu.DAO
 		public List<ThongkenghiphepDTO> GetOnLeavingByMaNV(string manv)
 		{
 			List<ThongkenghiphepDTO> list = new List<ThongkenghiphepDTO>();
-			string query = $"SELECT nv.Ma_NV, nv.HoTen,  np.TuNgay as NgayBatDau, np.DenNgay as NgayKetThuc, np.LyDo, np.TrangThai FROM DonNghiPhep AS np JOIN [Nhan vien] AS nv ON np.Ma_NV = nv.Ma_NV WHere nv.Ma_NV ='{manv}'\r\n\r\n";
+			string query = $"SELECT nv.Ma_NV, nv.HoTen,  np.TuNgay as NgayBatDau, np.DenNgay as NgayKetThuc, np.LyDo, np.TrangThai FROM DonNghiPhep AS np JOIN [NhanVien] AS nv ON np.Ma_NV = nv.Ma_NV WHere nv.Ma_NV ='{manv}'\r\n\r\n";
 			DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { });
 			foreach (DataRow item in data.Rows)
 			{
@@ -31,10 +31,10 @@ namespace QuanLyNhanSu.DAO
 			}
 			return list;
 		}
-		public List<ThongkenghiphepDTO> GetOnLeavingByNgay(string manv, DateTime ngaybd, DateTime ngaykt)
+		public List<ThongkenghiphepDTO> GetOnLeaving()
 		{
 			List<ThongkenghiphepDTO> list = new List<ThongkenghiphepDTO>();
-			string query = $"SELECT nv.Ma_NV, nv.HoTen, np.MaDonNghiPhep, np.TuNgay as NgayBatDau, np.DenNgay as NgayKetThuc, np.LyDo, np.TrangThai FROM DonNghiPhep AS np JOIN [Nhan vien] AS nv ON np.Ma_NV = nv.Ma_NV WHERE np.TuNgay >= '{ngaybd}' AND np.DenNgay <= '{ngaykt}'\r\n;";
+			string query = $"SELECT nv.Ma_NV, nv.HoTen,  np.TuNgay as NgayBatDau, np.DenNgay as NgayKetThuc, np.LyDo, np.TrangThai FROM DonNghiPhep AS np JOIN [NhanVien] AS nv ON np.Ma_NV = nv.Ma_NV\r\n\r\n";
 			DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { });
 			foreach (DataRow item in data.Rows)
 			{
@@ -43,12 +43,20 @@ namespace QuanLyNhanSu.DAO
 			}
 			return list;
 		}
-		public DataTable GetNgayNghiTheoThang(string maNV)
+
+		public DataTable GetOnLeavingNam(string maNV, int nam)
 		{
-			string query = $"SELECT MONTH(TuNgay) AS Thang, SUM(DATEDIFF(DAY, TuNgay, DenNgay) + 1) AS SoNgayNghi FROM DonNghiPhep WHERE Ma_NV = '{maNV}' AND TrangThai = N'Đã duyệt' GROUP BY MONTH(TuNgay) ORDER BY Thang";
-			// Sử dụng ExecuteQuery để lấy dữ liệu thực tế
+			{
+				string query = $"SELECT MONTH(TuNgay) AS Thang, SUM(DATEDIFF(DAY, TuNgay, DenNgay) + 1) AS SoNgayNghi FROM DonNghiPhep WHERE Ma_NV = '{maNV}' AND YEAR(TuNgay) = '{nam}' AND TrangThai = N'Đã duyệt' GROUP BY MONTH(TuNgay) ORDER BY Thang";
+				return DataProvider.Instance.ExecuteQuery(query);
+			}
+		}
+		public DataTable GetNgayNghiNamAll()
+		{
+			string query = $"SELECT MONTH(TuNgay) AS Thang, SUM(DATEDIFF(DAY, TuNgay, DenNgay) + 1) AS SoNgayNghi FROM DonNghiPhep WHERE YEAR(TuNgay) = 2025 AND TrangThai = N'Đã duyệt' GROUP BY MONTH(TuNgay) ORDER BY Thang;\r\n";
 			return DataProvider.Instance.ExecuteQuery(query);
 
 		}
+
 	}
 }

@@ -27,7 +27,7 @@ namespace QuanLyNhanSu
 		{
 			txb_hoten.DataBindings.Add(new Binding("Text", dgv_nguoidung.DataSource, "TenNV", true, DataSourceUpdateMode.Never));
 			txb_chucvu.DataBindings.Add(new Binding("Text", dgv_nguoidung.DataSource, "ChucVu", true, DataSourceUpdateMode.Never));
-			txb_phongban.DataBindings.Add(new Binding("Text", dgv_nguoidung.DataSource, "PhongBan", true, DataSourceUpdateMode.Never));
+			txb_phongban.DataBindings.Add(new Binding("Text", dgv_nguoidung.DataSource, "CuaHang", true, DataSourceUpdateMode.Never));
 			txb_motaquyenhan.DataBindings.Add(new Binding("Text", dgv_nguoidung.DataSource, "MoTaQuyenHan", true, DataSourceUpdateMode.Never));
 			cb_vaitro.DataBindings.Add(new Binding("Text", dgv_nguoidung.DataSource, "VaiTro", true, DataSourceUpdateMode.Never));
 		}

@@ -9,7 +9,7 @@ namespace QuanLyNhanSu.DTO
 {
 	public class ChucvuDTO
 	{
-		public ChucvuDTO(string maChucVu, string tenChucVu, string moTaChucVu)
+		public ChucvuDTO(int maChucVu, string tenChucVu, string moTaChucVu)
 		{
 			this.MaChucVu = maChucVu;
 			this.TenChucVu = tenChucVu;
@@ -18,13 +18,12 @@ namespace QuanLyNhanSu.DTO
 
 		public ChucvuDTO(DataRow row)
 		{
-			this.maChucVu = row["MaChucVu"].ToString();
+			this.MaChucVu = Convert.ToInt32(row["MaChucVu"]);
 			this.TenChucVu = row["TenChucVu"].ToString();
 			this.MoTaChucVu = row["MoTaChucVu"].ToString();
 		}
 
-		private string maChucVu;
-
+		int maChucVu;
 
 		private string tenChucVu;
 
@@ -33,6 +32,6 @@ namespace QuanLyNhanSu.DTO
 
 		public string TenChucVu { get => tenChucVu; set => tenChucVu=value; }
 		public string MoTaChucVu { get => moTaChucVu; set => moTaChucVu=value; }
-		public string MaChucVu { get => maChucVu; set => maChucVu=value; }
+		public int MaChucVu { get => maChucVu; set => maChucVu=value; }
 	}
 }

@@ -17,53 +17,60 @@ namespace QuanLyNhanSu.GUI
 {
 	public partial class fThongketuyendung : Form
 	{
+		private Color originalExportButtonColor;
+		private Color originalCloseButtonColor;
+		private Color originalStatisticButtonColor;
 		BindingSource tuyendungList = new BindingSource();
 		public fThongketuyendung()
 		{
 			InitializeComponent();
 			LoadInitialData();
+			originalCloseButtonColor = btn_dong.BackColor;
+			originalExportButtonColor = btn_xuatbaocao.BackColor;
+			originalStatisticButtonColor = btn_thongkenhanvien.BackColor;
+
+
+			int nam = Convert.ToInt32(cb_nam.SelectedItem);
+			int thang = 0; 
+			List<ThongketuyendungDTO> dataList = ThongketuyendungDAO.Instance.GetTyLeTuyenDung(nam, thang);
+			DataTable dataTable = ConvertListToDataTable(dataList);
+			LoadChartTuyenDung(dataTable);
+			tuyendungList.DataSource = dataList;
+			dgv_tuyendungthongke.DataSource = tuyendungList;
 		}
 		void LoadInitialData()
 		{
-			// Load ComboBox tháng (Tất cả các tháng + 1-12)
-			cb_thang.Items.Add("--Tất cả các tháng--"); // Giá trị đầu tiên, tương ứng với 0
+			cb_thang.Items.Clear();
+			cb_thang.Items.Add("--Tất cả các tháng--");
 			for (int i = 1; i <= 12; i++)
 			{
 				cb_thang.Items.Add(i);
 			}
-			// Nếu muốn mặc định là tháng hiện tại, cần +1 vì "Tất cả các tháng" ở vị trí 0
-			cb_thang.SelectedIndex = DateTime.Now.Month;
+			cb_thang.SelectedIndex = 0; 
 
-			// Load ComboBox năm (từ 2020 đến năm hiện tại + 2)
 			int currentYear = DateTime.Now.Year;
+			cb_nam.Items.Clear();
 			for (int i = 2020; i <= currentYear + 2; i++)
 			{
 				cb_nam.Items.Add(i);
 			}
 			cb_nam.SelectedItem = currentYear;
+		}
 
-		}
-		void LoadTyLeTuyenDung(int nam, int thang)
-		{
-			tuyendungList.DataSource = ThongketuyendungDAO.Instance.GetTyLeTuyenDung(nam, thang);
-			dgv_tuyendungtk.DataSource = tuyendungList;
-		}
 		private void ExportToCSV(string filePath)
 		{
 			try
 			{
-				// Create a StringBuilder to store CSV content
 				StringBuilder csvContent = new StringBuilder();
 
-				// Add header row
-				foreach (DataGridViewColumn column in dgv_tuyendungtk.Columns)
+				foreach (DataGridViewColumn column in dgv_tuyendungthongke.Columns)
 				{
 					csvContent.Append(column.HeaderText + ",");
 				}
 				csvContent.AppendLine();
 
-				// Add data rows
-				foreach (DataGridViewRow row in dgv_tuyendungtk.Rows)
+
+				foreach (DataGridViewRow row in dgv_tuyendungthongke.Rows)
 				{
 					foreach (DataGridViewCell cell in row.Cells)
 					{
@@ -79,7 +86,6 @@ namespace QuanLyNhanSu.GUI
 					csvContent.AppendLine();
 				}
 
-				// Write to file
 				System.IO.File.WriteAllText(filePath, csvContent.ToString());
 			}
 			catch (Exception ex)
@@ -109,7 +115,7 @@ namespace QuanLyNhanSu.GUI
 			Title = "Được tuyển",
 			Values = new ChartValues<int>(duocTuyen),
 			DataLabels = true,
-			LabelPoint = point => point.Y > 0 ? point.Y.ToString() : "", // ẩn số 0
+			LabelPoint = point => point.Y > 0 ? point.Y.ToString() : "", 
             Foreground = System.Windows.Media.Brushes.Black,
 			FontWeight = System.Windows.FontWeights.Bold
 		},
@@ -124,7 +130,7 @@ namespace QuanLyNhanSu.GUI
 		}
 	};
 
-			// Hiển thị nhãn "Tháng 1", "Tháng 2", ...
+
 			string[] labels = Enumerable.Range(1, 12).Select(j => $"Tháng {j}").ToArray();
 
 			var cartesianChart = new CartesianChart
@@ -140,30 +146,29 @@ namespace QuanLyNhanSu.GUI
 				Dock = DockStyle.Fill,
 				Child = cartesianChart
 			};
-			panel_chart.Controls.Clear();
-			panel_chart.Controls.Add(host);
+			pn_chart.Controls.Clear();
+			pn_chart.Controls.Add(host);
 		}
 		private DataTable ConvertListToDataTable(List<ThongketuyendungDTO> list)
 		{
 			DataTable dataTable = new DataTable();
 
-			// Define columns based on ThongketuyendungDTO properties
 			dataTable.Columns.Add("Thang", typeof(int));
 			dataTable.Columns.Add("SoLuong", typeof(int));
-			dataTable.Columns.Add("KetLuan", typeof(string)); // Đúng tên cột dùng cho DataTable
+			dataTable.Columns.Add("KetLuan", typeof(string)); 
 
-			// Populate rows
 			foreach (var item in list)
 			{
 				DataRow row = dataTable.NewRow();
 				row["Thang"] = item.Thang;
 				row["SoLuong"] = item.SoLuong;
-				row["KetLuan"] = item.KetQua; // Gán vào cột "KetLuan"
+				row["KetLuan"] = item.KetQua; 
 				dataTable.Rows.Add(row);
 			}
 
 			return dataTable;
 		}
+		#region Events
 		private void btn_thongkenhanvien_Click(object sender, EventArgs e)
 		{
 
@@ -171,7 +176,6 @@ namespace QuanLyNhanSu.GUI
 			{
 				int nam = Convert.ToInt32(cb_nam.SelectedItem);
 				int thang = 0;
-				// Nếu chọn "--Tất cả các tháng--" thì thang = 0, còn lại lấy giá trị số tháng
 				if (cb_thang.SelectedIndex > 0)
 				{
 					thang = Convert.ToInt32(cb_thang.SelectedItem);
@@ -180,9 +184,8 @@ namespace QuanLyNhanSu.GUI
 				List<ThongketuyendungDTO> dataList = ThongketuyendungDAO.Instance.GetTyLeTuyenDung(nam, thang);
 				DataTable dataTable = ConvertListToDataTable(dataList);
 				LoadChartTuyenDung(dataTable);
-				// Hiển thị lên DataGridView
 				tuyendungList.DataSource = dataList;
-				dgv_tuyendungtk.DataSource = tuyendungList;
+				dgv_tuyendungthongke.DataSource = tuyendungList;
 			}
 			catch (Exception ex)
 			{
@@ -195,15 +198,17 @@ namespace QuanLyNhanSu.GUI
 		{
 			try
 			{
-				// Xuất báo cáo (có thể dùng Excel hoặc PDF)
+				int nam = Convert.ToInt32(cb_nam.SelectedItem);
 				SaveFileDialog saveDialog = new SaveFileDialog();
+
+
 				saveDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
-				saveDialog.FileName = $"BaoCaoNghiPhep_{cb_nam}_{cb_thang}.csv";
+				saveDialog.FileName = $"BaoCaoTuyenDung_{cb_nam.SelectedItem}_.csv";
 
 				if (saveDialog.ShowDialog() == DialogResult.OK)
 				{
 					ExportToCSV(saveDialog.FileName);
-					MessageBox.Show("✅ Xuất báo cáo thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					MessageBox.Show("Xuất báo cáo thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
 			}
 			catch (Exception ex)
@@ -216,5 +221,33 @@ namespace QuanLyNhanSu.GUI
 		{
 			this.Close();
 		}
+		#endregion
+
+		#region Hover
+		private void btn_thongkenhanvien_MouseEnter(object sender, EventArgs e)
+		{
+			btn_thongkenhanvien.BackColor = Color.LightBlue;
+		}
+		private void btn_thongkenhanvien_MouseLeave(object sender, EventArgs e)
+		{
+			btn_thongkenhanvien.BackColor = originalStatisticButtonColor;
+		}
+		private void btn_xuatbaocao_MouseEnter(object sender, EventArgs e)
+		{
+			btn_xuatbaocao.BackColor = Color.LightBlue;
+		}
+		private void btn_xuatbaocao_MouseLeave(object sender, EventArgs e)
+		{
+			btn_xuatbaocao.BackColor = originalExportButtonColor;
+		}
+		private void btn_dong_MouseEnter(object sender, EventArgs e)
+		{
+			btn_dong.BackColor = Color.LightBlue;
+		}
+		private void btn_dong_MouseLeave(object sender, EventArgs e)
+		{
+			btn_dong.BackColor = originalCloseButtonColor;
+		}
+		#endregion
 	}
 }

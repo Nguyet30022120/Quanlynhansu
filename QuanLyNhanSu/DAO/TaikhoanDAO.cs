@@ -41,7 +41,7 @@ namespace QuanLyNhanSu.DAO
 
 		public TaikhoanDTO GetAccountByUserName(string userName)
 		{
-			DataTable data = DataProvider.Instance.ExecuteQuery("Select * from [Tai Khoan] where TaiKhoan = '" + userName + "'");
+			DataTable data = DataProvider.Instance.ExecuteQuery("Select * from [TaiKhoan] where TaiKhoan = '" + userName + "'");
 
 			foreach (DataRow item in data.Rows)
 			{
@@ -53,12 +53,12 @@ namespace QuanLyNhanSu.DAO
 		public string GetAccountRole(string userName)
 		{
 			
-				return DataProvider.Instance.ExcuteScalar("Select VaiTro from [Tai Khoan] where TaiKhoan = @userName", new object[] { userName }).ToString();
+				return DataProvider.Instance.ExcuteScalar("Select VaiTro from [TaiKhoan] where TaiKhoan = @userName", new object[] { userName }).ToString();
 			
 		}
 		public string GetNameNvByUsername(string userName)
 		{
-			string name = DataProvider.Instance.ExcuteScalar("SELECT nv.HoTen FROM [dbo].[Nhan vien] nv INNER JOIN [dbo].[Tai khoan] tk ON nv.Ma_TK = tk.Ma_TK WHERE tk.TaiKhoan = @username ;", new object[] { userName }).ToString();
+			string name = DataProvider.Instance.ExcuteScalar("SELECT nv.HoTen FROM [dbo].[NhanVien] nv INNER JOIN [dbo].[TaiKhoan] tk ON nv.Ma_TK = tk.Ma_TK WHERE tk.TaiKhoan = @username ;", new object[] { userName }).ToString();
 			return name;
 		
 		}
@@ -110,7 +110,7 @@ namespace QuanLyNhanSu.DAO
 		}
 		public bool IsEmailExists(string email)
 		{
-			string query = "SELECT COUNT(*) FROM [Nhan vien] WHERE Email = @Email";
+			string query = "SELECT COUNT(*) FROM [NhanVien] WHERE Email = @Email";
 			int count = Convert.ToInt32(DataProvider.Instance.ExcuteScalar(query, new object[] { email }));
 			return count > 0;
 		}

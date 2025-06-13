@@ -14,57 +14,217 @@ namespace QuanLyNhanSu
 {
 	public partial class fThongkenghiphep : Form
 	{
+		private Color originalExportButtonColor;
+		private Color originalCloseButtonColor;
+		private Color originalStatisticButtonColor;
+
 		BindingSource onleavingList = new BindingSource();
 		public fThongkenghiphep()
 		{
 
 			InitializeComponent();
-			//BindingOnLeaveData();
+			LoadAllLeaveData();
+			DrawLeaveChartForAll();
+			int currentYear = DateTime.Now.Year;
+			cb_nam.Items.Clear();
+			for (int i = 2020; i <= currentYear + 2; i++)
+			{
+				cb_nam.Items.Add(i);
+			}
+			cb_nam.SelectedItem = currentYear;
+
+			originalCloseButtonColor = btn_dong.BackColor;
+			originalExportButtonColor = btn_xuatbaocao.BackColor;
+			originalStatisticButtonColor = btn_thongke.BackColor;
 
 		}
+
+		void LoadAllLeaveData()
+		{
+			var list = ThongkenghiphepDAO.Instance.GetOnLeaving();
+			onleavingList.DataSource = list;
+			dgv_nghiphepthongke.DataSource = onleavingList;
+
+			txb_manhanvien.DataBindings.Clear();
+			txb_tennhanvien.DataBindings.Clear();
+			txb_manhanvien.Text = "";
+			txb_tennhanvien.Text = "--Tất cả nhân viên--";
+
+		}
+
+		void DrawLeaveChartForAll()
+		{
+			try
+			{
+				DataTable data = ThongkenghiphepDAO.Instance.GetNgayNghiNamAll();
+
+				int[] monthData = new int[12];
+				for (int i = 0; i < 12; i++) monthData[i] = 0;
+
+				foreach (DataRow row in data.Rows)
+				{
+					int thang = Convert.ToInt32(row["Thang"]);
+					int songay = Convert.ToInt32(row["SoNgayNghi"]);
+					if (thang >= 1 && thang <= 12)
+						monthData[thang - 1] = songay;
+				}
+
+				var chartValues = new LiveCharts.ChartValues<int>(monthData);
+
+				var columnSeries = new LiveCharts.Wpf.ColumnSeries
+				{
+					Title = "Tổng số ngày nghỉ (tất cả nhân viên)",
+					Values = chartValues,
+					DataLabels = true,
+					LabelPoint = point => point.Y > 0 ? point.Y.ToString() : "",
+					Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.SkyBlue),
+					Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Black),
+					FontWeight = System.Windows.FontWeights.Bold
+				};
+
+				var cartesianChart = new LiveCharts.Wpf.CartesianChart
+				{
+					Series = new LiveCharts.SeriesCollection { columnSeries },
+					AxisX = new LiveCharts.Wpf.AxesCollection
+			{
+				new LiveCharts.Wpf.Axis
+				{
+					Title = "Tháng",
+					Labels = Enumerable.Range(1, 12).Select(i => $"Tháng {i}").ToArray(),
+					Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Black)
+				}
+			},
+					AxisY = new LiveCharts.Wpf.AxesCollection
+			{
+				new LiveCharts.Wpf.Axis
+				{
+					Title = "Số ngày nghỉ",
+					MinValue = 0
+				}
+			}
+				};
+
+				elementHost1.Child = cartesianChart;
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Lỗi khi vẽ biểu đồ tổng: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+
 		void BindingOnLeaveData()
 		{
-			// Clear old bindings
-			//txb_tennv.DataBindings.Clear();
+
 			txb_manhanvien.DataBindings.Clear();
-			dtp_ngaybatdau.DataBindings.Clear();
-			dtp_ngaykt.DataBindings.Clear();
 			txb_tennhanvien.DataBindings.Clear();
 
 
-			txb_tennhanvien.DataBindings.Add(new Binding("Text", dgv_nghipheptk.DataSource, "TenNV", true, DataSourceUpdateMode.Never));
-			txb_manhanvien.DataBindings.Add(new Binding("Text", dgv_nghipheptk.DataSource, "MaNV", true, DataSourceUpdateMode.Never));
-			dtp_ngaybatdau.DataBindings.Add(new Binding("Value", dgv_nghipheptk.DataSource, "NgayBD", true, DataSourceUpdateMode.Never));
-			dtp_ngaykt.DataBindings.Add(new Binding("Value", dgv_nghipheptk.DataSource, "NgayKT", true, DataSourceUpdateMode.Never));
+			txb_tennhanvien.DataBindings.Add(new Binding("Text", dgv_nghiphepthongke.DataSource, "TenNV", true, DataSourceUpdateMode.Never));
+			txb_manhanvien.DataBindings.Add(new Binding("Text", dgv_nghiphepthongke.DataSource, "MaNV", true, DataSourceUpdateMode.Never));
 		}
 
 		void LoadOnLeaveStatisticByMaNV(string manv)
 		{
 			onleavingList.DataSource = ThongkenghiphepDAO.Instance.GetOnLeavingByMaNV(manv);
-			dgv_nghipheptk.DataSource = onleavingList;
+			dgv_nghiphepthongke.DataSource = onleavingList;
 			BindingOnLeaveData();
 		}
-		void LoadOnLeaveStatisticByNgay(string manv, DateTime ngaybd, DateTime ngaykt)
+		void LoadOnLeaveStatisticByNgay(string manv,int nam)
 		{
-			onleavingList.DataSource = ThongkenghiphepDAO.Instance.GetOnLeavingByNgay(manv, ngaybd, ngaykt);
-			dgv_nghipheptk.DataSource = onleavingList;
+			onleavingList.DataSource = ThongkenghiphepDAO.Instance.GetOnLeavingNam(manv, nam);
+			dgv_nghiphepthongke.DataSource = onleavingList;
 			BindingOnLeaveData();
 		}
 
+		
+
+		private void ExportToCSV(string filePath)
+		{
+			try
+			{
+				StringBuilder csvContent = new StringBuilder();
+
+				foreach (DataGridViewColumn column in dgv_nghiphepthongke.Columns)
+				{
+					csvContent.Append(column.HeaderText + ",");
+				}
+				csvContent.AppendLine();
+
+				foreach (DataGridViewRow row in dgv_nghiphepthongke.Rows)
+				{
+					foreach (DataGridViewCell cell in row.Cells)
+					{
+						if (cell.Value != null)
+						{
+							csvContent.Append(cell.Value.ToString() + ",");
+						}
+						else
+						{
+							csvContent.Append(",");
+						}
+					}
+					csvContent.AppendLine();
+				}
+
+
+				System.IO.File.WriteAllText(filePath, csvContent.ToString());
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Lỗi khi xuất CSV: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+		#region Events
+		private void btn_dong_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
+
+		private void btn_xuatbaocao_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				SaveFileDialog saveDialog = new SaveFileDialog();
+				saveDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+				saveDialog.FileName = $"BaoCaoNghiPhep_{txb_tennhanvien.Text}.csv";
+
+				if (saveDialog.ShowDialog() == DialogResult.OK)
+				{
+					ExportToCSV(saveDialog.FileName);
+					MessageBox.Show("Xuất báo cáo thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Lỗi khi xuất báo cáo: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
 		private void btn_thongkenv_Click(object sender, EventArgs e)
 		{
 			try
 			{
 				LoadOnLeaveStatisticByMaNV(txb_manhanvien.Text);
 				string maNV = txb_manhanvien.Text.Trim();
-				DataTable data = ThongkenghiphepDAO.Instance.GetNgayNghiTheoThang(maNV);
 
-				// Khởi tạo dữ liệu cho 12 tháng, mặc định là 0
+				if (cb_nam.SelectedItem == null)
+				{
+					MessageBox.Show("Vui lòng chọn năm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+					return;
+				}
+
+				int nam = Convert.ToInt32(cb_nam.SelectedItem.ToString());
+				DataTable data = ThongkenghiphepDAO.Instance.GetOnLeavingNam(maNV, nam);
+
+				if (data.Rows.Count == 0)
+				{
+					MessageBox.Show("Không có dữ liệu nghỉ phép cho nhân viên trong năm đã chọn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					return;
+				}
+
 				int[] monthData = new int[12];
 				for (int i = 0; i < 12; i++)
 					monthData[i] = 0;
 
-				// Gán số ngày nghỉ cho từng tháng nếu có dữ liệu
 				foreach (DataRow row in data.Rows)
 				{
 					int thang = Convert.ToInt32(row["Thang"]);
@@ -80,7 +240,7 @@ namespace QuanLyNhanSu
 					Title = "Số ngày nghỉ",
 					Values = chartValues,
 					DataLabels = true,
-					LabelPoint = point => point.Y > 0 ? point.Y.ToString() : "", // Chỉ hiển thị số > 0
+					LabelPoint = point => point.Y > 0 ? point.Y.ToString() : "",
 					Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Red),
 					Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Black),
 					FontWeight = System.Windows.FontWeights.Bold
@@ -112,91 +272,38 @@ namespace QuanLyNhanSu
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Lỗi hiển thị biểu đồ: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Lỗi hiển thị biểu đồ: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
-		private void ExportToCSV(string filePath)
+        #endregion
+
+		#region Hover
+		private void btn_dong_MouseEnter(object sender, EventArgs e)
 		{
-			try
-			{
-				// Create a StringBuilder to store CSV content
-				StringBuilder csvContent = new StringBuilder();
-
-				// Add header row
-				foreach (DataGridViewColumn column in dgv_nghipheptk.Columns)
-				{
-					csvContent.Append(column.HeaderText + ",");
-				}
-				csvContent.AppendLine();
-
-				// Add data rows
-				foreach (DataGridViewRow row in dgv_nghipheptk.Rows)
-				{
-					foreach (DataGridViewCell cell in row.Cells)
-					{
-						if (cell.Value != null)
-						{
-							csvContent.Append(cell.Value.ToString() + ",");
-						}
-						else
-						{
-							csvContent.Append(",");
-						}
-					}
-					csvContent.AppendLine();
-				}
-
-				// Write to file
-				System.IO.File.WriteAllText(filePath, csvContent.ToString());
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Lỗi khi xuất CSV: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
+			btn_dong.BackColor = Color.LightBlue;
 		}
-
-		private void btn_thongketheongay_Click(object sender, EventArgs e)
+		private void btn_dong_MouseLeave(object sender, EventArgs e)
 		{
-			try
-			{
-				LoadOnLeaveStatisticByNgay(txb_manhanvien.Text, dtp_ngaybatdau.Value, dtp_ngaykt.Value);
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Lỗi hiển thị biểu đồ: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
+			btn_dong.BackColor = originalCloseButtonColor;
 		}
-
-		private void btn_dong_Click(object sender, EventArgs e)
+		private void btn_xuatbaocao_MouseEnter(object sender, EventArgs e)
 		{
-			this.Close();
+			btn_xuatbaocao.BackColor = Color.LightBlue;
 		}
-
-		private void btn_xuatbaocao_Click(object sender, EventArgs e)
+		private void btn_xuatbaocao_MouseLeave(object sender, EventArgs e)
 		{
-			try
-			{
-				// Xuất báo cáo (có thể dùng Excel hoặc PDF)
-				SaveFileDialog saveDialog = new SaveFileDialog();
-				saveDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
-				saveDialog.FileName = $"BaoCaoNghiPhep_{txb_tennhanvien.Text}.csv";
-
-				if (saveDialog.ShowDialog() == DialogResult.OK)
-				{
-					ExportToCSV(saveDialog.FileName);
-					MessageBox.Show("✅ Xuất báo cáo thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-				}
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Lỗi khi xuất báo cáo: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
+			btn_xuatbaocao.BackColor = originalExportButtonColor;
 		}
-
-		private void fThongkenghiphep_Load(object sender, EventArgs e)
+		private void btn_thongke_MouseEnter(object sender, EventArgs e)
 		{
-
+			btn_thongke.BackColor = Color.LightBlue;
 		}
+		private void btn_thongke_MouseLeave(object sender, EventArgs e)
+		{
+			btn_thongke.BackColor = originalStatisticButtonColor;
+		}
+		#endregion
+
 	}
 }
 

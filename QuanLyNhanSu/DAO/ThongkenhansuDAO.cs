@@ -20,7 +20,7 @@ namespace QuanLyNhanSu.DAO
 		public List<ThongkenhansunamnuDTO> GetNamNuStatistics()
 		{
 			List<ThongkenhansunamnuDTO> list = new List<ThongkenhansunamnuDTO>();
-			string query = "SELECT CASE GioiTinh WHEN 1 THEN N'Nam' WHEN 0 THEN N'Nữ' ELSE N'Khác' END AS GioiTinh, COUNT(*) AS SoLuong, CAST(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM [Nhan vien]) AS DECIMAL(5,2)) AS TyLePhanTram FROM [Nhan vien] GROUP BY GioiTinh;\r\n";
+			string query = "SELECT CASE GioiTinh WHEN 1 THEN N'Nam' WHEN 0 THEN N'Nữ' ELSE N'Khác' END AS GioiTinh, COUNT(*) AS SoLuong, CAST(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM [NhanVien]) AS DECIMAL(5,2)) AS TyLePhanTram FROM [NhanVien] GROUP BY GioiTinh;\r\n";
 			DataTable data = DataProvider.Instance.ExecuteQuery(query);
 			foreach (DataRow item in data.Rows)
 			{
@@ -29,14 +29,14 @@ namespace QuanLyNhanSu.DAO
 			}
 			return list;
 		}
-		public List<ThongkenhansuphongbanDTO> GetPhongBanStatistics()
+		public List<ThongkenhansucuahangDTO> GetPhongBanStatistics()
 		{
-			List<ThongkenhansuphongbanDTO> list = new List<ThongkenhansuphongbanDTO>();
-			string query = "SELECT pb.TenPhong AS PhongBan, COUNT(nv.Ma_NV) AS SoLuong FROM [Nhan vien] nv JOIN [Phong Ban] pb ON nv.Ma_PB = pb.Ma_PB GROUP BY pb.TenPhong;\r\n";
+			List<ThongkenhansucuahangDTO> list = new List<ThongkenhansucuahangDTO>();
+			string query = "SELECT ch.TenCuaHang AS CuaHang, COUNT(nv.Ma_NV) AS SoLuong FROM [NhanVien] nv JOIN [CuaHang] ch ON nv.Ma_CH = ch.Ma_CH GROUP BY ch.TenCuaHang;\r\n";
 			DataTable data = DataProvider.Instance.ExecuteQuery(query);
 			foreach (DataRow item in data.Rows)
 			{
-				ThongkenhansuphongbanDTO hrStat = new ThongkenhansuphongbanDTO(item);
+				ThongkenhansucuahangDTO hrStat = new ThongkenhansucuahangDTO(item);
 				list.Add(hrStat);
 			}
 			return list;
@@ -44,7 +44,7 @@ namespace QuanLyNhanSu.DAO
 		public List<ThongkenhansuchucvuDTO> GetChucVuStatistics()
 		{
 			List<ThongkenhansuchucvuDTO> list = new List<ThongkenhansuchucvuDTO>();
-			string query = "SELECT cv.TenChucVu AS ChucVu, COUNT(nv.Ma_NV) AS SoLuong FROM [Nhan vien] nv JOIN [Chuc Vu] cv ON nv.Ma_ChucVu = cv.Ma_ChucVu GROUP BY cv.TenChucVu;";
+			string query = "SELECT cv.TenChucVu AS ChucVu, COUNT(nv.Ma_NV) AS SoLuong FROM [NhanVien] nv JOIN [ChucVu] cv ON nv.Ma_CV = cv.Ma_CV GROUP BY cv.TenChucVu;";
 			DataTable data = DataProvider.Instance.ExecuteQuery(query);
 			foreach (DataRow item in data.Rows)
 			{

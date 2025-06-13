@@ -12,7 +12,6 @@ namespace QuanLyNhanSu.DAO
 	{
 		private static ChucvuDAO instance;
 
-		//public static UserDAO Instance { get => instance; set => instance=value; }
 
 		public static ChucvuDAO Instance { get => instance==null ? instance = new ChucvuDAO() : instance; private set => instance=value; }
 
@@ -23,7 +22,7 @@ namespace QuanLyNhanSu.DAO
 		{
 			List<ChucvuDTO> list = new List<ChucvuDTO>();
 
-			string query = "SELECT Ma_ChucVu as MaChucVu, TenChucVu, MoTaChucVu FROM [Chuc Vu]";
+			string query = "SELECT Ma_CV as MaChucVu, TenChucVu, MoTaChucVu FROM [ChucVu]";
 			DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
 			foreach (DataRow item in data.Rows)
@@ -62,7 +61,7 @@ namespace QuanLyNhanSu.DAO
 		{
 			List<ChucvuDTO> list = new List<ChucvuDTO>();
 
-			string query = string.Format("SELECT Ma_ChucVu as MaChucVu, TenChucVu, MoTaChucVu FROM [Chuc Vu] WHERE Ma_ChucVu LIKE N'%{0}%' OR TenChucVu LIKE N'%{1}%' OR MoTaChucVu LIKE N'%{2}%'", value, value, value);
+			string query = string.Format("SELECT Ma_CV as MaChucVu, TenChucVu, MoTaChucVu FROM [ChucVu] WHERE Ma_CV LIKE N'%{0}%' OR TenChucVu LIKE N'%{1}%' OR MoTaChucVu LIKE N'%{2}%'", value, value, value);
 
 			Console.WriteLine(query);
 

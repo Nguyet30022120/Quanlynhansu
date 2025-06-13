@@ -151,6 +151,8 @@
 			this.btn_themnhanvien.Text = "Thêm";
 			this.btn_themnhanvien.UseVisualStyleBackColor = false;
 			this.btn_themnhanvien.Click += new System.EventHandler(this.btn_addnv_Click);
+			this.btn_themnhanvien.MouseEnter += new System.EventHandler(this.btn_themnhanvien_MouseEnter);
+			this.btn_themnhanvien.MouseLeave += new System.EventHandler(this.btn_themnhanvien_MouseLeave);
 			// 
 			// btn_dong
 			// 
@@ -163,12 +165,15 @@
 			this.btn_dong.Text = "Đóng";
 			this.btn_dong.UseVisualStyleBackColor = false;
 			this.btn_dong.Click += new System.EventHandler(this.btn_closenv_Click);
+			this.btn_dong.MouseEnter += new System.EventHandler(this.btn_dong_MouseEnter);
+			this.btn_dong.MouseLeave += new System.EventHandler(this.btn_dong_MouseLeave);
 			// 
 			// txb_hoten
 			// 
 			this.txb_hoten.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txb_hoten.Location = new System.Drawing.Point(200, 45);
 			this.txb_hoten.Name = "txb_hoten";
+			this.txb_hoten.ReadOnly = true;
 			this.txb_hoten.Size = new System.Drawing.Size(252, 27);
 			this.txb_hoten.TabIndex = 12;
 			// 
@@ -195,6 +200,7 @@
 			this.txb_dienthoai.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txb_dienthoai.Location = new System.Drawing.Point(200, 250);
 			this.txb_dienthoai.Name = "txb_dienthoai";
+			this.txb_dienthoai.ReadOnly = true;
 			this.txb_dienthoai.Size = new System.Drawing.Size(252, 27);
 			this.txb_dienthoai.TabIndex = 16;
 			// 
@@ -203,6 +209,7 @@
 			this.txb_email.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txb_email.Location = new System.Drawing.Point(200, 300);
 			this.txb_email.Name = "txb_email";
+			this.txb_email.ReadOnly = true;
 			this.txb_email.Size = new System.Drawing.Size(252, 27);
 			this.txb_email.TabIndex = 17;
 			// 

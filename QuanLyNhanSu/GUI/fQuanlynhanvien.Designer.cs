@@ -28,8 +28,8 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.txb_diachi = new System.Windows.Forms.TextBox();
 			this.txb_dienthoai = new System.Windows.Forms.TextBox();
 			this.txb_CCCD = new System.Windows.Forms.TextBox();
@@ -39,7 +39,7 @@
 			this.dtp_ngaysinh = new System.Windows.Forms.DateTimePicker();
 			this.lb_ngaysinh = new System.Windows.Forms.Label();
 			this.lb_diachi = new System.Windows.Forms.Label();
-			this.lb_phongban = new System.Windows.Forms.Label();
+			this.lb_cuahang = new System.Windows.Forms.Label();
 			this.lb_dienthoai = new System.Windows.Forms.Label();
 			this.lb_hoten = new System.Windows.Forms.Label();
 			this.lb_gioitinh = new System.Windows.Forms.Label();
@@ -47,13 +47,14 @@
 			this.lb_taikhoan = new System.Windows.Forms.Label();
 			this.lb_chucvu = new System.Windows.Forms.Label();
 			this.pn_thongtinnhanvien = new System.Windows.Forms.Panel();
+			this.lb_goiy = new System.Windows.Forms.Label();
 			this.dgv_nhanvien = new System.Windows.Forms.DataGridView();
-			this.btn_timkiemnhanvien = new System.Windows.Forms.Button();
+			this.btn_timnhanvien = new System.Windows.Forms.Button();
 			this.txb_email = new System.Windows.Forms.TextBox();
-			this.txb_findnv = new System.Windows.Forms.TextBox();
+			this.txb_timnhanvien = new System.Windows.Forms.TextBox();
 			this.lb_email = new System.Windows.Forms.Label();
 			this.cb_chucvu = new System.Windows.Forms.ComboBox();
-			this.cb_phongban = new System.Windows.Forms.ComboBox();
+			this.cb_cuahang = new System.Windows.Forms.ComboBox();
 			this.btn_dongnhanvien = new System.Windows.Forms.Button();
 			this.btn_xoanhanvien = new System.Windows.Forms.Button();
 			this.btn_suanhanvien = new System.Windows.Forms.Button();
@@ -61,7 +62,7 @@
 			this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ChucVu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.PhongBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.CuaHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TaiKhoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.CCCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -154,16 +155,16 @@
 			this.lb_diachi.TabIndex = 16;
 			this.lb_diachi.Text = "Địa Chỉ";
 			// 
-			// lb_phongban
+			// lb_cuahang
 			// 
-			this.lb_phongban.AutoSize = true;
-			this.lb_phongban.BackColor = System.Drawing.Color.Transparent;
-			this.lb_phongban.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_phongban.Location = new System.Drawing.Point(880, 15);
-			this.lb_phongban.Name = "lb_phongban";
-			this.lb_phongban.Size = new System.Drawing.Size(75, 20);
-			this.lb_phongban.TabIndex = 17;
-			this.lb_phongban.Text = "Cửa hàng";
+			this.lb_cuahang.AutoSize = true;
+			this.lb_cuahang.BackColor = System.Drawing.Color.Transparent;
+			this.lb_cuahang.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lb_cuahang.Location = new System.Drawing.Point(880, 15);
+			this.lb_cuahang.Name = "lb_cuahang";
+			this.lb_cuahang.Size = new System.Drawing.Size(75, 20);
+			this.lb_cuahang.TabIndex = 17;
+			this.lb_cuahang.Text = "Cửa hàng";
 			// 
 			// lb_dienthoai
 			// 
@@ -234,13 +235,14 @@
 			// pn_thongtinnhanvien
 			// 
 			this.pn_thongtinnhanvien.BackColor = System.Drawing.Color.BlanchedAlmond;
+			this.pn_thongtinnhanvien.Controls.Add(this.lb_goiy);
 			this.pn_thongtinnhanvien.Controls.Add(this.dgv_nhanvien);
-			this.pn_thongtinnhanvien.Controls.Add(this.btn_timkiemnhanvien);
+			this.pn_thongtinnhanvien.Controls.Add(this.btn_timnhanvien);
 			this.pn_thongtinnhanvien.Controls.Add(this.txb_email);
-			this.pn_thongtinnhanvien.Controls.Add(this.txb_findnv);
+			this.pn_thongtinnhanvien.Controls.Add(this.txb_timnhanvien);
 			this.pn_thongtinnhanvien.Controls.Add(this.lb_email);
 			this.pn_thongtinnhanvien.Controls.Add(this.cb_chucvu);
-			this.pn_thongtinnhanvien.Controls.Add(this.cb_phongban);
+			this.pn_thongtinnhanvien.Controls.Add(this.cb_cuahang);
 			this.pn_thongtinnhanvien.Controls.Add(this.btn_dongnhanvien);
 			this.pn_thongtinnhanvien.Controls.Add(this.btn_xoanhanvien);
 			this.pn_thongtinnhanvien.Controls.Add(this.btn_suanhanvien);
@@ -256,7 +258,7 @@
 			this.pn_thongtinnhanvien.Controls.Add(this.txb_taikhoan);
 			this.pn_thongtinnhanvien.Controls.Add(this.lb_hoten);
 			this.pn_thongtinnhanvien.Controls.Add(this.lb_dienthoai);
-			this.pn_thongtinnhanvien.Controls.Add(this.lb_phongban);
+			this.pn_thongtinnhanvien.Controls.Add(this.lb_cuahang);
 			this.pn_thongtinnhanvien.Controls.Add(this.lb_diachi);
 			this.pn_thongtinnhanvien.Controls.Add(this.cb_gioitinh);
 			this.pn_thongtinnhanvien.Controls.Add(this.lb_ngaysinh);
@@ -266,25 +268,35 @@
 			this.pn_thongtinnhanvien.Size = new System.Drawing.Size(1470, 764);
 			this.pn_thongtinnhanvien.TabIndex = 28;
 			// 
+			// lb_goiy
+			// 
+			this.lb_goiy.AutoSize = true;
+			this.lb_goiy.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lb_goiy.Location = new System.Drawing.Point(851, 148);
+			this.lb_goiy.Name = "lb_goiy";
+			this.lb_goiy.Size = new System.Drawing.Size(257, 17);
+			this.lb_goiy.TabIndex = 46;
+			this.lb_goiy.Text = "(Tìm kiếm theo mã nhân viên, tên nhân viên)";
+			// 
 			// dgv_nhanvien
 			// 
-			dataGridViewCellStyle3.BackColor = System.Drawing.Color.Tan;
-			this.dgv_nhanvien.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.Tan;
+			this.dgv_nhanvien.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
 			this.dgv_nhanvien.BackgroundColor = System.Drawing.Color.White;
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgv_nhanvien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgv_nhanvien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.dgv_nhanvien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgv_nhanvien.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaNV,
             this.HoTen,
             this.ChucVu,
-            this.PhongBan,
+            this.CuaHang,
             this.TaiKhoan,
             this.CCCD,
             this.DienThoai,
@@ -299,17 +311,19 @@
 			this.dgv_nhanvien.Size = new System.Drawing.Size(1464, 545);
 			this.dgv_nhanvien.TabIndex = 0;
 			// 
-			// btn_timkiemnhanvien
+			// btn_timnhanvien
 			// 
-			this.btn_timkiemnhanvien.BackColor = System.Drawing.Color.DarkOrange;
-			this.btn_timkiemnhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_timkiemnhanvien.Location = new System.Drawing.Point(1343, 167);
-			this.btn_timkiemnhanvien.Name = "btn_timkiemnhanvien";
-			this.btn_timkiemnhanvien.Size = new System.Drawing.Size(115, 40);
-			this.btn_timkiemnhanvien.TabIndex = 32;
-			this.btn_timkiemnhanvien.Text = "Tìm kiếm";
-			this.btn_timkiemnhanvien.UseVisualStyleBackColor = false;
-			this.btn_timkiemnhanvien.Click += new System.EventHandler(this.btn_findnv_Click);
+			this.btn_timnhanvien.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_timnhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_timnhanvien.Location = new System.Drawing.Point(1343, 167);
+			this.btn_timnhanvien.Name = "btn_timnhanvien";
+			this.btn_timnhanvien.Size = new System.Drawing.Size(115, 40);
+			this.btn_timnhanvien.TabIndex = 32;
+			this.btn_timnhanvien.Text = "Tìm kiếm";
+			this.btn_timnhanvien.UseVisualStyleBackColor = false;
+			this.btn_timnhanvien.Click += new System.EventHandler(this.btn_findnv_Click);
+			this.btn_timnhanvien.MouseEnter += new System.EventHandler(this.btn_timnhanvien_MouseEnter);
+			this.btn_timnhanvien.MouseLeave += new System.EventHandler(this.btn_timnhanvien_MouseLeave);
 			// 
 			// txb_email
 			// 
@@ -319,13 +333,13 @@
 			this.txb_email.Size = new System.Drawing.Size(252, 27);
 			this.txb_email.TabIndex = 37;
 			// 
-			// txb_findnv
+			// txb_timnhanvien
 			// 
-			this.txb_findnv.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_findnv.Location = new System.Drawing.Point(27, 180);
-			this.txb_findnv.Name = "txb_findnv";
-			this.txb_findnv.Size = new System.Drawing.Size(1296, 27);
-			this.txb_findnv.TabIndex = 32;
+			this.txb_timnhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txb_timnhanvien.Location = new System.Drawing.Point(27, 180);
+			this.txb_timnhanvien.Name = "txb_timnhanvien";
+			this.txb_timnhanvien.Size = new System.Drawing.Size(1296, 27);
+			this.txb_timnhanvien.TabIndex = 32;
 			// 
 			// lb_email
 			// 
@@ -352,11 +366,11 @@
 			this.cb_chucvu.Size = new System.Drawing.Size(252, 28);
 			this.cb_chucvu.TabIndex = 33;
 			// 
-			// cb_phongban
+			// cb_cuahang
 			// 
-			this.cb_phongban.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.cb_phongban.FormattingEnabled = true;
-			this.cb_phongban.Items.AddRange(new object[] {
+			this.cb_cuahang.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.cb_cuahang.FormattingEnabled = true;
+			this.cb_cuahang.Items.AddRange(new object[] {
             "Cửa hàng số 1",
             "Cửa hàng số 2",
             "Cửa hàng số 3",
@@ -364,10 +378,10 @@
             "Cửa hàng số 5",
             "Cửa hàng số 6",
             "Cửa hàng số 7"});
-			this.cb_phongban.Location = new System.Drawing.Point(990, 15);
-			this.cb_phongban.Name = "cb_phongban";
-			this.cb_phongban.Size = new System.Drawing.Size(252, 28);
-			this.cb_phongban.TabIndex = 32;
+			this.cb_cuahang.Location = new System.Drawing.Point(990, 15);
+			this.cb_cuahang.Name = "cb_cuahang";
+			this.cb_cuahang.Size = new System.Drawing.Size(252, 28);
+			this.cb_cuahang.TabIndex = 32;
 			// 
 			// btn_dongnhanvien
 			// 
@@ -380,6 +394,8 @@
 			this.btn_dongnhanvien.Text = "Đóng";
 			this.btn_dongnhanvien.UseVisualStyleBackColor = false;
 			this.btn_dongnhanvien.Click += new System.EventHandler(this.btn_closenv_Click);
+			this.btn_dongnhanvien.MouseEnter += new System.EventHandler(this.btn_dongnhanvien_MouseEnter);
+			this.btn_dongnhanvien.MouseLeave += new System.EventHandler(this.btn_dongnhanvien_MouseLeave);
 			// 
 			// btn_xoanhanvien
 			// 
@@ -392,6 +408,8 @@
 			this.btn_xoanhanvien.Text = "Xóa";
 			this.btn_xoanhanvien.UseVisualStyleBackColor = false;
 			this.btn_xoanhanvien.Click += new System.EventHandler(this.btn_deletenv_Click);
+			this.btn_xoanhanvien.MouseEnter += new System.EventHandler(this.btn_xoanhanvien_MouseEnter);
+			this.btn_xoanhanvien.MouseLeave += new System.EventHandler(this.btn_xoanhanvien_MouseLeave);
 			// 
 			// btn_suanhanvien
 			// 
@@ -404,6 +422,8 @@
 			this.btn_suanhanvien.Text = "Sửa";
 			this.btn_suanhanvien.UseVisualStyleBackColor = false;
 			this.btn_suanhanvien.Click += new System.EventHandler(this.btn_editnv_Click);
+			this.btn_suanhanvien.MouseEnter += new System.EventHandler(this.btn_suanhanvien_MouseEnter);
+			this.btn_suanhanvien.MouseLeave += new System.EventHandler(this.btn_suanhanvien_MouseLeave);
 			// 
 			// btn_themnhanvien
 			// 
@@ -416,6 +436,8 @@
 			this.btn_themnhanvien.Text = "Thêm";
 			this.btn_themnhanvien.UseVisualStyleBackColor = false;
 			this.btn_themnhanvien.Click += new System.EventHandler(this.btn_addnv_Click);
+			this.btn_themnhanvien.MouseEnter += new System.EventHandler(this.btn_themnhanvien_MouseEnter);
+			this.btn_themnhanvien.MouseLeave += new System.EventHandler(this.btn_themnhanvien_MouseLeave);
 			// 
 			// MaNV
 			// 
@@ -441,13 +463,12 @@
 			this.ChucVu.Name = "ChucVu";
 			this.ChucVu.Width = 125;
 			// 
-			// PhongBan
+			// CuaHang
 			// 
-			this.PhongBan.DataPropertyName = "PhongBan";
-			this.PhongBan.HeaderText = "Cửa hàng";
-			this.PhongBan.MinimumWidth = 6;
-			this.PhongBan.Name = "PhongBan";
-			this.PhongBan.Width = 125;
+			this.CuaHang.DataPropertyName = "CuaHang";
+			this.CuaHang.HeaderText = "Cửa hàng";
+			this.CuaHang.MinimumWidth = 6;
+			this.CuaHang.Name = "CuaHang";
 			// 
 			// TaiKhoan
 			// 
@@ -455,7 +476,7 @@
 			this.TaiKhoan.HeaderText = "Tài khoản";
 			this.TaiKhoan.MinimumWidth = 6;
 			this.TaiKhoan.Name = "TaiKhoan";
-			this.TaiKhoan.Width = 125;
+			this.TaiKhoan.Width = 75;
 			// 
 			// CCCD
 			// 
@@ -479,7 +500,7 @@
 			this.Diachi.HeaderText = "Địa chỉ";
 			this.Diachi.MinimumWidth = 6;
 			this.Diachi.Name = "Diachi";
-			this.Diachi.Width = 125;
+			this.Diachi.Width = 250;
 			// 
 			// GioiTinh
 			// 
@@ -487,7 +508,7 @@
 			this.GioiTinh.HeaderText = "Giới tính";
 			this.GioiTinh.MinimumWidth = 6;
 			this.GioiTinh.Name = "GioiTinh";
-			this.GioiTinh.Width = 125;
+			this.GioiTinh.Width = 75;
 			// 
 			// NgaySinh
 			// 
@@ -495,7 +516,6 @@
 			this.NgaySinh.HeaderText = "Ngày sinh";
 			this.NgaySinh.MinimumWidth = 6;
 			this.NgaySinh.Name = "NgaySinh";
-			this.NgaySinh.Width = 125;
 			// 
 			// Email
 			// 
@@ -510,7 +530,7 @@
 			this.ClientSize = new System.Drawing.Size(1482, 778);
 			this.Controls.Add(this.pn_thongtinnhanvien);
 			this.Name = "fQuanlynhanvien";
-			this.Text = "Quản lý thông tin nhân viên";
+			this.Text = "Nhân viên";
 			this.pn_thongtinnhanvien.ResumeLayout(false);
 			this.pn_thongtinnhanvien.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_nhanvien)).EndInit();
@@ -528,7 +548,7 @@
 		private System.Windows.Forms.DateTimePicker dtp_ngaysinh;
 		private System.Windows.Forms.Label lb_ngaysinh;
 		private System.Windows.Forms.Label lb_diachi;
-		private System.Windows.Forms.Label lb_phongban;
+		private System.Windows.Forms.Label lb_cuahang;
 		private System.Windows.Forms.Label lb_dienthoai;
 		private System.Windows.Forms.Label lb_hoten;
 		private System.Windows.Forms.Label lb_gioitinh;
@@ -541,16 +561,17 @@
 		private System.Windows.Forms.Button btn_xoanhanvien;
 		private System.Windows.Forms.Button btn_suanhanvien;
 		private System.Windows.Forms.Button btn_themnhanvien;
-		private System.Windows.Forms.TextBox txb_findnv;
-		private System.Windows.Forms.Button btn_timkiemnhanvien;
-		private System.Windows.Forms.ComboBox cb_phongban;
+		private System.Windows.Forms.TextBox txb_timnhanvien;
+		private System.Windows.Forms.Button btn_timnhanvien;
+		private System.Windows.Forms.ComboBox cb_cuahang;
 		private System.Windows.Forms.ComboBox cb_chucvu;
 		private System.Windows.Forms.TextBox txb_email;
 		private System.Windows.Forms.Label lb_email;
+		private System.Windows.Forms.Label lb_goiy;
 		private System.Windows.Forms.DataGridViewTextBoxColumn MaNV;
 		private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ChucVu;
-		private System.Windows.Forms.DataGridViewTextBoxColumn PhongBan;
+		private System.Windows.Forms.DataGridViewTextBoxColumn CuaHang;
 		private System.Windows.Forms.DataGridViewTextBoxColumn TaiKhoan;
 		private System.Windows.Forms.DataGridViewTextBoxColumn CCCD;
 		private System.Windows.Forms.DataGridViewTextBoxColumn DienThoai;

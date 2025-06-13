@@ -18,7 +18,7 @@ namespace QuanLyNhanSu.DTO
 
 		public KhoahocDTO(DataRow row)
 		{
-			this.MaKhoaHoc = row["Ma_KhoaHoc"].ToString();
+			this.MaKhoaHoc = row["Ma_KH"].ToString();
 			this.TenKhoaHoc = row["TenKhoaHoc"].ToString();
 			this.MoTaKhoaHoc = row["MoTa"].ToString();
 		}

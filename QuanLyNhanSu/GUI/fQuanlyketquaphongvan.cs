@@ -13,6 +13,13 @@ namespace QuanLyNhanSu.GUI
 {
 	public partial class fQuanlyketquaphongvan : Form
 	{
+		private Color originalAddButtonColor;
+		private Color originalEditButtonColor;
+		private Color originalDeleteButtonColor;
+		private Color originalFindButtonColor;
+		private Color originalCloseButtonColor;
+		private Color originalAcceptButtonColor;
+
 		BindingSource resultList = new BindingSource();
 		public fQuanlyketquaphongvan()
 		{
@@ -21,6 +28,12 @@ namespace QuanLyNhanSu.GUI
 			dgv_ketqua.DataSource = resultList;
 			BindingResultData();
 			LoadCbKetLuan();
+			originalAddButtonColor = btn_themketqua.BackColor;
+			originalEditButtonColor = btn_suaketqua.BackColor;
+			originalDeleteButtonColor = btn_xoaketqua.BackColor;
+			originalFindButtonColor = btn_timketqua.BackColor;
+			originalCloseButtonColor = btn_dongketqua.BackColor;
+			originalAcceptButtonColor = btn_tiepnhan.BackColor;
 
 		}
 		void LoadResult()
@@ -44,7 +57,7 @@ namespace QuanLyNhanSu.GUI
 			dtp_ngaydanhgia.DataBindings.Add(new Binding("Value", dgv_ketqua.DataSource, "NgayDanhGia", true, DataSourceUpdateMode.Never));
 			cb_ketluan.DataBindings.Add(new Binding("Text", dgv_ketqua.DataSource, "KetLuan", true, DataSourceUpdateMode.Never));
 		}
-
+		#region Events
 		private void btn_addkq_Click(object sender, EventArgs e)
 		{
 			try
@@ -57,12 +70,12 @@ namespace QuanLyNhanSu.GUI
 
 				if (KetquaphongvanDAO.Instance.InsertResult(mahs, danhgia, ketluan, ngaydanhgia))
 				{
-					MessageBox.Show("Thêm kết quả phỏng vấn thành công");
+					MessageBox.Show("Thêm kết quả phỏng vấn thành công", "Thông báo");
 					LoadResult();
 				}
 				else
 				{
-					MessageBox.Show("Thêm kết quả phỏng vấn thất bại");
+					MessageBox.Show("Thêm kết quả phỏng vấn thất bại", "Thông báo");
 				}
 			}
 			catch (Exception ex)
@@ -86,11 +99,11 @@ namespace QuanLyNhanSu.GUI
 
 					if (KetquaphongvanDAO.Instance.UpdateResult(makq, tenuv, danhgia, ketluan, ngaydanhgia))
 					{
-						MessageBox.Show("Sửa kết quả phỏng vấn thành công");
+						MessageBox.Show("Sửa kết quả phỏng vấn thành công", "Thông báo");
 					}
 					else
 					{
-						MessageBox.Show("Sửa kết quả phỏng vấn thất bại");
+						MessageBox.Show("Sửa kết quả phỏng vấn thất bại", "Thông báo");
 					}
 
 				}
@@ -116,11 +129,11 @@ namespace QuanLyNhanSu.GUI
 
 					if (KetquaphongvanDAO.Instance.DeleteResult(makq))
 					{
-						MessageBox.Show("Xóa kết quả phỏng vấn thành công");
+						MessageBox.Show("Xóa kết quả phỏng vấn thành công", "Thông báo");
 					}
 					else
 					{
-						MessageBox.Show("Xóa kết quả phỏng vấn thất bại");
+						MessageBox.Show("Xóa kết quả phỏng vấn thất bại", "Thông báo");
 					}
 
 				}
@@ -147,21 +160,84 @@ namespace QuanLyNhanSu.GUI
 
 		private void btn_tiepnhan_Click(object sender, EventArgs e)
 		{
-			DialogResult result = MessageBox.Show("Bạn có muốn tạo tài khoản cho ứng viên này luôn không?",
-										"Xác nhận",
-										MessageBoxButtons.YesNo,
-										MessageBoxIcon.Question);
+			string maHoSo = txb_mahoso.Text;
+			string email = HosoungvienDAO.Instance.GetEmailByMaHS(maHoSo);
+
+
+			if (NhanvienDAO.Instance.IsStaffExistsByEmail(email))
+			{
+				MessageBox.Show("Ứng viên này đã được tiếp nhận trước đó.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				return;
+			}
+
+			DialogResult result = MessageBox.Show(
+				"Bạn có muốn tạo tài khoản cho ứng viên này luôn không?",
+				"Xác nhận",
+				MessageBoxButtons.YesNo,
+				MessageBoxIcon.Question);
 
 			if (result == DialogResult.Yes)
 			{
-				string mahs = txb_mahoso.Text;
-				fQuanlytiepnhannhanvien schedule = new fQuanlytiepnhannhanvien(mahs);
-				schedule.ShowDialog();
-			}
-			else
-			{
-
+				using (fQuanlytiepnhannhanvien schedule = new fQuanlytiepnhannhanvien(maHoSo))
+				{
+					schedule.ShowDialog();
+				}
 			}
 		}
+
+		#endregion
+
+		#region Hover
+		private void btn_themketqua_MouseEnter(object sender, EventArgs e)
+		{
+			btn_themketqua.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_themketqua_MouseLeave(object sender, EventArgs e)
+		{
+			btn_themketqua.BackColor = originalAddButtonColor;
+		}
+		private void btn_suaketqua_MouseEnter(object sender, EventArgs e)
+		{
+			btn_suaketqua.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_suaketqua_MouseLeave(object sender, EventArgs e)
+		{
+			btn_suaketqua.BackColor = originalEditButtonColor;
+		}
+		private void btn_xoaketqua_MouseEnter(object sender, EventArgs e)
+		{
+			btn_xoaketqua.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_xoaketqua_MouseLeave(object sender, EventArgs e)
+		{
+			btn_xoaketqua.BackColor = originalDeleteButtonColor;
+		}
+		private void btn_timketqua_MouseEnter(object sender, EventArgs e)
+		{
+			btn_timketqua.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_timketqua_MouseLeave(object sender, EventArgs e)
+		{
+			btn_timketqua.BackColor = originalFindButtonColor;
+		}
+		private void btn_dongketqua_MouseEnter(object sender, EventArgs e)
+		{
+			btn_dongketqua.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_dongketqua_MouseLeave(object sender, EventArgs e)
+		{
+			btn_dongketqua.BackColor = originalCloseButtonColor;
+		}
+		private void btn_tiepnhan_MouseEnter(object sender, EventArgs e)
+		{
+			btn_tiepnhan.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_tiepnhan_MouseLeave(object sender, EventArgs e)
+		{
+			btn_tiepnhan.BackColor = originalAcceptButtonColor;
+		}
+		#endregion
+
+
 	}
 }

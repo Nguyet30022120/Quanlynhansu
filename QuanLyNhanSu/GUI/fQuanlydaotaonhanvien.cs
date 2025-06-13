@@ -15,6 +15,13 @@ namespace QuanLyNhanSu
 {
 	public partial class fQuanlydaotaonhanvien : Form
 	{
+		private Color originalAddButtonColor;
+		private Color originalEditButtonColor;
+		private Color originalDeleteButtonColor;
+		private Color originalFindButtonColor;
+		private Color originalCloseButtonColor;
+		private Color originalViewCourseButtonColor;
+
 		BindingSource trainingList = new BindingSource();
 		public fQuanlydaotaonhanvien()
 		{
@@ -25,11 +32,32 @@ namespace QuanLyNhanSu
 			LoadCbTrangThai();
 			LoadCbKetQua();
 			LoadCbKhoaHoc();
+			originalAddButtonColor = btn_themdaotao.BackColor;
+			originalEditButtonColor = btn_suadaotao.BackColor;
+			originalDeleteButtonColor = btn_xoadaotao.BackColor;
+			originalFindButtonColor = btn_timnhanvien.BackColor;
+			originalCloseButtonColor = btn_dongdaotao.BackColor;
+			originalViewCourseButtonColor = btn_xemkhoahoc.BackColor;
+			//LoadInitialData();
 		}
+		//void LoadInitialData()
+		//{
 
+
+		//	// Gọi hàm lấy toàn bộ trình độ của tất cả nhân viên
+		//	trainingList.DataSource = DaotaoDAO.Instance.GetListDaoTaoAll();
+
+		//	// Gán binding để hiển thị dữ liệu
+		//	BindingtrainingData();
+		//}
 		void BindingtrainingData()
 		{
-			//txb_madt.DataBindings.Add(new Binding("Text", dgv_daotao.DataSource, "MaDT", true, DataSourceUpdateMode.Never));
+			txb_manhanvien.DataBindings.Clear();
+			txb_tennhanvien.DataBindings.Clear();
+			cb_khoahoc.DataBindings.Clear();
+			cb_ketqua.DataBindings.Clear();
+			cb_trangthai.DataBindings.Clear();
+
 			txb_tennhanvien.DataBindings.Add(new Binding("Text", dgv_daotao.DataSource, "TenNV", true, DataSourceUpdateMode.Never));
 			cb_khoahoc.DataBindings.Add(new Binding("Text", dgv_daotao.DataSource, "TenKH", true, DataSourceUpdateMode.Never));
 			cb_ketqua.DataBindings.Add(new Binding("Text", dgv_daotao.DataSource, "KetQua", true, DataSourceUpdateMode.Never));
@@ -37,7 +65,8 @@ namespace QuanLyNhanSu
 		}
 		void LoadTraining()
 		{
-			trainingList.DataSource = DaotaoDAO.Instance.GetListDaoTao();
+			string manv = txb_manhanvien.Text;
+			trainingList.DataSource = DaotaoDAO.Instance.GetListDaoTao(manv);
 		}
 
 		void LoadCbTrangThai()
@@ -59,25 +88,26 @@ namespace QuanLyNhanSu
 			cb_khoahoc.ValueMember = "MaKhoaHoc";
 		}
 
+		#region Events
 		private void btn_adddt_Click(object sender, EventArgs e)
 		{
 			try
 			{
-				string tennv = txb_tennhanvien.Text;
+				string manv = txb_manhanvien.Text;
 				string tenkh = cb_khoahoc.Text;
-				if (DaotaoDAO.Instance.InsertDaoTao(tennv, tenkh))
+				if (DaotaoDAO.Instance.InsertDaoTao(manv, tenkh))
 				{
-					MessageBox.Show("Thêm đào tạo thành công");
+					MessageBox.Show("Thêm đào tạo thành công", "Thông báo");
 					LoadTraining();
 				}
 				else
 				{
-					MessageBox.Show("Thêm đào tạo thất bại");
+					MessageBox.Show("Thêm đào tạo thất bại","Thông báo");
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Hãy nhập mã nhân viên!", "Thông báo");
 			}
 			finally
 			{
@@ -99,11 +129,11 @@ namespace QuanLyNhanSu
 
 					if (DaotaoDAO.Instance.UpdateDaoTao(madt, tennv,tenkh,trangthai,ketqua))
 					{
-						MessageBox.Show("Sửa đào tạo thành công.");
+						MessageBox.Show("Sửa đào tạo thành công.", "Thông báo");
 					}
 					else
 					{
-						MessageBox.Show("Sửa đào tạo thất bại.");
+						MessageBox.Show("Sửa đào tạo thất bại.", "Thông báo");
 					}
 
 				}
@@ -128,11 +158,11 @@ namespace QuanLyNhanSu
 
 					if (DaotaoDAO.Instance.DeleteDaoTao(madt))
 					{
-						MessageBox.Show("Xóa đào tạo thành công.");
+						MessageBox.Show("Xóa đào tạo thành công.", "Thông báo");
 					}
 					else
 					{
-						MessageBox.Show("Xóa đào tạo thất bại.");
+						MessageBox.Show("Xóa đào tạo thất bại.", "Thông báo");
 					}
 
 				}
@@ -154,7 +184,8 @@ namespace QuanLyNhanSu
 
 		private void btn_finddt_Click(object sender, EventArgs e)
 		{
-			trainingList.DataSource = DaotaoDAO.Instance.SearchTraining(txb_finddt.Text);
+			string manv = txb_manhanvien.Text;
+			trainingList.DataSource = DaotaoDAO.Instance.GetListDaoTao(manv);
 		}
 
 		private void btn_viewkh_Click(object sender, EventArgs e)
@@ -164,5 +195,55 @@ namespace QuanLyNhanSu
 			f.ShowDialog();
 			this.Show();
 		}
-	}
+		#endregion
+
+		private void btn_themdaotao_MouseEnter(object sender, EventArgs e)
+		{
+			btn_themdaotao.BackColor = Color.LightBlue;
+		}
+		private void btn_themdaotao_MouseLeave(object sender, EventArgs e)
+		{
+			btn_themdaotao.BackColor = originalAddButtonColor;
+		}
+		private void btn_suadaotao_MouseEnter(object sender, EventArgs e)
+		{
+			btn_suadaotao.BackColor = Color.LightBlue;
+		}
+		private void btn_suadaotao_MouseLeave(object sender, EventArgs e)
+		{
+			btn_suadaotao.BackColor = originalEditButtonColor;
+		}
+		private void btn_xoadaotao_MouseEnter(object sender, EventArgs e)
+		{
+			btn_xoadaotao.BackColor = Color.LightBlue;
+		}
+		private void btn_xoadaotao_MouseLeave(object sender, EventArgs e)
+		{
+			btn_xoadaotao.BackColor = originalDeleteButtonColor;
+		}
+		private void btn_timnhanvien_MouseEnter(object sender, EventArgs e)
+		{
+			btn_timnhanvien.BackColor = Color.LightBlue;
+		}
+		private void btn_timnhanvien_MouseLeave(object sender, EventArgs e)
+		{
+			btn_timnhanvien.BackColor = originalFindButtonColor;
+		}
+		private void btn_dongdaotao_MouseEnter(object sender, EventArgs e)
+		{
+			btn_dongdaotao.BackColor = Color.LightBlue;
+		}
+		private void btn_dongdaotao_MouseLeave(object sender, EventArgs e)
+		{
+			btn_dongdaotao.BackColor = originalCloseButtonColor;
+		}
+		private void btn_xemkhoahoc_MouseEnter(object sender, EventArgs e)
+		{
+			btn_xemkhoahoc.BackColor = Color.LightBlue;
+		}
+		private void btn_xemkhoahoc_MouseLeave(object sender, EventArgs e)
+		{
+			btn_xemkhoahoc.BackColor = originalViewCourseButtonColor;
+		}
+		}
 }

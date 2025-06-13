@@ -19,7 +19,7 @@ namespace QuanLyNhanSu.DTO
 		}
 		public CheckoutDTO(DataRow row)
 		{
-			this.MaCheckOut = row["MaCheckOut"].ToString();
+			this.MaCheckOut = row["Ma_CheckOut"].ToString();
 			this.MaNV = row["Ma_NV"].ToString();
 			this.TenNV = row["HoTen"].ToString();
 			this.GioCheckOut = TimeSpan.Parse(row["GioCheckOut"].ToString());

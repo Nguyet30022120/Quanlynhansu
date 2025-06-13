@@ -14,8 +14,8 @@ namespace QuanLyNhanSu.GUI
 {
 	public partial class fQuanlytiepnhannhanvien : Form
 	{
-		private List<string> staffNames;
-		BindingSource candidateList = new BindingSource();
+		private Color originalAddButtonColor;
+		private Color originalCloseButtonColor;
 		BindingSource staffList = new BindingSource();
 
 		public fQuanlytiepnhannhanvien(string candidateName)
@@ -26,6 +26,8 @@ namespace QuanLyNhanSu.GUI
 			LoadCbGioiTinh();
 			LoadCbPhongBan();
 			LoadDataHS(candidateName);
+			originalAddButtonColor = btn_themnhanvien.BackColor;
+			originalCloseButtonColor = btn_dong.BackColor;
 		}
 		void LoadDataHS(string candidatename)
 		{
@@ -38,7 +40,7 @@ namespace QuanLyNhanSu.GUI
 				txb_dienthoai.Text = profile.DienThoai;
 				txb_email.Text = profile.Email;
 				cb_chucvu.Text = profile.ChucVu;
-				cb_gioitinh.Text = profile.GioiTinh == 1 ? "Nam" : "Nữ";
+				cb_gioitinh.Text = profile.GioiTinh;
 				dtp_ngaysinh.Value = profile.NgaySinh;
 			}
 			else
@@ -51,7 +53,6 @@ namespace QuanLyNhanSu.GUI
 			staffList.DataSource = NhanvienDAO.Instance.GetInforNV();
 		}
 
-		BindingSource scheduleList = new BindingSource();
 		BindingSource profileList = new BindingSource();
 
 
@@ -76,14 +77,12 @@ namespace QuanLyNhanSu.GUI
 
 		void LoadCbPhongBan()
 		{
-			cb_phongban.DataSource = PhongbanDAO.Instance.GetListPhongBan();
-			cb_phongban.DisplayMember = "TenPB";
-			cb_phongban.ValueMember = "MaPB";
+			cb_phongban.DataSource = CuahangDAO.Instance.GetListCuaHang();
+			cb_phongban.DisplayMember = "TenCH";
+			cb_phongban.ValueMember = "MaCH";
 		}
-		private void btn_close_Click(object sender, EventArgs e)
-		{
-			this.Close();
-		}
+
+		#region Events
 
 		private void btn_addnv_Click(object sender, EventArgs e)
 		{
@@ -108,6 +107,7 @@ namespace QuanLyNhanSu.GUI
 				if (NhanvienDAO.Instance.InsertStaff(chucvu, phongban, hoten, gioitinh, ngaysinh, cccd, dienthoai, diachi, email))
 				{
 					MessageBox.Show("Thêm nhân viên thành công.");
+					this.Close();
 				}
 				else
 				{
@@ -129,7 +129,27 @@ namespace QuanLyNhanSu.GUI
 		{
 			this.Close();
 		}
+		#endregion
 
+		#region Hover
+		private void btn_themnhanvien_MouseEnter(object sender, EventArgs e)
+		{
+			btn_themnhanvien.BackColor = Color.LightBlue;
+		}
+		private void btn_themnhanvien_MouseLeave(object sender, EventArgs e)
+		{
+			btn_themnhanvien.BackColor = originalAddButtonColor;
+		}
+		private void btn_dong_MouseEnter(object sender, EventArgs e)
+		{
+			btn_dong.BackColor = Color.LightBlue;
+		}
+		private void btn_dong_MouseLeave(object sender, EventArgs e)
+		{
+			btn_dong.BackColor = originalCloseButtonColor;
+
+		}
+		#endregion
 
 	}
 }

@@ -400,7 +400,6 @@ C:\Users\Admin\OneDrive - Hanoi University of Science and Technology\Code\DATN\Q
 C:\Users\Admin\OneDrive - Hanoi University of Science and Technology\Code\DATN\QLNS\QuanLyNhanSu\bin\Debug\zh-Hans\Microsoft.Data.SqlClient.resources.dll
 C:\Users\Admin\OneDrive - Hanoi University of Science and Technology\Code\DATN\QLNS\QuanLyNhanSu\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
 C:\Users\Admin\OneDrive - Hanoi University of Science and Technology\Code\DATN\QLNS\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.csproj.AssemblyReference.cache
-C:\Users\Admin\OneDrive - Hanoi University of Science and Technology\Code\DATN\QLNS\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.GUI.fBangcong.resources
 C:\Users\Admin\OneDrive - Hanoi University of Science and Technology\Code\DATN\QLNS\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.GUI.fBangluong.resources
 C:\Users\Admin\OneDrive - Hanoi University of Science and Technology\Code\DATN\QLNS\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.fDoimatkhau.resources
 C:\Users\Admin\OneDrive - Hanoi University of Science and Technology\Code\DATN\QLNS\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.GUI.fDoimatkhaukhiquen.resources
@@ -425,7 +424,6 @@ C:\Users\Admin\OneDrive - Hanoi University of Science and Technology\Code\DATN\Q
 C:\Users\Admin\OneDrive - Hanoi University of Science and Technology\Code\DATN\QLNS\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.GUI.fQuanlydangkynghiphep.resources
 C:\Users\Admin\OneDrive - Hanoi University of Science and Technology\Code\DATN\QLNS\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.fQuanlytrinhdochuyenmon.resources
 C:\Users\Admin\OneDrive - Hanoi University of Science and Technology\Code\DATN\QLNS\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.fDangnhap.resources
-C:\Users\Admin\OneDrive - Hanoi University of Science and Technology\Code\DATN\QLNS\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.fQuanlyphongban.resources
 C:\Users\Admin\OneDrive - Hanoi University of Science and Technology\Code\DATN\QLNS\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.GUI.fQuanlytiepnhannhanvien.resources
 C:\Users\Admin\OneDrive - Hanoi University of Science and Technology\Code\DATN\QLNS\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.fThongkenghiphep.resources
 C:\Users\Admin\OneDrive - Hanoi University of Science and Technology\Code\DATN\QLNS\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.fQuanlychucvu.resources
@@ -591,3 +589,15 @@ D:\job2\Quanlynhansu\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.csproj.CoreCompileInput
 D:\job2\Quanlynhansu\QuanLyNhanSu\obj\Debug\QuanLyNh.83172EC3.Up2Date
 D:\job2\Quanlynhansu\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.exe
 D:\job2\Quanlynhansu\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.pdb
+C:\Users\Admin\OneDrive - Hanoi University of Science and Technology\Code\DATN\QLNS\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.fQuanlycuahang.resources
+C:\Users\Admin\OneDrive - Hanoi University of Science and Technology\Code\DATN\QLNS\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.GUI.fQuanlylichsudangnhap.resources
+C:\Users\Admin\OneDrive - Hanoi University of Science and Technology\Code\DATN\QLNS\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.GUI.fQuanlybangcong.resources
+C:\Users\Admin\OneDrive - Hanoi University of Science and Technology\Code\DATN\QLNS\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.GUI.fQuanlyluongcoban.resources
+C:\Users\Admin\OneDrive - Hanoi University of Science and Technology\Code\DATN\QLNS\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.GUI.fCheckinUser.resources
+C:\Users\Admin\OneDrive - Hanoi University of Science and Technology\Code\DATN\QLNS\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.GUI.fCheckoutUser.resources
+C:\Users\Admin\OneDrive - Hanoi University of Science and Technology\Code\DATN\QLNS\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.GUI.fQuanlydangkynghiphepUser.resources
+C:\Users\Admin\OneDrive - Hanoi University of Science and Technology\Code\DATN\QLNS\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.GUI.fQuanlybangcongUser.resources
+C:\Users\Admin\OneDrive - Hanoi University of Science and Technology\Code\DATN\QLNS\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.GUI.fQuanlykhenthuongkyluatUser.resources
+C:\Users\Admin\OneDrive - Hanoi University of Science and Technology\Code\DATN\QLNS\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.GUI.fQuanlybaohiemUser.resources
+C:\Users\Admin\OneDrive - Hanoi University of Science and Technology\Code\DATN\QLNS\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.GUI.fQuanlyphucapUser.resources
+C:\Users\Admin\OneDrive - Hanoi University of Science and Technology\Code\DATN\QLNS\QuanLyNhanSu\obj\Debug\QuanLyNhanSu.GUI.fBangluongUser.resources

@@ -44,62 +44,66 @@ namespace QuanLyNhanSu
 			cb_nam.SelectedItem = currentYear;
 
 			// Load ComboBox nhân viên
-			LoadNhanVien();
+
 		}
 
-		void LoadNhanVien()
-		{
-			try
-			{
-				// Lấy danh sách nhân viên từ DAO
-				DataTable dtNhanVien = BangcongDAO.Instance.GetDanhSachNhanVienCoChamCong();
+		//void LoadNhanVien()
+		//{
+		//	try
+		//	{
+		//		// Lấy danh sách nhân viên từ DAO
+		//		DataTable dtNhanVien = BangcongDAO.Instance.GetDanhSachNhanVienCoChamCong();
 
-				// Thêm option "Tất cả nhân viên"
-				DataRow allRow = dtNhanVien.NewRow();
-				allRow["Ma_NV"] = "";
-				allRow["HoTen"] = "-- Tất cả nhân viên --";
-				dtNhanVien.Rows.InsertAt(allRow, 0);
+		//		// Thêm option "Tất cả nhân viên"
+		//		DataRow allRow = dtNhanVien.NewRow();
+		//		allRow["Ma_NV"] = "";
+		//		allRow["HoTen"] = "-- Tất cả nhân viên --";
+		//		dtNhanVien.Rows.InsertAt(allRow, 0);
 
-				cb_nhanvien.DataSource = dtNhanVien;
-				cb_nhanvien.DisplayMember = "HoTen";
-				cb_nhanvien.ValueMember = "Ma_NV";
-				cb_nhanvien.SelectedIndex = 0;
-			}
-			catch (Exception ex)
-			{
-				// Fallback với dữ liệu test
-				DataTable dtNhanVien = new DataTable();
-				dtNhanVien.Columns.Add("Ma_NV");
-				dtNhanVien.Columns.Add("HoTen");
+		//		cb_nhanvien.DataSource = dtNhanVien;
+		//		cb_nhanvien.DisplayMember = "HoTen";
+		//		cb_nhanvien.ValueMember = "Ma_NV";
+		//		cb_nhanvien.SelectedIndex = 0;
+		//	}
+		//	catch (Exception ex)
+		//	{
+		//		// Fallback với dữ liệu test
+		//		DataTable dtNhanVien = new DataTable();
+		//		dtNhanVien.Columns.Add("Ma_NV");
+		//		dtNhanVien.Columns.Add("HoTen");
 
-				DataRow allRow = dtNhanVien.NewRow();
-				allRow["Ma_NV"] = "";
-				allRow["HoTen"] = "-- Tất cả nhân viên --";
-				dtNhanVien.Rows.Add(allRow);
+		//		DataRow allRow = dtNhanVien.NewRow();
+		//		allRow["Ma_NV"] = "";
+		//		allRow["HoTen"] = "-- Tất cả nhân viên --";
+		//		dtNhanVien.Rows.Add(allRow);
 
-				// Thêm danh sách nhân viên test
-				dtNhanVien.Rows.Add("NV001", "Nguyễn Văn A");
-				dtNhanVien.Rows.Add("NV002", "Trần Thị B");
-				dtNhanVien.Rows.Add("NV003", "Lê Văn C");
-				dtNhanVien.Rows.Add("NV004", "Phạm Thị D");
-				dtNhanVien.Rows.Add("NV005", "Hoàng Văn E");
+		//		// Thêm danh sách nhân viên test
+		//		dtNhanVien.Rows.Add("NV001", "Nguyễn Văn A");
+		//		dtNhanVien.Rows.Add("NV002", "Trần Thị B");
+		//		dtNhanVien.Rows.Add("NV003", "Lê Văn C");
+		//		dtNhanVien.Rows.Add("NV004", "Phạm Thị D");
+		//		dtNhanVien.Rows.Add("NV005", "Hoàng Văn E");
 
-				cb_nhanvien.DataSource = dtNhanVien;
-				cb_nhanvien.DisplayMember = "HoTen";
-				cb_nhanvien.ValueMember = "Ma_NV";
-				cb_nhanvien.SelectedIndex = 0;
-			}
-		}
+		//		cb_nhanvien.DataSource = dtNhanVien;
+		//		cb_nhanvien.DisplayMember = "HoTen";
+		//		cb_nhanvien.ValueMember = "Ma_NV";
+		//		cb_nhanvien.SelectedIndex = 0;
+		//	}
+		//}
 		void BindingCommendationData()
 		{
 			// Clear old bindings
-			cb_nhanvien.DataBindings.Clear();
+			txb_manhanvien.DataBindings.Clear();
+			txb_tennhanvien.DataBindings.Clear();
 			cb_nam.DataBindings.Clear();
-			txb_manv.DataBindings.Clear();
+			txb_manhanvien.DataBindings.Clear();
+			txb_tennhanvien.Text = "--Tất cả nhân viên--";
 
-			cb_nhanvien.DataBindings.Add(new Binding("Text", dgv_ktkltk.DataSource, "TenNV", true, DataSourceUpdateMode.Never));
-			txb_manv.DataBindings.Add(new Binding("Text", dgv_ktkltk.DataSource, "MaNV", true, DataSourceUpdateMode.Never));
-			cb_nam.DataBindings.Add(new Binding("Text", dgv_ktkltk.DataSource, "Nam", true, DataSourceUpdateMode.Never));
+
+
+			//txb_manhanvien.DataBindings.Add(new Binding("Text", dgv_ktkltk.DataSource, "TenNV", true, DataSourceUpdateMode.Never));
+			//txb_manhanvien.DataBindings.Add(new Binding("Text", dgv_ktkltk.DataSource, "MaNV", true, DataSourceUpdateMode.Never));
+			//cb_nam.DataBindings.Add(new Binding("Text", dgv_ktkltk.DataSource, "Nam", true, DataSourceUpdateMode.Never))/*;*/
 		}
 
 		void LoadCommendationBC()
@@ -107,16 +111,16 @@ namespace QuanLyNhanSu
 			commendationList.DataSource = KhenthuongkyluatDAO.Instance.GetCommendationsStatistic();
 		}
 
-		void LoadCommendationStatisticByMaNV(string manv)
-		{
-				commendationList.DataSource = KhenthuongkyluatDAO.Instance.GetCommendationByMaNV(manv);
-				BindingCommendationData();
+		//void LoadCommendationStatisticByMaNV(string manv)
+		//{
+		//		commendationList.DataSource = KhenthuongkyluatDAO.Instance.GetCommendationByMaNV(manv);
+		//		BindingCommendationData();
 			
 			
-		}
-		void LoadCommendationStatisticByNam(int nam)
+		//}
+		void LoadCommendationStatisticByNam(string manv, int nam)
 		{
-			commendationList.DataSource = KhenthuongkyluatDAO.Instance.GetCommendationByNam(nam);
+			commendationList.DataSource = KhenthuongkyluatDAO.Instance.GetCommendationByNam(manv, nam);
 			BindingCommendationData();
 		}
 		void LoadChart()
@@ -217,16 +221,32 @@ namespace QuanLyNhanSu
 		}
 		private void btn_thongkenv_Click(object sender, EventArgs e)
 		{
-			LoadCommendationStatisticByNam(Convert.ToInt32(cb_nam.Text));
-			LoadChart();
-		}
+			string manv = txb_manhanvien.Text.Trim();
 
-		private void btn_thongkenam_Click(object sender, EventArgs e)
-		{
-			LoadCommendationStatisticByNam(Convert.ToInt32(cb_nam.Text));
+			if (string.IsNullOrEmpty(manv))
+			{
+				MessageBox.Show("Vui lòng nhập mã nhân viên để thống kê.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+			if (cb_nam.SelectedItem == null)
+			{
+				MessageBox.Show("Vui lòng chọn năm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+			int nam = Convert.ToInt32(cb_nam.SelectedItem.ToString());
+			LoadCommendationStatisticByNam(manv, nam);
 			LoadChart();
-		}
 
+			// Hiển thị tên nhân viên từ dòng đầu tiên của dgv_ktkltk (nếu có)
+			if (dgv_ktkltk.Rows.Count > 0 && dgv_ktkltk.Rows[0].Cells["TenNV"].Value != null)
+			{
+				txb_tennhanvien.Text = dgv_ktkltk.Rows[0].Cells["TenNV"].Value.ToString();
+			}
+			else
+			{
+				txb_tennhanvien.Text = "";
+			}
+		}
 		private void btn_dong_Click(object sender, EventArgs e)
 		{
 			this.Close();
@@ -239,7 +259,7 @@ namespace QuanLyNhanSu
 				// Xuất báo cáo (có thể dùng Excel hoặc PDF)
 				SaveFileDialog saveDialog = new SaveFileDialog();
 				saveDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
-				saveDialog.FileName = $"BangKhenThuongKyLuat_{cb_nam.SelectedItem}.csv";
+				saveDialog.FileName = $"BangKhenThuongKyLuat_{cb_nam.SelectedItem}_{txb_tennhanvien}.csv";
 
 				if (saveDialog.ShowDialog() == DialogResult.OK)
 				{

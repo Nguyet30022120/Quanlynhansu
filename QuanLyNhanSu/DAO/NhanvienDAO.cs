@@ -2,19 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading.Tasks.Sources;
-using System.Windows.Forms;
 
 namespace QuanLyNhanSu.DAO
 {
 	public class NhanvienDAO
 	{
 		private static NhanvienDAO instance;
-
-		//public static UserDAO Instance { get => instance; set => instance=value; }
 
 		public static NhanvienDAO Instance { get => instance==null ? instance = new NhanvienDAO() : instance; private set => instance=value; }
 
@@ -25,7 +18,7 @@ namespace QuanLyNhanSu.DAO
 		{
 			List<NhanvienDTO> list = new List<NhanvienDTO>();
 
-			string query = "SELECT NV.Ma_NV, NV.HoTen,CV.Ma_ChucVu AS MaChucVu, CV.TenChucVu AS ChucVu, PB.Ma_PB AS MaPB, PB.TenPhong AS PhongBan, TK.TaiKhoan, NV.CMND AS CCCD, NV.DienThoai, NV.DiaChi, NV.GioiTinh, NV.NgaySinh, NV.Email FROM [Nhan vien] AS NV INNER JOIN [Chuc vu] AS CV ON NV.Ma_ChucVu = CV.Ma_ChucVu INNER JOIN [Phong ban] AS PB ON NV.Ma_PB = PB.Ma_PB INNER JOIN [Tai khoan] AS TK ON NV.Ma_TK = TK.Ma_TK;";
+			string query = string.Format("SELECT NV.Ma_NV, NV.HoTen, CV.Ma_CV AS MaChucVu, CV.TenChucVu AS ChucVu, CH.Ma_CH AS MaCH, CH.TenCuaHang AS CuaHang, TK.TaiKhoan, NV.CCCD AS CCCD, NV.DienThoai, NV.DiaChi, CASE WHEN NV.GioiTinh = 1 THEN N'Nam' WHEN NV.GioiTinh = 0 THEN N'Nữ' ELSE N'Khác' END AS GioiTinh, NV.NgaySinh, NV.Email FROM [NhanVien] AS NV INNER JOIN [ChucVu] AS CV ON NV.Ma_CV = CV.Ma_CV INNER JOIN [CuaHang] AS CH ON NV.Ma_CH = CH.Ma_CH INNER JOIN [TaiKhoan] AS TK ON NV.Ma_TK = TK.Ma_TK\r\n");
 			DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
 			foreach (DataRow item in data.Rows)
@@ -41,7 +34,7 @@ namespace QuanLyNhanSu.DAO
 		{
 			List<string> list = new List<string>();
 
-			string query = "SELECT HoTen + '-' + Ma_NV AS NhanVien_Ma FROM [Nhan Vien]";
+			string query = "SELECT HoTen + '-' + Ma_NV AS NhanVien_Ma FROM [NhanVien]";
 			DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
 			foreach (DataRow item in data.Rows)
@@ -53,14 +46,14 @@ namespace QuanLyNhanSu.DAO
 		}
 		public bool IsStaffExistsByEmail(string email)
 		{
-			string query = $"SELECT COUNT(*) FROM [Nhan Vien] WHERE Email = '{email}'";
+			string query = $"SELECT COUNT(*) FROM [NhanVien] WHERE Email = '{email}'";
 			object result = DataProvider.Instance.ExcuteScalar(query);
 			return Convert.ToInt32(result) > 0;
 		}
 
-		public bool InsertStaff(int machucvu, string mapb, string hoten, int gioitinh, DateTime ngaysinh, string cccd, string dienthoai, string diachi, string email)
+		public bool InsertStaff(int machucvu, string mach, string hoten, int gioitinh, DateTime ngaysinh, string cccd, string dienthoai, string diachi, string email)
 		{
-			string query = $"EXEC [dbo].[USP_InsertNewEmployeeByID] @Ma_ChucVu = '{machucvu}', @Ma_PB = '{mapb}', @HoTen = N'{hoten}', @GioiTinh = {gioitinh}, @NgaySinh = '{ngaysinh}',@Email = '{email}', @CMND = '{cccd}', @DienThoai = '{dienthoai}', @DiaChi = N'{diachi}'";
+			string query = $"EXEC [dbo].[USP_InsertNewEmployeeByID] @Ma_ChucVu = '{machucvu}', @Ma_PB = '{mach}', @HoTen = N'{hoten}', @GioiTinh = {gioitinh}, @NgaySinh = '{ngaysinh}',@Email = '{email}', @CMND = '{cccd}', @DienThoai = '{dienthoai}', @DiaChi = N'{diachi}'";
 
 			int re = DataProvider.Instance.ExcuteNonQuery(query);
 
@@ -89,7 +82,7 @@ namespace QuanLyNhanSu.DAO
 		{
 			List<NhanvienDTO> list = new List<NhanvienDTO>();
 
-			string query = string.Format("SELECT NV.Ma_NV, NV.HoTen,CV.Ma_ChucVu AS MaChucVu, CV.TenChucVu AS ChucVu, PB.Ma_PB AS MaPB, PB.TenPhong AS PhongBan, TK.TaiKhoan, NV.CMND AS CCCD, NV.DienThoai, NV.DiaChi, NV.GioiTinh, NV.NgaySinh, NV.Email FROM [Nhan vien] AS NV INNER JOIN [Chuc vu] AS CV ON NV.Ma_ChucVu = CV.Ma_ChucVu INNER JOIN [Phong ban] AS PB ON NV.Ma_PB = PB.Ma_PB INNER JOIN [Tai khoan] AS TK ON NV.Ma_TK = TK.Ma_TK WHERE NV.Ma_NV LIKE N'%{0}%' OR NV.HoTen LIKE N'%{1}%'", value, value);
+			string query = string.Format("SELECT NV.Ma_NV, NV.HoTen, CV.Ma_CV AS MaChucVu, CV.TenChucVu AS ChucVu, CH.Ma_CH AS MaCH, CH.TenCuaHang AS CuaHang, TK.TaiKhoan, NV.CCCD AS CCCD, NV.DienThoai, NV.DiaChi, CASE WHEN NV.GioiTinh = 1 THEN N'Nam' ELSE N'Nữ' END AS GioiTinh, NV.NgaySinh, NV.Email FROM [NhanVien] AS NV INNER JOIN [ChucVu] AS CV ON NV.Ma_CV = CV.Ma_CV INNER JOIN [CuaHang] AS CH ON NV.Ma_CH = CH.Ma_CH INNER JOIN [TaiKhoan] AS TK ON NV.Ma_TK = TK.Ma_TK WHERE NV.Ma_NV LIKE N'%{0}%' OR NV.HoTen LIKE N'%{1}%'\r\n", value, value);
 
 			Console.WriteLine(query);
 
@@ -108,6 +101,9 @@ namespace QuanLyNhanSu.DAO
 			}
 			return list;
 		}
+
+
+
 
 	}
 }

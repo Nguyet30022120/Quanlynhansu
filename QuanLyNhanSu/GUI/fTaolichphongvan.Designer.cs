@@ -55,6 +55,8 @@
 			this.btn_themlichphongvan.Text = "Thêm";
 			this.btn_themlichphongvan.UseVisualStyleBackColor = false;
 			this.btn_themlichphongvan.Click += new System.EventHandler(this.btn_addlichpv_Click);
+			this.btn_themlichphongvan.MouseEnter += new System.EventHandler(this.btn_addlichpv_MouseEnter);
+			this.btn_themlichphongvan.MouseLeave += new System.EventHandler(this.btn_addlichpv_MouseLeave);
 			// 
 			// txb_tenuv
 			// 
@@ -115,8 +117,8 @@
 			// 
 			// txb_nguoiphongvan
 			// 
-			this.txb_nguoiphongvan.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_nguoiphongvan.Location = new System.Drawing.Point(190, 244);
+			this.txb_nguoiphongvan.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txb_nguoiphongvan.Location = new System.Drawing.Point(190, 250);
 			this.txb_nguoiphongvan.Name = "txb_nguoiphongvan";
 			this.txb_nguoiphongvan.Size = new System.Drawing.Size(252, 27);
 			this.txb_nguoiphongvan.TabIndex = 11;
@@ -132,6 +134,8 @@
 			this.btn_dong.Text = "Thoát";
 			this.btn_dong.UseVisualStyleBackColor = false;
 			this.btn_dong.Click += new System.EventHandler(this.btn_close_Click);
+			this.btn_dong.MouseEnter += new System.EventHandler(this.btn_dong_MouseEnter);
+			this.btn_dong.MouseLeave += new System.EventHandler(this.btn_dong_MouseLeave);
 			// 
 			// lb_giophongvan
 			// 

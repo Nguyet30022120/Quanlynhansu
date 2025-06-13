@@ -40,19 +40,19 @@
 			this.txb_noidung = new System.Windows.Forms.TextBox();
 			this.cb_hinhthuc = new System.Windows.Forms.ComboBox();
 			this.dtp_thoigian = new System.Windows.Forms.DateTimePicker();
-			this.dgv_ktkl = new System.Windows.Forms.DataGridView();
-			this.btn_timnhanvien = new System.Windows.Forms.Button();
-			this.btn_themkhenthuongkyluat = new System.Windows.Forms.Button();
-			this.btn_suakhenthuongkyluat = new System.Windows.Forms.Button();
-			this.btn_xoakhenthuongkyluat = new System.Windows.Forms.Button();
-			this.btn_dongkhenthuongkyluat = new System.Windows.Forms.Button();
+			this.dgv_khenthuongkyluat = new System.Windows.Forms.DataGridView();
 			this.MaKTKL = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.HinhThuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ThoiGian = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			((System.ComponentModel.ISupportInitialize)(this.dgv_ktkl)).BeginInit();
+			this.btn_timnhanvien = new System.Windows.Forms.Button();
+			this.btn_themkhenthuongkyluat = new System.Windows.Forms.Button();
+			this.btn_suakhenthuongkyluat = new System.Windows.Forms.Button();
+			this.btn_xoakhenthuongkyluat = new System.Windows.Forms.Button();
+			this.btn_dongkhenthuongkyluat = new System.Windows.Forms.Button();
+			((System.ComponentModel.ISupportInitialize)(this.dgv_khenthuongkyluat)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// lb_manhanvien
@@ -118,6 +118,7 @@
 			this.txb_tennhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txb_tennhanvien.Location = new System.Drawing.Point(140, 60);
 			this.txb_tennhanvien.Name = "txb_tennhanvien";
+			this.txb_tennhanvien.ReadOnly = true;
 			this.txb_tennhanvien.Size = new System.Drawing.Size(252, 27);
 			this.txb_tennhanvien.TabIndex = 6;
 			// 
@@ -149,11 +150,11 @@
 			this.dtp_thoigian.Size = new System.Drawing.Size(227, 27);
 			this.dtp_thoigian.TabIndex = 9;
 			// 
-			// dgv_ktkl
+			// dgv_khenthuongkyluat
 			// 
 			dataGridViewCellStyle1.BackColor = System.Drawing.Color.Tan;
-			this.dgv_ktkl.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-			this.dgv_ktkl.BackgroundColor = System.Drawing.Color.White;
+			this.dgv_khenthuongkyluat.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			this.dgv_khenthuongkyluat.BackgroundColor = System.Drawing.Color.White;
 			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
 			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
 			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -161,81 +162,21 @@
 			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
 			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
 			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgv_ktkl.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-			this.dgv_ktkl.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgv_ktkl.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+			this.dgv_khenthuongkyluat.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			this.dgv_khenthuongkyluat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgv_khenthuongkyluat.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaKTKL,
             this.MaNV,
             this.TenNV,
             this.NoiDung,
             this.HinhThuc,
             this.ThoiGian});
-			this.dgv_ktkl.Location = new System.Drawing.Point(3, 176);
-			this.dgv_ktkl.Name = "dgv_ktkl";
-			this.dgv_ktkl.RowHeadersWidth = 51;
-			this.dgv_ktkl.RowTemplate.Height = 24;
-			this.dgv_ktkl.Size = new System.Drawing.Size(1474, 598);
-			this.dgv_ktkl.TabIndex = 10;
-			// 
-			// btn_timnhanvien
-			// 
-			this.btn_timnhanvien.BackColor = System.Drawing.Color.DarkOrange;
-			this.btn_timnhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_timnhanvien.Location = new System.Drawing.Point(425, 15);
-			this.btn_timnhanvien.Name = "btn_timnhanvien";
-			this.btn_timnhanvien.Size = new System.Drawing.Size(115, 40);
-			this.btn_timnhanvien.TabIndex = 11;
-			this.btn_timnhanvien.Text = "Tìm kiếm";
-			this.btn_timnhanvien.UseVisualStyleBackColor = false;
-			this.btn_timnhanvien.Click += new System.EventHandler(this.btn_findnv_Click);
-			// 
-			// btn_themkhenthuongkyluat
-			// 
-			this.btn_themkhenthuongkyluat.BackColor = System.Drawing.Color.DarkOrange;
-			this.btn_themkhenthuongkyluat.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_themkhenthuongkyluat.Location = new System.Drawing.Point(1362, 8);
-			this.btn_themkhenthuongkyluat.Name = "btn_themkhenthuongkyluat";
-			this.btn_themkhenthuongkyluat.Size = new System.Drawing.Size(115, 40);
-			this.btn_themkhenthuongkyluat.TabIndex = 12;
-			this.btn_themkhenthuongkyluat.Text = "Thêm ";
-			this.btn_themkhenthuongkyluat.UseVisualStyleBackColor = false;
-			this.btn_themkhenthuongkyluat.Click += new System.EventHandler(this.btn_addkt_Click);
-			// 
-			// btn_suakhenthuongkyluat
-			// 
-			this.btn_suakhenthuongkyluat.BackColor = System.Drawing.Color.DarkOrange;
-			this.btn_suakhenthuongkyluat.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_suakhenthuongkyluat.Location = new System.Drawing.Point(1362, 48);
-			this.btn_suakhenthuongkyluat.Name = "btn_suakhenthuongkyluat";
-			this.btn_suakhenthuongkyluat.Size = new System.Drawing.Size(115, 40);
-			this.btn_suakhenthuongkyluat.TabIndex = 13;
-			this.btn_suakhenthuongkyluat.Text = "Sửa";
-			this.btn_suakhenthuongkyluat.UseVisualStyleBackColor = false;
-			this.btn_suakhenthuongkyluat.Click += new System.EventHandler(this.btn_editkt_Click);
-			// 
-			// btn_xoakhenthuongkyluat
-			// 
-			this.btn_xoakhenthuongkyluat.BackColor = System.Drawing.Color.DarkOrange;
-			this.btn_xoakhenthuongkyluat.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_xoakhenthuongkyluat.Location = new System.Drawing.Point(1362, 88);
-			this.btn_xoakhenthuongkyluat.Name = "btn_xoakhenthuongkyluat";
-			this.btn_xoakhenthuongkyluat.Size = new System.Drawing.Size(115, 40);
-			this.btn_xoakhenthuongkyluat.TabIndex = 14;
-			this.btn_xoakhenthuongkyluat.Text = "Xóa";
-			this.btn_xoakhenthuongkyluat.UseVisualStyleBackColor = false;
-			this.btn_xoakhenthuongkyluat.Click += new System.EventHandler(this.btn_deletekt_Click);
-			// 
-			// btn_dongkhenthuongkyluat
-			// 
-			this.btn_dongkhenthuongkyluat.BackColor = System.Drawing.Color.DarkOrange;
-			this.btn_dongkhenthuongkyluat.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_dongkhenthuongkyluat.Location = new System.Drawing.Point(1362, 128);
-			this.btn_dongkhenthuongkyluat.Name = "btn_dongkhenthuongkyluat";
-			this.btn_dongkhenthuongkyluat.Size = new System.Drawing.Size(115, 40);
-			this.btn_dongkhenthuongkyluat.TabIndex = 15;
-			this.btn_dongkhenthuongkyluat.Text = "Đóng";
-			this.btn_dongkhenthuongkyluat.UseVisualStyleBackColor = false;
-			this.btn_dongkhenthuongkyluat.Click += new System.EventHandler(this.btn_closekt_Click);
+			this.dgv_khenthuongkyluat.Location = new System.Drawing.Point(3, 176);
+			this.dgv_khenthuongkyluat.Name = "dgv_khenthuongkyluat";
+			this.dgv_khenthuongkyluat.RowHeadersWidth = 51;
+			this.dgv_khenthuongkyluat.RowTemplate.Height = 24;
+			this.dgv_khenthuongkyluat.Size = new System.Drawing.Size(1474, 598);
+			this.dgv_khenthuongkyluat.TabIndex = 10;
 			// 
 			// MaKTKL
 			// 
@@ -285,6 +226,76 @@
 			this.ThoiGian.Name = "ThoiGian";
 			this.ThoiGian.Width = 125;
 			// 
+			// btn_timnhanvien
+			// 
+			this.btn_timnhanvien.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_timnhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_timnhanvien.Location = new System.Drawing.Point(425, 15);
+			this.btn_timnhanvien.Name = "btn_timnhanvien";
+			this.btn_timnhanvien.Size = new System.Drawing.Size(115, 40);
+			this.btn_timnhanvien.TabIndex = 11;
+			this.btn_timnhanvien.Text = "Tìm kiếm";
+			this.btn_timnhanvien.UseVisualStyleBackColor = false;
+			this.btn_timnhanvien.Click += new System.EventHandler(this.btn_findnv_Click);
+			this.btn_timnhanvien.MouseEnter += new System.EventHandler(this.btn_timnhanvien_MouseEnter);
+			this.btn_timnhanvien.MouseLeave += new System.EventHandler(this.btn_timnhanvien_MouseLeave);
+			// 
+			// btn_themkhenthuongkyluat
+			// 
+			this.btn_themkhenthuongkyluat.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_themkhenthuongkyluat.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_themkhenthuongkyluat.Location = new System.Drawing.Point(1362, 8);
+			this.btn_themkhenthuongkyluat.Name = "btn_themkhenthuongkyluat";
+			this.btn_themkhenthuongkyluat.Size = new System.Drawing.Size(115, 40);
+			this.btn_themkhenthuongkyluat.TabIndex = 12;
+			this.btn_themkhenthuongkyluat.Text = "Thêm ";
+			this.btn_themkhenthuongkyluat.UseVisualStyleBackColor = false;
+			this.btn_themkhenthuongkyluat.Click += new System.EventHandler(this.btn_addkt_Click);
+			this.btn_themkhenthuongkyluat.MouseEnter += new System.EventHandler(this.btn_themkhenthuongkyluat_MouseEnter);
+			this.btn_themkhenthuongkyluat.MouseLeave += new System.EventHandler(this.btn_themkhenthuongkyluat_MouseLeave);
+			// 
+			// btn_suakhenthuongkyluat
+			// 
+			this.btn_suakhenthuongkyluat.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_suakhenthuongkyluat.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_suakhenthuongkyluat.Location = new System.Drawing.Point(1362, 48);
+			this.btn_suakhenthuongkyluat.Name = "btn_suakhenthuongkyluat";
+			this.btn_suakhenthuongkyluat.Size = new System.Drawing.Size(115, 40);
+			this.btn_suakhenthuongkyluat.TabIndex = 13;
+			this.btn_suakhenthuongkyluat.Text = "Sửa";
+			this.btn_suakhenthuongkyluat.UseVisualStyleBackColor = false;
+			this.btn_suakhenthuongkyluat.Click += new System.EventHandler(this.btn_editkt_Click);
+			this.btn_suakhenthuongkyluat.MouseEnter += new System.EventHandler(this.btn_suakhenthuongkyluat_MouseEnter);
+			this.btn_suakhenthuongkyluat.MouseLeave += new System.EventHandler(this.btn_suakhenthuongkyluat_MouseLeave);
+			// 
+			// btn_xoakhenthuongkyluat
+			// 
+			this.btn_xoakhenthuongkyluat.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_xoakhenthuongkyluat.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_xoakhenthuongkyluat.Location = new System.Drawing.Point(1362, 88);
+			this.btn_xoakhenthuongkyluat.Name = "btn_xoakhenthuongkyluat";
+			this.btn_xoakhenthuongkyluat.Size = new System.Drawing.Size(115, 40);
+			this.btn_xoakhenthuongkyluat.TabIndex = 14;
+			this.btn_xoakhenthuongkyluat.Text = "Xóa";
+			this.btn_xoakhenthuongkyluat.UseVisualStyleBackColor = false;
+			this.btn_xoakhenthuongkyluat.Click += new System.EventHandler(this.btn_deletekt_Click);
+			this.btn_xoakhenthuongkyluat.MouseEnter += new System.EventHandler(this.btn_xoakhenthuongkyluat_MouseEnter);
+			this.btn_xoakhenthuongkyluat.MouseLeave += new System.EventHandler(this.btn_xoakhenthuongkyluat_MouseLeave);
+			// 
+			// btn_dongkhenthuongkyluat
+			// 
+			this.btn_dongkhenthuongkyluat.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_dongkhenthuongkyluat.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_dongkhenthuongkyluat.Location = new System.Drawing.Point(1362, 128);
+			this.btn_dongkhenthuongkyluat.Name = "btn_dongkhenthuongkyluat";
+			this.btn_dongkhenthuongkyluat.Size = new System.Drawing.Size(115, 40);
+			this.btn_dongkhenthuongkyluat.TabIndex = 15;
+			this.btn_dongkhenthuongkyluat.Text = "Đóng";
+			this.btn_dongkhenthuongkyluat.UseVisualStyleBackColor = false;
+			this.btn_dongkhenthuongkyluat.Click += new System.EventHandler(this.btn_closekt_Click);
+			this.btn_dongkhenthuongkyluat.MouseEnter += new System.EventHandler(this.btn_dongkhenthuongkyluat_MouseEnter);
+			this.btn_dongkhenthuongkyluat.MouseLeave += new System.EventHandler(this.btn_dongkhenthuongkyluat_MouseLeave);
+			// 
 			// fQuanlykhenthuongkyluat
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -296,7 +307,7 @@
 			this.Controls.Add(this.btn_suakhenthuongkyluat);
 			this.Controls.Add(this.btn_themkhenthuongkyluat);
 			this.Controls.Add(this.btn_timnhanvien);
-			this.Controls.Add(this.dgv_ktkl);
+			this.Controls.Add(this.dgv_khenthuongkyluat);
 			this.Controls.Add(this.dtp_thoigian);
 			this.Controls.Add(this.cb_hinhthuc);
 			this.Controls.Add(this.txb_noidung);
@@ -309,8 +320,8 @@
 			this.Controls.Add(this.lb_manhanvien);
 			this.Name = "fQuanlykhenthuongkyluat";
 			this.ShowInTaskbar = false;
-			this.Text = "Quản lý khen thưởng và kỷ luật";
-			((System.ComponentModel.ISupportInitialize)(this.dgv_ktkl)).EndInit();
+			this.Text = "Khen thưởng và kỷ luật";
+			((System.ComponentModel.ISupportInitialize)(this.dgv_khenthuongkyluat)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -328,7 +339,7 @@
 		private System.Windows.Forms.TextBox txb_noidung;
 		private System.Windows.Forms.ComboBox cb_hinhthuc;
 		private System.Windows.Forms.DateTimePicker dtp_thoigian;
-		private System.Windows.Forms.DataGridView dgv_ktkl;
+		private System.Windows.Forms.DataGridView dgv_khenthuongkyluat;
 		private System.Windows.Forms.Button btn_timnhanvien;
 		private System.Windows.Forms.Button btn_themkhenthuongkyluat;
 		private System.Windows.Forms.Button btn_suakhenthuongkyluat;

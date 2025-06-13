@@ -12,22 +12,29 @@ using QuanLyNhanSu.GUI;
 
 namespace QuanLyNhanSu.GUI
 {
-	public partial class fCheckIn : Form
+	public partial class fCheckin : Form
 	{
+		private Color originalAddButtonColor;
+		private Color originalDeleteButtonColor;
+		private Color originalCloseButtonColor;
+		private Color originalSearchButtonColor;
+
 		BindingSource checkinList = new BindingSource();
-		public fCheckIn()
+		public fCheckin()
 		{
 			InitializeComponent();
 			dgv_checkin.DataSource = checkinList;
 			lb_giocheckin.Text = DateTime.Now.ToLongTimeString();
-			//dgv_checkin.Columns["GioCheckIn"].DefaultCellStyle.Format = "HH:mm:ss";
-
-
 			timer1.Start();
-			//lb_tennhanvien.Text="Ten_nhan_vien";
 			var col = dgv_checkin.Columns["GioCheckIn"];
 			if (col != null)
 				col.DefaultCellStyle.Format = "HH:mm:ss";
+			LoadCheckIn(txb_manhanvien.Text);
+			originalAddButtonColor = btn_checkin.BackColor;
+			originalDeleteButtonColor = btn_xoacheckin.BackColor;
+			originalSearchButtonColor = btn_timnhanvien.BackColor;
+			originalCloseButtonColor = btn_dongcheckin.BackColor;
+
 		}
 
 		private void timer1_Tick(object sender, EventArgs e)
@@ -36,10 +43,8 @@ namespace QuanLyNhanSu.GUI
 		}
 		void LoadTenNV()
 		{
-			
-
-			txb_tennv.DataBindings.Clear();
-			txb_tennv.DataBindings.Add(new Binding("Text", dgv_checkin.DataSource, "TenNV", true, DataSourceUpdateMode.Never));
+			txb_tennhanvien.DataBindings.Clear();
+			txb_tennhanvien.DataBindings.Add(new Binding("Text", dgv_checkin.DataSource, "TenNV", true, DataSourceUpdateMode.Never));
 		}
 		void LoadCheckIn(string manv)
 		{
@@ -57,7 +62,7 @@ namespace QuanLyNhanSu.GUI
 			}
 		}
 
-
+		#region Events
 		private void btn_findnv_Click(object sender, EventArgs e)
 		{
 			try
@@ -76,41 +81,33 @@ namespace QuanLyNhanSu.GUI
 			try
 			{
 				string manv = txb_manhanvien.Text;
+				// Kiểm tra nhân viên đã check-in hôm nay chưa
+				var list = CheckinDAO.Instance.GetCheckInByMaNV(manv);
+				bool daCheckIn = list.Any(c => c.NgayCheckIn.Date == DateTime.Now.Date);
+
+				if (daCheckIn)
+				{
+					MessageBox.Show("Nhân viên đã check-in hôm nay!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return;
+				}
+
 				if (CheckinDAO.Instance.InsertCheckIn(manv))
 				{
-					MessageBox.Show("Thêm checkin thành công");
+					MessageBox.Show("Thêm checkin thành công", "Thông báo");
 					LoadCheckIn(txb_manhanvien.Text);
 				}
 				else
 				{
-					MessageBox.Show("Thêm checkin thất bại");
+					MessageBox.Show("Thêm checkin thất bại", "Thông báo");
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Hãy nhập mã nhân viên", "Thông báo");
 			}
 			finally
 			{
 				LoadCheckIn(txb_manhanvien.Text);
-			}
-		}
-
-		private void btn_editcheckin_Click(object sender, EventArgs e)
-		{
-			DialogResult result = MessageBox.Show("Bạn có muốn sửa checkin cho nhân viên này?",
-										"Xác nhận",
-										MessageBoxButtons.YesNo,
-										MessageBoxIcon.Question);
-
-			if (result == DialogResult.Yes)
-			{
-				string manv = txb_manhanvien.Text;
-				fSuaCheckin editCheckin = new fSuaCheckin(manv);
-				editCheckin.ShowDialog();
-			}
-			else if (result == DialogResult.No)
-			{
 			}
 		}
 
@@ -126,12 +123,12 @@ namespace QuanLyNhanSu.GUI
 				int macheckin = Convert.ToInt32(dgv_checkin.CurrentRow.Cells["MaCheckIn"].Value);
 				if (CheckinDAO.Instance.DeleteCheckIn(macheckin))
 				{
-					MessageBox.Show("Xóa checkin thành công");
+					MessageBox.Show("Xóa checkin thành công", "Thông báo");
 					LoadCheckIn(txb_manhanvien.Text);
 				}
 				else
 				{
-					MessageBox.Show("Xóa checkin thất bại");
+					MessageBox.Show("Xóa checkin thất bại", "Thông báo");
 				}
 			}
 			catch (Exception ex)
@@ -143,6 +140,43 @@ namespace QuanLyNhanSu.GUI
 				LoadCheckIn(txb_manhanvien.Text);
 			}
 		}
+		#endregion
 
+		#region Hover
+
+		private void btn_checkin_MouseEnter(object sender, EventArgs e)
+		{
+			btn_checkin.BackColor = Color.LightBlue;
+		}
+		private void btn_checkin_MouseLeave(object sender, EventArgs e)
+		{
+			btn_checkin.BackColor = originalAddButtonColor;
+		}
+		private void btn_xoacheckin_MouseEnter(object sender, EventArgs e)
+		{
+			btn_xoacheckin.BackColor = Color.LightBlue;
+		}
+		private void btn_xoacheckin_MouseLeave(object sender, EventArgs e)
+		{
+			btn_xoacheckin.BackColor = originalDeleteButtonColor;
+		}
+		private void btn_timnhanvien_MouseEnter(object sender, EventArgs e)
+		{
+			btn_timnhanvien.BackColor = Color.LightBlue;
+		}
+		private void btn_timnhanvien_MouseLeave(object sender, EventArgs e)
+		{
+			btn_timnhanvien.BackColor = originalSearchButtonColor;
+		}
+		private void btn_dongcheckin_MouseEnter(object sender, EventArgs e)
+		{
+			btn_dongcheckin.BackColor = Color.LightBlue;
+		}
+		private void btn_dongcheckin_MouseLeave(object sender, EventArgs e)
+		{
+			btn_dongcheckin.BackColor = originalCloseButtonColor;
+		}
+
+		#endregion
 	}
 }

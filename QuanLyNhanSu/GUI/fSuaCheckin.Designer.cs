@@ -31,11 +31,9 @@
 			this.lb_manv = new System.Windows.Forms.Label();
 			this.lb_tennv = new System.Windows.Forms.Label();
 			this.lb_giocheckin = new System.Windows.Forms.Label();
-			this.lb_ngaycheckin = new System.Windows.Forms.Label();
 			this.txb_manv = new System.Windows.Forms.TextBox();
 			this.txb_tennv = new System.Windows.Forms.TextBox();
-			this.dtp_giocheckin = new System.Windows.Forms.DateTimePicker();
-			this.dtp_ngaycheckin = new System.Windows.Forms.DateTimePicker();
+			this.dtp_thoigiancheckin = new System.Windows.Forms.DateTimePicker();
 			this.btn_suacheckin = new System.Windows.Forms.Button();
 			this.btn_dongcheckin = new System.Windows.Forms.Button();
 			this.SuspendLayout();
@@ -66,19 +64,9 @@
 			this.lb_giocheckin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lb_giocheckin.Location = new System.Drawing.Point(70, 145);
 			this.lb_giocheckin.Name = "lb_giocheckin";
-			this.lb_giocheckin.Size = new System.Drawing.Size(89, 20);
+			this.lb_giocheckin.Size = new System.Drawing.Size(130, 20);
 			this.lb_giocheckin.TabIndex = 2;
-			this.lb_giocheckin.Text = "Giờ checkin";
-			// 
-			// lb_ngaycheckin
-			// 
-			this.lb_ngaycheckin.AutoSize = true;
-			this.lb_ngaycheckin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_ngaycheckin.Location = new System.Drawing.Point(70, 195);
-			this.lb_ngaycheckin.Name = "lb_ngaycheckin";
-			this.lb_ngaycheckin.Size = new System.Drawing.Size(102, 20);
-			this.lb_ngaycheckin.TabIndex = 3;
-			this.lb_ngaycheckin.Text = "Ngày checkin";
+			this.lb_giocheckin.Text = "Thời gian checkin";
 			// 
 			// txb_manv
 			// 
@@ -96,33 +84,23 @@
 			this.txb_tennv.Size = new System.Drawing.Size(252, 27);
 			this.txb_tennv.TabIndex = 5;
 			// 
-			// dtp_giocheckin
+			// dtp_thoigiancheckin
 			// 
-			this.dtp_giocheckin.CalendarFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.dtp_giocheckin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.dtp_giocheckin.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-			this.dtp_giocheckin.Location = new System.Drawing.Point(230, 145);
-			this.dtp_giocheckin.Name = "dtp_giocheckin";
-			this.dtp_giocheckin.Size = new System.Drawing.Size(252, 27);
-			this.dtp_giocheckin.TabIndex = 6;
-			// 
-			// dtp_ngaycheckin
-			// 
-			this.dtp_ngaycheckin.CalendarFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.dtp_ngaycheckin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.dtp_ngaycheckin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.dtp_ngaycheckin.Location = new System.Drawing.Point(230, 195);
-			this.dtp_ngaycheckin.Name = "dtp_ngaycheckin";
-			this.dtp_ngaycheckin.Size = new System.Drawing.Size(252, 27);
-			this.dtp_ngaycheckin.TabIndex = 7;
+			this.dtp_thoigiancheckin.CalendarFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.dtp_thoigiancheckin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.dtp_thoigiancheckin.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+			this.dtp_thoigiancheckin.Location = new System.Drawing.Point(230, 145);
+			this.dtp_thoigiancheckin.Name = "dtp_thoigiancheckin";
+			this.dtp_thoigiancheckin.Size = new System.Drawing.Size(252, 27);
+			this.dtp_thoigiancheckin.TabIndex = 6;
 			// 
 			// btn_suacheckin
 			// 
 			this.btn_suacheckin.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_suacheckin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_suacheckin.Location = new System.Drawing.Point(265, 275);
+			this.btn_suacheckin.Location = new System.Drawing.Point(276, 230);
 			this.btn_suacheckin.Name = "btn_suacheckin";
-			this.btn_suacheckin.Size = new System.Drawing.Size(115, 40);
+			this.btn_suacheckin.Size = new System.Drawing.Size(115, 50);
 			this.btn_suacheckin.TabIndex = 8;
 			this.btn_suacheckin.Text = "Sửa";
 			this.btn_suacheckin.UseVisualStyleBackColor = false;
@@ -132,9 +110,9 @@
 			// 
 			this.btn_dongcheckin.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_dongcheckin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_dongcheckin.Location = new System.Drawing.Point(420, 275);
+			this.btn_dongcheckin.Location = new System.Drawing.Point(431, 230);
 			this.btn_dongcheckin.Name = "btn_dongcheckin";
-			this.btn_dongcheckin.Size = new System.Drawing.Size(115, 40);
+			this.btn_dongcheckin.Size = new System.Drawing.Size(115, 50);
 			this.btn_dongcheckin.TabIndex = 9;
 			this.btn_dongcheckin.Text = "Đóng";
 			this.btn_dongcheckin.UseVisualStyleBackColor = false;
@@ -145,14 +123,12 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.BlanchedAlmond;
-			this.ClientSize = new System.Drawing.Size(582, 353);
+			this.ClientSize = new System.Drawing.Size(582, 312);
 			this.Controls.Add(this.btn_dongcheckin);
 			this.Controls.Add(this.btn_suacheckin);
-			this.Controls.Add(this.dtp_ngaycheckin);
-			this.Controls.Add(this.dtp_giocheckin);
+			this.Controls.Add(this.dtp_thoigiancheckin);
 			this.Controls.Add(this.txb_tennv);
 			this.Controls.Add(this.txb_manv);
-			this.Controls.Add(this.lb_ngaycheckin);
 			this.Controls.Add(this.lb_giocheckin);
 			this.Controls.Add(this.lb_tennv);
 			this.Controls.Add(this.lb_manv);
@@ -168,11 +144,9 @@
 		private System.Windows.Forms.Label lb_manv;
 		private System.Windows.Forms.Label lb_tennv;
 		private System.Windows.Forms.Label lb_giocheckin;
-		private System.Windows.Forms.Label lb_ngaycheckin;
 		private System.Windows.Forms.TextBox txb_manv;
 		private System.Windows.Forms.TextBox txb_tennv;
-		private System.Windows.Forms.DateTimePicker dtp_giocheckin;
-		private System.Windows.Forms.DateTimePicker dtp_ngaycheckin;
+		private System.Windows.Forms.DateTimePicker dtp_thoigiancheckin;
 		private System.Windows.Forms.Button btn_suacheckin;
 		private System.Windows.Forms.Button btn_dongcheckin;
 	}

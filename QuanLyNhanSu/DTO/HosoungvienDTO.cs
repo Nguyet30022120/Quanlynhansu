@@ -9,7 +9,7 @@ namespace QuanLyNhanSu.DTO
 {
 	public class HosoungvienDTO
 	{
-		public HosoungvienDTO(string maHS, string hoTen, DateTime ngaySinh, int gioiTinh, string dienThoai, string chiTietCV, string nguonUV, string chucVu, string email, string trangThai)
+		public HosoungvienDTO(string maHS, string hoTen, DateTime ngaySinh, string gioiTinh, string dienThoai, string chiTietCV, string nguonUV, string chucVu, string email, string trangThai)
 		{
 			this.MaHS = maHS;
 			this.HoTen = hoTen;
@@ -28,13 +28,13 @@ namespace QuanLyNhanSu.DTO
 			this.MaHS = row["Ma_HS"].ToString();
 			this.HoTen = row["HoTen"].ToString();
 			this.NgaySinh = Convert.ToDateTime(row["NgaySinh"]);
-			this.GioiTinh = Convert.ToInt32(row["GioiTinh"]);
+			this.GioiTinh = row["GioiTinh"] != DBNull.Value ? row["GioiTinh"].ToString() : "Không xác định";
 			this.DienThoai = row["SoDienThoai"].ToString();
 			this.ChiTietCV = row["ChiTietCV"].ToString();
 			this.NguonUV = row["NguonUngVien"].ToString();
 			this.ChucVu = row["ChucVu"].ToString();
 			this.Email = row["Email"].ToString();
-			this.TrangThai = row["TrangThai"].ToString();
+			this.TrangThai = row.Table.Columns.Contains("TrangThai") ? row["TrangThai"].ToString() : string.Empty;
 		}
 
 
@@ -44,7 +44,7 @@ namespace QuanLyNhanSu.DTO
 
 		private DateTime ngaySinh;
 
-		private int gioiTinh;
+		private string gioiTinh;
 
 		private string dienThoai;
 
@@ -66,7 +66,8 @@ namespace QuanLyNhanSu.DTO
 		public string NguonUV { get => nguonUV; set => nguonUV=value; }
 		public string ChucVu { get => chucVu; set => chucVu=value; }
 		public string Email { get => email; set => email=value; }
-		public int GioiTinh { get => gioiTinh; set => gioiTinh=value; }
+
 		public string TrangThai { get => trangThai; set => trangThai=value; }
+		public string GioiTinh { get => gioiTinh; set => gioiTinh=value; }
 	}
 }

@@ -29,8 +29,7 @@ namespace QuanLyNhanSu.GUI
 				CheckinDTO checkin = data[0];
 				txb_manv.Text = checkin.MaNV;
 				txb_tennv.Text = checkin.TenNV;
-				dtp_giocheckin.Value = DateTime.Today.Add(checkin.GioCheckIn);
-				dtp_ngaycheckin.Value = checkin.NgayCheckIn;
+				dtp_thoigiancheckin.Value = DateTime.Today.Add(checkin.GioCheckIn);
 			}
 			else
 			{
@@ -48,8 +47,8 @@ namespace QuanLyNhanSu.GUI
 			{
 				string manv = txb_manv.Text;
 				string tennv = txb_tennv.Text;
-				DateTime thoigiancheckin = dtp_giocheckin.Value;
-				DateTime ngaycheckin = dtp_ngaycheckin.Value;
+				DateTime thoigiancheckin = dtp_thoigiancheckin.Value;
+				DateTime ngaycheckin = dtp_thoigiancheckin.Value.Date;
 
 				if (CheckinDAO.Instance.UpdateCheckIn(manv, thoigiancheckin, ngaycheckin))
 				{

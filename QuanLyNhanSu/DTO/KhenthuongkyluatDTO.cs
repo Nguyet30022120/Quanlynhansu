@@ -32,7 +32,7 @@ namespace QuanLyNhanSu.DTO
 		}
 		public KhenthuongkyluatDTO(DataRow row)
 		{
-			this.maKTKL = row["MaKTKL"].ToString();
+			this.maKTKL = row["Ma_KTKL"].ToString();
 			this.maNV = row["Ma_NV"].ToString();
 			this.noiDung = row["NoiDung"].ToString();
 			this.hinhThuc = row["HinhThuc"].ToString();

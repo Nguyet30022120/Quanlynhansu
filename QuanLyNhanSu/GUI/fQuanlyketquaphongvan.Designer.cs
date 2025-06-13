@@ -40,12 +40,6 @@
 			this.btn_dongketqua = new System.Windows.Forms.Button();
 			this.btn_tiepnhan = new System.Windows.Forms.Button();
 			this.dgv_ketqua = new System.Windows.Forms.DataGridView();
-			this.MaKQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.MaHS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.TenUV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.DanhGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.KetLuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.NgayDanhGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.lb_tenungvien = new System.Windows.Forms.Label();
 			this.lb_danhgia = new System.Windows.Forms.Label();
 			this.lb_ketluan = new System.Windows.Forms.Label();
@@ -56,6 +50,13 @@
 			this.lb_mahoso = new System.Windows.Forms.Label();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.lb_goiy = new System.Windows.Forms.Label();
+			this.MaKQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.MaHS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.TenUV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.DanhGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.KetLuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.NgayDanhGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_ketqua)).BeginInit();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
@@ -65,6 +66,7 @@
 			this.txb_tenungvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txb_tenungvien.Location = new System.Drawing.Point(165, 68);
 			this.txb_tenungvien.Name = "txb_tenungvien";
+			this.txb_tenungvien.ReadOnly = true;
 			this.txb_tenungvien.Size = new System.Drawing.Size(252, 27);
 			this.txb_tenungvien.TabIndex = 1;
 			// 
@@ -107,6 +109,8 @@
 			this.btn_themketqua.Text = "Thêm";
 			this.btn_themketqua.UseVisualStyleBackColor = false;
 			this.btn_themketqua.Click += new System.EventHandler(this.btn_addkq_Click);
+			this.btn_themketqua.MouseEnter += new System.EventHandler(this.btn_themketqua_MouseEnter);
+			this.btn_themketqua.MouseLeave += new System.EventHandler(this.btn_themketqua_MouseLeave);
 			// 
 			// btn_suaketqua
 			// 
@@ -119,6 +123,8 @@
 			this.btn_suaketqua.Text = "Sửa";
 			this.btn_suaketqua.UseVisualStyleBackColor = false;
 			this.btn_suaketqua.Click += new System.EventHandler(this.btn_editkq_Click);
+			this.btn_suaketqua.MouseEnter += new System.EventHandler(this.btn_suaketqua_MouseEnter);
+			this.btn_suaketqua.MouseLeave += new System.EventHandler(this.btn_suaketqua_MouseLeave);
 			// 
 			// btn_xoaketqua
 			// 
@@ -131,6 +137,8 @@
 			this.btn_xoaketqua.Text = "Xóa";
 			this.btn_xoaketqua.UseVisualStyleBackColor = false;
 			this.btn_xoaketqua.Click += new System.EventHandler(this.btn_deletekq_Click);
+			this.btn_xoaketqua.MouseEnter += new System.EventHandler(this.btn_xoaketqua_MouseEnter);
+			this.btn_xoaketqua.MouseLeave += new System.EventHandler(this.btn_xoaketqua_MouseLeave);
 			// 
 			// btn_dongketqua
 			// 
@@ -143,6 +151,8 @@
 			this.btn_dongketqua.Text = "Đóng";
 			this.btn_dongketqua.UseVisualStyleBackColor = false;
 			this.btn_dongketqua.Click += new System.EventHandler(this.btn_closekq_Click);
+			this.btn_dongketqua.MouseEnter += new System.EventHandler(this.btn_dongketqua_MouseEnter);
+			this.btn_dongketqua.MouseLeave += new System.EventHandler(this.btn_dongketqua_MouseLeave);
 			// 
 			// btn_tiepnhan
 			// 
@@ -155,6 +165,8 @@
 			this.btn_tiepnhan.Text = "Tiếp nhận";
 			this.btn_tiepnhan.UseVisualStyleBackColor = false;
 			this.btn_tiepnhan.Click += new System.EventHandler(this.btn_tiepnhan_Click);
+			this.btn_tiepnhan.MouseEnter += new System.EventHandler(this.btn_tiepnhan_MouseEnter);
+			this.btn_tiepnhan.MouseLeave += new System.EventHandler(this.btn_tiepnhan_MouseLeave);
 			// 
 			// dgv_ketqua
 			// 
@@ -176,61 +188,14 @@
             this.TenUV,
             this.DanhGia,
             this.KetLuan,
-            this.NgayDanhGia});
+            this.NgayDanhGia,
+            this.TrangThai});
 			this.dgv_ketqua.Location = new System.Drawing.Point(5, 229);
 			this.dgv_ketqua.Name = "dgv_ketqua";
 			this.dgv_ketqua.RowHeadersWidth = 51;
 			this.dgv_ketqua.RowTemplate.Height = 24;
 			this.dgv_ketqua.Size = new System.Drawing.Size(1470, 546);
 			this.dgv_ketqua.TabIndex = 10;
-			// 
-			// MaKQ
-			// 
-			this.MaKQ.DataPropertyName = "MaKQ";
-			this.MaKQ.HeaderText = "Mã kết quả";
-			this.MaKQ.MinimumWidth = 6;
-			this.MaKQ.Name = "MaKQ";
-			this.MaKQ.Width = 125;
-			// 
-			// MaHS
-			// 
-			this.MaHS.DataPropertyName = "MaHS";
-			this.MaHS.HeaderText = "Mã hồ sơ";
-			this.MaHS.MinimumWidth = 6;
-			this.MaHS.Name = "MaHS";
-			this.MaHS.Width = 125;
-			// 
-			// TenUV
-			// 
-			this.TenUV.DataPropertyName = "TenUV";
-			this.TenUV.HeaderText = "Tên ứng viên";
-			this.TenUV.MinimumWidth = 6;
-			this.TenUV.Name = "TenUV";
-			this.TenUV.Width = 200;
-			// 
-			// DanhGia
-			// 
-			this.DanhGia.DataPropertyName = "DanhGia";
-			this.DanhGia.HeaderText = "Đánh giá";
-			this.DanhGia.MinimumWidth = 6;
-			this.DanhGia.Name = "DanhGia";
-			this.DanhGia.Width = 200;
-			// 
-			// KetLuan
-			// 
-			this.KetLuan.DataPropertyName = "KetLuan";
-			this.KetLuan.HeaderText = "Kết luận";
-			this.KetLuan.MinimumWidth = 6;
-			this.KetLuan.Name = "KetLuan";
-			this.KetLuan.Width = 125;
-			// 
-			// NgayDanhGia
-			// 
-			this.NgayDanhGia.DataPropertyName = "NgayDanhGia";
-			this.NgayDanhGia.HeaderText = "Ngày đánh giá";
-			this.NgayDanhGia.MinimumWidth = 6;
-			this.NgayDanhGia.Name = "NgayDanhGia";
-			this.NgayDanhGia.Width = 150;
 			// 
 			// lb_tenungvien
 			// 
@@ -291,6 +256,8 @@
 			this.btn_timketqua.Text = "Tìm kiếm";
 			this.btn_timketqua.UseVisualStyleBackColor = false;
 			this.btn_timketqua.Click += new System.EventHandler(this.btn_findkq_Click);
+			this.btn_timketqua.MouseEnter += new System.EventHandler(this.btn_timketqua_MouseEnter);
+			this.btn_timketqua.MouseLeave += new System.EventHandler(this.btn_timketqua_MouseLeave);
 			// 
 			// txb_mahoso
 			// 
@@ -345,6 +312,62 @@
 			this.lb_goiy.TabIndex = 20;
 			this.lb_goiy.Text = "(Tìm kiếm theo mã hồ sơ, tên ứng viên hoặc kết luận)";
 			// 
+			// MaKQ
+			// 
+			this.MaKQ.DataPropertyName = "MaKQ";
+			this.MaKQ.HeaderText = "Mã kết quả";
+			this.MaKQ.MinimumWidth = 6;
+			this.MaKQ.Name = "MaKQ";
+			this.MaKQ.Width = 125;
+			// 
+			// MaHS
+			// 
+			this.MaHS.DataPropertyName = "MaHS";
+			this.MaHS.HeaderText = "Mã hồ sơ";
+			this.MaHS.MinimumWidth = 6;
+			this.MaHS.Name = "MaHS";
+			this.MaHS.Width = 125;
+			// 
+			// TenUV
+			// 
+			this.TenUV.DataPropertyName = "TenUV";
+			this.TenUV.HeaderText = "Tên ứng viên";
+			this.TenUV.MinimumWidth = 6;
+			this.TenUV.Name = "TenUV";
+			this.TenUV.Width = 200;
+			// 
+			// DanhGia
+			// 
+			this.DanhGia.DataPropertyName = "DanhGia";
+			this.DanhGia.HeaderText = "Đánh giá";
+			this.DanhGia.MinimumWidth = 6;
+			this.DanhGia.Name = "DanhGia";
+			this.DanhGia.Width = 200;
+			// 
+			// KetLuan
+			// 
+			this.KetLuan.DataPropertyName = "KetLuan";
+			this.KetLuan.HeaderText = "Kết luận";
+			this.KetLuan.MinimumWidth = 6;
+			this.KetLuan.Name = "KetLuan";
+			this.KetLuan.Width = 125;
+			// 
+			// NgayDanhGia
+			// 
+			this.NgayDanhGia.DataPropertyName = "NgayDanhGia";
+			this.NgayDanhGia.HeaderText = "Ngày đánh giá";
+			this.NgayDanhGia.MinimumWidth = 6;
+			this.NgayDanhGia.Name = "NgayDanhGia";
+			this.NgayDanhGia.Width = 150;
+			// 
+			// TrangThai
+			// 
+			this.TrangThai.DataPropertyName = "TrangThai";
+			this.TrangThai.HeaderText = "Trạng thái";
+			this.TrangThai.MinimumWidth = 6;
+			this.TrangThai.Name = "TrangThai";
+			this.TrangThai.Width = 125;
+			// 
 			// fQuanlyketquaphongvan
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -354,7 +377,7 @@
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.dgv_ketqua);
 			this.Name = "fQuanlyketquaphongvan";
-			this.Text = "Quản lý kết quả phỏng vấn";
+			this.Text = "Kết quả phỏng vấn";
 			((System.ComponentModel.ISupportInitialize)(this.dgv_ketqua)).EndInit();
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
@@ -389,5 +412,6 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn DanhGia;
 		private System.Windows.Forms.DataGridViewTextBoxColumn KetLuan;
 		private System.Windows.Forms.DataGridViewTextBoxColumn NgayDanhGia;
+		private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
 	}
 }

@@ -32,7 +32,7 @@
 			this.lb_tennhanvien = new System.Windows.Forms.Label();
 			this.lb_manhanvien = new System.Windows.Forms.Label();
 			this.lb_chucvu = new System.Windows.Forms.Label();
-			this.lb_phongban = new System.Windows.Forms.Label();
+			this.lb_cuahang = new System.Windows.Forms.Label();
 			this.lb_ngaysinh = new System.Windows.Forms.Label();
 			this.lb_gioitinh = new System.Windows.Forms.Label();
 			this.lb_diachi = new System.Windows.Forms.Label();
@@ -44,17 +44,17 @@
 			this.lb_motaquyenhan = new System.Windows.Forms.Label();
 			this.txb_manhanvien = new System.Windows.Forms.TextBox();
 			this.txb_chucvu = new System.Windows.Forms.TextBox();
-			this.cb_phongban = new System.Windows.Forms.ComboBox();
-			this.dtp_ngaysinh = new System.Windows.Forms.DateTimePicker();
-			this.cb_gioitinh = new System.Windows.Forms.ComboBox();
 			this.txb_diachi = new System.Windows.Forms.TextBox();
 			this.txb_cccd = new System.Windows.Forms.TextBox();
 			this.txb_sodienthoai = new System.Windows.Forms.TextBox();
 			this.txb_matk = new System.Windows.Forms.TextBox();
 			this.txb_taikhoan = new System.Windows.Forms.TextBox();
-			this.cb_vaitro = new System.Windows.Forms.ComboBox();
 			this.txb_motaquyenhan = new System.Windows.Forms.TextBox();
 			this.btn_dongtaikhoan = new System.Windows.Forms.Button();
+			this.txb_gioitinh = new System.Windows.Forms.TextBox();
+			this.txb_cuahang = new System.Windows.Forms.TextBox();
+			this.txb_vaitro = new System.Windows.Forms.TextBox();
+			this.txb_ngaysinh = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
 			// txb_tennv
@@ -62,6 +62,7 @@
 			this.txb_tennv.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txb_tennv.Location = new System.Drawing.Point(160, 50);
 			this.txb_tennv.Name = "txb_tennv";
+			this.txb_tennv.ReadOnly = true;
 			this.txb_tennv.Size = new System.Drawing.Size(252, 27);
 			this.txb_tennv.TabIndex = 0;
 			// 
@@ -95,15 +96,15 @@
 			this.lb_chucvu.TabIndex = 3;
 			this.lb_chucvu.Text = "Chức vụ";
 			// 
-			// lb_phongban
+			// lb_cuahang
 			// 
-			this.lb_phongban.AutoSize = true;
-			this.lb_phongban.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_phongban.Location = new System.Drawing.Point(30, 525);
-			this.lb_phongban.Name = "lb_phongban";
-			this.lb_phongban.Size = new System.Drawing.Size(84, 20);
-			this.lb_phongban.TabIndex = 4;
-			this.lb_phongban.Text = "Phòng ban";
+			this.lb_cuahang.AutoSize = true;
+			this.lb_cuahang.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lb_cuahang.Location = new System.Drawing.Point(30, 525);
+			this.lb_cuahang.Name = "lb_cuahang";
+			this.lb_cuahang.Size = new System.Drawing.Size(75, 20);
+			this.lb_cuahang.TabIndex = 4;
+			this.lb_cuahang.Text = "Cửa hàng";
 			// 
 			// lb_ngaysinh
 			// 
@@ -200,6 +201,7 @@
 			this.txb_manhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txb_manhanvien.Location = new System.Drawing.Point(160, 95);
 			this.txb_manhanvien.Name = "txb_manhanvien";
+			this.txb_manhanvien.ReadOnly = true;
 			this.txb_manhanvien.Size = new System.Drawing.Size(252, 27);
 			this.txb_manhanvien.TabIndex = 14;
 			// 
@@ -208,66 +210,43 @@
 			this.txb_chucvu.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txb_chucvu.Location = new System.Drawing.Point(160, 570);
 			this.txb_chucvu.Name = "txb_chucvu";
+			this.txb_chucvu.ReadOnly = true;
 			this.txb_chucvu.Size = new System.Drawing.Size(252, 27);
 			this.txb_chucvu.TabIndex = 15;
-			// 
-			// cb_phongban
-			// 
-			this.cb_phongban.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.cb_phongban.FormattingEnabled = true;
-			this.cb_phongban.Location = new System.Drawing.Point(160, 525);
-			this.cb_phongban.Name = "cb_phongban";
-			this.cb_phongban.Size = new System.Drawing.Size(252, 28);
-			this.cb_phongban.TabIndex = 16;
-			// 
-			// dtp_ngaysinh
-			// 
-			this.dtp_ngaysinh.CalendarFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.dtp_ngaysinh.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.dtp_ngaysinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.dtp_ngaysinh.Location = new System.Drawing.Point(160, 265);
-			this.dtp_ngaysinh.Name = "dtp_ngaysinh";
-			this.dtp_ngaysinh.Size = new System.Drawing.Size(252, 27);
-			this.dtp_ngaysinh.TabIndex = 17;
-			// 
-			// cb_gioitinh
-			// 
-			this.cb_gioitinh.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.cb_gioitinh.FormattingEnabled = true;
-			this.cb_gioitinh.Location = new System.Drawing.Point(160, 310);
-			this.cb_gioitinh.Name = "cb_gioitinh";
-			this.cb_gioitinh.Size = new System.Drawing.Size(252, 28);
-			this.cb_gioitinh.TabIndex = 18;
 			// 
 			// txb_diachi
 			// 
 			this.txb_diachi.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txb_diachi.Location = new System.Drawing.Point(160, 355);
 			this.txb_diachi.Name = "txb_diachi";
+			this.txb_diachi.ReadOnly = true;
 			this.txb_diachi.Size = new System.Drawing.Size(252, 27);
 			this.txb_diachi.TabIndex = 19;
 			// 
 			// txb_cccd
 			// 
-			this.txb_cccd.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txb_cccd.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txb_cccd.Location = new System.Drawing.Point(160, 400);
 			this.txb_cccd.Name = "txb_cccd";
+			this.txb_cccd.ReadOnly = true;
 			this.txb_cccd.Size = new System.Drawing.Size(252, 27);
 			this.txb_cccd.TabIndex = 20;
 			// 
 			// txb_sodienthoai
 			// 
 			this.txb_sodienthoai.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_sodienthoai.Location = new System.Drawing.Point(160, 455);
+			this.txb_sodienthoai.Location = new System.Drawing.Point(160, 445);
 			this.txb_sodienthoai.Name = "txb_sodienthoai";
+			this.txb_sodienthoai.ReadOnly = true;
 			this.txb_sodienthoai.Size = new System.Drawing.Size(252, 27);
 			this.txb_sodienthoai.TabIndex = 21;
 			// 
 			// txb_matk
 			// 
 			this.txb_matk.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_matk.Location = new System.Drawing.Point(160, 140);
+			this.txb_matk.Location = new System.Drawing.Point(160, 137);
 			this.txb_matk.Name = "txb_matk";
+			this.txb_matk.ReadOnly = true;
 			this.txb_matk.Size = new System.Drawing.Size(252, 27);
 			this.txb_matk.TabIndex = 22;
 			// 
@@ -276,17 +255,9 @@
 			this.txb_taikhoan.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txb_taikhoan.Location = new System.Drawing.Point(160, 185);
 			this.txb_taikhoan.Name = "txb_taikhoan";
+			this.txb_taikhoan.ReadOnly = true;
 			this.txb_taikhoan.Size = new System.Drawing.Size(252, 27);
 			this.txb_taikhoan.TabIndex = 23;
-			// 
-			// cb_vaitro
-			// 
-			this.cb_vaitro.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.cb_vaitro.FormattingEnabled = true;
-			this.cb_vaitro.Location = new System.Drawing.Point(160, 615);
-			this.cb_vaitro.Name = "cb_vaitro";
-			this.cb_vaitro.Size = new System.Drawing.Size(252, 28);
-			this.cb_vaitro.TabIndex = 24;
 			// 
 			// txb_motaquyenhan
 			// 
@@ -294,6 +265,7 @@
 			this.txb_motaquyenhan.Location = new System.Drawing.Point(160, 660);
 			this.txb_motaquyenhan.Multiline = true;
 			this.txb_motaquyenhan.Name = "txb_motaquyenhan";
+			this.txb_motaquyenhan.ReadOnly = true;
 			this.txb_motaquyenhan.Size = new System.Drawing.Size(252, 90);
 			this.txb_motaquyenhan.TabIndex = 25;
 			// 
@@ -309,23 +281,59 @@
 			this.btn_dongtaikhoan.UseVisualStyleBackColor = false;
 			this.btn_dongtaikhoan.Click += new System.EventHandler(this.btn_dongtaikhoan_Click);
 			// 
+			// txb_gioitinh
+			// 
+			this.txb_gioitinh.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txb_gioitinh.Location = new System.Drawing.Point(160, 307);
+			this.txb_gioitinh.Name = "txb_gioitinh";
+			this.txb_gioitinh.ReadOnly = true;
+			this.txb_gioitinh.Size = new System.Drawing.Size(252, 27);
+			this.txb_gioitinh.TabIndex = 27;
+			// 
+			// txb_cuahang
+			// 
+			this.txb_cuahang.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txb_cuahang.Location = new System.Drawing.Point(160, 522);
+			this.txb_cuahang.Name = "txb_cuahang";
+			this.txb_cuahang.ReadOnly = true;
+			this.txb_cuahang.Size = new System.Drawing.Size(252, 27);
+			this.txb_cuahang.TabIndex = 28;
+			// 
+			// txb_vaitro
+			// 
+			this.txb_vaitro.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txb_vaitro.Location = new System.Drawing.Point(160, 615);
+			this.txb_vaitro.Name = "txb_vaitro";
+			this.txb_vaitro.ReadOnly = true;
+			this.txb_vaitro.Size = new System.Drawing.Size(252, 27);
+			this.txb_vaitro.TabIndex = 29;
+			// 
+			// txb_ngaysinh
+			// 
+			this.txb_ngaysinh.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txb_ngaysinh.Location = new System.Drawing.Point(160, 265);
+			this.txb_ngaysinh.Name = "txb_ngaysinh";
+			this.txb_ngaysinh.ReadOnly = true;
+			this.txb_ngaysinh.Size = new System.Drawing.Size(252, 27);
+			this.txb_ngaysinh.TabIndex = 30;
+			// 
 			// fQuanlytaikhoan
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.BlanchedAlmond;
 			this.ClientSize = new System.Drawing.Size(582, 853);
+			this.Controls.Add(this.txb_ngaysinh);
+			this.Controls.Add(this.txb_vaitro);
+			this.Controls.Add(this.txb_cuahang);
+			this.Controls.Add(this.txb_gioitinh);
 			this.Controls.Add(this.btn_dongtaikhoan);
 			this.Controls.Add(this.txb_motaquyenhan);
-			this.Controls.Add(this.cb_vaitro);
 			this.Controls.Add(this.txb_taikhoan);
 			this.Controls.Add(this.txb_matk);
 			this.Controls.Add(this.txb_sodienthoai);
 			this.Controls.Add(this.txb_cccd);
 			this.Controls.Add(this.txb_diachi);
-			this.Controls.Add(this.cb_gioitinh);
-			this.Controls.Add(this.dtp_ngaysinh);
-			this.Controls.Add(this.cb_phongban);
 			this.Controls.Add(this.txb_chucvu);
 			this.Controls.Add(this.txb_manhanvien);
 			this.Controls.Add(this.lb_motaquyenhan);
@@ -337,7 +345,7 @@
 			this.Controls.Add(this.lb_diachi);
 			this.Controls.Add(this.lb_gioitinh);
 			this.Controls.Add(this.lb_ngaysinh);
-			this.Controls.Add(this.lb_phongban);
+			this.Controls.Add(this.lb_cuahang);
 			this.Controls.Add(this.lb_chucvu);
 			this.Controls.Add(this.lb_manhanvien);
 			this.Controls.Add(this.lb_tennhanvien);
@@ -355,7 +363,7 @@
 		private System.Windows.Forms.Label lb_tennhanvien;
 		private System.Windows.Forms.Label lb_manhanvien;
 		private System.Windows.Forms.Label lb_chucvu;
-		private System.Windows.Forms.Label lb_phongban;
+		private System.Windows.Forms.Label lb_cuahang;
 		private System.Windows.Forms.Label lb_ngaysinh;
 		private System.Windows.Forms.Label lb_gioitinh;
 		private System.Windows.Forms.Label lb_diachi;
@@ -367,16 +375,16 @@
 		private System.Windows.Forms.Label lb_motaquyenhan;
 		private System.Windows.Forms.TextBox txb_manhanvien;
 		private System.Windows.Forms.TextBox txb_chucvu;
-		private System.Windows.Forms.ComboBox cb_phongban;
-		private System.Windows.Forms.DateTimePicker dtp_ngaysinh;
-		private System.Windows.Forms.ComboBox cb_gioitinh;
 		private System.Windows.Forms.TextBox txb_diachi;
 		private System.Windows.Forms.TextBox txb_cccd;
 		private System.Windows.Forms.TextBox txb_sodienthoai;
 		private System.Windows.Forms.TextBox txb_matk;
 		private System.Windows.Forms.TextBox txb_taikhoan;
-		private System.Windows.Forms.ComboBox cb_vaitro;
 		private System.Windows.Forms.TextBox txb_motaquyenhan;
 		private System.Windows.Forms.Button btn_dongtaikhoan;
+		private System.Windows.Forms.TextBox txb_gioitinh;
+		private System.Windows.Forms.TextBox txb_cuahang;
+		private System.Windows.Forms.TextBox txb_vaitro;
+		private System.Windows.Forms.TextBox txb_ngaysinh;
 	}
 }

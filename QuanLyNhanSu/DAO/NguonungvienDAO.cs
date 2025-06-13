@@ -44,7 +44,7 @@ namespace QuanLyNhanSu.DAO
 		{
 			List<NguonungvienDTO> list = new List<NguonungvienDTO>();
 
-			string query = string.Format("SELECT NU.TenNguon, COUNT(HUV.Ma_HS) AS SoLuongHoSo FROM NguonUngVien NU LEFT JOIN HoSoUngVien HUV ON NU.Ma_Nguon = HUV.Ma_Nguon WHERE NU.TenNguon LIKE N'{0}%' GROUP BY NU.TenNguon;\r\n", value);
+			string query = string.Format("SELECT NU.TenNguon, COUNT(HUV.Ma_HS) AS SoLuongHoSo FROM NguonUngVien NU LEFT JOIN HoSoUngVien HUV ON NU.Ma_Nguon = HUV.Ma_Nguon WHERE NU.TenNguon LIKE N'%{0}%' GROUP BY NU.TenNguon;\r\n", value);
 
 			Console.WriteLine(query);
 

@@ -19,7 +19,7 @@ namespace QuanLyNhanSu.DAO
 		public List<DTO.KetquaphongvanDTO> GetListResult()
 		{
 			List<DTO.KetquaphongvanDTO> listResult = new List<DTO.KetquaphongvanDTO>();
-			string query = "SELECT HSV.Ma_HS, KQ.Ma_KQ, HSV.HoTen AS TenUV, KQ.DanhGia, KQ.KetLuan, KQ.NgayDanhGia FROM KetQuaPhongVan KQ JOIN LichPhongVan LPV ON KQ.Ma_PV = LPV.Ma_PV JOIN HoSoUngVien HSV ON LPV.Ma_HS = HSV.Ma_HS;\r\n";
+			string query = "SELECT HSV.Ma_HS, KQ.Ma_KQ, HSV.HoTen AS TenUV, KQ.DanhGia, KQ.KetLuan, KQ.NgayDanhGia, CASE WHEN EXISTS (SELECT 1 FROM [NhanVien] NV WHERE NV.Email = HSV.Email) THEN N'Đã tiếp nhận' ELSE N'Chưa tiếp nhận' END AS TrangThai FROM KetQuaPhongVan KQ JOIN LichPhongVan LPV ON KQ.Ma_PV = LPV.Ma_PV JOIN HoSoUngVien HSV ON LPV.Ma_HS = HSV.Ma_HS;\r\n";
 			DataTable data = DataProvider.Instance.ExecuteQuery(query);
 			foreach (DataRow item in data.Rows)
 			{
@@ -50,7 +50,7 @@ namespace QuanLyNhanSu.DAO
 		{
 			List<KetquaphongvanDTO> list = new List<KetquaphongvanDTO>();
 
-			string query = string.Format("SELECT  HSV.Ma_HS, KQ.Ma_KQ, HSV.HoTen AS TenUV, KQ.DanhGia, KQ.KetLuan, KQ.NgayDanhGia FROM KetQuaPhongVan KQ JOIN LichPhongVan LPV ON KQ.Ma_PV = LPV.Ma_PV JOIN HoSoUngVien HSV ON LPV.Ma_HS = HSV.Ma_HS WHERE LPV.Ma_HS LIKE '%{2}%' OR HSV.HoTen LIKE N'%{0}%' OR KQ.KetLuan LIKE N'%{1}%'", value, value, value);
+			string query = string.Format("SELECT HSV.Ma_HS, KQ.Ma_KQ, HSV.HoTen AS TenUV, KQ.DanhGia, KQ.KetLuan, KQ.NgayDanhGia, CASE WHEN EXISTS (SELECT 1 FROM [NhanVien] NV WHERE NV.Email = HSV.Email) THEN N'Đã tiếp nhận' ELSE N'Chưa tiếp nhận' END AS TrangThai FROM KetQuaPhongVan KQ JOIN LichPhongVan LPV ON KQ.Ma_PV = LPV.Ma_PV JOIN HoSoUngVien HSV ON LPV.Ma_HS = HSV.Ma_HS WHERE LPV.Ma_HS LIKE N'%{2}%' OR HSV.HoTen LIKE N'%{0}%' OR KQ.KetLuan LIKE N'%{1}%';\r\n", value, value, value);
 
 			Console.WriteLine(query);
 

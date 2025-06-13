@@ -13,6 +13,13 @@ namespace QuanLyNhanSu.GUI
 {
 	public partial class fQuanlylichphongvan : Form
 	{
+		private Color originalAddButtonColor;
+		private Color originalEditButtonColor;
+		private Color originalDeleteButtonColor;
+		private Color originalFindButtonColor;
+		private Color originalCloseButtonColor;
+
+
 		BindingSource scheduleList = new BindingSource();
 
 		private List<string> staffNames = new List<string>();
@@ -26,6 +33,11 @@ namespace QuanLyNhanSu.GUI
 			LoadCbDiaDiem();
 			LoadStaffNames();
 			SetupAutoCompleteForNguoiPV();
+			originalAddButtonColor = btn_themlichphongvan.BackColor;
+			originalEditButtonColor = btn_sualichphongvan.BackColor;
+			originalDeleteButtonColor = btn_xoalichphongvan.BackColor;
+			originalFindButtonColor = btn_timlichphongvan.BackColor;
+			originalCloseButtonColor = btn_donglichphongvan.BackColor;
 		}
 		void LoadSchedule()
 		{
@@ -33,7 +45,6 @@ namespace QuanLyNhanSu.GUI
 		}
 		void BindingscheduleData()
 		{
-			//txb_mapv.DataBindings.Add(new Binding("Text", dgv_lichpv.DataSource, "MaPV", true, DataSourceUpdateMode.Never));
 			txb_tenungvien.DataBindings.Add(new Binding("Text", dgv_lichphongvan.DataSource, "TenUV", true, DataSourceUpdateMode.Never));
 			dtp_ngayphongvan.DataBindings.Add(new Binding("Value", dgv_lichphongvan.DataSource, "NgayPV", true, DataSourceUpdateMode.Never));
 			dtp_giophongvan.DataBindings.Add(new Binding("Value", dgv_lichphongvan.DataSource, "ThoiGianPV", true, DataSourceUpdateMode.Never));
@@ -41,6 +52,17 @@ namespace QuanLyNhanSu.GUI
 			cb_trangthai.DataBindings.Add(new Binding("Text", dgv_lichphongvan.DataSource, "TrangThai", true, DataSourceUpdateMode.Never));
 			txb_nguoiphongvan.DataBindings.Add(new Binding("Text", dgv_lichphongvan.DataSource, "NguoiPV", true, DataSourceUpdateMode.Never));
 			txb_mahoso.DataBindings.Add(new Binding("Text", dgv_lichphongvan.DataSource, "MaHS", true, DataSourceUpdateMode.Never));
+		}
+		private void dgv_lichphongvan_SelectionChanged(object sender, EventArgs e)
+		{
+			if (dgv_lichphongvan.CurrentRow != null)
+			{
+				var value = dgv_lichphongvan.CurrentRow.Cells["ThoiGianPV"].Value?.ToString();
+				if (TimeSpan.TryParse(value, out TimeSpan time))
+				{
+					dtp_giophongvan.Value = DateTime.Today.Add(time);
+				}
+			}
 		}
 		private void LoadStaffNames()
 		{
@@ -50,7 +72,7 @@ namespace QuanLyNhanSu.GUI
 		{
 			List<string> diaDiem = new List<string>()
 			{
-				"Phòng 1", "Phòng 2", "Phòng 3", "Phòng 4", "Phòng 5"
+				"Cửa hàng 1", "Cửa hàng 2", "Cửa hàng 3", "Cửa hàng 4", "Cửa hàng 5"
 			};
 			cb_diadiem.DataSource = diaDiem;
 		}
@@ -71,7 +93,7 @@ namespace QuanLyNhanSu.GUI
 			};
 			cb_trangthai.DataSource = trangThai;
 		}
-
+		#region Events
 		private void btn_addlich_Click(object sender, EventArgs e)
 		{
 			try
@@ -85,12 +107,12 @@ namespace QuanLyNhanSu.GUI
 
 				if (LichphongvanDAO.Instance.InsertSchedule(mahs, nguoipv, ngaypv, thoigianpv, diadiem))
 				{
-					MessageBox.Show("Thêm lịch phỏng vấn thành công");
+					MessageBox.Show("Thêm lịch phỏng vấn thành công","Thông báo");
 					LoadSchedule();
 				}
 				else
 				{
-					MessageBox.Show("Thêm lịch phỏng vấn thất bại");
+					MessageBox.Show("Thêm lịch phỏng vấn thất bại", "Thông báo");
 				}
 			}
 			catch (Exception ex)
@@ -115,11 +137,11 @@ namespace QuanLyNhanSu.GUI
 
 					if (LichphongvanDAO.Instance.UpdateSchedule(mapv, nguoipv, ngaypv, thoigianpv, diadiem, trangthai))
 					{
-						MessageBox.Show("Sửa lịch phỏng vấn thành công.");
+						MessageBox.Show("Sửa lịch phỏng vấn thành công.", "Thông báo");
 					}
 					else
 					{
-						MessageBox.Show("Sửa lịch phỏng vấn thất bại.");
+						MessageBox.Show("Sửa lịch phỏng vấn thất bại.", "Thông báo");
 					}
 
 				}
@@ -144,11 +166,11 @@ namespace QuanLyNhanSu.GUI
 
 					if (LichphongvanDAO.Instance.DeleteSchedule(mapv))
 					{
-						MessageBox.Show("Xóa lịch phỏng vấn thành công.");
+						MessageBox.Show("Xóa lịch phỏng vấn thành công.", "Thông báo");
 					}
 					else
 					{
-						MessageBox.Show("Xóa lịch phỏng vấn thất bại.");
+						MessageBox.Show("Xóa lịch phỏng vấn thất bại.", "Thông báo");
 					}
 
 				}
@@ -168,11 +190,55 @@ namespace QuanLyNhanSu.GUI
 			this.Close();
 		}
 
+		#endregion
 
+		#region Hover
 		private void btn_findlichpv_Click(object sender, EventArgs e)
 		{
 			scheduleList.DataSource = LichphongvanDAO.Instance.SearchSchedule(txb_findlichpv.Text);
 		}
+		private void btn_themlichphongvan_MouseEnter(object sender, EventArgs e)
+		{
+			btn_themlichphongvan.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_themlichphongvan_MouseLeave(object sender, EventArgs e)
+		{
+			btn_themlichphongvan.BackColor = originalAddButtonColor;
+		}
+		private void btn_sualichphongvan_MouseEnter(object sender, EventArgs e)
+		{
+			btn_sualichphongvan.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_sualichphongvan_MouseLeave(object sender, EventArgs e)
+		{
+			btn_sualichphongvan.BackColor = originalEditButtonColor;
+		}
+		private void btn_xoalichphongvan_MouseEnter(object sender, EventArgs e)
+		{
+			btn_xoalichphongvan.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_xoalichphongvan_MouseLeave(object sender, EventArgs e)
+		{
+			btn_xoalichphongvan.BackColor = originalDeleteButtonColor;
+		}
+		private void btn_timlichphongvan_MouseEnter(object sender, EventArgs e)
+		{
+			btn_timlichphongvan.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_timlichphongvan_MouseLeave(object sender, EventArgs e)
+		{
+			btn_timlichphongvan.BackColor = originalFindButtonColor;
+		}
+		private void btn_donglichphongvan_MouseEnter(object sender, EventArgs e)
+		{
+			btn_donglichphongvan.BackColor = System.Drawing.Color.LightBlue;
+		}
+		private void btn_donglichphongvan_MouseLeave(object sender, EventArgs e)
+		{
+			btn_donglichphongvan.BackColor = originalCloseButtonColor;
+		}
+		#endregion
+
 
 	}
 }

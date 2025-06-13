@@ -21,7 +21,7 @@ namespace QuanLyNhanSu.DAO
 		public List<BaohiemDTO> GetListInsurance(string manv)
 		{
 			List<BaohiemDTO> list = new List<BaohiemDTO>();
-			string query = $"SELECT nv.HoTen, bh.NgayBatDau, bh.NgayKetThuc, bh.Ma_BH, bh.LoaiBaoHiem, bh.MoTa, bh.SoTienDong FROM ThongTinBaoHiem bh JOIN [Nhan vien] nv ON bh.Ma_NV = nv.Ma_NV WHERE bh.Ma_NV = '{manv}';\r\n;";
+			string query = $"SELECT nv.HoTen, bh.NgayBatDau, bh.NgayKetThuc, bh.Ma_BH, bh.LoaiBaoHiem, bh.MoTa, bh.SoTienDong FROM ThongTinBaoHiem bh JOIN [NhanVien] nv ON bh.Ma_NV = nv.Ma_NV WHERE bh.Ma_NV = '{manv}';\r\n;";
 			DataTable data = DataProvider.Instance.ExecuteQuery(query);
 			foreach (DataRow item in data.Rows)
 			{

@@ -47,7 +47,7 @@
 			this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ChucVu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.PhongBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.CuaHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.MaTK = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TaiKhoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.VaiTro = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -111,12 +111,12 @@
             this.TenNV,
             this.MaNV,
             this.ChucVu,
-            this.PhongBan,
+            this.CuaHang,
             this.MaTK,
             this.TaiKhoan,
             this.VaiTro,
             this.MoTaQuyenHan});
-			this.dgv_nguoidung.Location = new System.Drawing.Point(12, 176);
+			this.dgv_nguoidung.Location = new System.Drawing.Point(10, 176);
 			this.dgv_nguoidung.Name = "dgv_nguoidung";
 			this.dgv_nguoidung.RowHeadersWidth = 51;
 			this.dgv_nguoidung.RowTemplate.Height = 24;
@@ -245,13 +245,13 @@
 			this.ChucVu.Name = "ChucVu";
 			this.ChucVu.Width = 125;
 			// 
-			// PhongBan
+			// CuaHang
 			// 
-			this.PhongBan.DataPropertyName = "PhongBan";
-			this.PhongBan.HeaderText = "Cửa hàng";
-			this.PhongBan.MinimumWidth = 6;
-			this.PhongBan.Name = "PhongBan";
-			this.PhongBan.Width = 125;
+			this.CuaHang.DataPropertyName = "CuaHang";
+			this.CuaHang.HeaderText = "Cửa hàng";
+			this.CuaHang.MinimumWidth = 6;
+			this.CuaHang.Name = "CuaHang";
+			this.CuaHang.Width = 125;
 			// 
 			// MaTK
 			// 
@@ -331,7 +331,7 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn TenNV;
 		private System.Windows.Forms.DataGridViewTextBoxColumn MaNV;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ChucVu;
-		private System.Windows.Forms.DataGridViewTextBoxColumn PhongBan;
+		private System.Windows.Forms.DataGridViewTextBoxColumn CuaHang;
 		private System.Windows.Forms.DataGridViewTextBoxColumn MaTK;
 		private System.Windows.Forms.DataGridViewTextBoxColumn TaiKhoan;
 		private System.Windows.Forms.DataGridViewTextBoxColumn VaiTro;

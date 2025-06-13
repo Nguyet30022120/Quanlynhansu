@@ -21,7 +21,7 @@ namespace QuanLyNhanSu.DAO
 		{
 			List<HopdongDTO> list = new List<HopdongDTO>();
 
-			string query = "SELECT HD.Ma_HD, HD.Ma_NV, NV.HoTen AS TenNhanVien, HD.NgayDangKy, HD.Han_HD AS NgayHetHan, HD.TrangThai FROM [Hop dong] AS HD INNER JOIN [Nhan vien] AS NV ON HD.Ma_NV = NV.Ma_NV;\r\n";
+			string query = "SELECT HD.Ma_HD, HD.Ma_NV, NV.HoTen AS TenNhanVien, HD.NgayDangKy, HD.HanHopDong AS NgayHetHan, HD.TrangThai FROM [HopDong] AS HD INNER JOIN [NhanVien] AS NV ON HD.Ma_NV = NV.Ma_NV;\r\n";
 			DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
 			foreach (DataRow item in data.Rows)
@@ -66,7 +66,7 @@ namespace QuanLyNhanSu.DAO
 		{
 			List<HopdongDTO> list = new List<HopdongDTO>();
 
-			string query = string.Format("SELECT HD.Ma_HD, HD.Ma_NV, NV.HoTen AS TenNhanVien, HD.NgayDangKy, HD.Han_HD AS NgayHetHan, HD.TrangThai FROM [Hop dong] AS HD INNER JOIN [Nhan vien] AS NV ON HD.Ma_NV = NV.Ma_NV WHERE HD.Ma_HD LIKE N'{0}' OR NV.HoTen LIKE N'{1}' OR HD.Ma_NV LIKE '{2}';", value, value, value);
+			string query = string.Format("SELECT HD.Ma_HD, HD.Ma_NV, NV.HoTen AS TenNhanVien, HD.NgayDangKy, HD.HanHopDong AS NgayHetHan, HD.TrangThai FROM [HopDong] AS HD INNER JOIN [NhanVien] AS NV ON HD.Ma_NV = NV.Ma_NV WHERE HD.Ma_HD LIKE N'{0}' OR NV.HoTen LIKE N'%{1}%' OR HD.Ma_NV LIKE '{2}';", value, value, value);
 
 			Console.WriteLine(query);
 

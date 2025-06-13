@@ -43,7 +43,7 @@ namespace QuanLyNhanSu.DAO
 						THEN DATEDIFF(MINUTE, ci.ThoiGianCheckIn, co.ThoiGianCheckOut) / 60.0
 						ELSE 0.0  -- Không tính giờ nếu chưa checkout hoàn chỉnh
 					END AS SoGioLam
-				FROM [Nhan vien] nv
+				FROM [NhanVien] nv
 				INNER JOIN CheckIn ci ON nv.Ma_NV = ci.Ma_NV 
 				LEFT JOIN CheckOut co ON ci.Ma_NV = co.Ma_NV 
 					AND CAST(ci.NgayCheckIn AS DATE) = CAST(co.NgayCheckOut AS DATE)
@@ -86,7 +86,7 @@ namespace QuanLyNhanSu.DAO
 						THEN DATEDIFF(MINUTE, ci.ThoiGianCheckIn, co.ThoiGianCheckOut) / 60.0
 						ELSE 0.0  -- Không tính giờ nếu chưa checkout hoàn chỉnh
 					END AS SoGioLam
-				FROM [Nhan vien] nv
+				FROM [NhanVien] nv
 				INNER JOIN CheckIn ci ON nv.Ma_NV = ci.Ma_NV 
 				LEFT JOIN CheckOut co ON ci.Ma_NV = co.Ma_NV 
 					AND CAST(ci.NgayCheckIn AS DATE) = CAST(co.NgayCheckOut AS DATE)
@@ -135,7 +135,7 @@ namespace QuanLyNhanSu.DAO
 		{
 			string query = @"
 				SELECT DISTINCT nv.Ma_NV, nv.HoTen
-				FROM [Nhan vien] nv
+				FROM [NhanVien] nv
 				INNER JOIN CheckIn ci ON nv.Ma_NV = ci.Ma_NV
 				ORDER BY nv.Ma_NV";
 
@@ -159,7 +159,7 @@ namespace QuanLyNhanSu.DAO
 							ELSE 8.0  -- Mặc định 8 giờ nếu không có checkout
 						END
 					) AS TongGioLam
-				FROM [Nhan vien] nv
+				FROM [NhanVien] nv
 				LEFT JOIN CheckIn ci ON nv.Ma_NV = ci.Ma_NV 
 					AND MONTH(ci.NgayCheckIn) = {0} 
 					AND YEAR(ci.NgayCheckIn) = {1}
@@ -184,8 +184,8 @@ namespace QuanLyNhanSu.DAO
 				
 				string query = string.Format(@"
 					SELECT TOP 10
-						ci.MaCheckIn, ci.Ma_NV, ci.NgayCheckIn, ci.ThoiGianCheckIn, ci.GioCheckIn,
-						co.MaCheckOut, co.ThoiGianCheckOut, co.GioCheckOut,
+						ci.Ma_CheckIn, ci.Ma_NV, ci.NgayCheckIn, ci.ThoiGianCheckIn, ci.GioCheckIn,
+						co.Ma_CheckOut, co.ThoiGianCheckOut, co.GioCheckOut,
 						nv.HoTen,
 						CASE 
 							WHEN co.ThoiGianCheckOut IS NOT NULL AND ci.ThoiGianCheckIn IS NOT NULL
@@ -195,7 +195,7 @@ namespace QuanLyNhanSu.DAO
 					FROM CheckIn ci
 					LEFT JOIN CheckOut co ON ci.Ma_NV = co.Ma_NV 
 						AND CAST(ci.NgayCheckIn AS DATE) = CAST(co.NgayCheckOut AS DATE)
-					LEFT JOIN [Nhan vien] nv ON ci.Ma_NV = nv.Ma_NV
+					LEFT JOIN [NhanVien] nv ON ci.Ma_NV = nv.Ma_NV
 					WHERE MONTH(ci.NgayCheckIn) = {0} AND YEAR(ci.NgayCheckIn) = {1}
 					ORDER BY ci.NgayCheckIn DESC", currentMonth, currentYear);
 
@@ -223,7 +223,7 @@ namespace QuanLyNhanSu.DAO
 					SELECT 
 						'Tổng nhân viên' as ThongKe,
 						COUNT(DISTINCT nv.Ma_NV) as GiaTri
-					FROM [Nhan vien] nv
+					FROM [NhanVien] nv
 					UNION ALL
 					SELECT 
 						'Nhân viên có chấm công hôm nay' as ThongKe,

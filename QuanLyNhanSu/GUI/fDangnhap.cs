@@ -33,17 +33,20 @@ namespace QuanLyNhanSu
 
 			if (Login(txb_username.Text, txb_password.Text))
 			{
-				TaikhoanDTO loginAccount = TaikhoanDAO.Instance.GetAccountByUserName(userName);
+				// Lưu lịch sử đăng nhập
+				string diaChiIP = LichsudangnhapDAO.Instance.GetLocalIPAddress();
+				DateTime thoiGian = DateTime.Now;
+				LichsudangnhapDAO.Instance.Insert(userName, thoiGian, diaChiIP);
 
+				TaikhoanDTO loginAccount = TaikhoanDAO.Instance.GetAccountByUserName(userName);
 				string role = TaikhoanDAO.Instance.GetAccountRole(userName);
 
-				if(role == "Admin")
+				if (role == "Admin")
 				{
 					AdminDashboard f = new AdminDashboard(userName);
 					this.Hide();
 					f.ShowDialog();
 					this.Show();
-
 				}
 				if (role == "User")
 				{
@@ -98,5 +101,7 @@ namespace QuanLyNhanSu
 			quenmatkhauForm.ShowDialog();
 			this.Show();
 		}
+
+
 	}
 }

@@ -14,9 +14,7 @@ namespace QuanLyNhanSu.GUI
 	public partial class fQuanlydangkynghiphepUser : Form
 	{
 		private Color originalAddButtonColor;
-		private Color originalDeleteButtonColor;
 		private Color originalCloseButtonColor;
-		private Color originalSearchButtonColor;
 		private Color originalEditButtonColor;
 
 		BindingSource donNghiPhepList = new BindingSource();
@@ -32,13 +30,8 @@ namespace QuanLyNhanSu.GUI
 			LoadStaffNames();
 			LoadCbLoaiPhep();
 			SetupAutoCompleteForNguoiDuyet();
-			
-
-			//LoadCbTrangThai();
 			originalAddButtonColor = btn_themdonnghiphep.BackColor;
-			//originalDeleteButtonColor = btn_xoadonnghiphep.BackColor;
 			originalCloseButtonColor = btn_dongdonnghiphep.BackColor;
-			//originalSearchButtonColor = btn_timnhanvien.BackColor;
 			originalEditButtonColor = btn_suadonnghiphep.BackColor;
 
 		}
@@ -92,19 +85,8 @@ namespace QuanLyNhanSu.GUI
 			txb_nguoiduyet.AutoCompleteSource = AutoCompleteSource.CustomSource;
 			txb_nguoiduyet.AutoCompleteCustomSource = autoComplete;
 		}
-		//void LoadCbTrangThai()
-		//{
-		//	List<string> trangThai = new List<string>()
-		//	{
-		//		"Chờ duyệt", "Đã duyệt", "Từ chối"
-		//	};
-		//	cb_trangthai.DataSource = trangThai;
-		//}
+
 		#region Events
-		private void btn_findnv_Click(object sender, System.EventArgs e)
-		{
-			LoadDonNghiPhep(txb_manhanvien.Text);
-		}
 
 		private void btn_adddonnghiphep_Click(object sender, System.EventArgs e)
 		{
@@ -121,17 +103,17 @@ namespace QuanLyNhanSu.GUI
 
 				if (DonnghiphepDAO.Instance.InsertDonNghiPhep(manv, loaiphep, trangthai, lydo, ngaybd, ngaykt, nguoiduyet))
 				{
-					MessageBox.Show("Thêm đơn nghỉ phép thành công", "Thông báo");
+					MessageBox.Show("Thêm đơn nghỉ phép thành công", "Thông báo",MessageBoxButtons.OK, MessageBoxIcon.Information);
 					LoadDonNghiPhep(manv);
 				}
 				else
 				{
-					MessageBox.Show("Thêm đơn nghỉ phép thất bại", "Thông báo");
+					MessageBox.Show("Thêm đơn nghỉ phép thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
@@ -155,17 +137,17 @@ namespace QuanLyNhanSu.GUI
 
 				if (DonnghiphepDAO.Instance.UpdateDonNghiPhep(madonnghiphep, tennv, loaiphep, trangthai, lydo, ngaybd, ngaykt, nguoiduyet))
 				{
-					MessageBox.Show("Sửa đơn nghỉ phép thành công", "Thông báo");
+					MessageBox.Show("Sửa đơn nghỉ phép thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					LoadDonNghiPhep(manv);
 				}
 				else
 				{
-					MessageBox.Show("Sửa đơn nghỉ phép thất bại", "Thông báo");
+					MessageBox.Show("Sửa đơn nghỉ phép thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
@@ -173,32 +155,6 @@ namespace QuanLyNhanSu.GUI
 			}
 		}
 
-		private void btn_deletedonnghiphep_Click(object sender, EventArgs e)
-		{
-			string manv = txb_manhanvien.Text;
-			try
-			{
-				int madonnghiphep = Convert.ToInt32(dgv_donnghiphep.CurrentRow.Cells["MaDonNghiPhep"].Value);
-
-				if (DonnghiphepDAO.Instance.DeleteDonNghiPhep(madonnghiphep))
-				{
-					MessageBox.Show("Xóa đơn nghỉ phép thành công", "Thông báo");
-					LoadDonNghiPhep(manv);
-				}
-				else
-				{
-					MessageBox.Show("Xóa đơn nghỉ phép thất bại", "Thông báo");
-				}
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
-			finally
-			{
-				LoadDonNghiPhep(manv);
-			}
-		}
 
 		private void btn_closedonnghiphep_Click(object sender, EventArgs e)
 		{
@@ -215,14 +171,7 @@ namespace QuanLyNhanSu.GUI
 		{
 			btn_themdonnghiphep.BackColor = originalAddButtonColor;
 		}
-		//private void btn_xoadonnghiphep_MouseEnter(object sender, EventArgs e)
-		//{
-		//	btn_xoadonnghiphep.BackColor = Color.LightBlue;
-		//}
-		//private void btn_xoadonnghiphep_MouseLeave(object sender, EventArgs e)
-		//{
-		//	btn_xoadonnghiphep.BackColor = originalDeleteButtonColor;
-		//}
+
 		private void btn_dongdonnghiphep_MouseEnter(object sender, EventArgs e)
 		{
 			btn_dongdonnghiphep.BackColor = Color.LightBlue;
@@ -231,14 +180,7 @@ namespace QuanLyNhanSu.GUI
 		{
 			btn_dongdonnghiphep.BackColor = originalCloseButtonColor;
 		}
-		//private void btn_timnhanvien_MouseEnter(object sender, EventArgs e)
-		//{
-		//	btn_timnhanvien.BackColor = Color.LightBlue;
-		//}
-		//private void btn_timnhanvien_MouseLeave(object sender, EventArgs e)
-		//{
-		//	btn_timnhanvien.BackColor = originalSearchButtonColor;
-		//}
+
 		private void btn_suadonnghiphep_MouseEnter(object sender, EventArgs e)
 		{
 			btn_suadonnghiphep.BackColor = Color.LightBlue;
@@ -248,5 +190,6 @@ namespace QuanLyNhanSu.GUI
 			btn_suadonnghiphep.BackColor = originalEditButtonColor;
 		}
 		#endregion
+
 	}
 }

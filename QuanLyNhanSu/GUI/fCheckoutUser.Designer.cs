@@ -37,7 +37,7 @@
 			this.lb_giocheckout = new System.Windows.Forms.Label();
 			this.lb_tennhanvien = new System.Windows.Forms.Label();
 			this.lb_manhanvien = new System.Windows.Forms.Label();
-			this.giocheckout = new System.Windows.Forms.Timer(this.components);
+			this.timer_giocheckout = new System.Windows.Forms.Timer(this.components);
 			this.dgv_checkout = new System.Windows.Forms.DataGridView();
 			this.MaCheckOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,6 +75,7 @@
 			this.btn_checkout.UseVisualStyleBackColor = false;
 			this.btn_checkout.Click += new System.EventHandler(this.btn_checkout_Click);
 			this.btn_checkout.MouseEnter += new System.EventHandler(this.btn_checkout_MouseEnter);
+			this.btn_checkout.MouseLeave += new System.EventHandler(this.btn_checkout_MouseLeave);
 			// 
 			// txb_manhanvien
 			// 
@@ -88,10 +89,10 @@
 			// lb_giocheckout
 			// 
 			this.lb_giocheckout.AutoSize = true;
-			this.lb_giocheckout.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lb_giocheckout.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lb_giocheckout.Location = new System.Drawing.Point(12, 211);
 			this.lb_giocheckout.Name = "lb_giocheckout";
-			this.lb_giocheckout.Size = new System.Drawing.Size(223, 45);
+			this.lb_giocheckout.Size = new System.Drawing.Size(202, 41);
 			this.lb_giocheckout.TabIndex = 13;
 			this.lb_giocheckout.Text = "Giờ checkout";
 			// 
@@ -115,9 +116,11 @@
 			this.lb_manhanvien.TabIndex = 11;
 			this.lb_manhanvien.Text = "Mã nhân viên";
 			// 
-			// giocheckout
+			// timer_giocheckout
 			// 
-			this.giocheckout.Enabled = true;
+			this.timer_giocheckout.Enabled = true;
+			this.timer_giocheckout.Interval = 1000;
+			this.timer_giocheckout.Tick += new System.EventHandler(this.giocheckout_Tick);
 			// 
 			// dgv_checkout
 			// 
@@ -176,7 +179,7 @@
 			this.NgayCheckOut.HeaderText = "Ngày checkout";
 			this.NgayCheckOut.MinimumWidth = 6;
 			this.NgayCheckOut.Name = "NgayCheckOut";
-			this.NgayCheckOut.Width = 125;
+			this.NgayCheckOut.Width = 80;
 			// 
 			// Giocheck_out
 			// 
@@ -184,7 +187,7 @@
 			this.Giocheck_out.HeaderText = "Giờ checkout";
 			this.Giocheck_out.MinimumWidth = 6;
 			this.Giocheck_out.Name = "Giocheck_out";
-			this.Giocheck_out.Width = 125;
+			this.Giocheck_out.Width = 80;
 			// 
 			// txb_tennhanvien
 			// 
@@ -225,7 +228,8 @@
 			this.Controls.Add(this.txb_tennhanvien);
 			this.Controls.Add(this.btn_dongcheckout);
 			this.Name = "fCheckoutUser";
-			this.Text = "fCheckoutUser";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.Text = "Checkout";
 			((System.ComponentModel.ISupportInitialize)(this.dgv_checkout)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -240,14 +244,14 @@
 		private System.Windows.Forms.Label lb_giocheckout;
 		private System.Windows.Forms.Label lb_tennhanvien;
 		private System.Windows.Forms.Label lb_manhanvien;
-		private System.Windows.Forms.Timer giocheckout;
+		private System.Windows.Forms.Timer timer_giocheckout;
 		private System.Windows.Forms.DataGridView dgv_checkout;
+		private System.Windows.Forms.TextBox txb_tennhanvien;
+		private System.Windows.Forms.Button btn_dongcheckout;
 		private System.Windows.Forms.DataGridViewTextBoxColumn MaCheckOut;
 		private System.Windows.Forms.DataGridViewTextBoxColumn MaNV;
 		private System.Windows.Forms.DataGridViewTextBoxColumn TenNV;
 		private System.Windows.Forms.DataGridViewTextBoxColumn NgayCheckOut;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Giocheck_out;
-		private System.Windows.Forms.TextBox txb_tennhanvien;
-		private System.Windows.Forms.Button btn_dongcheckout;
 	}
 }

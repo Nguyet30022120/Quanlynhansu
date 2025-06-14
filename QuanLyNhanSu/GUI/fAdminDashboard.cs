@@ -306,7 +306,7 @@ namespace QuanLyNhanSu
 		#region Bangluong
 		private void btn_quanlybangluong_Click(object sender, EventArgs e)
 		{
-			fBangluong f = new fBangluong();
+			fQuanlybangluong f = new fQuanlybangluong();
 			this.Hide();
 			f.ShowDialog();
 			this.Show();

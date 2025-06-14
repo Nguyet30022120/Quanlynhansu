@@ -36,7 +36,7 @@ namespace QuanLyNhanSu.GUI
 		{
 			duyetDonNghiPhepList.DataSource = DonnghiphepDAO.Instance.GetDonNghiPhepCanDuyet();
 		}
-
+		#region Events
 		private void btn_dong_Click(object sender, EventArgs e)
 		{
 			this.Close();
@@ -50,17 +50,17 @@ namespace QuanLyNhanSu.GUI
 
 				if (DonnghiphepDAO.Instance.DuyetDonNghiPhep(madon))
 				{
-					MessageBox.Show("Duyệt đơn nghỉ phép thành công", "Thông báo");
+					MessageBox.Show("Duyệt đơn nghỉ phép thành công", "Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Information);
 					LoadDonNghiPhep();
 				}
 				else
 				{
-					MessageBox.Show("Duyệt đơn nghỉ phép thất bại", "Thông báo");
+					MessageBox.Show("Duyệt đơn nghỉ phép thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
@@ -76,17 +76,17 @@ namespace QuanLyNhanSu.GUI
 
 				if (DonnghiphepDAO.Instance.TuChoiDonNghiPhep(madon))
 				{
-					MessageBox.Show("Từ chối đơn nghỉ phép thành công", "Thông báo");
+					MessageBox.Show("Từ chối đơn nghỉ phép thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					LoadDonNghiPhep();
 				}
 				else
 				{
-					MessageBox.Show("Từ chối đơn nghỉ phép thất bại", "Thông báo");
+					MessageBox.Show("Từ chối đơn nghỉ phép thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
@@ -96,9 +96,19 @@ namespace QuanLyNhanSu.GUI
 
 		private void btn_timkiemdonnghiphep_Click(object sender, EventArgs e)
 		{
-			duyetDonNghiPhepList.DataSource = DonnghiphepDAO.Instance.SearchDonnghiphep(txb_timkiemdonnghiphep.Text);
-		}
+			string keyword = txb_timkiemdonnghiphep.Text.Trim();
 
+			if (string.IsNullOrEmpty(keyword))
+			{
+				LoadDonNghiPhep(); 
+			}
+			else
+			{
+				duyetDonNghiPhepList.DataSource = DonnghiphepDAO.Instance.SearchDonnghiphep(keyword);
+			}
+		}
+		#endregion
+		#region Hovers
 		private void btn_duyet_MouseEnter(object sender, EventArgs e)
 		{
 			btn_duyet.BackColor = Color.LightBlue;
@@ -131,6 +141,6 @@ namespace QuanLyNhanSu.GUI
 		{
 			btn_timkiemdonnghiphep.BackColor = originalSearchButtonColor;
 		}
-
+		#endregion
 	}
 }

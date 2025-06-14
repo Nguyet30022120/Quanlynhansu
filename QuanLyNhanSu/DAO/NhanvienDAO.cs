@@ -54,7 +54,7 @@ namespace QuanLyNhanSu.DAO
 				return data.Rows[0]["HoTen"].ToString();
 			}
 
-			return null; // hoặc return string.Empty;
+			return null; 
 		}
 
 		public bool IsStaffExistsByEmail(string email)

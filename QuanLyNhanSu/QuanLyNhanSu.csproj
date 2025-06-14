@@ -231,7 +231,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\DonnghiphepDAO.cs" />
-    <Compile Include="DAO\Function.cs" />
     <Compile Include="DAO\LichsudangnhapDAO.cs" />
     <Compile Include="DAO\LuongcobanDAO.cs" />
     <Compile Include="DAO\PhucapDAO.cs" />
@@ -263,7 +262,7 @@
     <Compile Include="DTO\DonnghiphepDTO.cs" />
     <Compile Include="DTO\LichsudangnhapDTO.cs" />
     <Compile Include="DTO\LuongcobanDTO.cs" />
-    <Compile Include="DTO\NguoidungDTO1.cs" />
+    <Compile Include="DTO\NguoidungDTO.cs" />
     <Compile Include="DTO\PhucapDTO.cs" />
     <Compile Include="DTO\TaikhoanDTO.cs" />
     <Compile Include="DTO\CheckinDTO.cs" />
@@ -289,18 +288,18 @@
     <Compile Include="DTO\NguonungvienDTO.cs" />
     <Compile Include="DTO\NhanvienDTO.cs" />
     <Compile Include="DTO\DaotaoDTO.cs" />
-    <Compile Include="DTO\NguoidungDTO.cs" />
-    <Compile Include="GUI\fBangluong.cs">
+    <Compile Include="DTO\UserDTO.cs" />
+    <Compile Include="GUI\fQuanlybangluong.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\fBangluong.Designer.cs">
-      <DependentUpon>fBangluong.cs</DependentUpon>
+    <Compile Include="GUI\fQuanlybangluong.Designer.cs">
+      <DependentUpon>fQuanlybangluong.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\fBangluongUser.cs">
+    <Compile Include="GUI\fQuanlybangluongUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\fBangluongUser.Designer.cs">
-      <DependentUpon>fBangluongUser.cs</DependentUpon>
+    <Compile Include="GUI\fQuanlybangluongUser.Designer.cs">
+      <DependentUpon>fQuanlybangluongUser.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\fCheckinUser.cs">
       <SubType>Form</SubType>
@@ -374,12 +373,6 @@
     <Compile Include="GUI\fQuanlylichsudangnhap.Designer.cs">
       <DependentUpon>fQuanlylichsudangnhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\fQuanlyluong.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\fQuanlyluong.Designer.cs">
-      <DependentUpon>fQuanlyluong.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\fQuanlyluongcoban.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -446,18 +439,6 @@
     <Compile Include="GUI\fQuenmatkhau.Designer.cs">
       <DependentUpon>fQuenmatkhau.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\fSuaCheckin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\fSuaCheckin.Designer.cs">
-      <DependentUpon>fSuaCheckin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\fSuaCheckout.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\fSuaCheckout.Designer.cs">
-      <DependentUpon>fSuaCheckout.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\fThongkekhenthuongkyluat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -518,12 +499,6 @@
     <Compile Include="GUI\fThongketongquannhansu.Designer.cs">
       <DependentUpon>fThongketongquannhansu.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\fQuanlythuongvaphucloinhanvien.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\fQuanlythuongvaphucloinhanvien.Designer.cs">
-      <DependentUpon>fQuanlythuongvaphucloinhanvien.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\fQuanlylichphongvan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -581,11 +556,11 @@
     <Compile Include="GUI\fQuanlynguoidung.Designer.cs">
       <DependentUpon>fQuanlynguoidung.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="GUI\fBangluong.resx">
-      <DependentUpon>fBangluong.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\fQuanlybangluong.resx">
+      <DependentUpon>fQuanlybangluong.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\fBangluongUser.resx">
-      <DependentUpon>fBangluongUser.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\fQuanlybangluongUser.resx">
+      <DependentUpon>fQuanlybangluongUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\fCheckinUser.resx">
       <DependentUpon>fCheckinUser.cs</DependentUpon>
@@ -655,12 +630,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\fQuenmatkhau.resx">
       <DependentUpon>fQuenmatkhau.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\fSuaCheckin.resx">
-      <DependentUpon>fSuaCheckin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\fSuaCheckout.resx">
-      <DependentUpon>fSuaCheckout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\fThongkekhenthuongkyluat.resx">
       <DependentUpon>fThongkekhenthuongkyluat.cs</DependentUpon>

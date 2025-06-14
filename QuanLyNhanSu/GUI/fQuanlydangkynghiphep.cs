@@ -115,17 +115,17 @@ namespace QuanLyNhanSu.GUI
 
 				if (DonnghiphepDAO.Instance.InsertDonNghiPhep(manv,loaiphep,trangthai,lydo,ngaybd,ngaykt,nguoiduyet))
 				{
-					MessageBox.Show("Thêm đơn nghỉ phép thành công", "Thông báo");
+					MessageBox.Show("Thêm đơn nghỉ phép thành công", "Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Information);
 					LoadDonNghiPhep(manv);
 				}
 				else
 				{
-					MessageBox.Show("Thêm đơn nghỉ phép thất bại", "Thông báo");
+					MessageBox.Show("Thêm đơn nghỉ phép thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
@@ -149,17 +149,17 @@ namespace QuanLyNhanSu.GUI
 
 				if (DonnghiphepDAO.Instance.UpdateDonNghiPhep(madonnghiphep, tennv, loaiphep, trangthai, lydo, ngaybd, ngaykt, nguoiduyet))
 				{
-					MessageBox.Show("Sửa đơn nghỉ phép thành công", "Thông báo");
+					MessageBox.Show("Sửa đơn nghỉ phép thành công", "Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Information);
 					LoadDonNghiPhep(manv);
 				}
 				else
 				{
-					MessageBox.Show("Sửa đơn nghỉ phép thất bại", "Thông báo");
+					MessageBox.Show("Sửa đơn nghỉ phép thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
@@ -176,12 +176,12 @@ namespace QuanLyNhanSu.GUI
 
 				if (DonnghiphepDAO.Instance.DeleteDonNghiPhep(madonnghiphep))
 				{
-					MessageBox.Show("Xóa đơn nghỉ phép thành công", "Thông báo");
+					MessageBox.Show("Xóa đơn nghỉ phép thành công", "Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Information);
 					LoadDonNghiPhep(manv);
 				}
 				else
 				{
-					MessageBox.Show("Xóa đơn nghỉ phép thất bại", "Thông báo");
+					MessageBox.Show("Xóa đơn nghỉ phép thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)

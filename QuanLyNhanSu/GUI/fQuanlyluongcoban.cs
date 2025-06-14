@@ -13,24 +13,29 @@ namespace QuanLyNhanSu.GUI
 {
 	public partial class fQuanlyluongcoban : Form
 	{
+		private Color originalEditButtonColor;
+		private Color originalSearchButtonColor;
+		private Color originalCloseButtonColor;
+
 		BindingSource luongList = new BindingSource();
+
 		public fQuanlyluongcoban()
 		{
 			InitializeComponent();
 			luongList.DataSource = LuongcobanDAO.Instance.GetLuongCoBan();
 			dgv_luongcoban.DataSource = luongList;
 			BindingLuongCoBanData();
+			originalCloseButtonColor = btn_dong.BackColor;
+			originalEditButtonColor = btn_sua.BackColor;
+			originalSearchButtonColor = btn_tim.BackColor;
 		}
-		//void LoadLuongCoBan()
-		//{
-		//	dgv_luongcoban.DataSource = luongList;
-		//}
+
 		void BindingLuongCoBanData()
 		{
 			txb_tennhanvien.DataBindings.Add(new Binding("Text", dgv_luongcoban.DataSource, "TenNV", true, DataSourceUpdateMode.Never));
 			txb_luongcoban.DataBindings.Add(new Binding("Text", dgv_luongcoban.DataSource, "LuongCoSo", true, DataSourceUpdateMode.Never));
 		}
-
+		#region Events
 		private void btn_dong_Click(object sender, EventArgs e)
 		{
 			this.Close();
@@ -40,29 +45,22 @@ namespace QuanLyNhanSu.GUI
 		{
 			try
 			{
-				// Kiểm tra nếu chưa chọn dòng nào
-				if (dgv_luongcoban.SelectedRows.Count == 0)
-				{
-					MessageBox.Show("Vui lòng chọn một dòng để sửa.", "Thông báo");
-					return;
-				}
-
-				string maLuong = dgv_luongcoban.SelectedRows[0].Cells["MaLuong"].Value.ToString();
+				string maLuong = dgv_luongcoban.CurrentRow.Cells["MaLuong"].Value.ToString();
 				decimal luongCoSo = Convert.ToDecimal(txb_luongcoban.Text);
 
 				if (LuongcobanDAO.Instance.UpdateLuongCoBan(maLuong, luongCoSo))
 				{
-					MessageBox.Show("Cập nhật lương cơ bản thành công", "Thông báo");
+					MessageBox.Show("Cập nhật lương cơ bản thành công", "Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Information);
 					luongList.DataSource = LuongcobanDAO.Instance.GetLuongCoBan();
 				}
 				else
 				{
-					MessageBox.Show("Cập nhật lương cơ bản thất bại", "Thông báo");
+					MessageBox.Show("Cập nhật lương cơ bản thất bại", "Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Lỗi: " + ex.Message, "Thông báo");
+				MessageBox.Show("Error: " + ex.Message, "Thông báo",MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 
@@ -72,12 +70,6 @@ namespace QuanLyNhanSu.GUI
 			{
 				string searchValue = txb_timnhanvien.Text.Trim();
 
-				if (string.IsNullOrEmpty(searchValue))
-				{
-					MessageBox.Show("Vui lòng nhập giá trị tìm kiếm.", "Thông báo");
-					return;
-				}
-
 				var ketQua = LuongcobanDAO.Instance.SearchLuongCoBan(searchValue);
 
 				if (ketQua != null && ketQua.Count > 0)
@@ -86,15 +78,43 @@ namespace QuanLyNhanSu.GUI
 				}
 				else
 				{
-					MessageBox.Show("Không tìm thấy kết quả nào.", "Thông báo");
-					luongList.DataSource = LuongcobanDAO.Instance.GetLuongCoBan(); // Trả lại danh sách gốc
+					MessageBox.Show("Không tìm thấy kết quả nào.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					luongList.DataSource = LuongcobanDAO.Instance.GetLuongCoBan(); 
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Lỗi: " + ex.Message, "Thông báo");
+				MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
+		#endregion
+		#region Hovers
+		private void btn_dong_MouseEnter(object sender, EventArgs e)
+		{
+			btn_dong.BackColor = Color.LightBlue;
+		}
+		private void btn_dong_MouseLeave(object sender, EventArgs e)
+		{
+			btn_dong.BackColor = originalCloseButtonColor;
+		}
+		private void btn_sua_MouseEnter(object sender, EventArgs e)
+		{
+			btn_sua.BackColor = Color.LightBlue;
+		}
+		private void btn_sua_MouseLeave(object sender, EventArgs e)
+		{
+			btn_sua.BackColor = originalEditButtonColor;
+		}
+		private void btn_tim_MouseEnter(object sender, EventArgs e)
+		{
+			btn_tim.BackColor = Color.LightBlue;
+		}
+		private void btn_tim_MouseLeave(object sender, EventArgs e)
+		{
+			btn_tim.BackColor = originalSearchButtonColor;
+		}
+		#endregion
+
 
 	}
 }

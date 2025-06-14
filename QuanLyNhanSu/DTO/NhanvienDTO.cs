@@ -35,7 +35,7 @@ namespace QuanLyNhanSu.DTO
 			this.CCCD = row["CCCD"].ToString();
 			this.DienThoai = row["DienThoai"].ToString();
 			this.DiaChi = row["DiaChi"].ToString();
-			this.GioiTinh = row["GioiTinh"] != DBNull.Value ? row["GioiTinh"].ToString() : "Không xác định"; // Assuming GioiTinh is a string
+			this.GioiTinh = row["GioiTinh"] != DBNull.Value ? row["GioiTinh"].ToString() : "Không xác định"; 
 			this.NgaySinh = row["NgaySinh"] != DBNull.Value ? (DateTime?)row["NgaySinh"] : null;
 			this.Email = row["Email"].ToString();
 		}

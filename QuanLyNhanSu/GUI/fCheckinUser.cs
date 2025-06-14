@@ -16,7 +16,6 @@ namespace QuanLyNhanSu.GUI
 		private Color originalAddButtonColor;
 		private Color originalDeleteButtonColor;
 		private Color originalCloseButtonColor;
-		private Color originalSearchButtonColor;
 
 		BindingSource checkinList = new BindingSource();
 		public fCheckinUser(string manv)
@@ -25,14 +24,13 @@ namespace QuanLyNhanSu.GUI
 			dgv_checkin.DataSource = checkinList;
 			txb_manhanvien.Text = manv;
 			lb_giocheckin.Text = DateTime.Now.ToLongTimeString();
-			timer1.Start();
+			timer_giocheckin.Start();
 			var col = dgv_checkin.Columns["GioCheckIn"];
 			if (col != null)
 				col.DefaultCellStyle.Format = "HH:mm:ss";
 			LoadCheckIn(manv);
 			originalAddButtonColor = btn_checkin.BackColor;
 			originalDeleteButtonColor = btn_xoacheckin.BackColor;
-			//originalSearchButtonColor = btn_timnhanvien.BackColor;
 			originalCloseButtonColor = btn_dongcheckin.BackColor;
 			LoadTenNV();
 
@@ -64,18 +62,6 @@ namespace QuanLyNhanSu.GUI
 		}
 
 		#region Events
-		private void btn_findnv_Click(object sender, EventArgs e)
-		{
-			try
-			{
-				LoadCheckIn(txb_manhanvien.Text);
-				LoadTenNV();
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Lỗi tìm kiếm nhân viên: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
-		}
 
 		private void btn_checkin_Click(object sender, EventArgs e)
 		{
@@ -94,17 +80,17 @@ namespace QuanLyNhanSu.GUI
 
 				if (CheckinDAO.Instance.InsertCheckIn(manv))
 				{
-					MessageBox.Show("Thêm checkin thành công", "Thông báo");
+					MessageBox.Show("Thêm checkin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					LoadCheckIn(txb_manhanvien.Text);
 				}
 				else
 				{
-					MessageBox.Show("Thêm checkin thất bại", "Thông báo");
+					MessageBox.Show("Thêm checkin thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Hãy nhập mã nhân viên", "Thông báo");
+				MessageBox.Show("Hãy nhập mã nhân viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
@@ -124,17 +110,17 @@ namespace QuanLyNhanSu.GUI
 				int macheckin = Convert.ToInt32(dgv_checkin.CurrentRow.Cells["MaCheckIn"].Value);
 				if (CheckinDAO.Instance.DeleteCheckIn(macheckin))
 				{
-					MessageBox.Show("Xóa checkin thành công", "Thông báo");
+					MessageBox.Show("Xóa checkin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					LoadCheckIn(txb_manhanvien.Text);
 				}
 				else
 				{
-					MessageBox.Show("Xóa checkin thất bại", "Thông báo");
+					MessageBox.Show("Xóa checkin thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
@@ -161,14 +147,6 @@ namespace QuanLyNhanSu.GUI
 		{
 			btn_xoacheckin.BackColor = originalDeleteButtonColor;
 		}
-		//private void btn_timnhanvien_MouseEnter(object sender, EventArgs e)
-		//{
-		//	btn_timnhanvien.BackColor = Color.LightBlue;
-		//}
-		//private void btn_timnhanvien_MouseLeave(object sender, EventArgs e)
-		//{
-		//	btn_timnhanvien.BackColor = originalSearchButtonColor;
-		//}
 		private void btn_dongcheckin_MouseEnter(object sender, EventArgs e)
 		{
 			btn_dongcheckin.BackColor = Color.LightBlue;

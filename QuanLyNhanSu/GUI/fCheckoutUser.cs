@@ -16,7 +16,6 @@ namespace QuanLyNhanSu.GUI
 		private Color originalAddButtonColor;
 		private Color originalDeleteButtonColor;
 		private Color originalCloseButtonColor;
-		private Color originalSearchButtonColor;
 
 		BindingSource checkoutList = new BindingSource();
 		public fCheckoutUser(string manv)
@@ -24,13 +23,12 @@ namespace QuanLyNhanSu.GUI
 			InitializeComponent();
 			txb_manhanvien.Text = manv;
 			lb_giocheckout.Text = DateTime.Now.ToLongTimeString();
-			giocheckout.Start();
+			timer_giocheckout.Start();
 			dgv_checkout.DataSource = checkoutList;
 			var col = dgv_checkout.Columns["GioCheckOut"];
 			if (col != null)
 				col.DefaultCellStyle.Format = "HH:mm:ss";
 			LoadCheckOut(manv);
-			//originalSearchButtonColor = btn_timnhanvien.BackColor;
 			originalAddButtonColor = btn_checkout.BackColor;
 			originalDeleteButtonColor = btn_xoacheckout.BackColor;
 			originalCloseButtonColor = btn_dongcheckout.BackColor;
@@ -51,18 +49,7 @@ namespace QuanLyNhanSu.GUI
 			checkoutList.DataSource = CheckoutDAO.Instance.GetCheckOutByMaNV(manv);
 		}
 		#region Events
-		private void btn_findnv_Click(object sender, EventArgs e)
-		{
-			try
-			{
-				LoadCheckOut(txb_manhanvien.Text);
-				LoadTenNV();
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Lỗi tìm kiếm nhân viên: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
-		}
+		
 
 		private void btn_checkout_Click(object sender, EventArgs e)
 		{
@@ -80,17 +67,17 @@ namespace QuanLyNhanSu.GUI
 
 				if (CheckoutDAO.Instance.InsertCheckOut(manv))
 				{
-					MessageBox.Show("Thêm checkout thành công.", "Thông báo");
+					MessageBox.Show("Thêm checkout thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					LoadCheckOut(txb_manhanvien.Text);
 				}
 				else
 				{
-					MessageBox.Show("Thêm checkout thất bại.", "Thông báo");
+					MessageBox.Show("Thêm checkout thất bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
@@ -106,17 +93,17 @@ namespace QuanLyNhanSu.GUI
 				int macheckout = Convert.ToInt32(dgv_checkout.CurrentRow.Cells["MaCheckOut"].Value);
 				if (CheckoutDAO.Instance.DeleteCheckOut(macheckout))
 				{
-					MessageBox.Show("Xóa checkout thành công.", "Thông báo");
+					MessageBox.Show("Xóa checkout thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					LoadCheckOut(txb_manhanvien.Text);
 				}
 				else
 				{
-					MessageBox.Show("Xóa checkout thất bại.", "Thông báo");
+					MessageBox.Show("Xóa checkout thất bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
@@ -131,14 +118,7 @@ namespace QuanLyNhanSu.GUI
 		#endregion
 
 		#region Hover
-		//private void btn_timnhanvien_MouseEnter(object sender, EventArgs e)
-		//{
-		//	btn_timnhanvien.BackColor = Color.LightBlue;
-		//}
-		//private void btn_timnhanvien_MouseLeave(object sender, EventArgs e)
-		//{
-		//	btn_timnhanvien.BackColor = originalSearchButtonColor;
-		//}
+
 		private void btn_checkout_MouseEnter(object sender, EventArgs e)
 		{
 			btn_checkout.BackColor = Color.LightBlue;

@@ -31,7 +31,7 @@ namespace QuanLyNhanSu.GUI
 
 
 			int nam = Convert.ToInt32(cb_nam.SelectedItem);
-			int thang = 0; 
+			int thang = Convert.ToInt32(cb_thang.SelectedItem);
 			List<ThongketuyendungDTO> dataList = ThongketuyendungDAO.Instance.GetTyLeTuyenDung(nam, thang);
 			DataTable dataTable = ConvertListToDataTable(dataList);
 			LoadChartTuyenDung(dataTable);
@@ -41,12 +41,11 @@ namespace QuanLyNhanSu.GUI
 		void LoadInitialData()
 		{
 			cb_thang.Items.Clear();
-			cb_thang.Items.Add("--Tất cả các tháng--");
 			for (int i = 1; i <= 12; i++)
 			{
 				cb_thang.Items.Add(i);
 			}
-			cb_thang.SelectedIndex = 0; 
+			cb_thang.SelectedIndex = -1;
 
 			int currentYear = DateTime.Now.Year;
 			cb_nam.Items.Clear();
@@ -86,7 +85,7 @@ namespace QuanLyNhanSu.GUI
 					csvContent.AppendLine();
 				}
 
-				System.IO.File.WriteAllText(filePath, csvContent.ToString());
+				System.IO.File.WriteAllText(filePath, csvContent.ToString(), new UTF8Encoding(true));
 			}
 			catch (Exception ex)
 			{
@@ -249,5 +248,6 @@ namespace QuanLyNhanSu.GUI
 			btn_dong.BackColor = originalCloseButtonColor;
 		}
 		#endregion
+
 	}
 }

@@ -27,11 +27,11 @@ namespace QuanLyNhanSu
 
 		void LoadDataUser(string userName)
 		{
-			List<NguoidungDTO> data = NguoidungDAO.Instance.GetInforNVByUsername(userName);
+			List<UserDTO> data = NguoidungDAO.Instance.GetInforNVByUsername(userName);
 
 			if (data.Count > 0)
 			{
-				NguoidungDTO user = data[0];
+				UserDTO user = data[0];
 				txb_tendangnhap.Text = user.TaiKhoan;
 			}
 			else

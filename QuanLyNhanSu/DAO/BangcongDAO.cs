@@ -17,9 +17,7 @@ namespace QuanLyNhanSu.DAO
 			private set { instance = value; }
 		}
 
-		/// <summary>
 		/// Lấy bảng công của tất cả nhân viên theo tháng/năm với tính toán giờ làm thực tế
-		/// </summary>
 		public List<BangcongDTO> GetBangCongTheoThang(int thang, int nam)
 		{
 			List<BangcongDTO> list = new List<BangcongDTO>();
@@ -60,9 +58,7 @@ namespace QuanLyNhanSu.DAO
 			return list;
 		}
 
-		/// <summary>
 		/// Lấy bảng công của một nhân viên theo tháng/năm với tính toán giờ làm thực tế
-		/// </summary>
 		public List<BangcongDTO> GetBangCongNhanVienTheoThang(string maNV, int thang, int nam)
 		{
 			List<BangcongDTO> list = new List<BangcongDTO>();
@@ -103,34 +99,8 @@ namespace QuanLyNhanSu.DAO
 			return list;
 		}
 
-		/// <summary>
-		/// Tính tổng số giờ làm việc thực tế của nhân viên trong tháng
-		/// </summary>
-		public double GetTongGioLamTheoThang(string maNV, int thang, int nam)
-		{
-			string query = string.Format(@"
-				SELECT 
-					SUM(
-						CASE 
-							WHEN co.ThoiGianCheckOut IS NOT NULL AND ci.ThoiGianCheckIn IS NOT NULL
-							THEN DATEDIFF(MINUTE, ci.ThoiGianCheckIn, co.ThoiGianCheckOut) / 60.0
-							ELSE 0.0  -- Không tính giờ nếu chưa checkout hoàn chỉnh
-						END
-					) as TongGioLam
-				FROM CheckIn ci
-				LEFT JOIN CheckOut co ON ci.Ma_NV = co.Ma_NV 
-					AND CAST(ci.NgayCheckIn AS DATE) = CAST(co.NgayCheckOut AS DATE)
-				WHERE ci.Ma_NV = '{0}' 
-					AND MONTH(ci.NgayCheckIn) = {1} 
-					AND YEAR(ci.NgayCheckIn) = {2}", maNV, thang, nam);
 
-			object result = DataProvider.Instance.ExcuteScalar(query);
-			return result != null && result != DBNull.Value ? Convert.ToDouble(result) : 0;
-		}
-
-		/// <summary>
 		/// Lấy danh sách nhân viên có dữ liệu chấm công
-		/// </summary>
 		public DataTable GetDanhSachNhanVienCoChamCong()
 		{
 			string query = @"
@@ -142,112 +112,5 @@ namespace QuanLyNhanSu.DAO
 			return DataProvider.Instance.ExecuteQuery(query);
 		}
 
-		/// <summary>
-		/// Thống kê tổng quan chấm công trong tháng với tính toán giờ làm thực tế
-		/// </summary>
-		public DataTable GetThongKeChamCongThang(int thang, int nam)
-		{
-			string query = string.Format(@"
-				SELECT 
-					nv.Ma_NV,
-					nv.HoTen,
-					COUNT(ci.NgayCheckIn) AS SoNgayLam,
-					SUM(
-						CASE 
-							WHEN co.ThoiGianCheckOut IS NOT NULL AND ci.ThoiGianCheckIn IS NOT NULL
-							THEN DATEDIFF(MINUTE, ci.ThoiGianCheckIn, co.ThoiGianCheckOut) / 60.0
-							ELSE 8.0  -- Mặc định 8 giờ nếu không có checkout
-						END
-					) AS TongGioLam
-				FROM [NhanVien] nv
-				LEFT JOIN CheckIn ci ON nv.Ma_NV = ci.Ma_NV 
-					AND MONTH(ci.NgayCheckIn) = {0} 
-					AND YEAR(ci.NgayCheckIn) = {1}
-				LEFT JOIN CheckOut co ON ci.Ma_NV = co.Ma_NV 
-					AND CAST(ci.NgayCheckIn AS DATE) = CAST(co.NgayCheckOut AS DATE)
-				GROUP BY nv.Ma_NV, nv.HoTen
-				ORDER BY nv.Ma_NV", thang, nam);
-
-			return DataProvider.Instance.ExecuteQuery(query);
-		}
-
-		/// <summary>
-		/// Test kết nối và lấy dữ liệu thô từ database
-		/// </summary>
-		public DataTable TestConnection()
-		{
-			try
-			{
-				// Sử dụng tháng/năm hiện tại thay vì hardcode
-				int currentMonth = DateTime.Now.Month;
-				int currentYear = DateTime.Now.Year;
-				
-				string query = string.Format(@"
-					SELECT TOP 10
-						ci.Ma_CheckIn, ci.Ma_NV, ci.NgayCheckIn, ci.ThoiGianCheckIn, ci.GioCheckIn,
-						co.Ma_CheckOut, co.ThoiGianCheckOut, co.GioCheckOut,
-						nv.HoTen,
-						CASE 
-							WHEN co.ThoiGianCheckOut IS NOT NULL AND ci.ThoiGianCheckIn IS NOT NULL
-							THEN DATEDIFF(MINUTE, ci.ThoiGianCheckIn, co.ThoiGianCheckOut) / 60.0
-							ELSE 0.0  -- Không tính giờ nếu chưa checkout
-						END AS SoGioLamTinhToan
-					FROM CheckIn ci
-					LEFT JOIN CheckOut co ON ci.Ma_NV = co.Ma_NV 
-						AND CAST(ci.NgayCheckIn AS DATE) = CAST(co.NgayCheckOut AS DATE)
-					LEFT JOIN [NhanVien] nv ON ci.Ma_NV = nv.Ma_NV
-					WHERE MONTH(ci.NgayCheckIn) = {0} AND YEAR(ci.NgayCheckIn) = {1}
-					ORDER BY ci.NgayCheckIn DESC", currentMonth, currentYear);
-
-				return DataProvider.Instance.ExecuteQuery(query);
-			}
-			catch (Exception ex)
-			{
-				// Tạo bảng lỗi với thông tin debug chi tiết hơn
-				DataTable dt = new DataTable();
-				dt.Columns.Add("Error", typeof(string));
-				dt.Columns.Add("Details", typeof(string));
-				dt.Rows.Add("Connection Error: " + ex.Message, ex.StackTrace);
-				return dt;
-			}
-		}
-
-		/// <summary>
-		/// Lấy thống kê tổng quan về nhân viên và dữ liệu chấm công
-		/// </summary>
-		public DataTable GetThongKeNhanh()
-		{
-			try
-			{
-				string query = @"
-					SELECT 
-						'Tổng nhân viên' as ThongKe,
-						COUNT(DISTINCT nv.Ma_NV) as GiaTri
-					FROM [NhanVien] nv
-					UNION ALL
-					SELECT 
-						'Nhân viên có chấm công hôm nay' as ThongKe,
-						COUNT(DISTINCT ci.Ma_NV) as GiaTri
-					FROM CheckIn ci
-					WHERE CAST(ci.NgayCheckIn AS DATE) = CAST(GETDATE() AS DATE)
-					UNION ALL
-					SELECT 
-						'Tổng bản ghi CheckIn tháng này' as ThongKe,
-						COUNT(*) as GiaTri
-					FROM CheckIn ci
-					WHERE MONTH(ci.NgayCheckIn) = MONTH(GETDATE()) 
-						AND YEAR(ci.NgayCheckIn) = YEAR(GETDATE())";
-
-				return DataProvider.Instance.ExecuteQuery(query);
-			}
-			catch
-			{
-				// Trả về bảng rỗng nếu có lỗi
-				DataTable dt = new DataTable();
-				dt.Columns.Add("ThongKe", typeof(string));
-				dt.Columns.Add("GiaTri", typeof(int));
-				return dt;
-			}
-		}
 	}
 } 

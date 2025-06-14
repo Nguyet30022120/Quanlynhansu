@@ -17,6 +17,8 @@ namespace QuanLyNhanSu
 		private Color originalExportButtonColor;
 		private Color originalCloseButtonColor;
 		private Color originalStatisticButtonColor;
+		private int[] monthDataExport = new int[12];
+
 
 		BindingSource onleavingList = new BindingSource();
 		public fThongkenghiphep()
@@ -48,9 +50,24 @@ namespace QuanLyNhanSu
 			txb_manhanvien.DataBindings.Clear();
 			txb_tennhanvien.DataBindings.Clear();
 			txb_manhanvien.Text = "";
-			txb_tennhanvien.Text = "--Tất cả nhân viên--";
+			txb_tennhanvien.Text = "";
 
 		}
+		void LoadTenNV(string manv)
+		{
+			string tenNV = NhanvienDAO.Instance.GetStaffTen(manv);
+
+			if (string.IsNullOrEmpty(tenNV))
+			{
+				MessageBox.Show("Không có mã nhân viên trong hệ thống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				txb_tennhanvien.Text = "";
+			}
+			else
+			{
+				txb_tennhanvien.Text = tenNV;
+			}
+		}
+
 
 		void DrawLeaveChartForAll()
 		{
@@ -68,6 +85,8 @@ namespace QuanLyNhanSu
 					if (thang >= 1 && thang <= 12)
 						monthData[thang - 1] = songay;
 				}
+				monthDataExport = monthData.ToArray(); // Gán mảng để xuất CSV
+
 
 				var chartValues = new LiveCharts.ChartValues<int>(monthData);
 
@@ -77,7 +96,7 @@ namespace QuanLyNhanSu
 					Values = chartValues,
 					DataLabels = true,
 					LabelPoint = point => point.Y > 0 ? point.Y.ToString() : "",
-					Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.SkyBlue),
+					Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.OrangeRed),
 					Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Black),
 					FontWeight = System.Windows.FontWeights.Bold
 				};
@@ -104,7 +123,7 @@ namespace QuanLyNhanSu
 			}
 				};
 
-				elementHost1.Child = cartesianChart;
+				elh_thongkenghiphep.Child = cartesianChart;
 			}
 			catch (Exception ex)
 			{
@@ -129,13 +148,6 @@ namespace QuanLyNhanSu
 			dgv_nghiphepthongke.DataSource = onleavingList;
 			BindingOnLeaveData();
 		}
-		void LoadOnLeaveStatisticByNgay(string manv,int nam)
-		{
-			onleavingList.DataSource = ThongkenghiphepDAO.Instance.GetOnLeavingNam(manv, nam);
-			dgv_nghiphepthongke.DataSource = onleavingList;
-			BindingOnLeaveData();
-		}
-
 		
 
 		private void ExportToCSV(string filePath)
@@ -144,30 +156,20 @@ namespace QuanLyNhanSu
 			{
 				StringBuilder csvContent = new StringBuilder();
 
-				foreach (DataGridViewColumn column in dgv_nghiphepthongke.Columns)
-				{
-					csvContent.Append(column.HeaderText + ",");
-				}
-				csvContent.AppendLine();
+				// Ghi tiêu đề
+				csvContent.AppendLine("Tháng,Số ngày nghỉ");
 
-				foreach (DataGridViewRow row in dgv_nghiphepthongke.Rows)
+				// Ghi từng dòng cho từng tháng
+				for (int i = 0; i < 12; i++)
 				{
-					foreach (DataGridViewCell cell in row.Cells)
-					{
-						if (cell.Value != null)
-						{
-							csvContent.Append(cell.Value.ToString() + ",");
-						}
-						else
-						{
-							csvContent.Append(",");
-						}
-					}
-					csvContent.AppendLine();
+					string thang = $"Tháng {i + 1}";
+					int soNgay = monthDataExport[i];
+					csvContent.AppendLine($"{thang},{soNgay}");
 				}
 
+				// Ghi ra file với encoding UTF-8 có BOM để không lỗi font tiếng Việt
+				System.IO.File.WriteAllText(filePath, csvContent.ToString(), new UTF8Encoding(true));
 
-				System.IO.File.WriteAllText(filePath, csvContent.ToString());
 			}
 			catch (Exception ex)
 			{
@@ -186,7 +188,7 @@ namespace QuanLyNhanSu
 			{
 				SaveFileDialog saveDialog = new SaveFileDialog();
 				saveDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
-				saveDialog.FileName = $"BaoCaoNghiPhep_{txb_tennhanvien.Text}.csv";
+				saveDialog.FileName = $"BaoCaoNghiPhep_{txb_manhanvien.Text}_{txb_tennhanvien.Text}_{cb_nam.Text}.csv";
 
 				if (saveDialog.ShowDialog() == DialogResult.OK)
 				{
@@ -205,6 +207,7 @@ namespace QuanLyNhanSu
 			{
 				LoadOnLeaveStatisticByMaNV(txb_manhanvien.Text);
 				string maNV = txb_manhanvien.Text.Trim();
+				LoadTenNV(maNV);
 
 				if (cb_nam.SelectedItem == null)
 				{
@@ -241,7 +244,7 @@ namespace QuanLyNhanSu
 					Values = chartValues,
 					DataLabels = true,
 					LabelPoint = point => point.Y > 0 ? point.Y.ToString() : "",
-					Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Red),
+					Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.OrangeRed),
 					Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Black),
 					FontWeight = System.Windows.FontWeights.Bold
 				};
@@ -268,7 +271,7 @@ namespace QuanLyNhanSu
 			}
 				};
 
-				elementHost1.Child = cartesianChart;
+				elh_thongkenghiphep.Child = cartesianChart;
 			}
 			catch (Exception ex)
 			{

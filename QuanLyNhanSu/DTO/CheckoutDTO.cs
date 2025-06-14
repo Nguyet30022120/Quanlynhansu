@@ -23,7 +23,7 @@ namespace QuanLyNhanSu.DTO
 			this.MaNV = row["Ma_NV"].ToString();
 			this.TenNV = row["HoTen"].ToString();
 			this.GioCheckOut = TimeSpan.Parse(row["GioCheckOut"].ToString());
-			this.NgayCheckOut = row["NgayCheckOut"] != DBNull.Value ? (DateTime)row["NgayCheckOut"] : DateTime.MinValue; // Or handle appropriately
+			this.NgayCheckOut = row["NgayCheckOut"] != DBNull.Value ? (DateTime)row["NgayCheckOut"] : DateTime.MinValue; 
 		}
 
 

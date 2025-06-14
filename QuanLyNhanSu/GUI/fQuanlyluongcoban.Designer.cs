@@ -28,9 +28,13 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.dgv_luongcoban = new System.Windows.Forms.DataGridView();
+			this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.MaLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.LuongCoSo = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.lb_luongcoban = new System.Windows.Forms.Label();
 			this.lb_tennhanvien = new System.Windows.Forms.Label();
 			this.txb_tennhanvien = new System.Windows.Forms.TextBox();
@@ -39,30 +43,26 @@
 			this.txb_timnhanvien = new System.Windows.Forms.TextBox();
 			this.btn_tim = new System.Windows.Forms.Button();
 			this.btn_sualuongcoban = new System.Windows.Forms.Button();
-			this.pn_khoahoc = new System.Windows.Forms.Panel();
-			this.lb_goiy = new System.Windows.Forms.Label();
+			this.pn_luongcoban = new System.Windows.Forms.Panel();
 			this.btn_sua = new System.Windows.Forms.Button();
-			this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.MaLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.LuongCoSo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.lb_goiy = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_luongcoban)).BeginInit();
-			this.pn_khoahoc.SuspendLayout();
+			this.pn_luongcoban.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// dgv_luongcoban
 			// 
-			dataGridViewCellStyle3.BackColor = System.Drawing.Color.Tan;
-			this.dgv_luongcoban.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.Tan;
+			this.dgv_luongcoban.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
 			this.dgv_luongcoban.BackgroundColor = System.Drawing.Color.White;
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgv_luongcoban.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgv_luongcoban.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.dgv_luongcoban.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgv_luongcoban.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaNV,
@@ -73,8 +73,40 @@
 			this.dgv_luongcoban.Name = "dgv_luongcoban";
 			this.dgv_luongcoban.RowHeadersWidth = 51;
 			this.dgv_luongcoban.RowTemplate.Height = 24;
-			this.dgv_luongcoban.Size = new System.Drawing.Size(1469, 613);
+			this.dgv_luongcoban.Size = new System.Drawing.Size(1469, 597);
 			this.dgv_luongcoban.TabIndex = 15;
+			// 
+			// MaNV
+			// 
+			this.MaNV.DataPropertyName = "MaNV";
+			this.MaNV.HeaderText = "Mã nhân viên";
+			this.MaNV.MinimumWidth = 6;
+			this.MaNV.Name = "MaNV";
+			this.MaNV.Width = 125;
+			// 
+			// TenNV
+			// 
+			this.TenNV.DataPropertyName = "TenNV";
+			this.TenNV.HeaderText = "Tên nhân viên";
+			this.TenNV.MinimumWidth = 6;
+			this.TenNV.Name = "TenNV";
+			this.TenNV.Width = 200;
+			// 
+			// MaLuong
+			// 
+			this.MaLuong.DataPropertyName = "MaLuong";
+			this.MaLuong.HeaderText = "Mã lương";
+			this.MaLuong.MinimumWidth = 6;
+			this.MaLuong.Name = "MaLuong";
+			this.MaLuong.Width = 125;
+			// 
+			// LuongCoSo
+			// 
+			this.LuongCoSo.DataPropertyName = "LuongCoSo";
+			this.LuongCoSo.HeaderText = "Lương cơ bản mỗi giờ";
+			this.LuongCoSo.MinimumWidth = 6;
+			this.LuongCoSo.Name = "LuongCoSo";
+			this.LuongCoSo.Width = 200;
 			// 
 			// lb_luongcoban
 			// 
@@ -116,13 +148,15 @@
 			// 
 			this.btn_dong.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_dong.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_dong.Location = new System.Drawing.Point(1339, 25);
+			this.btn_dong.Location = new System.Drawing.Point(1339, 15);
 			this.btn_dong.Name = "btn_dong";
 			this.btn_dong.Size = new System.Drawing.Size(115, 40);
 			this.btn_dong.TabIndex = 10;
 			this.btn_dong.Text = "Đóng";
 			this.btn_dong.UseVisualStyleBackColor = false;
 			this.btn_dong.Click += new System.EventHandler(this.btn_dong_Click);
+			this.btn_dong.MouseEnter += new System.EventHandler(this.btn_dong_MouseEnter);
+			this.btn_dong.MouseLeave += new System.EventHandler(this.btn_dong_MouseLeave);
 			// 
 			// txb_timnhanvien
 			// 
@@ -143,6 +177,8 @@
 			this.btn_tim.Text = "Tìm kiếm";
 			this.btn_tim.UseVisualStyleBackColor = false;
 			this.btn_tim.Click += new System.EventHandler(this.btn_tim_Click);
+			this.btn_tim.MouseEnter += new System.EventHandler(this.btn_tim_MouseEnter);
+			this.btn_tim.MouseLeave += new System.EventHandler(this.btn_tim_MouseLeave);
 			// 
 			// btn_sualuongcoban
 			// 
@@ -155,76 +191,46 @@
 			this.btn_sualuongcoban.Text = "Sửa";
 			this.btn_sualuongcoban.UseVisualStyleBackColor = false;
 			// 
-			// pn_khoahoc
+			// pn_luongcoban
 			// 
-			this.pn_khoahoc.Controls.Add(this.btn_sua);
-			this.pn_khoahoc.Controls.Add(this.lb_goiy);
-			this.pn_khoahoc.Controls.Add(this.txb_tennhanvien);
-			this.pn_khoahoc.Controls.Add(this.btn_dong);
-			this.pn_khoahoc.Controls.Add(this.txb_timnhanvien);
-			this.pn_khoahoc.Controls.Add(this.btn_tim);
-			this.pn_khoahoc.Controls.Add(this.btn_sualuongcoban);
-			this.pn_khoahoc.Controls.Add(this.lb_luongcoban);
-			this.pn_khoahoc.Controls.Add(this.txb_luongcoban);
-			this.pn_khoahoc.Controls.Add(this.lb_tennhanvien);
-			this.pn_khoahoc.Location = new System.Drawing.Point(4, 7);
-			this.pn_khoahoc.Name = "pn_khoahoc";
-			this.pn_khoahoc.Size = new System.Drawing.Size(1466, 160);
-			this.pn_khoahoc.TabIndex = 16;
-			// 
-			// lb_goiy
-			// 
-			this.lb_goiy.AutoSize = true;
-			this.lb_goiy.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lb_goiy.Location = new System.Drawing.Point(1076, 92);
-			this.lb_goiy.Name = "lb_goiy";
-			this.lb_goiy.Size = new System.Drawing.Size(229, 17);
-			this.lb_goiy.TabIndex = 46;
-			this.lb_goiy.Text = "(Tìm kiếm tên nhân viên, mã nhân viên)";
+			this.pn_luongcoban.Controls.Add(this.btn_sua);
+			this.pn_luongcoban.Controls.Add(this.lb_goiy);
+			this.pn_luongcoban.Controls.Add(this.txb_tennhanvien);
+			this.pn_luongcoban.Controls.Add(this.btn_dong);
+			this.pn_luongcoban.Controls.Add(this.txb_timnhanvien);
+			this.pn_luongcoban.Controls.Add(this.btn_tim);
+			this.pn_luongcoban.Controls.Add(this.btn_sualuongcoban);
+			this.pn_luongcoban.Controls.Add(this.lb_luongcoban);
+			this.pn_luongcoban.Controls.Add(this.txb_luongcoban);
+			this.pn_luongcoban.Controls.Add(this.lb_tennhanvien);
+			this.pn_luongcoban.Location = new System.Drawing.Point(7, 7);
+			this.pn_luongcoban.Name = "pn_luongcoban";
+			this.pn_luongcoban.Size = new System.Drawing.Size(1469, 160);
+			this.pn_luongcoban.TabIndex = 16;
 			// 
 			// btn_sua
 			// 
 			this.btn_sua.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_sua.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_sua.Location = new System.Drawing.Point(1339, 69);
+			this.btn_sua.Location = new System.Drawing.Point(1339, 59);
 			this.btn_sua.Name = "btn_sua";
 			this.btn_sua.Size = new System.Drawing.Size(115, 40);
 			this.btn_sua.TabIndex = 47;
 			this.btn_sua.Text = "Sửa";
 			this.btn_sua.UseVisualStyleBackColor = false;
 			this.btn_sua.Click += new System.EventHandler(this.btn_sua_Click);
+			this.btn_sua.MouseEnter += new System.EventHandler(this.btn_sua_MouseEnter);
+			this.btn_sua.MouseLeave += new System.EventHandler(this.btn_sua_MouseLeave);
 			// 
-			// MaNV
+			// lb_goiy
 			// 
-			this.MaNV.DataPropertyName = "MaNV";
-			this.MaNV.HeaderText = "Mã nhân viên";
-			this.MaNV.MinimumWidth = 6;
-			this.MaNV.Name = "MaNV";
-			this.MaNV.Width = 125;
-			// 
-			// TenNV
-			// 
-			this.TenNV.DataPropertyName = "TenNV";
-			this.TenNV.HeaderText = "Tên nhân viên";
-			this.TenNV.MinimumWidth = 6;
-			this.TenNV.Name = "TenNV";
-			this.TenNV.Width = 200;
-			// 
-			// MaLuong
-			// 
-			this.MaLuong.DataPropertyName = "MaLuong";
-			this.MaLuong.HeaderText = "Mã lương";
-			this.MaLuong.MinimumWidth = 6;
-			this.MaLuong.Name = "MaLuong";
-			this.MaLuong.Width = 125;
-			// 
-			// LuongCoSo
-			// 
-			this.LuongCoSo.DataPropertyName = "LuongCoSo";
-			this.LuongCoSo.HeaderText = "Lương cơ bản mỗi giờ";
-			this.LuongCoSo.MinimumWidth = 6;
-			this.LuongCoSo.Name = "LuongCoSo";
-			this.LuongCoSo.Width = 200;
+			this.lb_goiy.AutoSize = true;
+			this.lb_goiy.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lb_goiy.Location = new System.Drawing.Point(1055, 92);
+			this.lb_goiy.Name = "lb_goiy";
+			this.lb_goiy.Size = new System.Drawing.Size(229, 17);
+			this.lb_goiy.TabIndex = 46;
+			this.lb_goiy.Text = "(Tìm kiếm tên nhân viên, mã nhân viên)";
 			// 
 			// fQuanlyluongcoban
 			// 
@@ -233,12 +239,13 @@
 			this.BackColor = System.Drawing.Color.BlanchedAlmond;
 			this.ClientSize = new System.Drawing.Size(1482, 778);
 			this.Controls.Add(this.dgv_luongcoban);
-			this.Controls.Add(this.pn_khoahoc);
+			this.Controls.Add(this.pn_luongcoban);
 			this.Name = "fQuanlyluongcoban";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Lương cơ bản";
 			((System.ComponentModel.ISupportInitialize)(this.dgv_luongcoban)).EndInit();
-			this.pn_khoahoc.ResumeLayout(false);
-			this.pn_khoahoc.PerformLayout();
+			this.pn_luongcoban.ResumeLayout(false);
+			this.pn_luongcoban.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -254,7 +261,7 @@
 		private System.Windows.Forms.TextBox txb_timnhanvien;
 		private System.Windows.Forms.Button btn_tim;
 		private System.Windows.Forms.Button btn_sualuongcoban;
-		private System.Windows.Forms.Panel pn_khoahoc;
+		private System.Windows.Forms.Panel pn_luongcoban;
 		private System.Windows.Forms.Label lb_goiy;
 		private System.Windows.Forms.Button btn_sua;
 		private System.Windows.Forms.DataGridViewTextBoxColumn MaNV;

@@ -35,7 +35,7 @@
 			this.lb_manhanvien = new System.Windows.Forms.Label();
 			this.lb_tennhanvien = new System.Windows.Forms.Label();
 			this.lb_giocheckin = new System.Windows.Forms.Label();
-			this.timer1 = new System.Windows.Forms.Timer(this.components);
+			this.timer_giocheckin = new System.Windows.Forms.Timer(this.components);
 			this.btn_checkin = new System.Windows.Forms.Button();
 			this.sqlDataAdapter1 = new Microsoft.Data.SqlClient.SqlDataAdapter();
 			this.dgv_checkin = new System.Windows.Forms.DataGridView();
@@ -89,11 +89,11 @@
 			this.lb_giocheckin.TabIndex = 3;
 			this.lb_giocheckin.Text = "Giờ checkin";
 			// 
-			// timer1
+			// timer_giocheckin
 			// 
-			this.timer1.Enabled = true;
-			this.timer1.Interval = 1000;
-			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+			this.timer_giocheckin.Enabled = true;
+			this.timer_giocheckin.Interval = 1000;
+			this.timer_giocheckin.Tick += new System.EventHandler(this.timer1_Tick);
 			// 
 			// btn_checkin
 			// 
@@ -133,7 +133,7 @@
 			this.dgv_checkin.Name = "dgv_checkin";
 			this.dgv_checkin.RowHeadersWidth = 51;
 			this.dgv_checkin.RowTemplate.Height = 24;
-			this.dgv_checkin.Size = new System.Drawing.Size(725, 426);
+			this.dgv_checkin.Size = new System.Drawing.Size(733, 435);
 			this.dgv_checkin.TabIndex = 6;
 			this.dgv_checkin.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_checkin_CellFormatting);
 			// 
@@ -210,6 +210,7 @@
 			this.TenNV.HeaderText = "Tên nhân viên";
 			this.TenNV.MinimumWidth = 6;
 			this.TenNV.Name = "TenNV";
+			this.TenNV.Width = 125;
 			// 
 			// NgayCheckIn
 			// 
@@ -217,6 +218,7 @@
 			this.NgayCheckIn.HeaderText = "Ngày checkin";
 			this.NgayCheckIn.MinimumWidth = 6;
 			this.NgayCheckIn.Name = "NgayCheckIn";
+			this.NgayCheckIn.Width = 80;
 			// 
 			// GioCheckIn
 			// 
@@ -224,9 +226,9 @@
 			this.GioCheckIn.HeaderText = "Giờ checkin";
 			this.GioCheckIn.MinimumWidth = 6;
 			this.GioCheckIn.Name = "GioCheckIn";
-			this.GioCheckIn.Width = 125;
+			this.GioCheckIn.Width = 80;
 			// 
-			// fCheckIn
+			// fCheckin
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -242,7 +244,8 @@
 			this.Controls.Add(this.lb_tennhanvien);
 			this.Controls.Add(this.lb_manhanvien);
 			this.Controls.Add(this.txb_manhanvien);
-			this.Name = "fCheckIn";
+			this.Name = "fCheckin";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Checkin";
 			((System.ComponentModel.ISupportInitialize)(this.dgv_checkin)).EndInit();
 			this.ResumeLayout(false);
@@ -256,7 +259,7 @@
 		private System.Windows.Forms.Label lb_manhanvien;
 		private System.Windows.Forms.Label lb_tennhanvien;
 		private System.Windows.Forms.Label lb_giocheckin;
-		private System.Windows.Forms.Timer timer1;
+		private System.Windows.Forms.Timer timer_giocheckin;
 		private System.Windows.Forms.Button btn_checkin;
 		private Microsoft.Data.SqlClient.SqlDataAdapter sqlDataAdapter1;
 		private System.Windows.Forms.DataGridView dgv_checkin;

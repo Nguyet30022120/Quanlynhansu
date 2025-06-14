@@ -55,7 +55,7 @@
 			// 
 			this.btn_dongkhenthuongkyluat.BackColor = System.Drawing.Color.DarkOrange;
 			this.btn_dongkhenthuongkyluat.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_dongkhenthuongkyluat.Location = new System.Drawing.Point(1363, 58);
+			this.btn_dongkhenthuongkyluat.Location = new System.Drawing.Point(1341, 56);
 			this.btn_dongkhenthuongkyluat.Name = "btn_dongkhenthuongkyluat";
 			this.btn_dongkhenthuongkyluat.Size = new System.Drawing.Size(115, 40);
 			this.btn_dongkhenthuongkyluat.TabIndex = 31;
@@ -256,7 +256,8 @@
 			this.Controls.Add(this.lb_thoigian);
 			this.Controls.Add(this.lb_manhanvien);
 			this.Name = "fQuanlykhenthuongkyluatUser";
-			this.Text = "fQuanlykhenthuongkyluatUser";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.Text = "Khen thưởng kỷ luật";
 			((System.ComponentModel.ISupportInitialize)(this.dgv_khenthuongkyluat)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();

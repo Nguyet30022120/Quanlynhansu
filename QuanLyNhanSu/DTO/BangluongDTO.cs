@@ -18,7 +18,6 @@ namespace QuanLyNhanSu.DTO
 		public decimal Phat { get; set; }
 		public decimal Thuong { get; set; }
 
-		// Lưu trữ giá trị lương thực lĩnh từ database (nếu có)
 		private decimal? _luongThucLinhFromDB;
 
 		// Tính toán
@@ -30,7 +29,6 @@ namespace QuanLyNhanSu.DTO
 		// Ưu tiên sử dụng giá trị từ database, nếu không có thì tính toán
 		public decimal LuongThucLinh => _luongThucLinhFromDB ??
 			((LuongCoBan * (decimal)SoGioLam * (decimal)HeSoNgay) + Thuong + PhucCap - Phat - BaoHiem - Thue);
-		// Display properties
 		public string SoGioLamDisplay => SoGioLam.ToString("0.0");
 		public string LuongCoBanDisplay => LuongCoBan.ToString("N0");
 		public string HeSoNgayDisplay => HeSoNgay.ToString("0.00");

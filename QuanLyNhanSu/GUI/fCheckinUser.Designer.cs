@@ -36,15 +36,15 @@ namespace QuanLyNhanSu.GUI
 			this.txb_tennhanvien = new System.Windows.Forms.TextBox();
 			this.btn_dongcheckin = new System.Windows.Forms.Button();
 			this.btn_xoacheckin = new System.Windows.Forms.Button();
-			this.GioCheckIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.NgayCheckIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.MaCheckIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.sqlDataAdapter1 = new Microsoft.Data.SqlClient.SqlDataAdapter();
 			this.btn_checkin = new System.Windows.Forms.Button();
-			this.timer1 = new System.Windows.Forms.Timer(this.components);
+			this.timer_giocheckin = new System.Windows.Forms.Timer(this.components);
 			this.dgv_checkin = new System.Windows.Forms.DataGridView();
+			this.MaCheckIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.NgayCheckIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.GioCheckIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.lb_giocheckin = new System.Windows.Forms.Label();
 			this.lb_tennhanvien = new System.Windows.Forms.Label();
 			this.lb_manhanvien = new System.Windows.Forms.Label();
@@ -74,8 +74,6 @@ namespace QuanLyNhanSu.GUI
 			this.btn_dongcheckin.Click += new System.EventHandler(this.btn_closecheckin_Click);
 			this.btn_dongcheckin.MouseEnter += new System.EventHandler(this.btn_dongcheckin_MouseEnter);
 			this.btn_dongcheckin.MouseLeave += new System.EventHandler(this.btn_dongcheckin_MouseLeave);
-
-
 			// 
 			// btn_xoacheckin
 			// 
@@ -91,46 +89,6 @@ namespace QuanLyNhanSu.GUI
 			this.btn_xoacheckin.MouseEnter += new System.EventHandler(this.btn_xoacheckin_MouseEnter);
 			this.btn_xoacheckin.MouseLeave += new System.EventHandler(this.btn_xoacheckin_MouseLeave);
 			// 
-			// GioCheckIn
-			// 
-			this.GioCheckIn.DataPropertyName = "GioCheckIn";
-			this.GioCheckIn.HeaderText = "Giờ checkin";
-			this.GioCheckIn.MinimumWidth = 6;
-			this.GioCheckIn.Name = "GioCheckIn";
-			this.GioCheckIn.Width = 125;
-			// 
-			// NgayCheckIn
-			// 
-			this.NgayCheckIn.DataPropertyName = "NgayCheckIn";
-			this.NgayCheckIn.HeaderText = "Ngày checkin";
-			this.NgayCheckIn.MinimumWidth = 6;
-			this.NgayCheckIn.Name = "NgayCheckIn";
-			this.NgayCheckIn.Width = 125;
-			// 
-			// TenNV
-			// 
-			this.TenNV.DataPropertyName = "TenNV";
-			this.TenNV.HeaderText = "Tên nhân viên";
-			this.TenNV.MinimumWidth = 6;
-			this.TenNV.Name = "TenNV";
-			this.TenNV.Width = 125;
-			// 
-			// MaNV
-			// 
-			this.MaNV.DataPropertyName = "MaNV";
-			this.MaNV.HeaderText = "Mã nhân viên";
-			this.MaNV.MinimumWidth = 6;
-			this.MaNV.Name = "MaNV";
-			this.MaNV.Width = 75;
-			// 
-			// MaCheckIn
-			// 
-			this.MaCheckIn.DataPropertyName = "MaCheckIn";
-			this.MaCheckIn.HeaderText = "Mã checkin";
-			this.MaCheckIn.MinimumWidth = 6;
-			this.MaCheckIn.Name = "MaCheckIn";
-			this.MaCheckIn.Width = 75;
-			// 
 			// btn_checkin
 			// 
 			this.btn_checkin.BackColor = System.Drawing.Color.DarkOrange;
@@ -145,10 +103,11 @@ namespace QuanLyNhanSu.GUI
 			this.btn_checkin.MouseEnter += new System.EventHandler(this.btn_checkin_MouseEnter);
 			this.btn_checkin.MouseLeave += new System.EventHandler(this.btn_checkin_MouseLeave);
 			// 
-			// timer1
+			// timer_giocheckin
 			// 
-			this.timer1.Enabled = true;
-			this.timer1.Interval = 1000;
+			this.timer_giocheckin.Enabled = true;
+			this.timer_giocheckin.Interval = 1000;
+			this.timer_giocheckin.Tick += new System.EventHandler(this.timer1_Tick);
 			// 
 			// dgv_checkin
 			// 
@@ -176,8 +135,47 @@ namespace QuanLyNhanSu.GUI
 			this.dgv_checkin.RowTemplate.Height = 24;
 			this.dgv_checkin.Size = new System.Drawing.Size(725, 426);
 			this.dgv_checkin.TabIndex = 17;
-			dgv_checkin.CellFormatting += dgv_checkin_CellFormatting;
-
+			this.dgv_checkin.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_checkin_CellFormatting);
+			// 
+			// MaCheckIn
+			// 
+			this.MaCheckIn.DataPropertyName = "MaCheckIn";
+			this.MaCheckIn.HeaderText = "Mã checkin";
+			this.MaCheckIn.MinimumWidth = 6;
+			this.MaCheckIn.Name = "MaCheckIn";
+			this.MaCheckIn.Width = 75;
+			// 
+			// MaNV
+			// 
+			this.MaNV.DataPropertyName = "MaNV";
+			this.MaNV.HeaderText = "Mã nhân viên";
+			this.MaNV.MinimumWidth = 6;
+			this.MaNV.Name = "MaNV";
+			this.MaNV.Width = 75;
+			// 
+			// TenNV
+			// 
+			this.TenNV.DataPropertyName = "TenNV";
+			this.TenNV.HeaderText = "Tên nhân viên";
+			this.TenNV.MinimumWidth = 6;
+			this.TenNV.Name = "TenNV";
+			this.TenNV.Width = 125;
+			// 
+			// NgayCheckIn
+			// 
+			this.NgayCheckIn.DataPropertyName = "NgayCheckIn";
+			this.NgayCheckIn.HeaderText = "Ngày checkin";
+			this.NgayCheckIn.MinimumWidth = 6;
+			this.NgayCheckIn.Name = "NgayCheckIn";
+			this.NgayCheckIn.Width = 80;
+			// 
+			// GioCheckIn
+			// 
+			this.GioCheckIn.DataPropertyName = "GioCheckIn";
+			this.GioCheckIn.HeaderText = "Giờ checkin";
+			this.GioCheckIn.MinimumWidth = 6;
+			this.GioCheckIn.Name = "GioCheckIn";
+			this.GioCheckIn.Width = 80;
 			// 
 			// lb_giocheckin
 			// 
@@ -234,7 +232,8 @@ namespace QuanLyNhanSu.GUI
 			this.Controls.Add(this.lb_manhanvien);
 			this.Controls.Add(this.txb_manhanvien);
 			this.Name = "fCheckinUser";
-			this.Text = "fCheckinUser";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.Text = "Checkin";
 			((System.ComponentModel.ISupportInitialize)(this.dgv_checkin)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -246,18 +245,18 @@ namespace QuanLyNhanSu.GUI
 		private System.Windows.Forms.TextBox txb_tennhanvien;
 		private System.Windows.Forms.Button btn_dongcheckin;
 		private System.Windows.Forms.Button btn_xoacheckin;
-		private System.Windows.Forms.DataGridViewTextBoxColumn GioCheckIn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn NgayCheckIn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn TenNV;
-		private System.Windows.Forms.DataGridViewTextBoxColumn MaNV;
-		private System.Windows.Forms.DataGridViewTextBoxColumn MaCheckIn;
 		private Microsoft.Data.SqlClient.SqlDataAdapter sqlDataAdapter1;
 		private System.Windows.Forms.Button btn_checkin;
-		private System.Windows.Forms.Timer timer1;
+		private System.Windows.Forms.Timer timer_giocheckin;
 		private System.Windows.Forms.DataGridView dgv_checkin;
 		private System.Windows.Forms.Label lb_giocheckin;
 		private System.Windows.Forms.Label lb_tennhanvien;
 		private System.Windows.Forms.Label lb_manhanvien;
 		private System.Windows.Forms.TextBox txb_manhanvien;
+		private System.Windows.Forms.DataGridViewTextBoxColumn MaCheckIn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn MaNV;
+		private System.Windows.Forms.DataGridViewTextBoxColumn TenNV;
+		private System.Windows.Forms.DataGridViewTextBoxColumn NgayCheckIn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn GioCheckIn;
 	}
 }

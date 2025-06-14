@@ -48,16 +48,15 @@ namespace QuanLyNhanSu.GUI
 				cb_nam.Items.Add(i);
 			}
 			cb_nam.SelectedItem = currentYear;
-			txb_manhanvien.Text = ""; // Đầu vào mặc định là rỗng (tức là tất cả nhân viên)
-			txb_tennhanvien.Text = "--Tất cả nhân viên--";
-			LoadBangCongTheoMaNV(""); // Hiển thị dữ liệu tất cả nhân viên ngay khi vào form
-
+			txb_manhanvien.Text = ""; 
+			txb_tennhanvien.Text = "";
+			LoadBangCongTheoMaNV(""); 
 
 		}
 
 		void CreateCalendarView()
 		{
-			panel_days.Controls.Clear();
+			pn_days.Controls.Clear();
 			dayButtons.Clear();
 
 			if (cb_thang.SelectedItem == null || cb_nam.SelectedItem == null)
@@ -69,10 +68,10 @@ namespace QuanLyNhanSu.GUI
 			// Tạo header cho thứ trong tuần
 			string[] daysOfWeek = { "Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy" };
 			
-			// Kích thước cố định cho các ô to hơn
-			int buttonWidth = 200;  // Tăng kích thước từ ~150 lên 180
-			int buttonHeight = 100; // Tăng kích thước từ ~80 lên 120
-			int padding = 10;       // Tăng khoảng cách
+			// Kích thước cố định cho các ô 
+			int buttonWidth = 200;  
+			int buttonHeight = 100; 
+			int padding = 10;       
 			int startX = 20;
 			int startY = 20;
 
@@ -88,7 +87,7 @@ namespace QuanLyNhanSu.GUI
 				lblDay.BackColor = Color.DarkOrange;
 				lblDay.ForeColor = Color.White;
 				lblDay.BorderStyle = BorderStyle.FixedSingle;
-				panel_days.Controls.Add(lblDay);
+				pn_days.Controls.Add(lblDay);
 			}
 
 			// Tính toán ngày đầu tháng là thứ mấy
@@ -103,7 +102,7 @@ namespace QuanLyNhanSu.GUI
 			// Tính toán tổng chiều cao cần thiết cho việc scroll
 			int totalRows = (int)Math.Ceiling((double)(daysInMonth + dayOfWeek) / 7);
 			int totalHeight = startY + 45 + (totalRows * (buttonHeight + padding)) + 50;
-			panel_days.AutoScrollMinSize = new Size(7 * (buttonWidth + padding) + 40, totalHeight);
+			pn_days.AutoScrollMinSize = new Size(7 * (buttonWidth + padding) + 40, totalHeight);
 
 			for (int day = 1; day <= daysInMonth; day++)
 			{
@@ -119,9 +118,11 @@ namespace QuanLyNhanSu.GUI
 				btnDay.TextAlign = ContentAlignment.TopCenter;
 
 				// Mặc định màu đỏ (chưa chấm công)
-				btnDay.BackColor = Color.LightCoral;
+				btnDay.BackColor = Color.OrangeRed;
 				btnDay.ForeColor = Color.White;
-				btnDay.Text = day.ToString();
+				btnDay.Text = $"📅 {day}\n\n❌ Chưa\nchấm công";
+				btnDay.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+				btnDay.TextAlign = ContentAlignment.MiddleCenter;
 
 				// Event click để hiển thị chi tiết ngày
 				btnDay.Click += BtnDay_Click;
@@ -130,7 +131,7 @@ namespace QuanLyNhanSu.GUI
 				ToolTip toolTip = new ToolTip();
 				toolTip.SetToolTip(btnDay, $"Ngày {day}/{thang}/{nam}\nClick để xem chi tiết chấm công");
 
-				panel_days.Controls.Add(btnDay);
+				pn_days.Controls.Add(btnDay);
 				dayButtons.Add(btnDay);
 
 				currentCol++;
@@ -145,47 +146,7 @@ namespace QuanLyNhanSu.GUI
 			UpdateCalendarColors();
 		}
 
-		private void BtnDay_Click(object sender, EventArgs e)
-		{
-			Button btn = sender as Button;
-			int day = (int)btn.Tag;
-			int thang = (int)cb_thang.SelectedItem;
-			int nam = (int)cb_nam.SelectedItem;
-
-			DateTime selectedDate = new DateTime(nam, thang, day);
-
-			// Lọc dữ liệu theo ngày được chọn
-			var filteredData = currentBangCongData
-				.Where(x => x.Ngay.Date == selectedDate.Date)
-				.GroupBy(x => new { x.MaNV, x.GioCheckInDisplay, x.GioCheckOutDisplay }) // Nhóm theo các thuộc tính dễ trùng
-				.Select(g => g.First()) // Lấy bản đầu tiên trong mỗi nhóm
-				.ToList();
-
-			if (filteredData.Any())
-			{
-				StringBuilder info = new StringBuilder();
-				info.AppendLine($"📅 THÔNG TIN CHẤM CÔNG NGÀY {selectedDate:dd/MM/yyyy}");
-				info.AppendLine(new string('=', 50));
-				info.AppendLine();
-
-				foreach (var item in filteredData)
-				{
-					info.AppendLine($"👤 {item.TenNV} ({item.MaNV})");
-					info.AppendLine($"   ⏰ Giờ vào: {item.GioCheckInDisplay}");
-					info.AppendLine($"   ⏰ Giờ ra: {item.GioCheckOutDisplay}");
-					info.AppendLine($"   🕐 Số giờ làm: {item.SoGioLamDisplay}");
-					//info.AppendLine();
-				}
-
-				MessageBox.Show(info.ToString(), "Chi tiết chấm công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
-			else
-			{
-				MessageBox.Show($"❌ Không có dữ liệu chấm công cho ngày {selectedDate:dd/MM/yyyy}", 
-							   "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
-		}
-
+		
 		void UpdateCalendarColors()
 		{
 			try
@@ -267,59 +228,11 @@ namespace QuanLyNhanSu.GUI
 			}
 			catch (Exception ex)
 			{
-				// Không hiển thị lỗi để tránh gián đoạn UI
+				MessageBox.Show("Lỗi khi update " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 
-		void LoadBangCong()
-		{
-			int thang = (int)cb_thang.SelectedItem;
-			int nam = (int)cb_nam.SelectedItem;
-			string maNV = txb_manhanvien.Text.Trim();
-			//string maNV = cb_nhanvien.SelectedValue?.ToString();
-
-			List<BangcongDTO> bangCongData = new List<BangcongDTO>();
-
-			if (string.IsNullOrEmpty(maNV))
-			{
-				// Hiển thị tất cả nhân viên
-				bangCongData = BangcongDAO.Instance.GetBangCongTheoThang(thang, nam);
-			}
-			else
-			{
-				// Hiển thị một nhân viên cụ thể
-				bangCongData = BangcongDAO.Instance.GetBangCongNhanVienTheoThang(maNV, thang, nam);
-			}
-
-			currentBangCongData = bangCongData;
-			CalculateStatistics(bangCongData, maNV);
-			UpdateCalendarColors(); // Cập nhật màu calendar
-
-			// Thống kê chi tiết
-			var tongGioLam = bangCongData.Sum(x => x.SoGioLam);
-			var tongNgayLam = bangCongData.Count(x => x.SoGioLam > 0);
-			var nhanVienCount = bangCongData.Select(x => x.MaNV).Distinct().Count();
-			
-			if (bangCongData.Any())
-			{
-				// Kiểm tra xem có dữ liệu SoGioLam > 0 trước khi tính min/max
-				var validWorkHours = bangCongData.Where(x => x.SoGioLam > 0).ToList();
-				
-				if (validWorkHours.Any())
-				{
-					var maxGio = validWorkHours.Max(x => x.SoGioLam);
-					var minGio = validWorkHours.Min(x => x.SoGioLam);
-				}
-				else
-				{
-
-				}
-			}
-			else
-			{
-			}
-			
-		}
+		
 
 		void CalculateStatistics(List<BangcongDTO> data, string maNV)
 		{
@@ -338,8 +251,7 @@ namespace QuanLyNhanSu.GUI
 					double tongGioLam = filteredData.Sum(x => x.SoGioLam);
 					int tongNgayVang = filteredData.Count(x => x.SoGioLam == 0);
 
-					lbl_tonggio.Text = tongGioLam.ToString("0.0") + " giờ";
-					//lbl_tongngaylam.Text = tongNgayLam.ToString() + " ngày";
+					lb_tonggio.Text = tongGioLam.ToString("0.0") + " giờ";
 				}
 				else
 				{
@@ -350,8 +262,7 @@ namespace QuanLyNhanSu.GUI
 					double tongGioLam = nvData.Sum(x => x.SoGioLam);
 					int tongNgayVang = nvData.Count(x => x.SoGioLam == 0);
 
-					lbl_tonggio.Text = tongGioLam.ToString("0.0") + " giờ";
-					//lbl_tongngaylam.Text = tongNgayLam.ToString() + " ngày";
+					lb_tonggio.Text = tongGioLam.ToString("0.0") + " giờ";
 				}
 			}
 			catch (Exception ex)
@@ -359,7 +270,42 @@ namespace QuanLyNhanSu.GUI
 				MessageBox.Show("Lỗi khi tính thống kê: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
+		void LoadBangCongTheoMaNV(string maNV)
+		{
+			int thang = (int)cb_thang.SelectedItem;
+			int nam = (int)cb_nam.SelectedItem;
 
+			List<BangcongDTO> bangCongData;
+			if (string.IsNullOrEmpty(maNV))
+				bangCongData = BangcongDAO.Instance.GetBangCongTheoThang(thang, nam);
+			else
+				bangCongData = BangcongDAO.Instance.GetBangCongNhanVienTheoThang(maNV, thang, nam);
+
+			currentBangCongData = bangCongData;
+			CalculateStatistics(bangCongData, maNV);
+			UpdateCalendarColors();
+		}
+		private void ExportToCSV(string filePath)
+		{
+			StringBuilder csv = new StringBuilder();
+
+			// Header
+			csv.AppendLine("Mã NV,Tên nhân viên,Ngày,Giờ vào,Giờ ra,Số giờ làm");
+
+			// Data
+			foreach (BangcongDTO item in currentBangCongData)
+			{
+				csv.AppendLine($"{item.MaNV},{item.TenNV},{item.NgayDisplay},{item.GioCheckInDisplay},{item.GioCheckOutDisplay},{item.SoGioLamDisplay}");
+			}
+
+			// Summary
+			csv.AppendLine("");
+			csv.AppendLine("THỐNG KÊ:");
+			csv.AppendLine($"Tổng số giờ làm việc:,{lb_tonggio.Text}");
+
+			System.IO.File.WriteAllText(filePath, csv.ToString(), Encoding.UTF8);
+		}
+		#region Hovers
 		private void btn_thongke_MouseEnter(object sender, EventArgs e)
 		{
 			btn_xem.BackColor = Color.LightBlue;
@@ -384,81 +330,58 @@ namespace QuanLyNhanSu.GUI
 		{
 			btn_close.BackColor = originalCloseButtonColor;
 		}
+		#endregion
 
-		private void btn_xuatbaocao_Click(object sender, EventArgs e)
+		
+		#region Events
+
+		private void BtnDay_Click(object sender, EventArgs e)
 		{
-			try
-			{
-				// Xuất báo cáo (có thể dùng Excel hoặc PDF)
-				SaveFileDialog saveDialog = new SaveFileDialog();
-				saveDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
-				saveDialog.FileName = $"BangCong_{cb_thang.SelectedItem}_{cb_nam.SelectedItem}.csv";
+			Button btn = sender as Button;
+			int day = (int)btn.Tag;
+			int thang = (int)cb_thang.SelectedItem;
+			int nam = (int)cb_nam.SelectedItem;
 
-				if (saveDialog.ShowDialog() == DialogResult.OK)
+			DateTime selectedDate = new DateTime(nam, thang, day);
+
+			// Lọc dữ liệu theo ngày được chọn
+			var filteredData = currentBangCongData
+				.Where(x => x.Ngay.Date == selectedDate.Date)
+				.GroupBy(x => new { x.MaNV, x.GioCheckInDisplay, x.GioCheckOutDisplay })
+				.Select(g => g.First()) // Lấy bản đầu tiên trong mỗi nhóm
+				.ToList();
+
+			if (filteredData.Any())
+			{
+				StringBuilder info = new StringBuilder();
+				info.AppendLine($"📅 THÔNG TIN CHẤM CÔNG NGÀY {selectedDate:dd/MM/yyyy}");
+				info.AppendLine(new string('=', 50));
+				info.AppendLine();
+
+				foreach (var item in filteredData)
 				{
-					ExportToCSV(saveDialog.FileName);
-					MessageBox.Show("✅ Xuất báo cáo thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					info.AppendLine($"👤 {item.TenNV} ({item.MaNV})");
+					info.AppendLine($"   ⏰ Giờ vào: {item.GioCheckInDisplay}");
+					info.AppendLine($"   ⏰ Giờ ra: {item.GioCheckOutDisplay}");
+					info.AppendLine($"   🕐 Số giờ làm: {item.SoGioLamDisplay}");
 				}
+
+				MessageBox.Show(info.ToString(), "Chi tiết chấm công", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
-			catch (Exception ex)
+			else
 			{
-				MessageBox.Show("Lỗi khi xuất báo cáo: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show($"Không có dữ liệu chấm công cho ngày {selectedDate:dd/MM/yyyy}",
+							   "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
-		}
-
-		private void ExportToCSV(string filePath)
-		{
-			StringBuilder csv = new StringBuilder();
-			
-			// Header
-			csv.AppendLine("Mã NV,Tên nhân viên,Ngày,Giờ vào,Giờ ra,Số giờ làm");
-			
-			// Data
-			foreach (BangcongDTO item in currentBangCongData)
-			{
-				csv.AppendLine($"{item.MaNV},{item.TenNV},{item.NgayDisplay},{item.GioCheckInDisplay},{item.GioCheckOutDisplay},{item.SoGioLamDisplay}");
-			}
-
-			// Summary
-			csv.AppendLine("");
-			csv.AppendLine("THỐNG KÊ:");
-			csv.AppendLine($"Tổng số giờ làm việc:,{lbl_tonggio.Text}");
-			//csv.AppendLine($"Tổng số ngày làm:,{/*lbl_tongngaylam*/.Text}");
-
-			System.IO.File.WriteAllText(filePath, csv.ToString(), Encoding.UTF8);
 		}
 
 		private void btn_close_Click(object sender, EventArgs e)
 		{
 			this.Close();
 		}
-		private void cb_thang_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			CreateCalendarView();
-		}
-
-		private void cb_nam_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			CreateCalendarView();
-		}
-		void	LoadBangCongTheoMaNV(string maNV)
-		{
-			int thang = (int)cb_thang.SelectedItem;
-			int nam = (int)cb_nam.SelectedItem;
-
-			List<BangcongDTO> bangCongData;
-			if (string.IsNullOrEmpty(maNV))
-				bangCongData = BangcongDAO.Instance.GetBangCongTheoThang(thang, nam);
-			else
-				bangCongData = BangcongDAO.Instance.GetBangCongNhanVienTheoThang(maNV, thang, nam);
-
-			currentBangCongData = bangCongData;
-			CalculateStatistics(bangCongData, maNV);
-			UpdateCalendarColors();
-		}
 		private void btn_xem_Click(object sender, EventArgs e)
 		{
-			CreateCalendarView();
+			
 			if (cb_thang.SelectedItem != null && cb_nam.SelectedItem != null)
 			{
 				string maNV = txb_manhanvien.Text.Trim();
@@ -474,24 +397,50 @@ namespace QuanLyNhanSu.GUI
 					}
 					else
 					{
-						tenNV = "";
+						MessageBox.Show("Không tìm thấy dữ liệu chấm công của nhân viên trong hệ thống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						txb_tennhanvien.Text = "";
+						return;
 					}
 				}
 				else
 				{
-					tenNV = "--Tất cả nhân viên--";
+					tenNV = "";
 				}
 				txb_tennhanvien.Text = tenNV;
 
-				// Thống kê theo mã nhân viên
 				LoadBangCongTheoMaNV(maNV);
+				CreateCalendarView();
 			}
 			else
 			{
-				MessageBox.Show("Vui lòng chọn đầy đủ tháng, năm để xem thống kê.");
+				MessageBox.Show("Vui lòng chọn đầy đủ tháng, năm để xem thống kê.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+
+		}
+		private void btn_xuatbaocao_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				// Xuất báo cáo (có thể dùng Excel hoặc PDF)
+				SaveFileDialog saveDialog = new SaveFileDialog();
+				saveDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+				saveDialog.FileName = $"BangCong_{txb_manhanvien.Text}_{txb_tennhanvien.Text}_{cb_thang.SelectedItem}_{cb_nam.SelectedItem}.csv";
+
+				if (saveDialog.ShowDialog() == DialogResult.OK)
+				{
+					ExportToCSV(saveDialog.FileName);
+					MessageBox.Show("Xuất báo cáo thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Lỗi khi xuất báo cáo: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
+		#endregion
 
 
 	}
 }
+
+

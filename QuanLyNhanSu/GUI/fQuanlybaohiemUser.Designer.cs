@@ -28,8 +28,8 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.txb_tienbaohiem = new System.Windows.Forms.TextBox();
 			this.lb_tienbaohiem = new System.Windows.Forms.Label();
 			this.lb_manhanvien = new System.Windows.Forms.Label();
@@ -194,17 +194,17 @@
 			// 
 			// dgv_baohiem
 			// 
-			dataGridViewCellStyle3.BackColor = System.Drawing.Color.Tan;
-			this.dgv_baohiem.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.Tan;
+			this.dgv_baohiem.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
 			this.dgv_baohiem.BackgroundColor = System.Drawing.Color.White;
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgv_baohiem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgv_baohiem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.dgv_baohiem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgv_baohiem.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Ma_BH,
@@ -313,7 +313,8 @@
 			this.Controls.Add(this.txb_mota);
 			this.Controls.Add(this.txb_tennhanvien);
 			this.Name = "fQuanlybaohiemUser";
-			this.Text = "fQuanlybaohiemUser";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.Text = "Bảo hiểm";
 			((System.ComponentModel.ISupportInitialize)(this.dgv_baohiem)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();

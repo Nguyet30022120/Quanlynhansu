@@ -25,7 +25,7 @@ namespace QuanLyNhanSu.GUI
 			InitializeComponent();
 			dgv_checkin.DataSource = checkinList;
 			lb_giocheckin.Text = DateTime.Now.ToLongTimeString();
-			timer1.Start();
+			timer_giocheckin.Start();
 			var col = dgv_checkin.Columns["GioCheckIn"];
 			if (col != null)
 				col.DefaultCellStyle.Format = "HH:mm:ss";
@@ -93,17 +93,17 @@ namespace QuanLyNhanSu.GUI
 
 				if (CheckinDAO.Instance.InsertCheckIn(manv))
 				{
-					MessageBox.Show("Thêm checkin thành công", "Thông báo");
+					MessageBox.Show("Thêm checkin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					LoadCheckIn(txb_manhanvien.Text);
 				}
 				else
 				{
-					MessageBox.Show("Thêm checkin thất bại", "Thông báo");
+					MessageBox.Show("Thêm checkin thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Hãy nhập mã nhân viên", "Thông báo");
+				MessageBox.Show("Không tìm thấy mã nhân viên trong hệ thống", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
@@ -123,17 +123,17 @@ namespace QuanLyNhanSu.GUI
 				int macheckin = Convert.ToInt32(dgv_checkin.CurrentRow.Cells["MaCheckIn"].Value);
 				if (CheckinDAO.Instance.DeleteCheckIn(macheckin))
 				{
-					MessageBox.Show("Xóa checkin thành công", "Thông báo");
+					MessageBox.Show("Xóa checkin thành công", "Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Information);
 					LoadCheckIn(txb_manhanvien.Text);
 				}
 				else
 				{
-					MessageBox.Show("Xóa checkin thất bại", "Thông báo");
+					MessageBox.Show("Xóa checkin thất bại", "Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{

@@ -23,7 +23,7 @@ namespace QuanLyNhanSu.GUI
 		{
 			InitializeComponent();
 			lb_giocheckout.Text = DateTime.Now.ToLongTimeString();
-			giocheckout.Start();
+			timer_giocheckout.Start();
 			dgv_checkout.DataSource = checkoutList;
 			var col = dgv_checkout.Columns["GioCheckOut"];
 			if (col != null)
@@ -77,17 +77,17 @@ namespace QuanLyNhanSu.GUI
 
 				if (CheckoutDAO.Instance.InsertCheckOut(manv))
 				{
-					MessageBox.Show("Thêm checkout thành công.", "Thông báo");
+					MessageBox.Show("Thêm checkout thành công.", "Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Information);
 					LoadCheckOut(txb_manhanvien.Text);
 				}
 				else
 				{
-					MessageBox.Show("Thêm checkout thất bại.", "Thông báo");
+					MessageBox.Show("Thêm checkout thất bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
@@ -103,17 +103,17 @@ namespace QuanLyNhanSu.GUI
 				int macheckout = Convert.ToInt32(dgv_checkout.CurrentRow.Cells["MaCheckOut"].Value);
 				if (CheckoutDAO.Instance.DeleteCheckOut(macheckout))
 				{
-					MessageBox.Show("Xóa checkout thành công.", "Thông báo");
+					MessageBox.Show("Xóa checkout thành công.", "Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Information);
 					LoadCheckOut(txb_manhanvien.Text);
 				}
 				else
 				{
-					MessageBox.Show("Xóa checkout thất bại.", "Thông báo");
+					MessageBox.Show("Xóa checkout thất bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Error: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{

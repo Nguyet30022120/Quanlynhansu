@@ -24,11 +24,11 @@ namespace QuanLyNhanSu
 
 		void LoadDataUser(string maTK)
 		{
-			List<NguoidungDTO> data = NguoidungDAO.Instance.GetInforNVByUsername(maTK);
+			List<UserDTO> data = NguoidungDAO.Instance.GetInforNVByUsername(maTK);
 
 			if (data.Count > 0)
 			{
-				NguoidungDTO user = data[0];
+				UserDTO user = data[0];
 				txb_cccd.Text = user.CCCD;
 				txb_manhanvien.Text = user.MaNV;
 				txb_tennhanvien.Text = user.TenNV;

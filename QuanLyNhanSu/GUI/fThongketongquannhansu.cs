@@ -80,7 +80,7 @@ namespace QuanLyNhanSu.GUI
 					soDong++;
 				}
 			}
-			lb_slpb2.Text = soDong.ToString();
+			lb_slch2.Text = soDong.ToString();
 		}
 		void LoadLbTongCV()
 		{
@@ -233,7 +233,7 @@ namespace QuanLyNhanSu.GUI
 			{
 				StringBuilder csvContent = new StringBuilder();
 
-				csvContent.AppendLine("=== Thống kê Nam/Nữ ===");
+				csvContent.AppendLine("Thống kê Nam/Nữ");
 				foreach (DataGridViewColumn column in dgv_namnu.Columns)
 				{
 					csvContent.Append(column.HeaderText + ",");
@@ -253,7 +253,7 @@ namespace QuanLyNhanSu.GUI
 				csvContent.AppendLine();
 
 				
-				csvContent.AppendLine("=== Thống kê theo Cửa hàng ===");
+				csvContent.AppendLine("Thống kê theo Cửa hàng");
 				foreach (DataGridViewColumn column in dgv_nhanvientheocuahang.Columns)
 				{
 					csvContent.Append(column.HeaderText + ",");
@@ -273,7 +273,7 @@ namespace QuanLyNhanSu.GUI
 				csvContent.AppendLine();
 
 				
-				csvContent.AppendLine("=== Thống kê theo Chức Vụ ===");
+				csvContent.AppendLine("Thống kê theo Chức Vụ");
 				foreach (DataGridViewColumn column in dgv_nhanvientheochucvu.Columns)
 				{
 					csvContent.Append(column.HeaderText + ",");
@@ -291,7 +291,8 @@ namespace QuanLyNhanSu.GUI
 					}
 				}
 
-				System.IO.File.WriteAllText(filePath, csvContent.ToString());
+				System.IO.File.WriteAllText(filePath, csvContent.ToString(), new UTF8Encoding(true));
+
 			}
 			catch (Exception ex)
 			{
@@ -312,7 +313,7 @@ namespace QuanLyNhanSu.GUI
 				if (saveDialog.ShowDialog() == DialogResult.OK)
 				{
 					ExportToCSV(saveDialog.FileName);
-					MessageBox.Show("✅ Xuất báo cáo thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					MessageBox.Show("Xuất báo cáo thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
 			}
 			catch (Exception ex)

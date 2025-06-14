@@ -13,11 +13,9 @@ namespace QuanLyNhanSu.GUI
 {
 	public partial class fQuanlyphucapUser : Form
 	{
-		private Color originalAddButtonColor;
-		private Color originalEditButtonColor;
-		private Color originalDeleteButtonColor;
+
 		private Color originalCloseButtonColor;
-		private Color originalSearchButtonColor;
+
 
 		BindingSource phucapList = new BindingSource();
 		public fQuanlyphucapUser(string manv)
@@ -32,8 +30,19 @@ namespace QuanLyNhanSu.GUI
 		}
 		void LoadTenNV(string manv)
 		{
-			txb_tennhanvien.Text = NhanvienDAO.Instance.GetStaffTen(manv);
+			string tenNV = NhanvienDAO.Instance.GetStaffTen(manv);
+
+			if (string.IsNullOrEmpty(tenNV))
+			{
+				MessageBox.Show("Không có mã nhân viên trong hệ thống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				txb_tennhanvien.Text = "";
+			}
+			else
+			{
+				txb_tennhanvien.Text = tenNV;
+			}
 		}
+
 		void BindingPhuCapData()
 		{
 

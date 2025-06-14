@@ -17,9 +17,9 @@ namespace QuanLyNhanSu.DAO
 		private NguoidungDAO() { }
 
 
-		public List<NguoidungDTO> GetInforNVByUsername(string username)
+		public List<UserDTO> GetInforNVByUsername(string username)
 		{
-			List<NguoidungDTO> list = new List<NguoidungDTO>();
+			List<UserDTO> list = new List<UserDTO>();
 
 			string query = $"SELECT nv.HoTen, nv.GioiTinh, nv.Ma_NV, cv.TenChucVu, ch.TenCuaHang, tk.Ma_TK, tk.TaiKhoan, tk.VaiTro, tk.MoTaQuyenHan, nv.NgaySinh, nv.DiaChi, nv.CCCD, nv.DienThoai\r\nFROM [dbo].[NhanVien] AS nv INNER JOIN [dbo].[TaiKhoan] AS tk ON nv.Ma_TK = tk.Ma_TK INNER JOIN [dbo].[CuaHang] AS ch ON nv.Ma_CH = ch.Ma_CH INNER JOIN [dbo].[ChucVu] AS cv ON nv.Ma_CV = cv.Ma_CV WHERE tk.TaiKhoan = '{username}'";
 
@@ -27,16 +27,16 @@ namespace QuanLyNhanSu.DAO
 
 			foreach (DataRow item in data.Rows)
 			{
-				NguoidungDTO category = new NguoidungDTO(item);
+				UserDTO category = new UserDTO(item);
 
 				list.Add(category);
 			}
 
 			return list;
 		}
-		public List<NguoidungDTO1> GetInfoUser()
+		public List<NguoidungDTO> GetInfoUser()
 		{
-			List<NguoidungDTO1> list = new List<NguoidungDTO1>();
+			List<NguoidungDTO> list = new List<NguoidungDTO>();
 
 			string query = $"SELECT nv.HoTen, nv.Ma_NV, cv.TenChucVu, ch.TenCuaHang, tk.Ma_TK, tk.TaiKhoan, tk.VaiTro, tk.MoTaQuyenHan FROM [dbo].[NhanVien] AS nv INNER JOIN [dbo].[TaiKhoan] AS tk ON nv.Ma_TK = tk.Ma_TK INNER JOIN [dbo].[CuaHang] AS ch ON nv.Ma_CH = ch.Ma_CH INNER JOIN [dbo].[ChucVu] AS cv ON nv.Ma_CV = cv.Ma_CV";
 
@@ -44,7 +44,7 @@ namespace QuanLyNhanSu.DAO
 
 			foreach (DataRow item in data.Rows)
 			{
-				NguoidungDTO1 user = new NguoidungDTO1(item);
+				NguoidungDTO user = new NguoidungDTO(item);
 
 				list.Add(user);
 			}

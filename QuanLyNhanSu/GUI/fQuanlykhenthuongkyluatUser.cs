@@ -13,10 +13,7 @@ namespace QuanLyNhanSu.GUI
 {
 	public partial class fQuanlykhenthuongkyluatUser : Form
 	{
-		private Color originalAddButtonColor;
-		private Color originalEditButtonColor;
-		private Color originalDeleteButtonColor;
-		private Color originalFindButtonColor;
+
 		private Color originalCloseButtonColor;
 
 		BindingSource commendationList = new BindingSource();
@@ -26,15 +23,25 @@ namespace QuanLyNhanSu.GUI
 			InitializeComponent();
 			dgv_khenthuongkyluat.DataSource = commendationList;
 			LoadCommendation(manv);
-			originalCloseButtonColor = btn_dongkhenthuongkyluat.BackColor;
 			txb_manhanvien.Text = manv;
 			LoadTenNV(manv);
 		}
 
 		void LoadTenNV(string manv)
 		{
-			txb_tennhanvien.Text = NhanvienDAO.Instance.GetStaffTen(manv);
+			string tenNV = NhanvienDAO.Instance.GetStaffTen(manv);
+
+			if (string.IsNullOrEmpty(tenNV))
+			{
+				MessageBox.Show("Không có mã nhân viên trong hệ thống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				txb_tennhanvien.Text = "";
+			}
+			else
+			{
+				txb_tennhanvien.Text = tenNV;
+			}
 		}
+
 		void BindingCommendationData()
 		{
 
@@ -52,112 +59,17 @@ namespace QuanLyNhanSu.GUI
 			commendationList.DataSource = KhenthuongkyluatDAO.Instance.GetCommendationsByMaNV(manv);
 			BindingCommendationData();
 		}
-		//void LoadCbHinhThuc()
-		//{
-		//	List<KeyValuePair<int, string>> hinhthuc = new List<KeyValuePair<int, string>>()
-		//	{
-		//		new KeyValuePair<int, string>(1, "Khen thưởng"),
-		//		new KeyValuePair<int, string>(0, "Kỷ luật")
-		//	};
-		//	cb_hinhthuc.DataSource = hinhthuc;
-		//	cb_hinhthuc.DisplayMember = "Value";
-		//	cb_hinhthuc.ValueMember = "Key";
-		//}
+
 		#region Events
-		//private void btn_findnv_Click(object sender, EventArgs e)
-		//{
-		//	LoadCommendation(txb_manhanvien.Text);
-		//}
-
-		//private void btn_addkt_Click(object sender, EventArgs e)
-		//{
-		//	string manv = txb_manhanvien.Text;
-		//	try
-		//	{
-		//		string noidung = txb_noidung.Text;
-		//		int hinhthuc = (int)cb_hinhthuc.SelectedValue;
-		//		DateTime thoigian = dtp_thoigian.Value;
-		//		string tennv = txb_tennhanvien.Text;
-
-		//		if (KhenthuongkyluatDAO.Instance.InsertCommendation(manv, noidung, hinhthuc, thoigian))
-		//		{
-		//			MessageBox.Show("Thêm khen thưởng/kỷ luật thành công", "Thông báo");
-		//			LoadCommendation(manv);
-		//		}
-		//		else
-		//		{
-		//			MessageBox.Show("Thêm khen thưởng/kỷ luật thất bại", "Thông báo");
-		//		}
-		//	}
-		//	catch (Exception ex)
-		//	{
-		//		MessageBox.Show("Hãy nhập mã nhân viên!", "Thông báo");
-		//	}
-		//	finally
-		//	{
-		//		LoadCommendation(manv);
-		//	}
-		//}
-
-		//private void btn_editkt_Click(object sender, EventArgs e)
-		//{
-		//	string manv = txb_manhanvien.Text;
-		//	try
-		//	{
-		//		string maktkl = dgv_khenthuongkyluat.CurrentRow.Cells["MaKTKL"].Value.ToString();
-		//		string noidung = txb_noidung.Text;
-		//		int hinhthuc = (int)cb_hinhthuc.SelectedValue;
-		//		DateTime thoigian = dtp_thoigian.Value;
-		//		string tennv = txb_tennhanvien.Text;
-
-		//		if (KhenthuongkyluatDAO.Instance.UpdateCommendation(maktkl, noidung, hinhthuc, thoigian))
-		//		{
-		//			MessageBox.Show("Sửa khen thưởng/kỷ luật thành công.", "Thông báo");
-		//		}
-		//		else
-		//		{
-		//			MessageBox.Show("Sửa khen thưởng/kỷ luật thất bại.", "Thông báo");
-		//		}
-		//	}
-		//	catch (Exception ex)
-		//	{
-		//		MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
-		//	}
-		//	finally
-		//	{
-		//		LoadCommendation(manv);
-		//	}
-		//}
-
-		//private void btn_deletekt_Click(object sender, EventArgs e)
-		//{
-		//	string manv = txb_manhanvien.Text;
-		//	try
-		//	{
-		//		string matd = dgv_khenthuongkyluat.CurrentRow.Cells["MaKTKL"].Value.ToString(); ;
-		//		if (KhenthuongkyluatDAO.Instance.DeleteCommendation(matd))
-		//		{
-		//			MessageBox.Show("Xóa khen thưởng/kỷ luật thành công.", "Thông báo");
-		//		}
-		//		else
-		//		{
-		//			MessageBox.Show("Xóa khen thưởng/kỷ luật thất bại.", "Thông báo");
-		//		}
-		//	}
-		//	catch (Exception ex)
-		//	{
-		//		MessageBox.Show("Error: " + ex.Message, "ThongBao", MessageBoxButtons.OK, MessageBoxIcon.Error);
-		//	}
-		//	finally
-		//	{
-		//		LoadCommendation(manv);
-		//	}
-		//}
-
+		private void btn_dongkhenthuongkyluat_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
 		#endregion
 
+
 		#region Hover
-		
+
 		private void btn_dongkhenthuongkyluat_MouseEnter(object sender, EventArgs e)
 		{
 			btn_dongkhenthuongkyluat.BackColor = Color.LightBlue;
@@ -168,9 +80,6 @@ namespace QuanLyNhanSu.GUI
 		}
 		#endregion
 
-		private void btn_dongkhenthuongkyluat_Click(object sender, EventArgs e)
-		{
-			this.Close();
-		}
+
 	}
 }

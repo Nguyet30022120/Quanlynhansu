@@ -16,22 +16,6 @@ namespace QuanLyNhanSu.DAO
 
 		private TrinhdochuyenmonDAO() { }
 
-		public List<TrinhdochuyenmonDTO> GetListTrinhDoAll ()
-		{
-			List<TrinhdochuyenmonDTO> list = new List<TrinhdochuyenmonDTO>();
-
-			string query = $"SELECT TDCM.Ma_TD, NV.HoTen AS TenNhanVien, TDCM.LoaiBangCap, TDCM.ChuyenNganh, TDCM.TruongHoc FROM TrinhDoChuyenMon TDCM JOIN [NhanVien] NV ON TDCM.Ma_NV = NV.Ma_NV;\r\n";
-			DataTable data = DataProvider.Instance.ExecuteQuery(query);
-
-			foreach (DataRow item in data.Rows)
-			{
-				TrinhdochuyenmonDTO Level = new TrinhdochuyenmonDTO(item);
-
-				list.Add(Level);
-			}
-
-			return list;
-		}
 
 		public List<TrinhdochuyenmonDTO> GetListTrinhDo(string manv)
 		{
@@ -71,9 +55,6 @@ namespace QuanLyNhanSu.DAO
 			int re = Convert.ToInt32(DataProvider.Instance.ExcuteScalar(query));
 			return re == 0;
 		}
-
-
-
 
 	}
 }

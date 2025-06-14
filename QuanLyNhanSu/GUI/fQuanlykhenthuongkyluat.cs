@@ -33,6 +33,20 @@ namespace QuanLyNhanSu.GUI
 			originalCloseButtonColor = btn_dongkhenthuongkyluat.BackColor;
 		}
 
+		void LoadTenNV(string manv)
+		{
+			string tenNV = NhanvienDAO.Instance.GetStaffTen(manv);
+
+			if (string.IsNullOrEmpty(tenNV))
+			{
+				MessageBox.Show("Không có mã nhân viên trong hệ thống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				txb_tennhanvien.Text = "";
+			}
+			else
+			{
+				txb_tennhanvien.Text = tenNV;
+			}
+		}
 
 		void BindingCommendationData()
 		{
@@ -64,7 +78,12 @@ namespace QuanLyNhanSu.GUI
 		#region Events
 		private void btn_findnv_Click(object sender, EventArgs e)
 		{
+			string manv = txb_manhanvien.Text;
 			LoadCommendation(txb_manhanvien.Text);
+			if (!string.IsNullOrEmpty(manv))
+			{
+				LoadTenNV(manv);
+			}
 		}
 
 		private void btn_addkt_Click(object sender, EventArgs e)

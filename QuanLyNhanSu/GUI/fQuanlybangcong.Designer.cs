@@ -28,6 +28,7 @@ namespace QuanLyNhanSu.GUI
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fQuanlybangcong));
 			this.pn_bangcong = new System.Windows.Forms.Panel();
 			this.txb_tennhanvien = new System.Windows.Forms.TextBox();
 			this.txb_manhanvien = new System.Windows.Forms.TextBox();
@@ -365,6 +366,7 @@ namespace QuanLyNhanSu.GUI
 			this.Controls.Add(this.panel2);
 			this.Controls.Add(this.panel3);
 			this.Controls.Add(this.pn_bangcong);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "fQuanlybangcong";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Bảng Chấm Công";

@@ -94,10 +94,30 @@ namespace QuanLyNhanSu.GUI
 			};
 			cb_trangthai.DataSource = trangThai;
 		}
+		void LoadTenNV(string manv)
+		{
+			string tenNV = NhanvienDAO.Instance.GetStaffTen(manv);
+
+			if (string.IsNullOrEmpty(tenNV))
+			{
+				MessageBox.Show("Không có mã nhân viên trong hệ thống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				txb_tennhanvien.Text = "";
+			}
+			else
+			{
+				txb_tennhanvien.Text = tenNV;
+			}
+		}
+
 		#region Events
 		private void btn_findnv_Click(object sender, System.EventArgs e)
 		{
-			LoadDonNghiPhep(txb_manhanvien.Text);
+			string manv = txb_manhanvien.Text;
+			LoadDonNghiPhep(manv);
+			if (!string.IsNullOrEmpty(manv))
+			{
+				LoadTenNV(manv);
+			}
 		}
 
 		private void btn_adddonnghiphep_Click(object sender, System.EventArgs e)

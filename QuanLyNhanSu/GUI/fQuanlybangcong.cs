@@ -31,6 +31,20 @@ namespace QuanLyNhanSu.GUI
 			originalExportButtonColor = btn_xuatbaocao.BackColor;
 			originalCloseButtonColor = btn_close.BackColor;
 		}
+		void LoadTenNV(string manv)
+		{
+			string tenNV = NhanvienDAO.Instance.GetStaffTen(manv);
+
+			if (string.IsNullOrEmpty(tenNV))
+			{
+				MessageBox.Show("Không có mã nhân viên trong hệ thống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				txb_tennhanvien.Text = "";
+			}
+			else
+			{
+				txb_tennhanvien.Text = tenNV;
+			}
+		}
 
 		void LoadInitialData()
 		{

@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fQuanlytaikhoan));
 			this.txb_tennhanvien = new System.Windows.Forms.TextBox();
 			this.lb_tennhanvien = new System.Windows.Forms.Label();
 			this.lb_manhanvien = new System.Windows.Forms.Label();
@@ -352,6 +353,7 @@
 			this.Controls.Add(this.lb_manhanvien);
 			this.Controls.Add(this.lb_tennhanvien);
 			this.Controls.Add(this.txb_tennhanvien);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "fQuanlytaikhoan";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Quản lý tài khoản";

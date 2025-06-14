@@ -30,6 +30,7 @@
 		{
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fQuanlyluongcoban));
 			this.dgv_luongcoban = new System.Windows.Forms.DataGridView();
 			this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -240,6 +241,7 @@
 			this.ClientSize = new System.Drawing.Size(1482, 778);
 			this.Controls.Add(this.dgv_luongcoban);
 			this.Controls.Add(this.pn_luongcoban);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "fQuanlyluongcoban";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Lương cơ bản";

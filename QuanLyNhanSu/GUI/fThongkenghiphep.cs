@@ -207,7 +207,10 @@ namespace QuanLyNhanSu
 			{
 				LoadOnLeaveStatisticByMaNV(txb_manhanvien.Text);
 				string maNV = txb_manhanvien.Text.Trim();
-				LoadTenNV(maNV);
+				if (!string.IsNullOrEmpty(maNV))
+				{
+					LoadTenNV(maNV);
+				}
 
 				if (cb_nam.SelectedItem == null)
 				{

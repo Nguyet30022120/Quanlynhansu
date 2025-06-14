@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fQuenmatkhau));
 			this.lb_header = new System.Windows.Forms.Label();
 			this.txb_email = new System.Windows.Forms.TextBox();
 			this.btn_guiyeucau = new System.Windows.Forms.Button();
@@ -140,6 +141,7 @@
 			this.Controls.Add(this.btn_guiyeucau);
 			this.Controls.Add(this.txb_email);
 			this.Controls.Add(this.lb_header);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "fQuenmatkhau";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Quên mật khẩu";

@@ -32,7 +32,7 @@ namespace QuanLyNhanSu.GUI
 			originalAddButtonColor = btn_checkin.BackColor;
 			originalDeleteButtonColor = btn_xoacheckin.BackColor;
 			originalCloseButtonColor = btn_dongcheckin.BackColor;
-			LoadTenNV();
+			LoadTenNV(manv);
 
 		}
 
@@ -40,11 +40,21 @@ namespace QuanLyNhanSu.GUI
 		{
 			lb_giocheckin.Text = DateTime.Now.ToLongTimeString();
 		}
-		void LoadTenNV()
+		void LoadTenNV(string manv)
 		{
-			txb_tennhanvien.DataBindings.Clear();
-			txb_tennhanvien.DataBindings.Add(new Binding("Text", dgv_checkin.DataSource, "TenNV", true, DataSourceUpdateMode.Never));
+			string tenNV = NhanvienDAO.Instance.GetStaffTen(manv);
+
+			if (string.IsNullOrEmpty(tenNV))
+			{
+				MessageBox.Show("Không có mã nhân viên trong hệ thống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				txb_tennhanvien.Text = "";
+			}
+			else
+			{
+				txb_tennhanvien.Text = tenNV;
+			}
 		}
+
 		void LoadCheckIn(string manv)
 		{
 			checkinList.DataSource = CheckinDAO.Instance.GetCheckInByMaNV(manv);

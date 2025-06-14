@@ -41,11 +41,21 @@ namespace QuanLyNhanSu.GUI
 		{
 			lb_giocheckin.Text = DateTime.Now.ToLongTimeString();
 		}
-		void LoadTenNV()
+		void LoadTenNV(string manv)
 		{
-			txb_tennhanvien.DataBindings.Clear();
-			txb_tennhanvien.DataBindings.Add(new Binding("Text", dgv_checkin.DataSource, "TenNV", true, DataSourceUpdateMode.Never));
+			string tenNV = NhanvienDAO.Instance.GetStaffTen(manv);
+
+			if (string.IsNullOrEmpty(tenNV))
+			{
+				MessageBox.Show("Không có mã nhân viên trong hệ thống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				txb_tennhanvien.Text = "";
+			}
+			else
+			{
+				txb_tennhanvien.Text = tenNV;
+			}
 		}
+
 		void LoadCheckIn(string manv)
 		{
 			checkinList.DataSource = CheckinDAO.Instance.GetCheckInByMaNV(manv);
@@ -67,8 +77,9 @@ namespace QuanLyNhanSu.GUI
 		{
 			try
 			{
-				LoadCheckIn(txb_manhanvien.Text);
-				LoadTenNV();
+				string manv =txb_manhanvien.Text.Trim();
+				LoadCheckIn(manv);
+				LoadTenNV(manv);
 			}
 			catch (Exception ex)
 			{

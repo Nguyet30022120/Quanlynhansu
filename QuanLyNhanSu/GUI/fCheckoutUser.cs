@@ -32,18 +32,28 @@ namespace QuanLyNhanSu.GUI
 			originalAddButtonColor = btn_checkout.BackColor;
 			originalDeleteButtonColor = btn_xoacheckout.BackColor;
 			originalCloseButtonColor = btn_dongcheckout.BackColor;
-			LoadTenNV();
+			LoadTenNV(manv);
 		}
 
 		private void giocheckout_Tick(object sender, EventArgs e)
 		{
 			lb_giocheckout.Text = DateTime.Now.ToLongTimeString();
 		}
-		void LoadTenNV()
+		void LoadTenNV(string manv)
 		{
-			txb_tennhanvien.DataBindings.Clear();
-			txb_tennhanvien.DataBindings.Add(new Binding("Text", dgv_checkout.DataSource, "TenNV", true, DataSourceUpdateMode.Never));
+			string tenNV = NhanvienDAO.Instance.GetStaffTen(manv);
+
+			if (string.IsNullOrEmpty(tenNV))
+			{
+				MessageBox.Show("Không có mã nhân viên trong hệ thống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				txb_tennhanvien.Text = "";
+			}
+			else
+			{
+				txb_tennhanvien.Text = tenNV;
+			}
 		}
+
 		void LoadCheckOut(string manv)
 		{
 			checkoutList.DataSource = CheckoutDAO.Instance.GetCheckOutByMaNV(manv);

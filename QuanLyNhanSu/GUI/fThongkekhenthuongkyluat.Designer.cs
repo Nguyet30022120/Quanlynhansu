@@ -30,6 +30,7 @@
 		{
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fThongkekhenthuongkyluat));
 			this.pn_thongkekhenthuongkyluat = new System.Windows.Forms.Panel();
 			this.txb_tennhanvien = new System.Windows.Forms.TextBox();
 			this.lb_tennhanvien = new System.Windows.Forms.Label();
@@ -262,6 +263,7 @@
 			this.Controls.Add(this.pn_chart);
 			this.Controls.Add(this.dgv_ktkltk);
 			this.Controls.Add(this.pn_thongkekhenthuongkyluat);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "fThongkekhenthuongkyluat";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Thống kê khen thưởng kỷ luật";

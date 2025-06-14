@@ -30,6 +30,7 @@
 		{
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fQuanlydangkynghiphep));
 			this.lb_loaiphep = new System.Windows.Forms.Label();
 			this.lb_ngaybatdau = new System.Windows.Forms.Label();
 			this.lb_ngayketthuc = new System.Windows.Forms.Label();
@@ -437,6 +438,7 @@
 			this.Controls.Add(this.lb_ngaybatdau);
 			this.Controls.Add(this.lb_loaiphep);
 			this.Controls.Add(this.lb_tennhanvien);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "fQuanlydangkynghiphep";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Đăng ký nghỉ phép";

@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows.Forms;
 
 namespace QuanLyNhanSu
@@ -41,6 +42,20 @@ namespace QuanLyNhanSu
 			cb_loaibangcap.DataBindings.Add(new Binding("Text", dgv_trinhdo.DataSource, "LoaiBC", true, DataSourceUpdateMode.Never));
 			txb_chuyennganh.DataBindings.Add(new Binding("Text", dgv_trinhdo.DataSource, "ChuyenNganh", true, DataSourceUpdateMode.Never));
 			txb_truonghoc.DataBindings.Add(new Binding("Text", dgv_trinhdo.DataSource, "TruongHoc", true, DataSourceUpdateMode.Never));
+		}
+		void LoadTenNV(string manv)
+		{
+			string tenNV = NhanvienDAO.Instance.GetStaffTen(manv);
+
+			if (string.IsNullOrEmpty(tenNV))
+			{
+				MessageBox.Show("Không có mã nhân viên trong hệ thống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				txb_tennhanvien.Text = "";
+			}
+			else
+			{
+				txb_tennhanvien.Text = tenNV;
+			}
 		}
 
 		void LoadLevel(string manv)
@@ -138,8 +153,13 @@ namespace QuanLyNhanSu
 		}
 
 		private void btn_findtd_Click(object sender, EventArgs e)
-		{
-			LoadLevel(txb_manhanvien.Text);
+		{   
+			string manv = txb_manhanvien.Text;
+			LoadLevel(manv);
+			if (!string.IsNullOrEmpty(manv))
+			{
+				LoadTenNV(manv);
+			}
 		}
 		#endregion
 

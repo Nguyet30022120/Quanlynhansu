@@ -30,6 +30,7 @@
 		{
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fQuanlyketquaphongvan));
 			this.txb_tenungvien = new System.Windows.Forms.TextBox();
 			this.txb_danhgia = new System.Windows.Forms.TextBox();
 			this.dtp_ngaydanhgia = new System.Windows.Forms.DateTimePicker();
@@ -376,6 +377,7 @@
 			this.ClientSize = new System.Drawing.Size(1482, 778);
 			this.Controls.Add(this.pn_ketquaphongvan);
 			this.Controls.Add(this.dgv_ketqua);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "fQuanlyketquaphongvan";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Kết quả phỏng vấn";

@@ -4,34 +4,34 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Windows.Forms; 
+using System.Windows.Forms;
 
 namespace QuanLyNhanSu.DAO
 {
-	public class BangluongDAO
-	{
-		private static BangluongDAO instance;
-		public static BangluongDAO Instance
-		{
-			get { if (instance == null) instance = new BangluongDAO(); return instance; }
-			private set { instance = value; }
-		}
-		public DataTable GetNhanVienTheoMa()
-		{
-			string query = $"SELECT Ma_NV, HoTen FROM NhanVien";
+    public class BangluongDAO
+    {
+        private static BangluongDAO instance;
+        public static BangluongDAO Instance
+        {
+            get { if (instance == null) instance = new BangluongDAO(); return instance; }
+            private set { instance = value; }
+        }
+        public DataTable GetNhanVienTheoMa()
+        {
+            string query = $"SELECT Ma_NV, HoTen FROM NhanVien";
 
-			return DataProvider.Instance.ExecuteQuery(query);
-		}
-		/// Tính lương cho tất cả nhân viên trong tháng 
-		public List<BangluongDTO> TinhLuongTheoThang(int thang, int nam)
-		{
-			List<BangluongDTO> danhSachLuong = new List<BangluongDTO>();
+            return DataProvider.Instance.ExecuteQuery(query);
+        }
+        /// Tính lương cho tất cả nhân viên trong tháng 
+        public List<BangluongDTO> TinhLuongTheoThang(int thang, int nam)
+        {
+            List<BangluongDTO> danhSachLuong = new List<BangluongDTO>();
 
-			try
-			{
+            try
+            {
 
-				// Query chính: Tính tổng (Giờ từng ngày × Hệ số từng ngày)
-				string query = string.Format(@"
+                // Query chính: Tính tổng (Giờ từng ngày × Hệ số từng ngày)
+                string query = string.Format(@"
                     WITH ChiTietChamCongTheoNgay AS (
                         SELECT 
                             ci.Ma_NV,
@@ -142,31 +142,31 @@ namespace QuanLyNhanSu.DAO
                     ) kl ON nv.Ma_NV = kl.Ma_NV
                     ORDER BY nv.Ma_NV", thang, nam);
 
-				DataTable data = DataProvider.Instance.ExecuteQuery(query);
+                DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
-				foreach (DataRow row in data.Rows)
-				{
-					BangluongDTO luong = new BangluongDTO(row);
-					danhSachLuong.Add(luong);
-				}
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show($"Lỗi khi tính lương theo tháng:\n{ex.Message}\n\nStack Trace:\n{ex.StackTrace}",
-							   "Lỗi Debug", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				return new List<BangluongDTO>();
-			}
+                foreach (DataRow row in data.Rows)
+                {
+                    BangluongDTO luong = new BangluongDTO(row);
+                    danhSachLuong.Add(luong);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tính lương theo tháng:\n{ex.Message}\n\nStack Trace:\n{ex.StackTrace}",
+                               "Lỗi Debug", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return new List<BangluongDTO>();
+            }
 
-			return danhSachLuong;
-		}
+            return danhSachLuong;
+        }
 
-		/// Tính lương cho một nhân viên cụ thể
+        /// Tính lương cho một nhân viên cụ thể
 
-		public BangluongDTO TinhLuongNhanVien(string maNV, int thang, int nam)
-		{
-			try
-			{
-				string query = string.Format(@"
+        public BangluongDTO TinhLuongNhanVien(string maNV, int thang, int nam)
+        {
+            try
+            {
+                string query = string.Format(@"
                        DECLARE @MaNV VARCHAR(50) = '{2}';  -- Thay bằng mã nhân viên cần tính
 
                 WITH ChiTietChamCongTheoNgay AS (
@@ -271,28 +271,29 @@ namespace QuanLyNhanSu.DAO
                 ) kl ON nv.Ma_NV = kl.Ma_NV
                 WHERE nv.Ma_NV = @MaNV", thang, nam, maNV);
 
-				DataTable data = DataProvider.Instance.ExecuteQuery(query);
-				if (data.Rows.Count > 0)
-				{
-					return new BangluongDTO(data.Rows[0]);
-				}
-			}
-			catch (Exception ex)
-			{
-				System.Diagnostics.Debug.WriteLine($"Lỗi khi tính lương nhân viên {maNV}: {ex.Message}");
-				return null;
-			}
+                DataTable data = DataProvider.Instance.ExecuteQuery(query);
+                if (data.Rows.Count > 0)
+                {
+                    return new BangluongDTO(data.Rows[0]);
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Lỗi khi tính lương nhân viên {maNV}: {ex.Message}");
+                return null;
+            }
 
-			return null;
-		}
-		public List<BangluongDTO> BangLuongNhanVien(string maNV)
+            return null;
+        }
+		public List<BangluongDTO> BangLuongNV(string maNV)
 		{
-			List<BangluongDTO> list = new List<BangluongDTO>();
+			List<BangluongDTO> danhSachLuong = new List<BangluongDTO>();
 
 			try
 			{
-				string query = @"
-                 WITH ChiTietChamCongTheoNgay AS (
+				string query = string.Format(@"
+                       DECLARE @MaNV VARCHAR(50) = '{0}'; 
+				 WITH ChiTietChamCongTheoNgay AS (
                      SELECT 
                          ci.Ma_NV,
                          CAST(ci.NgayCheckIn AS DATE) AS NgayLam,
@@ -384,28 +385,25 @@ namespace QuanLyNhanSu.DAO
                  LEFT JOIN ThuongPhat tp ON nv.Ma_NV = tp.Ma_NV AND tp.Thang = cc.Thang AND tp.Nam = cc.Nam
                  WHERE nv.Ma_NV = @MaNV
                  ORDER BY cc.Nam, cc.Thang;
-                 ";
+                 ", maNV);
 
-				SqlParameter[] parameters = new SqlParameter[]
-				{
-			         new SqlParameter("@MaNV", maNV)
-				};
-
-				DataTable data = DataProvider.Instance.ExecuteQuery(query, parameters);
+				DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
 				foreach (DataRow row in data.Rows)
 				{
-					list.Add(new BangluongDTO(row)); 
+					BangluongDTO luong = new BangluongDTO(row);
+					danhSachLuong.Add(luong);
 				}
 			}
 			catch (Exception ex)
 			{
-				System.Diagnostics.Debug.WriteLine($"Lỗi khi thống kê bảng lương nhân viên {maNV}: {ex.Message}");
-
+				MessageBox.Show($"Lỗi khi thống kê","Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return new List<BangluongDTO>();
 			}
 
-			return list;
-		}
+			return danhSachLuong;
 
 	}
+    }
 }
+

@@ -65,8 +65,6 @@ namespace QuanLyNhanSu.GUI
 			}
 			cb_nam.SelectedItem = currentYear;
 			txb_manhanvien.Text = manv; // Hiển thị mã nhân viên ngay khi vào form
-
-
 		}
 
 		void CreateCalendarView()

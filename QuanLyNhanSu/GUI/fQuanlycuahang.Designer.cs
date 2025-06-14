@@ -30,6 +30,7 @@
 		{
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fQuanlycuahang));
 			this.pn_cuahang = new System.Windows.Forms.Panel();
 			this.lb_goiy = new System.Windows.Forms.Label();
 			this.txb_timcuahang = new System.Windows.Forms.TextBox();
@@ -250,6 +251,7 @@
 			this.ClientSize = new System.Drawing.Size(1482, 778);
 			this.Controls.Add(this.dgv_cuahang);
 			this.Controls.Add(this.pn_cuahang);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "fQuanlycuahang";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Cửa hàng";

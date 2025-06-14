@@ -30,12 +30,24 @@
 		{
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fQuanlydangkynghiphepUser));
 			this.txb_manhanvien = new System.Windows.Forms.TextBox();
 			this.btn_dongdonnghiphep = new System.Windows.Forms.Button();
 			this.btn_suadonnghiphep = new System.Windows.Forms.Button();
 			this.btn_themdonnghiphep = new System.Windows.Forms.Button();
 			this.lb_manhanvien = new System.Windows.Forms.Label();
 			this.dgv_donnghiphep = new System.Windows.Forms.DataGridView();
+			this.MaDonNghiPhep = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.LoaiPhep = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.LyDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.NguoiDuyet = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.NgayBD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.NgayKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.SoNgay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.NgayTao = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dtp_ngayketthuc = new System.Windows.Forms.DateTimePicker();
 			this.dtp_ngaybatdau = new System.Windows.Forms.DateTimePicker();
 			this.txb_lydo = new System.Windows.Forms.TextBox();
@@ -50,17 +62,6 @@
 			this.lb_tennhanvien = new System.Windows.Forms.Label();
 			this.lb_loaiphep = new System.Windows.Forms.Label();
 			this.txb_trangthai = new System.Windows.Forms.TextBox();
-			this.MaDonNghiPhep = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.LoaiPhep = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.LyDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.NguoiDuyet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.NgayBD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.NgayKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.SoNgay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.NgayTao = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_donnghiphep)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -158,6 +159,94 @@
 			this.dgv_donnghiphep.RowTemplate.Height = 24;
 			this.dgv_donnghiphep.Size = new System.Drawing.Size(1474, 553);
 			this.dgv_donnghiphep.TabIndex = 36;
+			// 
+			// MaDonNghiPhep
+			// 
+			this.MaDonNghiPhep.DataPropertyName = "MaDonNghiPhep";
+			this.MaDonNghiPhep.HeaderText = "Mã đơn";
+			this.MaDonNghiPhep.MinimumWidth = 6;
+			this.MaDonNghiPhep.Name = "MaDonNghiPhep";
+			this.MaDonNghiPhep.Width = 50;
+			// 
+			// TenNV
+			// 
+			this.TenNV.DataPropertyName = "TenNV";
+			this.TenNV.HeaderText = "Tên nhân viên";
+			this.TenNV.MinimumWidth = 6;
+			this.TenNV.Name = "TenNV";
+			this.TenNV.Width = 125;
+			// 
+			// MaNV
+			// 
+			this.MaNV.DataPropertyName = "MaNV";
+			this.MaNV.HeaderText = "Mã nhân viên";
+			this.MaNV.MinimumWidth = 6;
+			this.MaNV.Name = "MaNV";
+			this.MaNV.Width = 75;
+			// 
+			// LoaiPhep
+			// 
+			this.LoaiPhep.DataPropertyName = "LoaiPhep";
+			this.LoaiPhep.HeaderText = "Loại phép";
+			this.LoaiPhep.MinimumWidth = 6;
+			this.LoaiPhep.Name = "LoaiPhep";
+			this.LoaiPhep.Width = 75;
+			// 
+			// LyDo
+			// 
+			this.LyDo.DataPropertyName = "LyDo";
+			this.LyDo.HeaderText = "Lý do";
+			this.LyDo.MinimumWidth = 6;
+			this.LyDo.Name = "LyDo";
+			this.LyDo.Width = 125;
+			// 
+			// TrangThai
+			// 
+			this.TrangThai.DataPropertyName = "TrangThai";
+			this.TrangThai.HeaderText = "Trạng thái";
+			this.TrangThai.MinimumWidth = 6;
+			this.TrangThai.Name = "TrangThai";
+			this.TrangThai.Width = 75;
+			// 
+			// NguoiDuyet
+			// 
+			this.NguoiDuyet.DataPropertyName = "NguoiDuyet";
+			this.NguoiDuyet.HeaderText = "Người duyệt";
+			this.NguoiDuyet.MinimumWidth = 6;
+			this.NguoiDuyet.Name = "NguoiDuyet";
+			this.NguoiDuyet.Width = 175;
+			// 
+			// NgayBD
+			// 
+			this.NgayBD.DataPropertyName = "NgayBD";
+			this.NgayBD.HeaderText = "Ngày bắt đầu";
+			this.NgayBD.MinimumWidth = 6;
+			this.NgayBD.Name = "NgayBD";
+			this.NgayBD.Width = 75;
+			// 
+			// NgayKT
+			// 
+			this.NgayKT.DataPropertyName = "NgayKT";
+			this.NgayKT.HeaderText = "Ngày kết thúc";
+			this.NgayKT.MinimumWidth = 6;
+			this.NgayKT.Name = "NgayKT";
+			this.NgayKT.Width = 75;
+			// 
+			// SoNgay
+			// 
+			this.SoNgay.DataPropertyName = "SoNgay";
+			this.SoNgay.HeaderText = "Số ngày";
+			this.SoNgay.MinimumWidth = 6;
+			this.SoNgay.Name = "SoNgay";
+			this.SoNgay.Width = 50;
+			// 
+			// NgayTao
+			// 
+			this.NgayTao.DataPropertyName = "NgayTao";
+			this.NgayTao.HeaderText = "Ngày tạo";
+			this.NgayTao.MinimumWidth = 6;
+			this.NgayTao.Name = "NgayTao";
+			this.NgayTao.Width = 150;
 			// 
 			// dtp_ngayketthuc
 			// 
@@ -293,94 +382,6 @@
 			this.txb_trangthai.TabIndex = 43;
 			this.txb_trangthai.Text = "Chờ duyệt";
 			// 
-			// MaDonNghiPhep
-			// 
-			this.MaDonNghiPhep.DataPropertyName = "MaDonNghiPhep";
-			this.MaDonNghiPhep.HeaderText = "Mã đơn";
-			this.MaDonNghiPhep.MinimumWidth = 6;
-			this.MaDonNghiPhep.Name = "MaDonNghiPhep";
-			this.MaDonNghiPhep.Width = 50;
-			// 
-			// TenNV
-			// 
-			this.TenNV.DataPropertyName = "TenNV";
-			this.TenNV.HeaderText = "Tên nhân viên";
-			this.TenNV.MinimumWidth = 6;
-			this.TenNV.Name = "TenNV";
-			this.TenNV.Width = 125;
-			// 
-			// MaNV
-			// 
-			this.MaNV.DataPropertyName = "MaNV";
-			this.MaNV.HeaderText = "Mã nhân viên";
-			this.MaNV.MinimumWidth = 6;
-			this.MaNV.Name = "MaNV";
-			this.MaNV.Width = 75;
-			// 
-			// LoaiPhep
-			// 
-			this.LoaiPhep.DataPropertyName = "LoaiPhep";
-			this.LoaiPhep.HeaderText = "Loại phép";
-			this.LoaiPhep.MinimumWidth = 6;
-			this.LoaiPhep.Name = "LoaiPhep";
-			this.LoaiPhep.Width = 75;
-			// 
-			// LyDo
-			// 
-			this.LyDo.DataPropertyName = "LyDo";
-			this.LyDo.HeaderText = "Lý do";
-			this.LyDo.MinimumWidth = 6;
-			this.LyDo.Name = "LyDo";
-			this.LyDo.Width = 125;
-			// 
-			// TrangThai
-			// 
-			this.TrangThai.DataPropertyName = "TrangThai";
-			this.TrangThai.HeaderText = "Trạng thái";
-			this.TrangThai.MinimumWidth = 6;
-			this.TrangThai.Name = "TrangThai";
-			this.TrangThai.Width = 75;
-			// 
-			// NguoiDuyet
-			// 
-			this.NguoiDuyet.DataPropertyName = "NguoiDuyet";
-			this.NguoiDuyet.HeaderText = "Người duyệt";
-			this.NguoiDuyet.MinimumWidth = 6;
-			this.NguoiDuyet.Name = "NguoiDuyet";
-			this.NguoiDuyet.Width = 175;
-			// 
-			// NgayBD
-			// 
-			this.NgayBD.DataPropertyName = "NgayBD";
-			this.NgayBD.HeaderText = "Ngày bắt đầu";
-			this.NgayBD.MinimumWidth = 6;
-			this.NgayBD.Name = "NgayBD";
-			this.NgayBD.Width = 75;
-			// 
-			// NgayKT
-			// 
-			this.NgayKT.DataPropertyName = "NgayKT";
-			this.NgayKT.HeaderText = "Ngày kết thúc";
-			this.NgayKT.MinimumWidth = 6;
-			this.NgayKT.Name = "NgayKT";
-			this.NgayKT.Width = 75;
-			// 
-			// SoNgay
-			// 
-			this.SoNgay.DataPropertyName = "SoNgay";
-			this.SoNgay.HeaderText = "Số ngày";
-			this.SoNgay.MinimumWidth = 6;
-			this.SoNgay.Name = "SoNgay";
-			this.SoNgay.Width = 50;
-			// 
-			// NgayTao
-			// 
-			this.NgayTao.DataPropertyName = "NgayTao";
-			this.NgayTao.HeaderText = "Ngày tạo";
-			this.NgayTao.MinimumWidth = 6;
-			this.NgayTao.Name = "NgayTao";
-			this.NgayTao.Width = 150;
-			// 
 			// fQuanlydangkynghiphepUser
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -407,6 +408,7 @@
 			this.Controls.Add(this.lb_ngaybatdau);
 			this.Controls.Add(this.lb_tennhanvien);
 			this.Controls.Add(this.lb_loaiphep);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "fQuanlydangkynghiphepUser";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Đăng ký nghỉ phép";

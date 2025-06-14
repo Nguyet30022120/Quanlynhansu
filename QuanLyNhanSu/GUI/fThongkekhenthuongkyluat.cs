@@ -268,7 +268,10 @@ namespace QuanLyNhanSu
 		private void btn_thongkenv_Click(object sender, EventArgs e)
 		{
 			string manv = txb_manhanvien.Text.Trim();
-			LoadTenNV(manv);
+			if (!string.IsNullOrEmpty(manv))
+			{
+				LoadTenNV(manv);
+			}
 
 			if (cb_nam.SelectedItem == null)
 			{

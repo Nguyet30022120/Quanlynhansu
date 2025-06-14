@@ -30,6 +30,7 @@
 		{
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fQuanlyphucap));
 			this.lb_tienphucap = new System.Windows.Forms.Label();
 			this.cb_loaiphucap = new System.Windows.Forms.ComboBox();
 			this.btn_timmanhanvien = new System.Windows.Forms.Button();
@@ -288,6 +289,7 @@
 			this.Controls.Add(this.btn_suaphucap);
 			this.Controls.Add(this.btn_themphucap);
 			this.Controls.Add(this.txb_tennhanvien);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "fQuanlyphucap";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Phụ cấp";

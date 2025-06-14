@@ -30,6 +30,7 @@
 		{
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fQuanlykhenthuongkyluat));
 			this.lb_manhanvien = new System.Windows.Forms.Label();
 			this.lb_thoigian = new System.Windows.Forms.Label();
 			this.lb_khenthuongkyluat = new System.Windows.Forms.Label();
@@ -318,6 +319,7 @@
 			this.Controls.Add(this.lb_khenthuongkyluat);
 			this.Controls.Add(this.lb_thoigian);
 			this.Controls.Add(this.lb_manhanvien);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "fQuanlykhenthuongkyluat";
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

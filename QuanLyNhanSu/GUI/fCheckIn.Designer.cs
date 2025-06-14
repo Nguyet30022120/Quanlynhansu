@@ -31,6 +31,7 @@
 			this.components = new System.ComponentModel.Container();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fCheckin));
 			this.txb_manhanvien = new System.Windows.Forms.TextBox();
 			this.lb_manhanvien = new System.Windows.Forms.Label();
 			this.lb_tennhanvien = new System.Windows.Forms.Label();
@@ -39,15 +40,15 @@
 			this.btn_checkin = new System.Windows.Forms.Button();
 			this.sqlDataAdapter1 = new Microsoft.Data.SqlClient.SqlDataAdapter();
 			this.dgv_checkin = new System.Windows.Forms.DataGridView();
-			this.btn_xoacheckin = new System.Windows.Forms.Button();
-			this.btn_dongcheckin = new System.Windows.Forms.Button();
-			this.btn_timnhanvien = new System.Windows.Forms.Button();
-			this.txb_tennhanvien = new System.Windows.Forms.TextBox();
 			this.MaCheckIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.NgayCheckIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.GioCheckIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.btn_xoacheckin = new System.Windows.Forms.Button();
+			this.btn_dongcheckin = new System.Windows.Forms.Button();
+			this.btn_timnhanvien = new System.Windows.Forms.Button();
+			this.txb_tennhanvien = new System.Windows.Forms.TextBox();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_checkin)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -137,6 +138,46 @@
 			this.dgv_checkin.TabIndex = 6;
 			this.dgv_checkin.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_checkin_CellFormatting);
 			// 
+			// MaCheckIn
+			// 
+			this.MaCheckIn.DataPropertyName = "MaCheckIn";
+			this.MaCheckIn.HeaderText = "Mã checkin";
+			this.MaCheckIn.MinimumWidth = 6;
+			this.MaCheckIn.Name = "MaCheckIn";
+			this.MaCheckIn.Width = 75;
+			// 
+			// MaNV
+			// 
+			this.MaNV.DataPropertyName = "MaNV";
+			this.MaNV.HeaderText = "Mã nhân viên";
+			this.MaNV.MinimumWidth = 6;
+			this.MaNV.Name = "MaNV";
+			this.MaNV.Width = 75;
+			// 
+			// TenNV
+			// 
+			this.TenNV.DataPropertyName = "TenNV";
+			this.TenNV.HeaderText = "Tên nhân viên";
+			this.TenNV.MinimumWidth = 6;
+			this.TenNV.Name = "TenNV";
+			this.TenNV.Width = 125;
+			// 
+			// NgayCheckIn
+			// 
+			this.NgayCheckIn.DataPropertyName = "NgayCheckIn";
+			this.NgayCheckIn.HeaderText = "Ngày checkin";
+			this.NgayCheckIn.MinimumWidth = 6;
+			this.NgayCheckIn.Name = "NgayCheckIn";
+			this.NgayCheckIn.Width = 80;
+			// 
+			// GioCheckIn
+			// 
+			this.GioCheckIn.DataPropertyName = "GioCheckIn";
+			this.GioCheckIn.HeaderText = "Giờ checkin";
+			this.GioCheckIn.MinimumWidth = 6;
+			this.GioCheckIn.Name = "GioCheckIn";
+			this.GioCheckIn.Width = 80;
+			// 
 			// btn_xoacheckin
 			// 
 			this.btn_xoacheckin.BackColor = System.Drawing.Color.DarkOrange;
@@ -188,46 +229,6 @@
 			this.txb_tennhanvien.Size = new System.Drawing.Size(252, 27);
 			this.txb_tennhanvien.TabIndex = 11;
 			// 
-			// MaCheckIn
-			// 
-			this.MaCheckIn.DataPropertyName = "MaCheckIn";
-			this.MaCheckIn.HeaderText = "Mã checkin";
-			this.MaCheckIn.MinimumWidth = 6;
-			this.MaCheckIn.Name = "MaCheckIn";
-			this.MaCheckIn.Width = 75;
-			// 
-			// MaNV
-			// 
-			this.MaNV.DataPropertyName = "MaNV";
-			this.MaNV.HeaderText = "Mã nhân viên";
-			this.MaNV.MinimumWidth = 6;
-			this.MaNV.Name = "MaNV";
-			this.MaNV.Width = 75;
-			// 
-			// TenNV
-			// 
-			this.TenNV.DataPropertyName = "TenNV";
-			this.TenNV.HeaderText = "Tên nhân viên";
-			this.TenNV.MinimumWidth = 6;
-			this.TenNV.Name = "TenNV";
-			this.TenNV.Width = 125;
-			// 
-			// NgayCheckIn
-			// 
-			this.NgayCheckIn.DataPropertyName = "NgayCheckIn";
-			this.NgayCheckIn.HeaderText = "Ngày checkin";
-			this.NgayCheckIn.MinimumWidth = 6;
-			this.NgayCheckIn.Name = "NgayCheckIn";
-			this.NgayCheckIn.Width = 80;
-			// 
-			// GioCheckIn
-			// 
-			this.GioCheckIn.DataPropertyName = "GioCheckIn";
-			this.GioCheckIn.HeaderText = "Giờ checkin";
-			this.GioCheckIn.MinimumWidth = 6;
-			this.GioCheckIn.Name = "GioCheckIn";
-			this.GioCheckIn.Width = 80;
-			// 
 			// fCheckin
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -244,6 +245,7 @@
 			this.Controls.Add(this.lb_tennhanvien);
 			this.Controls.Add(this.lb_manhanvien);
 			this.Controls.Add(this.txb_manhanvien);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "fCheckin";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Checkin";

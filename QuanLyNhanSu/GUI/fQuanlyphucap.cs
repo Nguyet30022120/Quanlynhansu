@@ -48,11 +48,30 @@ namespace QuanLyNhanSu.GUI
 			phucapList.DataSource = PhucapDAO.Instance.GetListPhuCap(manv);
 			BindingPhuCapData();
 		}
+		void LoadTenNV(string manv)
+		{
+			string tenNV = NhanvienDAO.Instance.GetStaffTen(manv);
+
+			if (string.IsNullOrEmpty(tenNV))
+			{
+				MessageBox.Show("Không có mã nhân viên trong hệ thống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				txb_tennhanvien.Text = "";
+			}
+			else
+			{
+				txb_tennhanvien.Text = tenNV;
+			}
+		}
 
 		#region Events
 		private void btn_timmanhanvien_Click(object sender, EventArgs e)
 		{
-			LoadPhuCap(txb_manhanvien.Text);
+			string manv = txb_manhanvien.Text.Trim();
+			LoadPhuCap(manv);
+			if (!string.IsNullOrEmpty(manv))
+			{
+				LoadTenNV(manv);
+			}
 		}
 
 		private void btn_themphucap_Click(object sender, EventArgs e)

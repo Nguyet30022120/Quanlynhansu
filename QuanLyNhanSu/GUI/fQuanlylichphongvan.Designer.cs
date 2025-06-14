@@ -30,6 +30,7 @@
 		{
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fQuanlylichphongvan));
 			this.lb_tenungvien = new System.Windows.Forms.Label();
 			this.lb_ngayphongvan = new System.Windows.Forms.Label();
 			this.lb_giophongvan = new System.Windows.Forms.Label();
@@ -415,6 +416,7 @@
 			this.ClientSize = new System.Drawing.Size(1482, 778);
 			this.Controls.Add(this.pn_lichphongvan);
 			this.Controls.Add(this.dgv_lichphongvan);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "fQuanlylichphongvan";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Lịch phỏng vấn";

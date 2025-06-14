@@ -168,6 +168,7 @@
 			this.Controls.Add(this.lb_password);
 			this.Controls.Add(this.lb_username);
 			this.Controls.Add(this.txb_username);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "fDangnhap";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Đăng nhập";

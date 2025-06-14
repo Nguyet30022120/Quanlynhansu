@@ -29,8 +29,9 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fCheckout));
 			this.lb_manhanvien = new System.Windows.Forms.Label();
 			this.lb_tennhanvien = new System.Windows.Forms.Label();
 			this.lb_giocheckout = new System.Windows.Forms.Label();
@@ -40,13 +41,13 @@
 			this.btn_xoacheckout = new System.Windows.Forms.Button();
 			this.timer_giocheckout = new System.Windows.Forms.Timer(this.components);
 			this.dgv_checkout = new System.Windows.Forms.DataGridView();
-			this.btn_dongcheckout = new System.Windows.Forms.Button();
-			this.txb_tennhanvien = new System.Windows.Forms.TextBox();
 			this.MaCheckOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.NgayCheckOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Giocheck_out = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.btn_dongcheckout = new System.Windows.Forms.Button();
+			this.txb_tennhanvien = new System.Windows.Forms.TextBox();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_checkout)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -137,17 +138,17 @@
 			// 
 			// dgv_checkout
 			// 
-			dataGridViewCellStyle3.BackColor = System.Drawing.Color.Tan;
-			this.dgv_checkout.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.Tan;
+			this.dgv_checkout.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
 			this.dgv_checkout.BackgroundColor = System.Drawing.Color.White;
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgv_checkout.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgv_checkout.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.dgv_checkout.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgv_checkout.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaCheckOut,
@@ -161,29 +162,6 @@
 			this.dgv_checkout.RowTemplate.Height = 24;
 			this.dgv_checkout.Size = new System.Drawing.Size(734, 435);
 			this.dgv_checkout.TabIndex = 8;
-			// 
-			// btn_dongcheckout
-			// 
-			this.btn_dongcheckout.BackColor = System.Drawing.Color.DarkOrange;
-			this.btn_dongcheckout.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_dongcheckout.Location = new System.Drawing.Point(61, 451);
-			this.btn_dongcheckout.Name = "btn_dongcheckout";
-			this.btn_dongcheckout.Size = new System.Drawing.Size(115, 40);
-			this.btn_dongcheckout.TabIndex = 9;
-			this.btn_dongcheckout.Text = "Đóng";
-			this.btn_dongcheckout.UseVisualStyleBackColor = false;
-			this.btn_dongcheckout.Click += new System.EventHandler(this.btn_closecheckout_Click);
-			this.btn_dongcheckout.MouseEnter += new System.EventHandler(this.btn_dongcheckout_MouseEnter);
-			this.btn_dongcheckout.MouseLeave += new System.EventHandler(this.btn_dongcheckout_MouseLeave);
-			// 
-			// txb_tennhanvien
-			// 
-			this.txb_tennhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_tennhanvien.Location = new System.Drawing.Point(718, 19);
-			this.txb_tennhanvien.Name = "txb_tennhanvien";
-			this.txb_tennhanvien.ReadOnly = true;
-			this.txb_tennhanvien.Size = new System.Drawing.Size(252, 27);
-			this.txb_tennhanvien.TabIndex = 10;
 			// 
 			// MaCheckOut
 			// 
@@ -225,6 +203,29 @@
 			this.Giocheck_out.Name = "Giocheck_out";
 			this.Giocheck_out.Width = 80;
 			// 
+			// btn_dongcheckout
+			// 
+			this.btn_dongcheckout.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_dongcheckout.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_dongcheckout.Location = new System.Drawing.Point(61, 451);
+			this.btn_dongcheckout.Name = "btn_dongcheckout";
+			this.btn_dongcheckout.Size = new System.Drawing.Size(115, 40);
+			this.btn_dongcheckout.TabIndex = 9;
+			this.btn_dongcheckout.Text = "Đóng";
+			this.btn_dongcheckout.UseVisualStyleBackColor = false;
+			this.btn_dongcheckout.Click += new System.EventHandler(this.btn_closecheckout_Click);
+			this.btn_dongcheckout.MouseEnter += new System.EventHandler(this.btn_dongcheckout_MouseEnter);
+			this.btn_dongcheckout.MouseLeave += new System.EventHandler(this.btn_dongcheckout_MouseLeave);
+			// 
+			// txb_tennhanvien
+			// 
+			this.txb_tennhanvien.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txb_tennhanvien.Location = new System.Drawing.Point(718, 19);
+			this.txb_tennhanvien.Name = "txb_tennhanvien";
+			this.txb_tennhanvien.ReadOnly = true;
+			this.txb_tennhanvien.Size = new System.Drawing.Size(252, 27);
+			this.txb_tennhanvien.TabIndex = 10;
+			// 
 			// fCheckout
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -241,6 +242,7 @@
 			this.Controls.Add(this.lb_giocheckout);
 			this.Controls.Add(this.lb_tennhanvien);
 			this.Controls.Add(this.lb_manhanvien);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "fCheckout";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Checkout";

@@ -30,6 +30,7 @@
 		{
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fQuanlytrinhdochuyenmon));
 			this.pn_trinhdo = new System.Windows.Forms.Panel();
 			this.btn_timnhanvien = new System.Windows.Forms.Button();
 			this.lb_manhanvien = new System.Windows.Forms.Label();
@@ -328,6 +329,7 @@
 			this.ClientSize = new System.Drawing.Size(1482, 778);
 			this.Controls.Add(this.dgv_trinhdo);
 			this.Controls.Add(this.pn_trinhdo);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "fQuanlytrinhdochuyenmon";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Trình độ ";

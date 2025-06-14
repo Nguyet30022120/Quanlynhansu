@@ -156,27 +156,33 @@ namespace QuanLyNhanSu.GUI
 
 		private void LoadData(string manv)
 		{
+			string tenNV;
 			try
 			{
-				MessageBox.Show($"Đang load lương cho nhân viên: {manv}");
-				var list = BangluongDAO.Instance.BangLuongNhanVien(manv);
-				MessageBox.Show($"Số dòng trả về: {list.Count}");
 
-				danhSachLuong = BangluongDAO.Instance.BangLuongNhanVien(manv);
-				if (danhSachLuong == null || danhSachLuong.Count == 0)
+				DataTable dtNhanVien = BangluongDAO.Instance.GetNhanVienTheoMa();
+				var rows = dtNhanVien.Select($"Ma_NV = '{manv}'");
+				if (rows.Length > 0)
 				{
-					MessageBox.Show("Không tìm thấy dữ kiện lương.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					tenNV = rows[0]["HoTen"].ToString();
 				}
 				else
 				{
-					dgv_bangluong.DataSource = danhSachLuong;
+					MessageBox.Show("Không tìm thấy nhân viên!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+					return;
 				}
+
+				danhSachLuong = BangluongDAO.Instance.BangLuongNV(manv);
+				txb_tennhanvien.Text = tenNV;
+				dgv_bangluong.DataSource = danhSachLuong;
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Lỗi khi tải dữ kiện: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Lỗi khi tính lương: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
+	
+		
 
 
 		void LoadInitialData()

@@ -31,6 +31,7 @@
 			this.components = new System.ComponentModel.Container();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fCheckoutUser));
 			this.btn_xoacheckout = new System.Windows.Forms.Button();
 			this.btn_checkout = new System.Windows.Forms.Button();
 			this.txb_manhanvien = new System.Windows.Forms.TextBox();
@@ -227,6 +228,7 @@
 			this.Controls.Add(this.dgv_checkout);
 			this.Controls.Add(this.txb_tennhanvien);
 			this.Controls.Add(this.btn_dongcheckout);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "fCheckoutUser";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Checkout";

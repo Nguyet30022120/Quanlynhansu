@@ -53,10 +53,30 @@ namespace QuanLyNhanSu.GUI
 			insuranceList.DataSource = BaohiemDAO.Instance.GetListInsurance(manv);
 			BindingInsuranceData();
 		}
+		void LoadTenNV(string manv)
+		{
+			string tenNV = NhanvienDAO.Instance.GetStaffTen(manv);
+
+			if (string.IsNullOrEmpty(tenNV))
+			{
+				MessageBox.Show("Không có mã nhân viên trong hệ thống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				txb_tennhanvien.Text = "";
+			}
+			else
+			{
+				txb_tennhanvien.Text = tenNV;
+			}
+		}
+
 		#region Events
 		private void btn_findmanv_Click(object sender, EventArgs e)
 		{
-			LoadInsurance(txb_manhanvien.Text);
+			string manv = txb_manhanvien.Text.Trim();
+			LoadInsurance(manv);
+			if (!string.IsNullOrEmpty(manv))
+			{
+				LoadTenNV(manv);
+			}
 		}
 
 		private void btn_addbh_Click(object sender, EventArgs e)

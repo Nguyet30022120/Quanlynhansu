@@ -30,6 +30,7 @@
 		{
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fQuanlybaohiemUser));
 			this.txb_tienbaohiem = new System.Windows.Forms.TextBox();
 			this.lb_tienbaohiem = new System.Windows.Forms.Label();
 			this.lb_manhanvien = new System.Windows.Forms.Label();
@@ -312,6 +313,7 @@
 			this.Controls.Add(this.btn_dongbaohiem);
 			this.Controls.Add(this.txb_mota);
 			this.Controls.Add(this.txb_tennhanvien);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "fQuanlybaohiemUser";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Bảo hiểm";

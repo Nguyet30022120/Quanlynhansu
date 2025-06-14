@@ -30,6 +30,7 @@
 		{
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fQuanlyduyetnghiphep));
 			this.dgv_duyetdonnghiphep = new System.Windows.Forms.DataGridView();
 			this.MaDonNghiPhep = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -259,6 +260,7 @@
 			this.Controls.Add(this.btn_tuchoi);
 			this.Controls.Add(this.btn_duyet);
 			this.Controls.Add(this.dgv_duyetdonnghiphep);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "fQuanlyduyetnghiphep";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Duyệt nghỉ phép";

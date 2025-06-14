@@ -30,12 +30,13 @@
 		{
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fQuanlylichsudangnhap));
 			this.dgv_lichsudangnhap = new System.Windows.Forms.DataGridView();
-			this.btn_dong = new System.Windows.Forms.Button();
 			this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ThoiGianDangNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.DiaChiIP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.btn_dong = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_lichsudangnhap)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -64,20 +65,6 @@
 			this.dgv_lichsudangnhap.RowTemplate.Height = 24;
 			this.dgv_lichsudangnhap.Size = new System.Drawing.Size(958, 583);
 			this.dgv_lichsudangnhap.TabIndex = 0;
-			// 
-			// btn_dong
-			// 
-			this.btn_dong.BackColor = System.Drawing.Color.DarkOrange;
-			this.btn_dong.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_dong.Location = new System.Drawing.Point(855, 601);
-			this.btn_dong.Name = "btn_dong";
-			this.btn_dong.Size = new System.Drawing.Size(115, 40);
-			this.btn_dong.TabIndex = 1;
-			this.btn_dong.Text = "Đóng";
-			this.btn_dong.UseVisualStyleBackColor = false;
-			this.btn_dong.Click += new System.EventHandler(this.btn_dong_Click);
-			this.btn_dong.MouseEnter += new System.EventHandler(this.btn_dong_MouseEnter);
-			this.btn_dong.MouseLeave += new System.EventHandler(this.btn_dong_MouseLeave);
 			// 
 			// STT
 			// 
@@ -111,6 +98,20 @@
 			this.DiaChiIP.Name = "DiaChiIP";
 			this.DiaChiIP.Width = 150;
 			// 
+			// btn_dong
+			// 
+			this.btn_dong.BackColor = System.Drawing.Color.DarkOrange;
+			this.btn_dong.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_dong.Location = new System.Drawing.Point(855, 601);
+			this.btn_dong.Name = "btn_dong";
+			this.btn_dong.Size = new System.Drawing.Size(115, 40);
+			this.btn_dong.TabIndex = 1;
+			this.btn_dong.Text = "Đóng";
+			this.btn_dong.UseVisualStyleBackColor = false;
+			this.btn_dong.Click += new System.EventHandler(this.btn_dong_Click);
+			this.btn_dong.MouseEnter += new System.EventHandler(this.btn_dong_MouseEnter);
+			this.btn_dong.MouseLeave += new System.EventHandler(this.btn_dong_MouseLeave);
+			// 
 			// fQuanlylichsudangnhap
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -119,6 +120,7 @@
 			this.ClientSize = new System.Drawing.Size(982, 653);
 			this.Controls.Add(this.btn_dong);
 			this.Controls.Add(this.dgv_lichsudangnhap);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "fQuanlylichsudangnhap";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Lịch sử đăng nhập";

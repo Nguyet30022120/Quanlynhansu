@@ -65,20 +65,19 @@ namespace QuanLyNhanSu.DTO
 
 		public BangluongDTO(DataRow row)
 		{
-			MaNV = row["Ma_NV"].ToString();
-			TenNV = row["HoTen"].ToString();
-			Thang = Convert.ToInt32(row["Thang"]);
-			Nam = Convert.ToInt32(row["Nam"]);
-			SoGioLam = Convert.ToDouble(row["SoGioLam"]);
-			LuongCoBan = Convert.ToDecimal(row["LuongCoBan"]);
-			HeSoNgay = Convert.ToDouble(row["HeSoNgay"]);
+			MaNV = row["Ma_NV"]?.ToString();
+			TenNV = row["HoTen"]?.ToString();
+			Thang = row["Thang"] != DBNull.Value ? Convert.ToInt32(row["Thang"]) : 0;
+			Nam = row["Nam"] != DBNull.Value ? Convert.ToInt32(row["Nam"]) : 0;
+			SoGioLam = row["SoGioLam"] != DBNull.Value ? Convert.ToDouble(row["SoGioLam"]) : 0.0;
+			LuongCoBan = row["LuongCoBan"] != DBNull.Value ? Convert.ToDecimal(row["LuongCoBan"]) : 0;
+			HeSoNgay = row["HeSoNgay"] != DBNull.Value ? Convert.ToDouble(row["HeSoNgay"]) : 1.0;
 			PhucCap = row["PhucCap"] != DBNull.Value ? Convert.ToDecimal(row["PhucCap"]) : 0;
-			BaoHiem = Convert.ToDecimal(row["BaoHiem"]);
-			Thue = Convert.ToDecimal(row["Thue"]);
-			Phat = Convert.ToDecimal(row["Phat"]);
-			Thuong = Convert.ToDecimal(row["Thuong"]);
+			BaoHiem = row["BaoHiem"] != DBNull.Value ? Convert.ToDecimal(row["BaoHiem"]) : 0;
+			Thue = row["Thue"] != DBNull.Value ? Convert.ToDecimal(row["Thue"]) : 0;
+			Phat = row["Phat"] != DBNull.Value ? Convert.ToDecimal(row["Phat"]) : 0;
+			Thuong = row["Thuong"] != DBNull.Value ? Convert.ToDecimal(row["Thuong"]) : 0;
 
-			// Lấy giá trị LuongThucNhan từ database (nếu có)
 			if (row.Table.Columns.Contains("LuongThucNhan") && row["LuongThucNhan"] != DBNull.Value)
 			{
 				_luongThucLinhFromDB = Convert.ToDecimal(row["LuongThucNhan"]);

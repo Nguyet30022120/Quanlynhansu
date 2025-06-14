@@ -329,6 +329,7 @@
 			this.ClientSize = new System.Drawing.Size(1376, 853);
 			this.Controls.Add(this.panel2);
 			this.Controls.Add(this.pn_mainmenu);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "fUserDashboard";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "User Dashboard";

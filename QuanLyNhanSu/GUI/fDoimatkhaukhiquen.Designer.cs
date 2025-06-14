@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fDoimatkhaukhiquen));
 			this.txb_tendangnhap = new System.Windows.Forms.TextBox();
 			this.lb_mataikhoan = new System.Windows.Forms.Label();
 			this.btn_dong = new System.Windows.Forms.Button();
@@ -157,6 +158,7 @@
 			this.Controls.Add(this.lb_matkhaumoi);
 			this.Controls.Add(this.txb_nhaplaimatkhaumoi);
 			this.Controls.Add(this.txb_matkhaumoi);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "fDoimatkhaukhiquen";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Đổi lại mật khẩu";

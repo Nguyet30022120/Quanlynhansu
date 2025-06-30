@@ -103,10 +103,14 @@ namespace QuanLyNhanSu
 		{
 			txb_password.UseSystemPasswordChar = !chb_hienmk.Checked;
 		}
+
+
+
 		#endregion
 
+		private void fDangnhap_Load(object sender, EventArgs e)
+		{
 
-
-
+		}
 	}
 }

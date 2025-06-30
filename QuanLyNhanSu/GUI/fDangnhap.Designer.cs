@@ -172,6 +172,7 @@
 			this.Name = "fDangnhap";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Đăng nhập";
+			this.Load += new System.EventHandler(this.fDangnhap_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

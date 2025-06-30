@@ -93,6 +93,14 @@ namespace QuanLyNhanSu
 		void LoadUserInfo(string userName)
 		{
 			string name = TaikhoanDAO.Instance.GetNameNvByUsername(userName);
+
+			if (string.IsNullOrEmpty(name))
+			{
+				MessageBox.Show("Sai tên tài khoản hoặc mật khẩu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				this.Close(); 
+				return;
+			}
+
 			lb_tennhanvien.Text = "Xin chào " + name;
 		}
 

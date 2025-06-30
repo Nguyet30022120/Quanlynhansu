@@ -114,6 +114,7 @@
 			this.txb_nhaplaimatkhaumoi.Name = "txb_nhaplaimatkhaumoi";
 			this.txb_nhaplaimatkhaumoi.Size = new System.Drawing.Size(348, 27);
 			this.txb_nhaplaimatkhaumoi.TabIndex = 12;
+			this.txb_nhaplaimatkhaumoi.UseSystemPasswordChar = true;
 			// 
 			// txb_matkhaumoi
 			// 
@@ -122,6 +123,7 @@
 			this.txb_matkhaumoi.Name = "txb_matkhaumoi";
 			this.txb_matkhaumoi.Size = new System.Drawing.Size(348, 27);
 			this.txb_matkhaumoi.TabIndex = 11;
+			this.txb_matkhaumoi.UseSystemPasswordChar = true;
 			// 
 			// txb_email
 			// 
